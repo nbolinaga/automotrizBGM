@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    InicioComponent
+    InicioComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
