@@ -5,5 +5,8 @@
     padding: 0;
 }
 body{
+    background-image: url('./assets/background.svg');
+    background-size: cover;
+    background-position: bottom;
     background-color: #2B333C;
 }
