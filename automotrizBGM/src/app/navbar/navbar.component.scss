@@ -5,16 +5,18 @@ nav{
     align-items: center;
     height: 10vh;
 
-    h1, h2{
+    a, h2{
         margin: 2vw;
         font-family: 'Montserrat', Arial, Helvetica, sans-serif;
         color: #2B333C;
         cursor: pointer;
         
     }
-    h1{
+    a{
         font-size: 4vh;
         display: inline-flex;
+        font-weight: bold;
+        text-decoration: none;
 
         img{
             height: 5vh;
