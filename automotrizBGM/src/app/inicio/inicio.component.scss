@@ -1,34 +1,109 @@
-p{
-    color: white;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    width: 35vw;
-    font-size: 3vh;
-    margin: 3vh;
+@import "../../variables.scss";
+//General
+.container {
+  display: flex;
+}
+section.left,
+section.right {
+  padding: 4vw 4vw;
+}
+section.right {
+  width: 65%;
+
+  p {
+    color: $blanco;
+    font-family: $fonts;
+    width: 100%;
+    font-size: 2vw;
+    margin-top: 2vw;
     text-align: justify;
     font-weight: 400;
-}
-.buttons{
+  }
+  .buttons {
     display: flex;
     justify-content: space-between;
-    width: 35vw;
-    margin: 7vh 3vh;
+    width: 100%;
+    margin: 7vh 0vh;
 
-    button{
-        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-        font-size: 3vh;
-        font-weight: bold;
-        width: 40%;
-        padding: 1.5vh 1vw;
-        border: none;
-        border-radius: 0;
-        cursor: pointer;
+    button {
+      font-family: $fonts;
+      font-size: 2vw;
+      font-weight: bold;
+      width: 40%;
+      padding: 1.5vh 1vw;
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
 
-        &.right{
-            background-color: #37A2D4;
-            color: white;
-        }
-        &.left{
-            color: #2B333C;
-        }
+      &#registrar {
+        background-color: $detalles;
+        color: white;
+      }
+      &#ingresar {
+        color: $base;
+      }
     }
+  }
+}
+section.left {
+  padding: 4vw 0vw 4vw 6vw;
+  .blue-box {
+    background: linear-gradient($detalles 0%, rgba(255, 255, 255, 0) 70%);
+    width: 80%;
+    height: 90%;
+    padding: 3vw;
+    position: relative;
+
+    h1 {
+      font-size: 2.5vw;
+      font-family: $fonts;
+      color: $base;
+    }
+
+    img {
+      width: 110%;
+      position: absolute;
+      bottom: 0%;
+      right: 0;
+    }
+  }
+}
+
+//Telefono
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+  .container {
+    display: inline-block;
+  }
+  section.right {
+    width: auto;
+    padding: 0vw 10vw;
+    margin-bottom: 10vh;
+
+    p {
+      font-size: 4vw;
+    }
+
+    .buttons {
+      margin: 3vh 0vh;
+
+      button {
+        font-size: 4vw;
+      }
+    }
+  }
+  section.left {
+    margin-top: 2vh;
+    height: 80vw;
+    width: auto;
+    padding: 4vw 4vw;
+
+    .blue-box {
+      padding: 4vw;
+      margin: 0 auto;
+
+      h1 {
+        font-size: 6vw;
+      }
+    }
+  }
 }

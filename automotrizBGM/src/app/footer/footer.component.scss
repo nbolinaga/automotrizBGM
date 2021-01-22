@@ -1,0 +1,13 @@
+@import '../../variables.scss';
+//General
+footer{
+    width: 100%;
+    height: 7vh;
+    background-color: $detalles;
+}
+//Telefono
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+    footer{
+        display: none;
+    }
+}
