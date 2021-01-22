@@ -1,39 +1,108 @@
-nav{
-    background-color: white;
-    display: flex;
+@import "../../variables.scss";
+//General
+nav {
+  background-color: $blanco;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+
+  a,
+  h2 {
+    font-family: $fonts;
+    color: $detalles;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  a {
+    display: inline-flex;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  span {
+    color: $base;
+  }
+
+  &::after {
+    content: " ";
+    width: 100%;
+    background-color: #37a2d4;
+    position: absolute;
+  }
+}
+//Telefono Horizontal
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+  nav {
+    position: fixed;
+    justify-content: center;
+    top: 0;
+
+    a {
+      font-size: 7vw;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        height: 4vh;
+        margin-right: 4vw;
+      }
+    }
+
+    h2 {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      background-color: $detalles;
+      margin: 0;
+      padding: 1vh;
+
+      i {
+        color: $base;
+      }
+    }
+    span {
+      margin-left: 12px;
+    }
+
+    &::after {
+      height: 1.2vh;
+      top: 9vh;
+    }
+  }
+}
+//Telefono Vertical
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+}
+//Desktop
+@media only screen and (min-width: 768px) {
+  nav {
     justify-content: space-between;
-    align-items: center;
-    height: 10vh;
 
-    a, h2{
-        margin: 2vw;
-        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-        color: #37A2D4;
-        cursor: pointer;
-        
+    a,
+    h2 {
+      margin: 2vw;
     }
-    a{
-        font-size: 4vh;
-        display: inline-flex;
-        font-weight: bold;
-        text-decoration: none;
+    a {
+      font-size: 4vh;
 
-        img{
-            height: 5vh;
-            margin-right: 1vw;
-        }
+      img {
+        height: 5vh;
+        margin-right: 1vw;
+      }
     }
-    span{
-        color: #2B333C;
-        margin-left: 8px;
+    span {
+      margin-left: 8px;
     }
- 
-    &::after{
-        content: " ";
-        width: 100%;
-        height: 2vh;
-        background-color: #37A2D4;
-        position: absolute;
-        top: 10vh;
+
+    &::after {
+      height: 2vh;
+      top: 10vh;
     }
+  }
 }
