@@ -6,6 +6,7 @@ nav {
   height: 10vh;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   a,
   h2 {
@@ -13,16 +14,24 @@ nav {
     color: $detalles;
     cursor: pointer;
     z-index: 999;
+    margin: 2vw;
   }
 
   a {
     display: inline-flex;
     font-weight: bold;
     text-decoration: none;
+    font-size: 4vh;
+
+    img{
+        height: 5vh;
+        margin-right: 1vw;
+    }
   }
 
   span {
     color: $base;
+    margin-left: 8px;
   }
 
   &::after {
@@ -30,9 +39,12 @@ nav {
     width: 100%;
     background-color: #37a2d4;
     position: absolute;
+    height: 2vh;
+    top: 10vh;
   }
 }
-//Telefono Horizontal
+
+//Telefono
 @media only screen and (max-width: 768px) and (orientation: portrait) {
   nav {
     position: fixed;
@@ -73,36 +85,6 @@ nav {
     &::after {
       height: 1.2vh;
       top: 9vh;
-    }
-  }
-}
-//Telefono Vertical
-@media only screen and (max-width: 768px) and (orientation: landscape) {
-}
-//Desktop
-@media only screen and (min-width: 768px) {
-  nav {
-    justify-content: space-between;
-
-    a,
-    h2 {
-      margin: 2vw;
-    }
-    a {
-      font-size: 4vh;
-
-      img {
-        height: 5vh;
-        margin-right: 1vw;
-      }
-    }
-    span {
-      margin-left: 8px;
-    }
-
-    &::after {
-      height: 2vh;
-      top: 10vh;
     }
   }
 }
