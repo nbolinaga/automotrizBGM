@@ -2,24 +2,25 @@
 //General
 .container {
   display: flex;
+  height: auto;
 }
-section.left,
-section.right {
+section.izq,
+section.der {
   padding: 4vw 4vw;
 }
-section.right {
+section.der {
   width: 65%;
 
   p {
     color: $blanco;
     font-family: $fonts;
     width: 100%;
-    font-size: 2vw;
-    margin-top: 2vw;
+    font-size: 1.5vw;
+    margin-top: 2.5vw;
     text-align: justify;
     font-weight: 400;
   }
-  .buttons {
+  .botones {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -44,13 +45,43 @@ section.right {
       }
     }
   }
+  #contenedor-imgs{
+    display: flex;
+    justify-content: space-between;
+
+    .mecanico-img{
+      width: 30%;
+      height: auto;
+    }
+  }
+  .resaltar{
+    position: relative;
+    font-family: $fonts;
+    text-align: center;
+    color: $blanco;
+    font-size: 2vw;
+    width: 100%;
+    height: auto;
+    margin-top: 2vw;
+  }
+  .center{
+    width: 100%;
+    text-align: center;
+  }
+  .marcas{
+    display: block;
+    width: 80%;
+    height: auto;
+    margin: 2vw auto;
+  }
 }
-section.left {
+section.izq {
   padding: 4vw 0vw 4vw 6vw;
-  .blue-box {
+
+  .caja-azul {
     background: linear-gradient($detalles 0%, rgba(255, 255, 255, 0) 70%);
     width: 80%;
-    height: 90%;
+    height: 100%;
     padding: 3vw;
     position: relative;
 
@@ -61,10 +92,11 @@ section.left {
     }
 
     img {
-      width: 110%;
-      position: absolute;
-      bottom: 0%;
-      right: 0;
+      width: 125%;
+      position: sticky;
+      top: 45vh;
+      transform: scaleX(-1);
+      margin: -3vw;
     }
   }
 }
@@ -74,30 +106,49 @@ section.left {
   .container {
     display: inline-block;
   }
-  section.right {
+  section.der {
     width: auto;
     padding: 0vw 10vw;
     margin-bottom: 10vh;
 
     p {
       font-size: 4vw;
+      margin: 7vw 0;
     }
-
-    .buttons {
+    .resaltar{
+      font-size: 5vw;
+    }
+    .botones {
       margin: 3vh 0vh;
 
       button {
         font-size: 4vw;
       }
     }
+    .marcas{
+      display: block;
+      width: 80%;
+      height: auto;
+      margin: 7vw auto;
+    }
+
+    #contenedor-imgs{
+      display:  inline-block;
+  
+      .mecanico-img{
+        display: block;
+        width: 80%;
+        margin: 4vw auto;
+      }
+    }
   }
-  section.left {
+  section.izq {
     margin-top: 2vh;
     height: 80vw;
     width: auto;
     padding: 4vw 4vw;
 
-    .blue-box {
+    .caja-azul {
       padding: 4vw;
       margin: 0 auto;
 
