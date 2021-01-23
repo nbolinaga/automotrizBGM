@@ -158,6 +158,7 @@ section.izq {
     height: 80vw;
     width: auto;
     padding: 4vw 4vw;
+    
 
     .caja-azul {
       padding: 4vw;
@@ -165,6 +166,11 @@ section.izq {
 
       h1 {
         font-size: 6vw;
+        position: relative;
+        top: 0;
+      }
+      h2{
+        display: none;
       }
     }
   }
