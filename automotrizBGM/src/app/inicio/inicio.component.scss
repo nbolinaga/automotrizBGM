@@ -63,6 +63,8 @@ section.der {
     width: 100%;
     height: auto;
     margin-top: 2vw;
+    outline: .5vh solid $detalles;
+    padding: .5vw;
   }
   .center{
     width: 100%;
@@ -72,14 +74,14 @@ section.der {
     display: block;
     width: 80%;
     height: auto;
-    margin: 2vw auto;
+    margin: 5vw auto;
   }
 }
 section.izq {
   padding: 4vw 0vw 4vw 6vw;
 
   .caja-azul {
-    background: linear-gradient($detalles 0%, rgba(255, 255, 255, 0) 70%);
+    background: linear-gradient($detalles 0%, rgba(255, 255, 255, 0) 65%);
     width: 80%;
     height: 100%;
     padding: 3vw;
@@ -89,14 +91,23 @@ section.izq {
       font-size: 2.5vw;
       font-family: $fonts;
       color: $base;
+      position: sticky;
+      top: 26vh;
     }
-
-    img {
+    h2{
+      font-size: 2.5vw;
+      font-family: $fonts;
+      color: $blanco;
+      position: absolute;
+      bottom: 60vh;
+    }
+    img.car{
       width: 125%;
       position: sticky;
       top: 45vh;
       transform: scaleX(-1);
       margin: -3vw;
+      z-index: 99;
     }
   }
 }
