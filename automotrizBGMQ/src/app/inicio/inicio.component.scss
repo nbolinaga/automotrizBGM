@@ -9,7 +9,7 @@ section.der {
   padding: 4vw 4vw;
 }
 section.der {
-  width: 65%;
+  width: 100%;
 
   p {
     color: $blanco;
@@ -88,21 +88,21 @@ section.izq {
     position: relative;
 
     h1 {
-      font-size: 2.5vw;
+      font-size: 2vw;
       font-family: $fonts;
       color: $base;
       position: sticky;
       top: 26vh;
     }
     h2{
-      font-size: 2.5vw;
+      font-size: 2vw;
       font-family: $fonts;
       color: $blanco;
       position: absolute;
       bottom: 60vh;
     }
     img.car{
-      width: 125%;
+      width: 135%;
       position: sticky;
       top: 45vh;
       transform: scaleX(-1);
