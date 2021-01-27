@@ -1,0 +1,351 @@
+* {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-image: url("./automotrizBGMQ/src/assets/background.svg");
+  background-size: cover;
+  background-position: bottom;
+  background-color: #2b333c;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 2vw;
+  background-image: url("./automotrizBGMQ/src/assets/road.svg");
+  background-position: bottom;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px whitesmoke;
+          box-shadow: inset 0 0 5px whitesmoke;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: url("./automotrizBGMQ/src/assets/carTop.svg") 0 0 no-repeat;
+  background-position: center;
+  min-height: 40px;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: auto;
+}
+
+section.izq,
+section.der {
+  padding: 4vw 4vw;
+}
+
+section.der {
+  width: 100%;
+}
+
+section.der p {
+  color: whitesmoke;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  width: 100%;
+  font-size: 1.5vw;
+  margin-top: 2.5vw;
+  text-align: justify;
+  font-weight: 400;
+}
+
+section.der .botones {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  margin: 7vh 0vh;
+}
+
+section.der .botones button {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 2vw;
+  font-weight: bold;
+  width: 40%;
+  padding: 1.5vh 1vw;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+section.der .botones button#registrar {
+  background-color: #37A2D4;
+  color: white;
+}
+
+section.der .botones button#ingresar {
+  color: #2B333C;
+}
+
+section.der #contenedor-imgs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+section.der #contenedor-imgs .mecanico-img {
+  width: 30%;
+  height: auto;
+}
+
+section.der .resaltar {
+  position: relative;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: whitesmoke;
+  font-size: 2vw;
+  width: 100%;
+  height: auto;
+  margin-top: 2vw;
+  outline: 0.5vh solid #37A2D4;
+  padding: .5vw;
+}
+
+section.der .center {
+  width: 100%;
+  text-align: center;
+}
+
+section.der .marcas {
+  display: block;
+  width: 80%;
+  height: auto;
+  margin: 5vw auto;
+}
+
+section.izq {
+  padding: 4vw 0vw 4vw 6vw;
+}
+
+section.izq .caja-azul {
+  background: -webkit-gradient(linear, left top, left bottom, from(#37A2D4), color-stop(65%, rgba(255, 255, 255, 0)));
+  background: linear-gradient(#37A2D4 0%, rgba(255, 255, 255, 0) 65%);
+  width: 80%;
+  height: 100%;
+  padding: 3vw;
+  position: relative;
+}
+
+section.izq .caja-azul h1 {
+  font-size: 2vw;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  color: #2B333C;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 26vh;
+}
+
+section.izq .caja-azul h2 {
+  font-size: 2vw;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  color: whitesmoke;
+  position: absolute;
+  bottom: 60vh;
+}
+
+section.izq .caja-azul img.car {
+  width: 135%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 45vh;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+  margin: -3vw;
+  z-index: 99;
+}
+
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+  .container {
+    display: inline-block;
+  }
+  section.der {
+    width: auto;
+    padding: 0vw 10vw;
+    margin-bottom: 10vh;
+  }
+  section.der p {
+    font-size: 4vw;
+    margin: 7vw 0;
+  }
+  section.der .resaltar {
+    font-size: 5vw;
+  }
+  section.der .botones {
+    margin: 3vh 0vh;
+  }
+  section.der .botones button {
+    font-size: 4vw;
+  }
+  section.der .marcas {
+    display: block;
+    width: 80%;
+    height: auto;
+    margin: 7vw auto;
+  }
+  section.der #contenedor-imgs {
+    display: inline-block;
+  }
+  section.der #contenedor-imgs .mecanico-img {
+    display: block;
+    width: 80%;
+    margin: 4vw auto;
+  }
+  section.izq {
+    margin-top: 2vh;
+    height: 80vw;
+    width: auto;
+    padding: 4vw 4vw;
+  }
+  section.izq .caja-azul {
+    padding: 4vw;
+    margin: 0 auto;
+  }
+  section.izq .caja-azul h1 {
+    font-size: 6vw;
+    position: relative;
+    top: 0;
+  }
+  section.izq .caja-azul h2 {
+    display: none;
+  }
+}
+
+nav {
+  background-color: whitesmoke;
+  width: 100%;
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+nav a,
+nav h2 {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  color: #37A2D4;
+  cursor: pointer;
+  z-index: 999;
+  margin: 2vw;
+}
+
+nav a {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 4vh;
+}
+
+nav a img {
+  height: 5vh;
+  margin-right: 1vw;
+}
+
+nav span {
+  color: #2B333C;
+  margin-left: 8px;
+}
+
+nav::after {
+  content: " ";
+  width: 100%;
+  background-color: #37a2d4;
+  position: absolute;
+  height: 2vh;
+  top: 10vh;
+}
+
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+  nav {
+    position: static;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    top: 0;
+  }
+  nav a {
+    font-size: 7vw;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  nav a img {
+    height: 4vh;
+    margin-right: 4vw;
+  }
+  nav h2 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #37A2D4;
+    margin: 0;
+    padding: 1vh;
+  }
+  nav h2 i {
+    color: #2B333C;
+  }
+  nav span {
+    margin-left: 12px;
+  }
+  nav::after {
+    height: 1.2vh;
+    top: 9vh;
+  }
+}
+
+footer {
+  width: auto;
+  height: 7vh;
+  background-color: #37A2D4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  padding-right: 6vw;
+  color: whitesmoke;
+  font-size: 1vw;
+}
+
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+  footer {
+    display: none;
+  }
+}
