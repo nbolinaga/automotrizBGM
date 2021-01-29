@@ -42,10 +42,31 @@ nav {
     height: 2vh;
     top: 10vh;
   }
+
+  .contenedor {
+    padding: 0px;
+    margin: 20px;
+    z-index: 99;
+    
+    a {
+      margin: 0px; 
+      padding: 30px 30px 20px 30px;
+    }
+
+    a:focus {
+      background-color: $detalles;
+      color: $base;
+    }
+
+    a:hover {
+      background-color: $detalles;
+      color: $base;
+    }
+  }
 }
 
-//Telefono
-@media only screen and (max-width: 768px) and (orientation: portrait) {
+//Telefono y tablet
+@media only screen and (max-width: 1025px) and (orientation: portrait) {
   nav {
     position:static;
     justify-content: center;
@@ -78,6 +99,11 @@ nav {
         color: $base;
       }
     }
+
+    .contenedor {
+      display: none;
+    }
+
     span {
       margin-left: 12px;
     }
@@ -85,6 +111,14 @@ nav {
     &::after {
       height: 1.2vh;
       top: 9vh;
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) and (orientation: portrait){
+  h2 {
+    i {
+      display: none;
     }
   }
 }
