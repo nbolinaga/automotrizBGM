@@ -13,3 +13,7 @@ export class InicioComponent implements OnInit {
   }
 
 }
+
+
+
+alert("hello world")
