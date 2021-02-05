@@ -1,11 +1,13 @@
 <nav>
-    <a href="#" routerLink="/"><img src="../../assets/logo.svg" alt="logo"> AUTOMOTRIZ <span> BGMQ</span></a>
-    <div class="contenedor">
-        <a href="#">Inicio</a>
-        <a href="#">Perfil</a>
-        <a href="#">Carros</a>
-        <a href="#">Contacto</a>
-    </div>
-    <h2><i class="fas fa-bars btnTelefonos"></i></h2>
-    
+    <a href="#" routerLink="/" id="logotipo"><img src="../../assets/logo.svg" alt="logo"> AUTOMOTRIZ <span> BGMQ</span></a>
+    <ul id="nav-list" *ngIf="navOpen" [@inOutAnimation]>
+        <li class="nav-item"><a href="">INICIO</a></li>
+        <li class="nav-item"><a href="">INFORMACION</a></li>
+        <li class="nav-item"><a href="">CITAS</a></li>
+        <li class="nav-item" >
+            <ng-template [ngIf]="!Logeado" [ngIfElse]="perfil"><a href="" (click)="logged()">INGRESAR/REGISTRARSE</a></ng-template>
+            <ng-template #perfil><a href="/">PERFIL</a></ng-template>
+        </li>
+    </ul>
+    <h3 id="btnTelefono"  (click)="toggleNav()"><ng-template [ngIf]="navOpen" [ngIfElse]="x"><i class="fas fa-chevron-down"></i></ng-template><ng-template #x (click)="open()"><i class="fas fa-bars"></i></ng-template></h3>
 </nav>

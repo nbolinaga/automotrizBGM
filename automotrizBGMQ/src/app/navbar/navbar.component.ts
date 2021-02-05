@@ -1,15 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
+  animations: [
+    trigger('inOutAnimation', [
+      transition(':enter', [
+        style({ "height": "0", "opacity": "0" }),
+        animate('.5s ease-out', style({ "height": "*", "opacity": "1" }))
+      ]),
+      transition(':leave', [
+        style({ "height": "*", "opacity": "1" }),
+        animate('.5s ease-in', style({ "height": "0", "opacity": "0" }))
+      ])
+    ])
+  ]
 })
 export class NavbarComponent implements OnInit {
+  Logeado: Boolean = false;
+  navOpen: Boolean = true;
 
-  constructor() { }
-
+  constructor() {}
+  
   ngOnInit(): void {
+    if (
+      window.matchMedia(
+        'screen and (max-width: 1025px) and (orientation: portrait)'
+      ).matches
+    ) {
+      this.navOpen = false;
+    } else {
+      this.navOpen = true;
+    }
   }
-
+    
+  toggleNav() {
+    this.navOpen = !this.navOpen;
+  }
+  logged() {
+    this.Logeado = !this.Logeado;
+  }
 }

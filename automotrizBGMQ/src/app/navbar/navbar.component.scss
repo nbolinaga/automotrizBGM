@@ -1,23 +1,27 @@
 @import "../../variables.scss";
 //General
 nav {
-  background-color: $blanco;
+  position: fixed;
+  top: 0;
+  z-index: 99;
   width: 100%;
   height: 10vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: $blanco;
+  
+  #btnTelefono{
+    display: none;
+  }
 
-  a,
-  h2 {
-    font-family: $fonts;
+  #logotipo,h2 {
     color: $detalles;
     cursor: pointer;
-    z-index: 999;
     margin: 2vw;
   }
 
-  a {
+  #logotipo {
     display: inline-flex;
     font-weight: bold;
     text-decoration: none;
@@ -39,86 +43,89 @@ nav {
     width: 100%;
     background-color: #37a2d4;
     position: absolute;
-    height: 2vh;
+    height: .5vw;
     top: 10vh;
+    z-index: -1;
   }
 
-  .contenedor {
-    padding: 0px;
-    margin: 20px;
-    z-index: 99;
+  ul{
+    list-style: none;
     
-    a {
-      margin: 0px; 
-      padding: 30px 30px 20px 30px;
-    }
-
-    a:focus {
-      background-color: $detalles;
-      color: $base;
-    }
-
-    a:hover {
-      background-color: $detalles;
-      color: $base;
+    li{
+      text-decoration: none;
+      display: inline-flex;
+      margin: 2vw;
+      font-weight: bold;
+      font-size: 1.75vw;
+      
+      a{
+        text-decoration: none;
+        color: $detalles;
+      }
     }
   }
 }
 
-//Telefono y tablet
-@media only screen and (max-width: 1025px) and (orientation: portrait) {
+//Telefono
+@media only screen and (max-width: 768px) and (orientation: portrait) {
   nav {
-    position:static;
+    position: absolute;
     justify-content: center;
-    top: 0;
+    
 
-    a {
-      font-size: 7vw;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        height: 4vh;
-        margin-right: 4vw;
-      }
-    }
-
-    h2 {
+    #btnTelefono{
       position: fixed;
       bottom: 0;
-      left: 0;
       width: 100%;
       text-align: center;
       background-color: $detalles;
-      margin: 0;
-      padding: 1vh;
+      font-size: 7vw;
+      height: 12vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       i {
         color: $base;
       }
     }
 
-    .contenedor {
-      display: none;
+    ul{
+      width: 100%;
+      background-color: $base;
+      position: fixed;
+      left: 0;
+      bottom: 12vw;
+      text-align: center;
+      
+      li{
+        display: block;
+        margin: 10vw 4vw;
+        font-size: 6vw;
+      }
+
+      &::before{
+        content: " ";
+        height: 100%;
+        width: 100vw;
+        background-color: rgba($base,0.5);
+        position: fixed;
+        z-index: -1;
+        top:0;
+        left: 0;
+      }
     }
 
-    span {
-      margin-left: 12px;
+    #logotipo{
+      font-size: 7vw;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     &::after {
-      height: 1.2vh;
-      top: 9vh;
-    }
-  }
-}
-
-@media only screen and (min-width: 1025px) and (orientation: portrait){
-  h2 {
-    i {
-      display: none;
+      height: 2vw;
     }
   }
 }

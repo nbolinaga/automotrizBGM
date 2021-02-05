@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule } from '@angular/router';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
@@ -17,10 +18,11 @@ const routes: Routes = [
     AppComponent,
     NavbarComponent,
     InicioComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
-    BrowserModule,
+    [BrowserModule, BrowserAnimationsModule],
     AppRoutingModule,
     RouterModule.forRoot(routes),
   ],
