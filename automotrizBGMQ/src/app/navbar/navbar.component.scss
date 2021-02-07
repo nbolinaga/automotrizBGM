@@ -56,11 +56,12 @@ nav {
       display: inline-flex;
       margin: 2vw;
       font-weight: bold;
-      font-size: 1.75vw;
+      font-size: 1.5vw;
       
       a{
         text-decoration: none;
-        color: $detalles;
+        color: $detalles; 
+        cursor: pointer;
       }
     }
   }
