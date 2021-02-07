@@ -1,5 +1,13 @@
 @import "../../variables.scss";
 //General
+#closeModal{
+  position: absolute;
+  top: 12vh;
+  right: 3vw;
+  z-index: 999;
+  font-size: 2vw;
+  background-color: transparent;
+}
 nav {
   position: fixed;
   top: 0;
