@@ -4,8 +4,10 @@ import {Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { InicioComponent } from './modules/inicio/inicio.component';
+
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { InicioComponent } from './components/inicio/inicio.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 
