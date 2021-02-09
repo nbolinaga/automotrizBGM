@@ -1,0 +1,138 @@
+@import "../../../variables.scss";
+//General
+#closeModal{
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  background-color: transparent;
+}
+nav {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $blanco;
+  
+  #btnTelefono{
+    display: none;
+  }
+
+  #logotipo,h2 {
+    color: $detalles;
+    cursor: pointer;
+    margin: 2vw;
+  }
+
+  #logotipo {
+    display: inline-flex;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 4vh;
+
+    img{
+        height: 5vh;
+        margin-right: 1vw;
+    }
+  }
+
+  span {
+    color: $base;
+    margin-left: 8px;
+  }
+
+  &::after {
+    content: " ";
+    width: 100%;
+    background-color: #37a2d4;
+    position: absolute;
+    height: .5vw;
+    top: 10vh;
+    z-index: -1;
+  }
+
+  ul{
+    list-style: none;
+    
+    li{
+      text-decoration: none;
+      display: inline-flex;
+      margin: 2vw;
+      font-weight: bold;
+      font-size: 1.5vw;
+      
+      a{
+        text-decoration: none;
+        color: $detalles; 
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+//Telefono
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+  nav {
+    position: absolute;
+    justify-content: center;
+    
+
+    #btnTelefono{
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background-color: $detalles;
+      font-size: 7vw;
+      height: 12vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      i {
+        color: $base;
+      }
+    }
+
+    ul{
+      width: 100%;
+      background-color: $base;
+      position: fixed;
+      left: 0;
+      bottom: 12vw;
+      text-align: center;
+      
+      li{
+        display: block;
+        margin: 10vw 4vw;
+        font-size: 6vw;
+      }
+
+      &::before{
+        content: " ";
+        height: 100%;
+        width: 100vw;
+        background-color: rgba($base,0.5);
+        position: fixed;
+        z-index: -1;
+        top:0;
+        left: 0;
+      }
+    }
+
+    #logotipo{
+      font-size: 7vw;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &::after {
+      height: 2vw;
+    }
+  }
+}
