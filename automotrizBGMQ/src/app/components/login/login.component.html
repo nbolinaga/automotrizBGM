@@ -1,8 +1,20 @@
 <section class="modal">
     <div class="modal-content" *ngIf="!registrar" @leftAnimation id="ingresar">
-        <h3>INGRESAR</h3><button class="btn-pri" (click)='registrarScreen()'>¿ NO TIENES CUENTA ?</button>
+        <h3>INGRESAR</h3>
+        <form action="">
+
+
+
+        </form>
+        <button class="btn-pri" (click)='registrarScreen()'>¿ NO TIENES CUENTA ?</button>
     </div>
     <div class="modal-content" *ngIf="registrar" @rightAnimation id="registrar">
-        <h3>REGISTRARSE</h3><button class="btn-pri" (click)='ingresarScreen()'>¿ YA TIENES CUENTA ?</button>
+        <h3>REGISTRARSE</h3>
+        <form action="">
+
+
+            
+        </form>
+        <button class="btn-pri" (click)='ingresarScreen()'>¿ YA TIENES CUENTA ?</button>
     </div>
 </section>
