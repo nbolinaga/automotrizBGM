@@ -5,17 +5,32 @@ footer{
     height: 7vh;
     background-color: $detalles;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     font-family: $fonts;
     padding-right: 6vw;
     color: $blanco;
     font-size: 1vw;
-
+    padding-inline: 20%;
 }
+
 //Telefono
 @media only screen and (max-width: 768px) and (orientation: portrait) {
     footer{
         display: none;
     }
 }
+
+//Configuración de Logos
+.logo-redes{
+    display: flex;
+    
+
+    img{
+        width: 60px;
+        height: 60px;
+        padding: 15%;
+    }
+}
+
+

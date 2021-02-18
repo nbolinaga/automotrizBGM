@@ -10,6 +10,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
     NavbarComponent,
     InicioComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    ContactComponent
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
