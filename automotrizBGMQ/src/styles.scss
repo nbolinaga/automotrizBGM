@@ -1,15 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./variables.scss";
+
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
+
+h1,h2,h3,h4,h5,h6,p,a{
+  font-family: $fonts;
+}
+
+a:visited{
+  color: initial;
+}
+
 body {
-  background-image: url("./assets/background.svg");
-  background-size: cover;
-  background-position: bottom;
-  background-color: #2b333c;
+  background-color: $blanco;
+  overflow-x: hidden;
 }
 /* width */
 ::-webkit-scrollbar {
@@ -28,4 +37,35 @@ body {
   background: url("./assets/carTop.svg") 0 0 no-repeat ;
   background-position: center;
   min-height: 40px;
+}
+
+.btn-pri,
+.btn-sec,
+.btn-alt,
+.btn-altbla {
+  padding: 2vw;
+  font-family: $fonts;
+  font-weight: bold;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.btn-pri {
+  background-color: $base;
+  color: $blanco;
+}
+.btn-sec {
+  background-color: $blanco;
+  color: $detalles;
+}
+.btn-alt {
+  background-color: $detalles;
+  color: $blanco;
+}
+.btn-altbla{
+    background-color: $blanco;
+    color: $base; 
 }

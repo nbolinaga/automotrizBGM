@@ -1,0 +1,43 @@
+@import "../../../variables.scss";
+.modal{
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    width: 100vw;
+    height: 90vh;
+    background-color: rgba($base, 0.7);
+    z-index: 998;
+    pointer-events: none;
+
+    .modal-content{
+        width: 80%;
+        height: 80%;
+        position: absolute;
+        top: 50%;
+        background-color: $blanco;
+        padding: 6vw;
+        z-index: 999;
+        pointer-events:painted;
+
+        &#registrar{
+            right: 50%;  
+            transform: translate(50%,-50%);
+        }
+        &#ingresar{
+            left: 50%;  
+            transform: translate(-50%,-50%);
+        }
+
+        h3{
+            text-align: center;
+            font-size: 2rem;
+            color: $base;
+        }
+        button{
+            position: relative;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+    }
+}

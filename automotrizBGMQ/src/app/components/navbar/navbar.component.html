@@ -1,0 +1,15 @@
+<nav>
+    <a href="#" routerLink="/" id="logotipo"><img src="../../../assets/logo.svg" alt="logo"> AUTOMOTRIZ <span> BGMQ</span></a>
+    <ul id="nav-list" *ngIf="navOpen" [@inOutAnimation]>
+        <li class="nav-item"><a href="">INICIO</a></li>
+        <li class="nav-item"><a href="">INFORMACION</a></li>
+        <li class="nav-item"><a href="">CITAS</a></li>
+        <li class="nav-item" >
+            <ng-template [ngIf]="!Logeado" [ngIfElse]="perfil"><a (click)="logged()">INGRESAR/REGISTRARSE</a></ng-template>
+            <ng-template #perfil><a href="/">PERFIL</a></ng-template>
+        </li>
+    </ul>
+    <h3 id="btnTelefono"  (click)="toggleNav()"><ng-template [ngIf]="navOpen" [ngIfElse]="x"><i class="fas fa-chevron-down"></i></ng-template><ng-template #x (click)="open()"><i class="fas fa-bars"></i></ng-template></h3>
+</nav>
+<app-login *ngIf ="Logeado"></app-login>
+<div id="closeModal" class="btn-pri" *ngIf ="Logeado" (click)="logged()"></div>
