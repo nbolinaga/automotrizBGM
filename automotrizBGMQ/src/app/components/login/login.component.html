@@ -1,20 +1,34 @@
 <section class="modal">
     <div class="modal-content" *ngIf="!registrar" @leftAnimation id="ingresar">
-        <h3>INGRESAR</h3>
-        <form action="">
-
-
-
+        <h3>Iniciar Sesión</h3>
+        <form class="FormIngresar" action="">
+            <input type="email" id="correo" placeholder="Correo Electronico">            
+            <input type="password" id="contraseña" placeholder="Contraseña">
+            <div class="opciones">
+                <p>
+                    <input type="radio" id="recordar"> Recordar información
+                </p>
+                <button class="btn-alt" id="Ingresar" type="submit" value="Ingresar">Ingresar</button>
+            </div>
         </form>
-        <button class="btn-pri" (click)='registrarScreen()'>¿ NO TIENES CUENTA ?</button>
+        <button class="btn-pri" (click)='registrarScreen()'>¿No tienes cuenta?</button>
     </div>
     <div class="modal-content" *ngIf="registrar" @rightAnimation id="registrar">
-        <h3>REGISTRARSE</h3>
-        <form action="">
-
-
-            
+        <h3>Registrate</h3>
+        <form class="FormRegistro" action="">
+            <div class="opciones">
+                <input type="text" id="nombre" placeholder="Nombre">
+                <input type="text" id="apellido" placeholder="Apellido">    
+            </div>
+            <input type="text" id="cedula" placeholder="Cedula">
+            <input type="number" id="telefono" placeholder="Telefono movil">
+            <input type="email" id="correo" placeholder="Correo Electronico">
+            <div class="opciones">
+                <input type="password" id="contraseña" placeholder="Contraseña">
+                <input type="password" id="confirmar" placeholder="Confirmar clave">
+            </div>            
+                <button class="btn-alt" id="Ingresar" type="submit" value="Ingresar">Ingresar</button>
+                <button class="btn-pri" (click)='ingresarScreen()'>¿Ya tienes una cuenta?</button>
         </form>
-        <button class="btn-pri" (click)='ingresarScreen()'>¿ YA TIENES CUENTA ?</button>
     </div>
 </section>
