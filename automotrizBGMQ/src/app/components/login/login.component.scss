@@ -47,13 +47,16 @@
             flex-direction: column;
             height: 40% auto;
 
-            input{
+            .input{
                 padding: 2%;
                 height: 25%;
                 width: 100%;
-                margin-bottom: 0.9%;
-                outline: 1px auto $detalles;
                 font-size: 100%;
+            }
+
+            input{ 
+                margin-bottom: 1%;
+                outline: 1px auto $detalles;
             }
 
             .opciones{
