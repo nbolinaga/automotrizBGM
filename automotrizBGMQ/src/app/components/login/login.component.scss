@@ -27,10 +27,14 @@
             transform: translate(-50%,-50%);
         }
 
+        .content{
+            margin: 2% auto;
+        }
+
         h3{
             text-align: center;
             font-size: 150%;
-            color: #000;
+            color: rgb(54, 42, 42);
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
