@@ -10,13 +10,14 @@
 
     .modal-content{
         width: 60%;
-        height: 75%;
+        height: 78%;
         position: absolute;
         top: 52.5%;
         background-color: $blanco;
         padding: 3vw;
         z-index: 999;
         pointer-events:painted;
+        max-width: 90%;
 
         &#registrar{
             right: 50%;  
@@ -32,12 +33,6 @@
             font-size: 150%;
             color: #000;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-        button{
-            position: relative;
-            bottom: 0;
-            left: 50%;
-            transform: translate(-50%, 0);
         }
 
         .FormIngresar{
@@ -61,6 +56,16 @@
 
             .opciones{
                 display: flex;
+                justify-content: space-around;
+
+                input, button{
+                    padding-right: 10%;
+                    padding-left: 10%;
+                }
+
+                input{
+                    margin-top: 8%;
+                }
             }
         }
 
@@ -80,9 +85,37 @@
                 font-size: 100%;
             }
 
+            select{
+                padding: 0.8%;
+                height: 15%;
+                width: 20%;
+                margin-bottom: 0.8%;
+                outline: 1px auto $detalles;
+                font-size: 100%;
+            }
+
             .opciones{
                 display: flex;
             }
+
+            .botones{
+                display: flex;  
+                justify-content: space-around;
+
+                button{
+                    margin-top: 3%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                }
+            }
+        }
+
+        #Siguiente{
+            margin-top: 5%;
+            position: relative;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
         }
     }
 }
