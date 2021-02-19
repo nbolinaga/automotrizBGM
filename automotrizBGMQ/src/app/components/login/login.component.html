@@ -3,8 +3,8 @@
         <div class="content">
             <h3>Iniciar Sesión</h3>
             <form class="FormIngresar" action="">
-                <input class="input" type="email" id="user" placeholder="Correo Electronico">            
-                <input class="input" type="password" id="password" placeholder="Clave">
+                <input class="input" type="email" id="user" placeholder="Correo Electronico" required>            
+                <input class="input" type="password" id="password" placeholder="Clave"required>
                 <div class="opciones">
                     <p>
                         <input type="radio" id="recordar"> Recordar información
@@ -20,24 +20,24 @@
             <h3>Regístrate</h3>
             <form class="FormRegistro" action="">
                 <div class="opciones">
-                    <input type="text" id="nombre" placeholder="Nombre">
-                    <input type="text" id="apellido" placeholder="Apellido">    
+                    <input type="text" id="nombre" placeholder="Nombre" required>
+                    <input type="text" id="apellido" placeholder="Apellido" required>    
                 </div>
                 <div class="opciones">
-                    <select name="tipoID">
+                    <select name="tipoID" required>
                         <option value="Venezolano">V</option>
                         <option value="Extrangero">E</option>
                         <option value="Juridico">J</option>
                         <option value="Pasaporte">P</option>
                         <option value="Gobierno">G</option>
                     </select>
-                    <input type="number" id="ID" placeholder="Identificación">
+                    <input type="number" id="ID" placeholder="Identificación" required>
                 </div>
-                <input type="tel" id="telefono" placeholder="Telefono movil">
-                <input type="email" id="correo" placeholder="Correo Electronico">
+                <input type="tel" id="telefono" placeholder="Telefono movil" required>
+                <input type="email" id="correo" placeholder="Correo Electronico" required>
                 <div class="opciones">
-                    <input type="password" id="contraseña" placeholder="Clave">
-                    <input type="password" id="confirmar" placeholder="Repetir Clave">
+                    <input type="password" id="contraseña" placeholder="Clave" required>
+                    <input type="password" id="confirmar" placeholder="Repetir Clave" required>
                 </div>   
                 <div class="botones">
                     <button class="btn-pri" id="Regresar" (click)='ingresarScreen()'>¿Ya tienes una cuenta?</button>
