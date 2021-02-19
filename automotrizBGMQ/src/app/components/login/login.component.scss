@@ -9,14 +9,18 @@
     pointer-events: none;
 
     .modal-content{
-        width: 60%;
-        height: 78%;
+        min-width: 300px;
+        max-width: 700px;
         position: absolute;
         top: 52.5%;
         background-color: $blanco;
+        border-radius: 2%;
         padding: 3vw;
         z-index: 999;
         pointer-events:painted;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         &#registrar{
             right: 50%;  
@@ -27,10 +31,17 @@
             transform: translate(-50%,-50%);
         }
 
+        .content{
+            padding: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         h3{
             text-align: center;
             font-size: 150%;
-            color: #000;
+            color: rgb(54, 42, 42);
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
@@ -39,7 +50,6 @@
             margin-bottom: 1rem;
             display: flex;
             flex-direction: column;
-            height: 40% auto;
 
             .input{
                 padding: 2%;
@@ -58,9 +68,8 @@
                 flex-wrap: nowrap;
                 justify-content: space-around;
 
-                input, button{
-                    padding-right: 10%;
-                    padding-left: 10%;
+                input, button, p{
+                    font-size: 90%;
                 }
 
                 input{
@@ -74,7 +83,6 @@
             margin-bottom: 1rem;
             display: flex;
             flex-direction: column;
-            height: 40% auto;
 
             input{
                 padding: 0.8%;
@@ -82,13 +90,13 @@
                 width: 100%;
                 margin-bottom: 0.8%;
                 outline: 1px auto $detalles;
-                font-size: 100%;
+                font-size: 90%;
             }
 
             select{
                 padding: 0.8%;
                 height: 15%;
-                width: 20%;
+                width: 30%;
                 margin-bottom: 0.8%;
                 outline: 1px auto $detalles;
                 font-size: 100%;
@@ -102,6 +110,8 @@
             .botones{
                 display: flex;  
                 justify-content: space-around;
+                flex-wrap: nowrap;
+                font-size: 90%;
 
                 button{
                     margin-top: 3%;
@@ -117,6 +127,7 @@
             bottom: 0;
             left: 50%;
             transform: translate(-50%, 0);
+            font-size: 90%;
         }
     }
 }
