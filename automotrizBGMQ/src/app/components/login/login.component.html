@@ -1,20 +1,45 @@
 <section class="modal">
     <div class="modal-content" *ngIf="!registrar" @leftAnimation id="ingresar">
-        <h3>INGRESAR</h3>
-        <form action="">
-
-
-
+        <h3>Iniciar Sesión</h3>
+        <form class="FormIngresar" action="">
+            <input class="input" type="email" id="user" placeholder="Correo Electronico">            
+            <input class="input" type="password" id="password" placeholder="Contraseña">
+            <div class="opciones">
+                <p>
+                    <input type="radio" id="recordar"> Recordar información
+                </p>
+                <button class="btn-alt" id="Ingresar" type="submit">Ingresar</button>
+            </div>
         </form>
-        <button class="btn-pri" (click)='registrarScreen()'>¿ NO TIENES CUENTA ?</button>
+        <button id="Siguiente" class="btn-pri" (click)='registrarScreen()'>¿No tienes cuenta?</button>
     </div>
     <div class="modal-content" *ngIf="registrar" @rightAnimation id="registrar">
-        <h3>REGISTRARSE</h3>
-        <form action="">
-
-
-            
+        <h3>Registrate</h3>
+        <form class="FormRegistro" action="">
+            <div class="opciones">
+                <input type="text" id="nombre" placeholder="Nombre">
+                <input type="text" id="apellido" placeholder="Apellido">    
+            </div>
+            <div class="opciones">
+                <select name="tipoID">
+                    <option value="Venezolano">V</option>
+                    <option value="Extrangero">E</option>
+                    <option value="Juridico">J</option>
+                    <option value="Pasaporte">P</option>
+                    <option value="Gobierno">G</option>
+                </select>
+                <input type="number" id="ID" placeholder="Identificación">
+            </div>
+            <input type="tel" id="telefono" placeholder="Telefono movil">
+            <input type="email" id="correo" placeholder="Correo Electronico">
+            <div class="opciones">
+                <input type="password" id="contraseña" placeholder="Contraseña">
+                <input type="password" id="confirmar" placeholder="Confirmar contraseña">
+            </div>   
+            <div class="botones">
+                <button class="btn-pri" id="Regresar" (click)='ingresarScreen()'>¿Ya tienes una cuenta?</button>
+                <button class="btn-alt" id="Registrar" type="submit" value="Registrar">Ingresar</button>
+            </div>         
         </form>
-        <button class="btn-pri" (click)='ingresarScreen()'>¿ YA TIENES CUENTA ?</button>
     </div>
 </section>
