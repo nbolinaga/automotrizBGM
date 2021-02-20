@@ -1,3 +1,62 @@
-.contenedor{
+@import "../../../variables.scss";
+
+.fondo{
     margin-top: 11vh;
+    background-color: rgba($base, 0.7);
+    display: flex;
+    justify-content: center;
+
+    .distribucion1{
+        margin: 3%;
+        width: 28%;
+        margin-right: -1%;
+    }
+
+    .distribucion2{
+        margin: 2%;
+        width: 60%;
+    }
+
+    #info, #vehiculos, #citas{
+        border-radius: 3%;
+        background-color: $blanco;
+        padding: 20px;
+    }
+
+    #info{
+        height: 100%;
+    }
+
+    #vehiculos, #citas{
+        margin: 2%;
+        height: 45%;
+
+        table{
+            margin-top: 2%;
+            margin: 2%;
+            width: 95%;
+            justify-content: center;
+            text-align: center;
+            border-collapse: collapse;
+            background-color: $blanco;
+            font-family: $fonts;
+            
+            td,tr{
+                padding: 2%;
+            }
+
+            thead{
+                background-color: black;                
+                border-bottom: solid 5px $detalles;
+                color:white;
+            }
+        }
+    }
+
+    h3{
+        text-align: center;
+        font-size: 150%;
+        color: rgb(54, 42, 42);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
 }
