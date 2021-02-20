@@ -12,10 +12,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CitasComponent } from './components/citas/citas.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
   {path: 'citas', component: CitasComponent},
+  {path: 'perfil', component: PerfilComponent},
 ]
 
 @NgModule({
@@ -26,7 +28,8 @@ const routes: Routes = [
     FooterComponent,
     LoginComponent,
     ContactComponent,
-    CitasComponent
+    CitasComponent,
+    PerfilComponent
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
