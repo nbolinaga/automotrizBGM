@@ -114,7 +114,6 @@
             .opciones{
                 display: flex;
                 flex-wrap: nowrap;
-                
                 margin-right: -3% ;
             }
 
@@ -123,14 +122,15 @@
                 justify-content: space-around;
                 flex-wrap: nowrap;
                 font-size: 100%;
-                width: 100%;
-                
+                width: 100%;                
 
                 button{
                     margin-top: 3%;
                     padding-left: 10%;
                     padding-right: 10%;
                     padding: 18px;
+                    margin-right: 1%;
+                    margin-left: 1%;
                 }
             }
         }
