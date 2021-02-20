@@ -10,7 +10,6 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
-import { ContactComponent } from './components/contact/contact.component';
 import { CitasComponent } from './components/citas/citas.component';
 
 const routes: Routes = [
@@ -25,7 +24,6 @@ const routes: Routes = [
     InicioComponent,
     FooterComponent,
     LoginComponent,
-    ContactComponent,
     CitasComponent
   ],
   imports: [
