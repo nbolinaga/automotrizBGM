@@ -10,9 +10,11 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
+import { AutosComponent } from './components/autos/autos.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
+  {path: 'autos', component: AutosComponent}
 ]
 
 @NgModule({
@@ -21,7 +23,8 @@ const routes: Routes = [
     NavbarComponent,
     InicioComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    AutosComponent
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
