@@ -26,7 +26,7 @@ const routes: Routes = [
     InicioComponent,
     FooterComponent,
     LoginComponent,
-    CitasComponent
+    CitasComponent,
     PerfilComponent
   ],
   imports: [
