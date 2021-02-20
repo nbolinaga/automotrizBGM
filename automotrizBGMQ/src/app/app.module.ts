@@ -11,10 +11,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { CitasComponent } from './components/citas/citas.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
   {path: 'citas', component: CitasComponent},
+  {path: 'perfil', component: PerfilComponent},
 ]
 
 @NgModule({
@@ -24,7 +26,13 @@ const routes: Routes = [
     InicioComponent,
     FooterComponent,
     LoginComponent,
+<<<<<<< HEAD
     CitasComponent
+=======
+    ContactComponent,
+    CitasComponent,
+    PerfilComponent
+>>>>>>> Norangel
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
