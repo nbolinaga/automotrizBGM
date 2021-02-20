@@ -13,7 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CitasComponent } from './components/citas/citas.component';
 
 const routes: Routes = [
-  {path: 'inicio', component: InicioComponent},
+  {path: '', component: InicioComponent},
   {path: 'citas', component: CitasComponent},
 ]
 
