@@ -9,10 +9,10 @@
     pointer-events: none;
 
     .modal-content{
-        min-width: 280px;
+        min-width: 250px;
         max-width: 1000px;
         position: absolute;
-        top: 52.5%;
+        top: 50%;
         background-color: $blanco;
         border-radius: 2%;
         padding: 3vw;
@@ -76,6 +76,12 @@
                 input{
                     margin-top: 8%;
                 }
+
+                button{
+                    padding: 10px;
+                    padding-top: -2px;
+                    padding-bottom: -2px;
+                }
             }
         }
 
@@ -92,6 +98,7 @@
                 margin-bottom: 3%;
                 outline: 1px auto $detalles;
                 font-size: 90%;
+                margin-right: 3% ;
             }
 
             select{
@@ -101,11 +108,14 @@
                 margin-bottom: 3%;
                 outline: 1px auto $detalles;
                 font-size: 100%;
+                margin-right: 3% ;
             }
 
             .opciones{
                 display: flex;
                 flex-wrap: nowrap;
+                
+                margin-right: -3% ;
             }
 
             .botones{
@@ -113,11 +123,14 @@
                 justify-content: space-around;
                 flex-wrap: nowrap;
                 font-size: 90%;
+                width: 100%;
+                
 
                 button{
                     margin-top: 3%;
                     padding-left: 10%;
                     padding-right: 10%;
+                    padding: 18px;
                 }
             }
         }
@@ -129,6 +142,7 @@
             left: 50%;
             transform: translate(-50%, 0);
             font-size: 90%;
+            padding: 12.5px;
         }
     }
 }
