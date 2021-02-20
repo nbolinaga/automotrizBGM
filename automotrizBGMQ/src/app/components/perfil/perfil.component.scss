@@ -29,7 +29,6 @@
 
     #vehiculos, #citas{
         margin: 2%;
-        height: 45%;
 
         table{
             margin-top: 2%;
@@ -53,10 +52,15 @@
         }
     }
 
-    h3{
+    h1{
         text-align: center;
-        font-size: 150%;
-        color: rgb(54, 42, 42);
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 175%;
+        color: black;
+        background-color: $blanco;
+        padding: 5px;
+        outline: 5px auto $detalles;
+        width: 30%;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: bold;
     }
 }
