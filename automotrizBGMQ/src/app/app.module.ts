@@ -26,13 +26,8 @@ const routes: Routes = [
     InicioComponent,
     FooterComponent,
     LoginComponent,
-<<<<<<< HEAD
     CitasComponent
-=======
-    ContactComponent,
-    CitasComponent,
     PerfilComponent
->>>>>>> Norangel
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
