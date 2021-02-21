@@ -5,6 +5,7 @@
     background-color: rgba($base, 0.7);
     display: flex;
     justify-content: center;
+    left: 0;
 
     .distribucion1{
         margin: 3%;
@@ -25,6 +26,25 @@
 
     #info{
         height: 100%;
+        text-align: center;
+
+        img{
+            width: 50% 50%;
+        }
+
+        .datos{
+            padding: 5%;
+            margin: 5%;
+
+            p{
+                padding: 1.5%;
+                margin: 10%;
+                width: 70% auto;
+                border-bottom: solid $detalles 2px;
+            }
+
+        }
+
     }
 
     #vehiculos, #citas{
@@ -35,10 +55,11 @@
             margin: 2%;
             width: 95%;
             justify-content: center;
-            text-align: center;
+            text-align: center;      
             border-collapse: collapse;
-            background-color: $blanco;
+            background-color:#ddd;
             font-family: $fonts;
+            outline: 2px $blanco auto;
             
             td,tr{
                 padding: 2%;
@@ -48,6 +69,15 @@
                 background-color: black;                
                 border-bottom: solid 5px $detalles;
                 color:white;
+            }
+
+            tbody{
+                tr:nth-child(even){
+                    background-color: lightgrey;
+                }
+                tr:hover{
+                    background-color:$detalles;
+                }
             }
         }
     }
@@ -62,5 +92,17 @@
         width: 30%;
         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-weight: bold;
+    }
+
+    h3{
+        padding: 5px;
+        font-size: 175%;
+        color: black;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: bold;
+    }
+
+    button{
+        padding: 5%;
     }
 }
