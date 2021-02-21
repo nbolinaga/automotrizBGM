@@ -14,7 +14,7 @@
         position: absolute;
         top: 50%;
         background-color: $blanco;
-        border-radius: 2%;
+        border-radius: 5%;
         padding: 3vw;
         z-index: 999;
         pointer-events:painted;
@@ -42,7 +42,7 @@
             text-align: center;
             font-size: 150%;
             color: rgb(54, 42, 42);
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 
         .FormIngresar{
