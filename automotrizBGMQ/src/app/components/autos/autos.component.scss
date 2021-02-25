@@ -1,0 +1,113 @@
+@import "../../../variables.scss";
+
+#cuerpo-auto {
+
+  font-family: $fonts;
+  background-color: $blanco;
+
+  #nombre-auto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    background-color: $detalles;
+
+    #estatus {
+      // margin-right: 2vw;
+      margin-top: 5vh;
+      margin-bottom: 5vh;
+      width: 20px;
+      height: 20px;
+      background-color: green;
+      border-radius: 50%;
+
+      span {
+        visibility: hidden;
+        color: $detalles;
+        background-color: $base;
+        padding: 1vh;
+        bottom: 120%;
+        right: 2.5vw;
+        position: relative;
+        z-index: 99;
+        font-size: 2vh;
+      }
+
+      &:hover {
+        span {
+          visibility: visible;
+        }
+      }
+    }
+
+    h2 {
+      margin-left: 1vw;
+      margin-top: 5vh;
+      margin-bottom: 5vh;
+      color: $base;
+      font-size: 30px;
+      font-weight: normal;
+    }
+  }
+
+  img {
+    width: 100vw;
+    height: 50vh;
+    border: 4px solid $detalles;
+    margin-bottom: 0vh;
+  }
+
+  #info-auto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $base;
+    width: 100vw;
+    height: 70vh;
+    margin-top: 0vh;
+
+    span {
+      font-size: 3.5vh;
+      color: $detalles;
+
+      strong {
+        color: $blanco;
+      }
+    }
+
+    .fecha {
+      color: $blanco;
+      font-size: 3vh;
+    }
+
+  }
+
+  #botones {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    button {
+      margin: 10vh 0;
+      font-size: 4vh;
+      font-family: $fonts;
+      border: none;
+      font-weight: bold;
+      color: $blanco;
+      width: 30vw;
+      height: 8vh;
+      cursor: pointer;
+    }
+
+    .boton1 {
+      background-color: $detalles;
+      margin-left: 10vw;
+    }
+
+    .boton2 {
+      background-color: $base;
+      margin-right: 10vw;
+    }
+  }
+}

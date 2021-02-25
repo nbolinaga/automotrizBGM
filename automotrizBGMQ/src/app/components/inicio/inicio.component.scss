@@ -1,6 +1,6 @@
 @import "../../../variables.scss";
-//General
 
+//General
 .container {
   height: auto;
   display: block;
@@ -32,7 +32,7 @@
     font-size: 2vw;
     color: $detalles;
     width: 75vw;
-    
+
   }
   img {
     transform: scaleX(-1);
@@ -47,11 +47,11 @@
   display: inline-block;
   width: 100vw;
   padding-bottom: 6vw;
-  
+
   p{
     margin: 6vw;
     text-align: justify;
-    font-size: 1.5vw;
+    font-size: 2vw;
     color: $blanco;
   }
 
@@ -83,19 +83,19 @@
   justify-content: center;
   text-align: center;
   align-items: center;
-  
+
   h3{
      height: 4vh;
      font-size: 3vh;
      margin-bottom: 2vh;
   }
-  
+
   p{
       height: 4vh;
       font-size: 2vh;
       font-weight: bold;
   }
-  
+
 }
 
 .tlf-fax{
@@ -107,7 +107,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-around;
-  
+
 }
 //
 // section.izq,
