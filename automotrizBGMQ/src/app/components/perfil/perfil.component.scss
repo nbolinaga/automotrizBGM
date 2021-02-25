@@ -223,43 +223,41 @@
           font-size: 16px;
           margin-bottom: 18px;
           color: #8a8a8a;
-          //opacity: 0;
       }
 
 
 
       .contenedor-inputs select {
-          height: 3vh;
+          height: 3.5vh;
           width: 100%;
           margin-bottom: 10px;
-          border: 1.5px solid $detalles;
+          border: 2px solid $detalles;
       }
 
       .contenedor-inputs textarea {
           width: 100%;
           margin-bottom: 20px;
           height: 120px;
-          border: 1.5px solid $detalles;
+          border: 2px solid $detalles;
           font-size: 15px;
+          font: $fonts;
           padding-left: .5vw;
           padding-top: .5vh;
           resize: none;
       }
 
-      .btn-submit {
+      .btn-alt {
           padding: 0 20px;
           height: 40px;
           line-height: 40px;
           border: none;
-          color: white;
-          background: $detalles;
           border-radius: 2px;
           font-size: 15px;
           cursor: pointer;
           transition: .3s ease all;
       }
 
-      .btn-submit:hover {
+      .btn-alt:hover {
           background: rgba(41, 117, 161, .9);
       }
   }
