@@ -4,8 +4,8 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    
-    
+
+
 
     //Cambios para control de espacio//
     background: rgb(206, 206, 206);
@@ -41,7 +41,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        visibility: hidden;
 
         .popup {
             background: white;
@@ -51,6 +50,7 @@
             padding: 30px;
             text-align: center;
             width: 600px;
+            transition: .3s ease all;
 
             .btn-cerrar-popup {
                 text-decoration: none;
@@ -117,14 +117,12 @@
             .btn-submit:hover {
                 background: rgba(41, 117, 161, .9);
             }
-
-
         }
 
+
     }
 
-    .overlay.active {
-        visibility: visible;
-    }
+
+
 
 }

@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CitasComponent implements OnInit {
 
+  activar: boolean = false;
 
+  activacion(): void {
+    this.activar = !this.activar
+  }
 
   constructor() { }
 
