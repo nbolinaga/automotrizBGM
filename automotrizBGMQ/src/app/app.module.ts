@@ -12,12 +12,15 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { CitasComponent } from './components/citas/citas.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { AutosComponent } from './components/autos/autos.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
   {path: 'citas', component: CitasComponent},
   {path: 'perfil', component: PerfilComponent},
+  {path: 'autos', component: AutosComponent}
 ]
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ const routes: Routes = [
     FooterComponent,
     LoginComponent,
     CitasComponent,
-    PerfilComponent
+    PerfilComponent,
+    AutosComponent
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
