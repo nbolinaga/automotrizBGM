@@ -1,6 +1,6 @@
 @import "../../../variables.scss";
-//Genera
 
+//General
 .container {
   height: auto;
   display: block;
@@ -8,33 +8,37 @@
 #banner {
   background: linear-gradient(to bottom, $base 55%, $blanco 0%);
   margin-top: 10vh;
-  padding: 4vw 6vw;
+  padding: 8vw 6vw;
   display: inline-block;
+
 
   #tagline,
   #dir {
     text-align: right;
     float: right;
+    padding-top: 1.5vh;
   }
   #tagline {
-    font-size: 5vw;
+    font-size: 4vw;
     color: $blanco;
     width: 55vw;
+    height: 30vh;
 
     span {
       color: $detalles;
     }
   }
   #dir {
-    font-size: 4vw;
+    font-size: 2vw;
     color: $detalles;
     width: 75vw;
+
   }
   img {
     transform: scaleX(-1);
     float: left;
     margin: -17vw -4vw -10vw -6vw;
-    width: 60%;
+    width: 50%;
     pointer-events: none;
   }
 }
@@ -43,11 +47,11 @@
   display: inline-block;
   width: 100vw;
   padding-bottom: 6vw;
-  
+
   p{
     margin: 6vw;
     text-align: justify;
-    font-size: 3vw;
+    font-size: 2vw;
     color: $blanco;
   }
 
@@ -65,6 +69,45 @@
       width: 30vw;
     }
   }
+}
+
+.contact{
+  background-color: #2B333C;
+  width: 100% auto;
+  height: 20vh;
+  color:$blanco;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  line-height: 2vh;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
+  h3{
+     height: 4vh;
+     font-size: 3vh;
+     margin-bottom: 2vh;
+  }
+
+  p{
+      height: 4vh;
+      font-size: 2vh;
+      font-weight: bold;
+  }
+
+}
+
+.tlf-fax{
+  height: 6vh;
+  width: 40%;
+  font-size: 2vh;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+
 }
 //
 // section.izq,

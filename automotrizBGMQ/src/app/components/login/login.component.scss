@@ -9,12 +9,12 @@
     pointer-events: none;
 
     .modal-content{
-        min-width: 300px;
-        max-width: 700px;
+        min-width: 250px;
+        max-width: 1000px;
         position: absolute;
-        top: 52.5%;
+        top: 50%;
         background-color: $blanco;
-        border-radius: 2%;
+        border-radius: 5%;
         padding: 3vw;
         z-index: 999;
         pointer-events:painted;
@@ -42,7 +42,7 @@
             text-align: center;
             font-size: 150%;
             color: rgb(54, 42, 42);
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 
         .FormIngresar{
@@ -53,9 +53,10 @@
 
             .input{
                 padding: 2%;
-                height: 25%;
+                height: 50px;
                 width: 100%;
                 font-size: 100%;
+                margin-bottom: 5%;
             }
 
             input{ 
@@ -75,6 +76,12 @@
                 input{
                     margin-top: 8%;
                 }
+
+                button{
+                    padding: 10px;
+                    padding-top: -2px;
+                    padding-bottom: -2px;
+                }
             }
         }
 
@@ -86,37 +93,44 @@
 
             input{
                 padding: 0.8%;
-                height: 15%;
+                height: 45px;
                 width: 100%;
-                margin-bottom: 0.8%;
+                margin-bottom: 3%;
                 outline: 1px auto $detalles;
                 font-size: 90%;
+                margin-right: 3% ;
             }
 
             select{
                 padding: 0.8%;
-                height: 15%;
+                height: 45px;
                 width: 30%;
-                margin-bottom: 0.8%;
+                margin-bottom: 3%;
                 outline: 1px auto $detalles;
                 font-size: 100%;
+                margin-right: 3% ;
             }
 
             .opciones{
                 display: flex;
                 flex-wrap: nowrap;
+                margin-right: -3% ;
             }
 
             .botones{
                 display: flex;  
                 justify-content: space-around;
                 flex-wrap: nowrap;
-                font-size: 90%;
+                font-size: 100%;
+                width: 100%;                
 
                 button{
                     margin-top: 3%;
                     padding-left: 10%;
                     padding-right: 10%;
+                    padding: 18px;
+                    margin-right: 1%;
+                    margin-left: 1%;
                 }
             }
         }
@@ -128,6 +142,7 @@
             left: 50%;
             transform: translate(-50%, 0);
             font-size: 90%;
+            padding: 12.5px;
         }
     }
 }
