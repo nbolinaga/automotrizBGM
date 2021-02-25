@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-citas',
   templateUrl: './citas.component.html',
@@ -7,15 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CitasComponent implements OnInit {
 
-  activar: boolean = false;
 
-  activacion(): void {
-    this.activar = !this.activar
-  }
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
+
 
 }

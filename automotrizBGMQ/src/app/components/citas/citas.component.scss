@@ -1,20 +1,98 @@
 @import "../../../variables.scss";
 
-.citas-administrador {
-    margin-top: 11vh;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
+.citas-gerente {
+  font-family: $fonts;
+  margin-top: 11vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 
 
+  //Cambios para control de espacio//
+  background: rgb(206, 206, 206);
+  color: black;
+  width: 100%;
+  //Cambios para contro de espacio//
 
-    //Cambios para control de espacio//
-    background: rgb(206, 206, 206);
+  .titulos {
+    margin-top: -22px;
+    margin-left: 2%;
+    text-align: center;
+    font-size: 1.2vw;
     color: black;
-    height: 400vh;
+    background-color: whitesmoke;
+    padding: 5px;
+    border: 0.21vw solid #000;
+    border-radius: 5%;
+    width: 20vw;
+  }
+
+  .seccion1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 2px solid green;
+    margin: 2% 0 2% 0;
     width: 100%;
-    //Cambios para contro de espacio//
+    height: 80vh;
+
+
+    .calendario {
+      background-color: $blanco;
+      border-radius: 5px;
+      width: 60%;
+      height: 70vh;
+      margin: 2% 0% 2% 0;
+
+    }
+
+    .citas-dia {
+      background-color: $blanco;
+      border-radius: 5px;
+      width: 30%;
+      height: 70vh;
+      margin: 2% 0% 2% 0;
+
+
+
+    }
+  }
+
+  .seccion2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 2px solid green;
+    margin: 2% 0 0 0;
+    width: 100%;
+    height: 80vh;
+
+    .solicitudes-citas {
+      background-color: $blanco;
+      border-radius: 5px;
+      width: 45%;
+      height: 70vh;
+      margin: 2% 0% 2% 0;
+    }
+
+    .estatus-citas {
+      background-color: $blanco;
+      border-radius: 5px;
+      width: 45%;
+      height: 70vh;
+      margin: 2% 0% 2% 0;
+    }
+
+  }
+
 
 
 
