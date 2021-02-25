@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
+  activar: boolean = false;
+
+  activacion(): void {
+    this.activar = !this.activar
+  }
+
   constructor() { }
 
   ngOnInit(): void {

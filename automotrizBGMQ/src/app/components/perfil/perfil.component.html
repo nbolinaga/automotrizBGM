@@ -4,7 +4,7 @@
             <img src="../../assets/user.png" alt="Foto de perfil">
             <h3>Ramon Perez</h3>
             <h4>Cliente</h4>
-            <div class="datos">  
+            <div class="datos">
                 <p>V-29543678</p>
                 <p>04129156749</p>
                 <p>r.perez@gmail.com</p>
@@ -23,7 +23,7 @@
                         <p>Placa 1</p>
                     </a>
                     <a href="#">
-                        <img src="../../assets/vehiculo2.png" alt="Vehículo 2">  
+                        <img src="../../assets/vehiculo2.png" alt="Vehículo 2">
                         <p>Vehículo 2</p>
                         <p>Placa 2</p>
                     </a>
@@ -68,8 +68,33 @@
                 </tbody>
             </table>
             <button class="btn-pri">Ver Historial</button>
-            <button class="btn-alt">Pedir Cita</button>
+            <button class="btn-alt" (click)="activacion()">Pedir Cita</button>
         </div>
     </div>
 </section>
 
+<!-- Popup que se muestra al usuario para pedir su cita -->
+<section class="citas-cliente">
+  <div class="overlay" *ngIf="activar">
+      <div class="popup">
+          <a (click)="activacion()" class="btn-cerrar-popup">X</a>
+          <h3>Pedir cita</h3>
+          <h4>Por favor seleccione un vehiculo e ingrese el motivo de la cita.</h4>
+          <form action="">
+              <div class="contenedor-inputs">
+                  <select name="Vehiculos" id="Vehiculos">
+                      <option value="selector">--Selecciona--</option>
+                      <option value="carro1">Mi vehiculo 1</option>
+                      <option value="carro2">Mi vehiculo 2</option>
+                      <option value="carro3">Mi vehiculo 3</option>
+                  </select>
+                  <textarea name="descripción" placeholder="Describe tu problema aquí..."></textarea>
+              </div>
+              <input type="submit" class="btn-submit" value="Enviar">
+          </form>
+      </div>
+  </div>
+
+  <button type="submit" class="pedir-citas" (click)="activacion()">Pedir Cita</button>
+
+</section>
