@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 export class CitasComponent implements OnInit {
 
 
-
   constructor() { }
 
   ngOnInit(): void {
