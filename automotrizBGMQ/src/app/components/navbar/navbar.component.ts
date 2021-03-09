@@ -6,6 +6,8 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { AuthService } from 'src/app/services/auth.service';
+import firebase from 'firebase';
 
 @Component({
   selector: 'app-navbar',
@@ -25,12 +27,18 @@ import {
   ]
 })
 export class NavbarComponent implements OnInit {
+  user: firebase.User = null;
   Logeado: Boolean = false;
   navOpen: Boolean = true;
 
-  constructor() {}
+  constructor(private Auth: AuthService) {}
   
   ngOnInit(): void {
+
+    this.Auth.getCurrentUser().subscribe((user) => {
+      this.user = user;
+    })
+
     if (
       window.matchMedia(
         'screen and (max-width: 1025px) and (orientation: portrait)'
@@ -48,4 +56,9 @@ export class NavbarComponent implements OnInit {
   logged() {
     this.Logeado = !this.Logeado;
   }
+
+  Salir(){
+    this.Auth.logout()
+  }
+
 }
