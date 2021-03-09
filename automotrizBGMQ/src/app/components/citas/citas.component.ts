@@ -9,13 +9,11 @@ export class CitasComponent implements OnInit {
 
   activar: boolean = false;
 
-  activacion(): void {
-    this.activar = !this.activar
-  }
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  activacion(): void {
+    this.activar = !this.activar
+  }
 }
