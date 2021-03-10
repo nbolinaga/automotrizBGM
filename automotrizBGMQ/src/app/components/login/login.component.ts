@@ -6,6 +6,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -41,15 +42,18 @@ export class LoginComponent implements OnInit {
   
  
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
-
+  
   ingresarScreen(){
     this.registrar = false;
   }
   registrarScreen(){
     this.registrar = true;
+  }
+  Acceder(){
+    this.authService.login()
   }
 }
