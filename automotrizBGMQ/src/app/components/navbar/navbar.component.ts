@@ -60,5 +60,4 @@ export class NavbarComponent implements OnInit {
     this.Auth.logout()
     this.Logeado = false;
   }
-
 }
