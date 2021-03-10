@@ -4,12 +4,12 @@ import {Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from "@angular/common/http";
-import {AngularFireModule} from "@angular/fire";
-import {AngularFirestoreModule} from "@angular/fire/firestore";
-import {AngularFireStorageModule} from "@angular/fire/storage";
-import {AngularFireAuthModule} from "@angular/fire/auth";
-import {environment} from "src/environments/environment";
+import { HttpClientModule } from '@angular/common/http';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {environment} from 'src/environments/environment';
 
 import { InicioComponent } from './components/inicio/inicio.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -20,6 +20,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { AutosComponent } from './components/autos/autos.component';
 
 import {AuthService} from './services/auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
@@ -27,7 +28,7 @@ const routes: Routes = [
   {path: 'citas', component: CitasComponent},
   {path: 'perfil', component: PerfilComponent},
   {path: 'autos', component: AutosComponent}
-]
+];
 
 
 @NgModule({
@@ -50,6 +51,7 @@ const routes: Routes = [
     AngularFireStorageModule,
     AngularFireAuthModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   exports: [RouterModule],
   providers: [AuthService],
