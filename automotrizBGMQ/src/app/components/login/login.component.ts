@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
   ingresarScreen(){
     this.registrar = false;
   }
