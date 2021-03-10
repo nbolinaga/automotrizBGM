@@ -56,7 +56,6 @@ export class NavbarComponent implements OnInit {
   logged() {
     this.Logeado = !this.Logeado;
   }
-
   Salir(){
     this.Auth.logout()
   }

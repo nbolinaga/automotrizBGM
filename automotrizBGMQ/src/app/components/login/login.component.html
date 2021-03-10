@@ -9,10 +9,10 @@
                     <p>
                         <input type="radio" id="recordar"> Recordar información
                     </p>
-                    <button class="btn-alt" id="Ingresar" type="submit" [routerLink]="['perfil']">Ingresar</button>
+                    <button class="btn-alt" id="Ingresar" type="submit" [routerLink]="['/perfil']">Ingresar</button>
                 </div>
             </form>
-            <button id="Google" class="btn-alt" (click)="Acceder()" [routerLink]="['perfil']">Ingresar con Google</button>
+            <button id="Google" class="btn-alt" (click)="Acceder()" [routerLink]="['/perfil']">Ingresar con Google</button>
             <button id="Siguiente" class="btn-pri" (click)='registrarScreen()'>¿No tienes una cuenta?</button>
         </div>
     </div>

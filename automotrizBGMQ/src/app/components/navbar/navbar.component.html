@@ -1,16 +1,15 @@
 <nav>
-    <a href="#" routerLink="/" id="logotipo"><img src="../../../assets/logo.svg" alt="logo"> AUTOMOTRIZ <span> BGMQ</span></a>
+    <a [routerLink]="['']" id="logotipo"><img src="../../../assets/logo.svg" alt="logo"> AUTOMOTRIZ <span> BGMQ</span></a>
     <ul id="nav-list" *ngIf="navOpen" [@inOutAnimation]>
         <li class="nav-item"><a [routerLink]="['']">Inicio</a></li>
         <li class="nav-item"><a href="">¿Quienes Somos?</a></li>
         <li class="nav-item"><a href="">Visítanos</a></li>
         <li class="nav-item"><a href="">Contactanos</a></li>
-        <li class="nav-item" >
-            <ng-template *ngIf="!user" [ngIf]="!Logeado" [ngIfElse]="perfil"><a (click)="logged()">Ingresa/Regístrate</a></ng-template>
-            <ng-template *ngIf="user" #perfil (click)="Salir()"><a [routerLink]="['']">Cerrar Sesión</a></ng-template>
-        </li>
+        <li class="nav-item" *ngIf="!user"><a (click)="logged()">Ingresa/Regístrate</a></li>
+        <li class="nav-item" *ngIf="user" (click)="Salir()" (click)="logged()"><a [routerLink]="['']">Cerrar Sesión</a></li>
     </ul>
-    <h3 id="btnTelefono"  (click)="toggleNav()"><ng-template [ngIf]="navOpen" [ngIfElse]="x"><i class="fas fa-chevron-down"></i></ng-template><ng-template #x (click)="open()"><i class="fas fa-bars"></i></ng-template></h3>
+    <h3 id="btnTelefono" (click)="toggleNav()"><ng-template [ngIf]="navOpen" [ngIfElse]="x"><i class="fas fa-chevron-down"></i></ng-template><ng-template #x (click)="open()"><i class="fas fa-bars"></i></ng-template></h3>
 </nav>
-<app-login *ngIf ="Logeado"></app-login>
-<div id="closeModal" class="btn-pri" *ngIf ="Logeado" (click)="logged()"></div>
+
+<!--Popup Login-->
+<app-login *ngIf="Logeado"></app-login>
