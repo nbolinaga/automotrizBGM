@@ -12,6 +12,10 @@ import {AngularFireAuthModule} from "@angular/fire/auth";
 import {environment} from "src/environments/environment";
 
 import { InicioComponent } from './components/inicio/inicio.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { VisitanosComponent } from './components/visitanos/visitanos.component';
+import { ContactanosComponent } from './components/contactanos/contactanos.component';
+import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
@@ -22,7 +26,11 @@ import { AutosComponent } from './components/autos/autos.component';
 import {AuthService} from './services/auth.service';
 
 const routes: Routes = [
-  {path: '', component: InicioComponent},
+  {path: '', component: LandingPageComponent},
+  {path: 'inicio', component: InicioComponent},
+  {path: 'quienesSomos', component: QuienesSomosComponent},
+  {path: 'visitanos', component: VisitanosComponent},
+  {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
   {path: 'citas', component: CitasComponent},
   {path: 'perfil', component: PerfilComponent},
@@ -39,7 +47,11 @@ const routes: Routes = [
     LoginComponent,
     CitasComponent,
     PerfilComponent,
-    AutosComponent
+    AutosComponent,
+    LandingPageComponent,
+    VisitanosComponent,
+    ContactanosComponent,
+    QuienesSomosComponent
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],

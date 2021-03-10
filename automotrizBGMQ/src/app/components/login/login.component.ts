@@ -39,8 +39,6 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
 
   registrar: Boolean = false;
-  
- 
 
   constructor(private authService: AuthService) { }
 
