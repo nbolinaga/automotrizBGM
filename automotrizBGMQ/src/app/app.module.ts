@@ -12,12 +12,14 @@ import { LoginComponent } from './components/login/login.component';
 import { CitasComponent } from './components/citas/citas.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AutosComponent } from './components/autos/autos.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
   {path: 'citas', component: CitasComponent},
   {path: 'perfil', component: PerfilComponent},
-  {path: 'autos', component: AutosComponent}
+  {path: 'autos', component: AutosComponent},
+  {path: 'admin', component: AdminComponent}
 ]
 
 
@@ -30,7 +32,8 @@ const routes: Routes = [
     LoginComponent,
     CitasComponent,
     PerfilComponent,
-    AutosComponent
+    AutosComponent,
+    AdminComponent
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
