@@ -1,1 +1,39 @@
 @import "../../../variables.scss";
+
+#banner {
+    background: linear-gradient(to bottom, $base 55%, $blanco 0%);
+    margin-top: 10vh;
+    padding: 8vw 6vw;
+    display: inline-block;
+  
+  
+    #tagline,
+    #dir {
+      text-align: right;
+      float: right;
+      padding-top: 1.5vh;
+    }
+    #tagline {
+      font-size: 4vw;
+      color: $blanco;
+      width: 55vw;
+      height: 30vh;
+  
+      span {
+        color: $detalles;
+      }
+    }
+    #dir {
+      font-size: 2vw;
+      color: $detalles;
+      width: 75vw;
+  
+    }
+    img {
+      transform: scaleX(-1);
+      float: left;
+      margin: -17vw -4vw -10vw -6vw;
+      width: 50%;
+      pointer-events: none;
+    }
+  }

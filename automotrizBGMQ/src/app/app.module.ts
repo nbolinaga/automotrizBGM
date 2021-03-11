@@ -37,7 +37,6 @@ const routes: Routes = [
   {path: 'autos', component: AutosComponent}
 ]
 
-
 @NgModule({
   declarations: [
     AppComponent,
