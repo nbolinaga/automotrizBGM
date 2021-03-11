@@ -38,6 +38,7 @@ const routes: Routes = [
   {path: 'perfil', component: PerfilComponent},
   {path: 'autos', component: AutosComponent},
   {path: 'admin', component: AdminComponent}
+]
 
 @NgModule({
   declarations: [
