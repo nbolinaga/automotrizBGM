@@ -36,10 +36,10 @@ export class PerfilComponent implements OnInit {
   enviar(event: Event): void {
     event.preventDefault();
     const value = this.form.value;
-    if(this.form.valid) {
+    if (this.form.valid) {
       console.log(value);
     } else {
-      console.log("Formulario invalido...");
+      console.log('Formulario invalido...');
     }
   }
 

@@ -24,7 +24,7 @@
         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-weight: bold;
       }
-      
+
       article{
         padding: 4vw;
       }
@@ -34,15 +34,18 @@
         font-size: 2vw;
         width: 30%;
         margin-bottom: -2%;
-        border: black 0.25vw solid;
+        border: black 0.21vw solid;
         margin-left: 10%;
         text-align: center;
         border-radius: 5px;
         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-weight: bold;
+        position: relative;
+        z-index: 1;
+
       }
-    
-      p{     
+
+      p{
         margin-left: 4vw;
         margin-right: 4vw;
         padding: 2vw;
@@ -51,10 +54,11 @@
         background-color: $blanco;
         color: black;
         border-radius: 5px;
+
       }
     }
-   
-  
+
+
     #contenedor-imgs{
       background-color: $base;
       display: flex;
@@ -62,7 +66,7 @@
       padding: 3%;
       width: 30vw;
       padding-bottom: 0%;
-      
+
       div{
         display: flex;
         flex-direction: column;
