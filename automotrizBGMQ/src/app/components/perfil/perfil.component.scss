@@ -32,7 +32,7 @@
             width: 55%;
             height: 55%;
             border-radius: 50%;
-            border: 3px solid #000;
+            border: 3px solid $base;
             cursor: pointer;
             transition: .5s;
             margin-top: -20%;
@@ -124,7 +124,7 @@
             }
 
             thead{
-                background-color: black;
+                background-color: $base;
                 border-bottom: solid 5px $detalles;
                 color:white;
             }
@@ -154,22 +154,26 @@
         margin-left: 2%;
         text-align: center;
         font-size: 175%;
-        color: black;
+        color: $base;
         background-color: $blanco;
         padding: 5px;
-        border: 3px solid #000;
+        border: 3px solid $base;
         border-radius: 5%;
         width: 30%;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        // font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-weight: bold;
     }
 
     h3{
         padding: 5px;
         font-size: 175%;
-        color: black;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: $base;
+        // font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-weight: bold;
+    }
+
+    h4 {
+      color: $base;
     }
 }
 
