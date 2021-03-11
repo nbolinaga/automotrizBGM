@@ -1,1 +1,55 @@
 @import "../../../variables.scss";
+
+.titulo{     
+    display: flex;
+    justify-content: center;
+    margin-top: 3vh;
+  }
+
+.info{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+
+    .contenedor{
+        display: flex;
+        justify-content: space-between;
+        background-color: $base;
+        color: $blanco;
+        border: 2px solid $base;
+        border-radius: 5px;
+        margin: 2vw;
+        margin-bottom: 4vw;
+        padding: 1.2vw;
+        width: 70%;
+
+        .img{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+
+            img{
+                width: 30vw;
+                height: 40vh;
+                margin: 1.2vw;
+                border: 5px $base solid;
+                border-radius: 5px;
+            }
+        }
+
+        article{
+            padding: 1.2vw;
+            padding-top: 5%;
+            padding-right: 5%;
+            margin: 1.2vw;
+            width: 50%;
+
+            p{
+                font-size: 2vw;
+                text-align: end;
+                margin: 0.5vw;
+            }
+        }
+    }
+}
