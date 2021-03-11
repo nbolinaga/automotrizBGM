@@ -7,6 +7,7 @@ import {
   transition
 } from '@angular/animations';
 import { AuthService } from 'src/app/services/auth.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -39,12 +40,16 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
 
   registrar: Boolean = false;
+  form: FormGroup;
 
-  constructor(private authService: AuthService) { }
+
+  constructor(private authService: AuthService) {
+    this.buildForm();
+  }
 
   ngOnInit(): void {
   }
-  
+
   ingresarScreen(){
     this.registrar = false;
   }
@@ -53,5 +58,24 @@ export class LoginComponent implements OnInit {
   }
   Acceder(){
     this.authService.login()
+  }
+
+  // Funciones para el formulario
+  buildForm(): void {
+    this.form = new FormGroup({
+      vehiculo: new FormControl('', [Validators.required]),
+      motivo: new FormControl('', [Validators.required]),
+      descripcion: new FormControl('', [Validators.required])
+    });
+  }
+
+  enviar(event: Event): void {
+    event.preventDefault();
+    const value = this.form.value;
+    if(this.form.valid) {
+      console.log(value);
+    } else {
+      console.log("Formulario invalido...");
+    }
   }
 }

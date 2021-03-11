@@ -188,7 +188,7 @@
   .popup {
       background: $blanco;
       box-shadow: 0px 0px 5px 5px rgba(0,0,0,.3);
-      border-radius: 3px;
+      border-radius: 5px;
       font-family: $fonts;
       padding: 30px;
       text-align: center;
@@ -199,7 +199,7 @@
           text-decoration: none;
           font-weight: bold;
           width: 1vw;
-          font-size: 16px;
+          font-size: 1.2vw;
           line-height: 16px;
           display: block;
           margin-left: 96.5%;
@@ -212,20 +212,24 @@
           cursor: pointer;
       }
 
+      .contenedor-inputs {
+        text-align: left;
+      }
+
       h3{
-          font-size: 36px;
+          font-size: 2.5vw;
           font-weight: bold;
-          margin-bottom: 10px;
-          //opacity: 0;
+          margin-bottom: 15px;
       }
 
-      h4{
-          font-size: 16px;
-          margin-bottom: 18px;
-          color: #8a8a8a;
+      label {
+        color: #000000;
+        font-size: 1.3vw;
       }
 
-
+      span {
+        color: red;
+      }
 
       .contenedor-inputs select {
           height: 3.5vh;
@@ -236,7 +240,7 @@
 
       .contenedor-inputs textarea {
           width: 100%;
-          margin-bottom: 20px;
+          margin-bottom: 10px;
           height: 120px;
           border: 2px solid $detalles;
           font-size: 15px;
@@ -244,6 +248,14 @@
           padding-left: .5vw;
           padding-top: .5vh;
           resize: none;
+      }
+
+      p {
+        color: #000000;
+        font-size: 1.3vw;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
       }
 
       .btn-alt {
@@ -259,6 +271,21 @@
 
       .btn-alt:hover {
           background: rgba(41, 117, 161, .9);
+      }
+
+      #btn-invalid {
+        background: gray;
+        padding: 0 20px;
+        height: 40px;
+        line-height: 40px;
+        border: none;
+        border-radius: 2px;
+        font-size: 15px;
+        transition: .3s ease all;
+      }
+
+      #btn-invalid:hover {
+        background: rgba(255, 0, 0, 0.9);
       }
   }
 

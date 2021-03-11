@@ -24,12 +24,12 @@ footer{
 //Configuración de Logos
 .logo-redes{
     display: flex;
-    
+    justify-content: space-between;
 
     img{
-        width: 60px;
-        height: 60px;
-        padding: 15%;
+        width: 3.5vw;
+        height: 5vh;
+        padding-inline: 10%;
     }
 }
 

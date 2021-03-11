@@ -79,27 +79,29 @@
       <div class="popup">
           <a (click)="activacion()" class="btn-cerrar-popup">X</a>
           <h3>Pedir Cita</h3>
-          <h4>Por favor seleccione un vehículo e ingrese el motivo de la cita.</h4>
-          <form action="">
+          <form [formGroup]="form" (ngSubmit)="enviar($event)">
               <div class="contenedor-inputs">
-                  <select name="Vehiculos" id="Vehiculos">
-                      <option value="selector">--Selecciona un Vehículo--</option>
-                      <option value="carro1">Mi Vehículo 1</option>
-                      <option value="carro2">Mi Vehículo 2</option>
-                      <option value="carro3">Mi Vehículo 3</option>
+                  <label for="Vehiculos">Seleciona un Vehiculo:<span>*</span></label>
+                  <select id="Vehiculos" formControlName="vehiculo">
+                      <option>Mi Vehículo 1</option>
+                      <option>Mi Vehículo 2</option>
+                      <option>Mi Vehículo 3</option>
                   </select>
-                  <select name="Opciones">
-                    <option value="selector">--Selecciona motivo general--</option>
-                    <option value="opcion1">Revisión</option>
-                    <option value="opcion2">Reparación</option>
-                    <option value="opcion3">Servicio Completo</option>
-                    <option value="opcion4">Cambio de Aceite</option>
-                    <option value="opcion5">Cambio de Neumaticos</option>
-                    <option value="opcion5">Sin especificar</option>
+                  <label for="Opciones">Seleciona Motivo General:<span>*</span></label>
+                  <select id="Opciones" formControlName="motivo">
+                    <option>Revisión</option>
+                    <option>Reparación</option>
+                    <option>Servicio Completo</option>
+                    <option>Cambio de Aceite</option>
+                    <option>Cambio de Neumaticos</option>
+                    <option>Sin especificar</option>
                 </select>
-                  <textarea name="descripción" placeholder="Describe tu problema aquí..."></textarea>
+                  <label for="descripcion"> Describe tu problema:<span>*</span></label>
+                  <textarea id="descripción" formControlName="descripcion"></textarea>
+                  <p>Los campos con <span>*</span> son requeridos.</p>
               </div>
-              <button type="submit" class="btn-alt" value="Enviar">Enviar</button>
+              <button type="submit" class="btn-alt" *ngIf="form.valid">Enviar</button>
+              <button type="submit" class="btn-alt" id="btn-invalid" *ngIf="form.invalid" [disabled]="form.invalid">Enviar</button>
           </form>
       </div>
   </div>
