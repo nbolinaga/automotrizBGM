@@ -20,7 +20,8 @@ const routes: Routes = [
   {path: 'citas', component: CitasComponent},
   {path: 'perfil', component: PerfilComponent},
   {path: 'autos', component: AutosComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  {path: 'gerente', component: GerenteComponent}
 ]
 
 
