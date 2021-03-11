@@ -2,9 +2,9 @@
     <a [routerLink]="['']" id="logotipo"><img src="../../../assets/logo.svg" alt="logo"> AUTOMOTRIZ <span> BGMQ</span></a>
     <ul id="nav-list" *ngIf="navOpen" [@inOutAnimation]>
         <li class="nav-item"><a [routerLink]="['']">Inicio</a></li>
-        <li class="nav-item"><a href="">¿Quienes Somos?</a></li>
-        <li class="nav-item"><a href="">Visítanos</a></li>
-        <li class="nav-item"><a href="">Contactanos</a></li>
+        <li class="nav-item"><a [routerLink]="['/quienesSomos']">¿Quienes Somos?</a></li>
+        <li class="nav-item"><a [routerLink]="['/visitanos']">Visítanos</a></li>
+        <li class="nav-item"><a [routerLink]="['/contactanos']">Contactanos</a></li>
         <li class="nav-item" *ngIf="user"><a [routerLink]="['/perfil']">Mi cuenta</a></li>
         <li class="nav-item" *ngIf="!user"><a (click)="logged()">Ingresa/Regístrate</a></li>
         <li class="nav-item" *ngIf="user" (click)="Salir()"><a [routerLink]="['']">Cerrar Sesión</a></li>

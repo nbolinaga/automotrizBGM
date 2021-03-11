@@ -40,7 +40,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   registrar: Boolean = false;
+<<<<<<< HEAD
   form: FormGroup;
+=======
+>>>>>>> Norangel
 
 
   constructor(private authService: AuthService) {
