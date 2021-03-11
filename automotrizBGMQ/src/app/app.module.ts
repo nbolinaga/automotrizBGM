@@ -13,6 +13,7 @@ import { CitasComponent } from './components/citas/citas.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AutosComponent } from './components/autos/autos.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { GerenteComponent } from './components/gerente/gerente.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
@@ -33,7 +34,8 @@ const routes: Routes = [
     CitasComponent,
     PerfilComponent,
     AutosComponent,
-    AdminComponent
+    AdminComponent,
+    GerenteComponent
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
