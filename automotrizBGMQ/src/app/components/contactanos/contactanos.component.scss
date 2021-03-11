@@ -2,39 +2,66 @@
 
 .contact{
     background-color: #2B333C;
-    width: 100% auto;
-    height: 20vh;
-    color:$blanco;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    line-height: 2vh;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-  
-    h3{
-       height: 4vh;
-       font-size: 3vh;
-       margin-bottom: 2vh;
+    flex-wrap: wrap;
+
+    .contenedor{
+      width: 65%;
+      margin-top: 2vh;
+
+      .titulo{
+        color: $blanco;
+        display: flex;
+        justify-content: center;
+        margin-top: 2vh;
+      }
+
+      .form{
+        background-color: $blanco;
+        color: #000;
+        border: 2px solid $blanco;
+        border-radius: 5px;
+        margin: 2vw;
+        margin-bottom: 4vw;
+        padding: 2vw;
+
+        p{
+          margin: 1vw;
+        }
+
+        form{
+          outline: 2px auto $detalles;
+          background-color: $detalles;
+          display: flex;
+          flex-direction: column;
+          padding: 1vw;
+          margin: 1vw;
+
+          input{
+            padding: 1vh;
+            height: 3vw;
+            width: 100%;
+            margin-bottom: 1vh;
+            border: 2px $detalles solid;
+            border-radius: 5px;
+            font-size: 1vw;
+          }
+
+          textarea{
+            padding: 1vh;
+            height: 6vw;
+            width: 100%;
+            margin-bottom: 1vh;
+            border: 2px $detalles solid;
+            border-radius: 5px;
+            font-size: 1vw;
+          }
+        }
+      }
     }
-  
-    p{
-        height: 4vh;
-        font-size: 2vh;
-        font-weight: bold;
-    }
-  
-  }
-  
-  .tlf-fax{
-    height: 6vh;
-    width: 40%;
-    font-size: 2vh;
-    font-weight: bold;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-  
+    .ademas{
+      color: $blanco;
+      width: 35%;
+    } 
   }
