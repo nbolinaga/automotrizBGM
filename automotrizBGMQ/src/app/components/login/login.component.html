@@ -14,7 +14,9 @@
             </form>
             <button id="Siguiente" class="btn-pri" (click)='registrarScreen()'>¿No tienes una cuenta?</button>
         </div>
+        <button class="btn-alt" routerLink="admin" id="btn-admin"> Admin</button>
     </div>
+    
     <div class="modal-content" *ngIf="registrar" @rightAnimation id="registrar">
         <div class="content">
             <h3>Regístrate</h3>
