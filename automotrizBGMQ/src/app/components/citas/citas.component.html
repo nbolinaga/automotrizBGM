@@ -8,15 +8,30 @@
     </div>
     <div class="citas-dia">
       <h2 class="titulos">Citas del día (VARIABLE)</h2>
+      <ul class="lista">
+        <li *ngFor="let cita of citasDia" class="fila">
+          <p>{{cita.nombre}} - {{cita.motivo}}</p>
+        </li>
+      </ul>
     </div>
   </div>
 
   <div class="seccion2">
     <div class="solicitudes-citas">
       <h2 class="titulos">Solicitudes Pendientes</h2>
+      <ul class="lista">
+        <li *ngFor="let cita of citasSolicitudes" class="fila">
+          <p>{{cita.nombre}} - {{cita.motivo}} - {{cita.fecha}}</p>
+        </li>
+      </ul>
     </div>
     <div class="estatus-citas">
-      <h2 class="titulos">Estatus de las citas</h2>
+      <h2 class="titulos">Estado de las citas</h2>
+      <ul class="lista">
+        <li *ngFor="let cita of citasEstatus" class="fila">
+          <p>{{cita.nombre}} - {{cita.motivo}} - {{cita.estado}}</p>
+        </li>
+      </ul>
     </div>
   </div>
 
