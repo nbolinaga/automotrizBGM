@@ -1,16 +1,18 @@
 @import "../../../variables.scss";
 
-.titulo{     
+.titulo{
     display: flex;
     justify-content: center;
-    margin-top: 3vh;
+    margin: 4vh auto;
+    font-family: $fonts;
+    color: $base;
   }
 
 .info{
     width: 100%;
     display: flex;
     justify-content: center;
-    
+
 
     .contenedor{
         display: flex;
