@@ -4,8 +4,13 @@
     display: flex;
     justify-content: center;
     margin: 4vh auto;
+    margin-top: 7vh;
     font-family: $fonts;
     color: $base;
+
+    h2 {
+      font-size: 5vh;
+    }
   }
 
 .info{
