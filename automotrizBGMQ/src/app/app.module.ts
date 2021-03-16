@@ -22,6 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CitasComponent } from './components/citas/citas.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AutosComponent } from './components/autos/autos.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 import {AuthService} from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -35,8 +36,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'citas', component: CitasComponent},
   {path: 'perfil', component: PerfilComponent},
-  {path: 'autos', component: AutosComponent}
-];
+  {path: 'autos', component: AutosComponent},
+  {path: 'admin', component: AdminComponent}
+]
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ const routes: Routes = [
     LandingPageComponent,
     VisitanosComponent,
     ContactanosComponent,
-    QuienesSomosComponent
+    QuienesSomosComponent,
+    AdminComponent
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],

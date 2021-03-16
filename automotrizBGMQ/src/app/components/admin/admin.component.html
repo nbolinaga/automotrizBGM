@@ -1,0 +1,39 @@
+<div class="todo">
+  <div class="mecanicos drop-down">
+    <h2>MECANICOS</h2>
+    <i class="fas fa-sort-down" *ngIf="!isOpenMecanicos" (click)="openMecanicos()"></i>
+    <i class="fas fa-sort-up" *ngIf="isOpenMecanicos" (click)="openMecanicos()"></i>
+  </div>
+  <div *ngIf="isOpenMecanicos">
+    <div class="lista"> <!-- Hacer ngFor para cada uno de los usuarios -->
+      <h3> nombre </h3>
+      <button>EDITAR</button>
+    </div>
+    <div class="lista"> <!-- Hacer ngFor para cada uno de los usuarios -->
+      <h3> nombre </h3>
+      <button>EDITAR</button>
+    </div>
+  </div>
+  <div class="gerentes drop-down">
+    <h2>GERENTES</h2>
+    <i class="fas fa-sort-down" *ngIf="!isOpenGerentes" (click)="openGerentes()"></i>
+    <i class="fas fa-sort-up" *ngIf="isOpenGerentes" (click)="openGerentes()"></i>
+  </div>
+  <div *ngIf="isOpenGerentes">
+    <div class="lista"> <!-- Hacer ngFor para cada uno de los usuarios -->
+      <h3> nombre </h3>
+      <button>EDITAR</button>
+    </div>
+  </div>
+  <div class="clientes drop-down">
+    <h2>CLIENTES</h2>
+    <i class="fas fa-sort-down" *ngIf="!isOpenClientes" (click)="openClientes()"></i>
+    <i class="fas fa-sort-up" *ngIf="isOpenClientes" (click)="openClientes()"></i>
+  </div>
+  <div *ngIf="isOpenClientes">
+    <div class="lista"> <!-- Hacer ngFor para cada uno de los usuarios -->
+      <h3> nombre </h3>
+      <button>EDITAR</button>
+    </div>
+  </div>
+</div>

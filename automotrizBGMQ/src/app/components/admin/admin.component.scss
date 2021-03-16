@@ -1,0 +1,61 @@
+@import "../../../variables.scss";
+
+.todo {
+  background-color: $base;
+  padding: 25vh;
+  padding-bottom: 40vh;
+}
+
+.drop-down {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $detalles;
+  background-color: $blanco;
+  width: 50vw;
+  text-align: left;
+  padding: 2vh;
+  margin-inline: auto;
+  margin-bottom: 3vh;
+
+  h2 {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 3vw;
+  }
+
+  i {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 2rem;
+    text-align: right;
+    color: $base;
+    padding-right: 2vw;
+  }
+}
+
+.lista {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $detalles;
+  width: 50vw;
+  text-align: left;
+  padding: 2vh;
+  margin-inline: auto;
+  margin-bottom: 3vh;
+  transition: 3s ease-in;
+
+  button {
+    border: none;
+    width: 7vw;
+    height: 4vh;
+    cursor: pointer;
+    color: $base;
+    font-family: $fonts;
+    font-weight: bold;
+
+  }
+}

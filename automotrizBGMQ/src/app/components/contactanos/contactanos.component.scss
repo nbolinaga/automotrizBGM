@@ -22,7 +22,7 @@
       .form{
         background-color: $blanco;
         color: #000;
-        border: 2px solid $blanco;
+        border: 0.18vw solid $blanco;
         border-radius: 5px;
         margin: 2vw;
         margin-bottom: 4vw;
@@ -45,7 +45,7 @@
             height: 3vw;
             width: 100%;
             margin-bottom: 1vh;
-            border: 2px $detalles solid;
+            border: 0.18vw $detalles solid;
             border-radius: 5px;
             font-size: 1vw;
           }
@@ -55,9 +55,10 @@
             height: 6vw;
             width: 100%;
             margin-bottom: 1vh;
-            border: 2px $detalles solid;
+            border: 0.18vw $detalles solid;
             border-radius: 5px;
             font-size: 1vw;
+            resize: none;
           }
         }
       }
@@ -67,7 +68,7 @@
       width: 30%;
       margin: 2vw;
       border: 2px $blanco solid;
-      border-radius: 5px; 
+      border-radius: 5px;
       display: flex;
       justify-content: center;
 
@@ -113,9 +114,9 @@
         text-align: center;
         margin: 2vw;
       }
-    } 
+    }
 
-    .titulo{     
+    .titulo{
       display: flex;
       justify-content: center;
       margin-top: 2vh;

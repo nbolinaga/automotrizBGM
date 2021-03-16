@@ -17,29 +17,29 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   animations: [
     trigger('leftAnimation', [
       transition(':enter', [
-        style({ "left": "-100%", "opacity": "0" }, ),
-        animate('.5s ease-out', style({ "left": "50%", "opacity": "1"}))
+        style({ left: '-100%', opacity: '0' }, ),
+        animate('.5s ease-out', style({ left: '50%', opacity: '1'}))
       ]),
       transition(':leave', [
-        style({ "left": "50%", "opacity": "1" }),
-        animate('.5s ease-in', style({ "left": "-100%", "opacity": "0"}))
+        style({ left: '50%', opacity: '1' }),
+        animate('.5s ease-in', style({ left: '-100%', opacity: '0'}))
       ])
     ]),
     trigger('rightAnimation', [
       transition(':enter', [
-        style({ "right": "-100%", "opacity": "0" }, ),
-        animate('.5s ease-out', style({ "right": "50%", "opacity": "1"}))
+        style({ right: '-100%', opacity: '0' }, ),
+        animate('.5s ease-out', style({ right: '50%', opacity: '1'}))
       ]),
       transition(':leave', [
-        style({ "right": "50%", "opacity": "1" }),
-        animate('.5s ease-in', style({ "right": "-100%", "opacity": "0"}))
+        style({ right: '50%', opacity: '1' }),
+        animate('.5s ease-in', style({ right: '-100%', opacity: '0'}))
       ])
     ]),
   ]
 })
 export class LoginComponent implements OnInit {
 
-  registrar: Boolean = false;
+  registrar = false;
   form: FormGroup;
 
 
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     this.registrar = true;
   }
   Acceder(){
-    this.authService.login()
+    this.authService.login();
   }
 
   // Funciones para el formulario
@@ -72,10 +72,10 @@ export class LoginComponent implements OnInit {
   enviar(event: Event): void {
     event.preventDefault();
     const value = this.form.value;
-    if(this.form.valid) {
+    if (this.form.valid) {
       console.log(value);
     } else {
-      console.log("Formulario invalido...");
+      console.log('Formulario invalido...');
     }
   }
 }

@@ -1,36 +1,38 @@
-@import '../../../variables.scss';
+@import "../../../variables.scss";
 //General
-footer{
-    width: auto;
-    height: 10vh;
-    background-color: $detalles;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: $fonts;
-    color: $blanco;
-    font-size: 1vw;
-    justify-content: space-around;
-
+footer {
+  width: auto;
+  height: 8vh;
+  background-color: $detalles;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $fonts;
+  color: $blanco;
+  font-size: 1vw;
+  justify-content: space-around;
 }
 
 //Telefono
 @media only screen and (max-width: 768px) and (orientation: portrait) {
-    footer{
-        display: none;
-    }
+  footer {
+    display: none;
+  }
 }
 
 //Configuración de Logos
-.logo-redes{
-    display: flex;
-    justify-content: space-between;
+.logo-redes {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
 
-    img{
-        width: 3.5vw;
-        height: 5vh;
-        padding-inline: 10%;
+  i {
+    font-size: 2vw;
+    color: $blanco;
+    padding: 15%;
+
+    &:hover{
+      color: $base;
     }
+  }
 }
-
-
