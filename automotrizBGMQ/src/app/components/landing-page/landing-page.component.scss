@@ -176,3 +176,281 @@
 //     }
 //   }
 // }
+
+//Seccion de quienes somos
+#info{
+  background-color: $detalles;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+
+  #contenedor-cont{
+    width: 70vw;
+
+    .titulo{
+      display: flex;
+      justify-content: center;
+      margin-top: 2vh;
+    }
+
+    h2{
+      text-align: center;
+      margin: 4vh;
+      color: $base;
+      font-size: 5vh;
+      width: 70%;
+      font-family: $fonts;
+      font-weight: bold;
+    }
+
+    article{
+      padding: 4vw;
+    }
+
+    h3{
+      background-color: $blanco;
+      font-size: 2vw;
+      width: 30%;
+      margin-bottom: -2%;
+      border: $base 0.21vw solid;
+      margin-left: 10%;
+      text-align: center;
+      border-radius: 5px;
+      font-family: $fonts;
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+      color: $base;
+
+    }
+
+    p{
+      margin-left: 4vw;
+      margin-right: 4vw;
+      padding: 2vw;
+      text-align: justify;
+      font-size: 1.5vw;
+      background-color: $blanco;
+      color: $base;
+      border-radius: 5px;
+
+    }
+  }
+
+
+  #contenedor-imgs{
+    background-color: $base;
+    display: flex;
+    justify-content: center;
+    padding: 3%;
+    width: 30vw;
+    padding-bottom: 0%;
+
+    div{
+      display: flex;
+      flex-direction: column;
+
+      img{
+        width: 20vw;
+        height: 15vw;
+        margin-bottom: 4vh;
+      }
+    }
+
+  }
+}
+//Seccion de visitanos
+.titulo{
+  display: flex;
+  justify-content: center;
+  margin: 4vh auto;
+  margin-top: 7vh;
+  font-family: $fonts;
+  color: $base;
+
+  h2 {
+    font-size: 5vh;
+  }
+}
+
+.info{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+
+  .contenedor{
+      display: flex;
+      justify-content: space-between;
+      background-color: $base;
+      color: $blanco;
+      border: 2px solid $base;
+      border-radius: 5px;
+      margin: 2vw;
+      margin-bottom: 4vw;
+      padding: 1.2vw;
+      width: 70%;
+
+      .img{
+          width: 50%;
+          display: flex;
+          justify-content: center;
+
+          img{
+              width: 30vw;
+              height: 40vh;
+              margin: 1.2vw;
+          }
+      }
+
+      article{
+          padding: 1.2vw;
+          padding-top: 5%;
+          padding-right: 5%;
+          margin: 1.2vw;
+          width: 50%;
+
+          p{
+              font-size: 2vw;
+              text-align: end;
+              margin: 0.5vw;
+          }
+      }
+  }
+}
+//Seccion de contacto
+@import "../../../variables.scss";
+
+.contact{
+    background-color: $base;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    .contenedor{
+      width: 65%;
+      margin-top: 2vh;
+
+      h2{
+        color: $blanco;
+        font-family:$fonts;
+        font-weight: bold;
+        font-size: 2vw;
+        text-align: center;
+      }
+
+      .form{
+        background-color: $blanco;
+        color: $base;
+        border: 0.18vw solid $blanco;
+        border-radius: 5px;
+        margin: 2vw;
+        margin-bottom: 4vw;
+        padding: 1.2vw;
+
+        p{
+          margin: 1vw;
+        }
+
+        form{
+          outline: 2px auto $detalles;
+          background-color: $detalles;
+          display: flex;
+          flex-direction: column;
+          padding: 1vw;
+          margin: 1vw;
+
+          label {
+            padding-left: 1vw;
+            font-family: $fonts;
+            font-weight: bold;
+          }
+
+          input, button{
+            padding: 1vh;
+            height: 3vw;
+            width: 100%;
+            margin-bottom: 1vh;
+            border: 0.18vw $detalles solid;
+            border-radius: 5px;
+            font-size: 1vw;
+            font-family: $fonts;
+          }
+
+          button {
+            font-weight: bold;
+          }
+
+          textarea{
+            padding: 1vh;
+            height: 6vw;
+            width: 100%;
+            margin-bottom: 1vh;
+            border: 0.18vw $detalles solid;
+            border-radius: 5px;
+            font-size: 1vw;
+            resize: none;
+            font-family: $fonts;
+          }
+        }
+      }
+    }
+    .ademas{
+      background-color: $blanco;
+      width: 30%;
+      margin: 2vw;
+      border: 2px $blanco solid;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+
+      .caja{
+        width: 75%;
+      }
+
+      h2{
+        font-family:$fonts;
+        font-weight: bold;
+        font-size: 2vw;
+        text-align: center;
+        margin-top: -2vw;
+        background-color: $blanco;
+        color: $base;
+        padding: 0.5vw;
+        border: 2px $base solid;
+        border-radius: 5px;
+        width: 55%;
+
+      }
+
+      .tel, .fax, .df{
+        background-color: $detalles;
+        color: $blanco;
+        margin: 1vw;
+        border: 2px $detalles solid;
+        border-radius: 5px;
+      }
+
+      h3{
+        font-size: 1.5vw;
+        font-family:$fonts;
+        font-weight: bold;
+        text-align: center;
+        margin: 2vw;
+      }
+
+      p{
+        font-size: 1.3vw;
+        font-family: $fonts;
+        font-weight: bold;
+        text-align: center;
+        margin: 2vw;
+      }
+    }
+
+    .titulo{
+      display: flex;
+      justify-content: center;
+      margin-top: 2vh;
+    }
+  }
