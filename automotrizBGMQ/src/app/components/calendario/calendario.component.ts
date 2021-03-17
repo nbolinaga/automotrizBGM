@@ -26,13 +26,14 @@ export class CalendarioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.getDaysFromDate(3, 2021);
+    this.getDaysFromDate(2, 2021);
+    console.log(this.dateSelect);
   }
 
   // tslint:disable-next-line: typedef
   getDaysFromDate(month, year) {
 
-    const startDate = moment.utc(`${year}/${month + 1}/01`);
+    const startDate = moment(`${year}/${month}/01`);
     const endDate = startDate.clone().endOf('month');
     this.dateSelect = startDate;
 
