@@ -31,7 +31,8 @@ import { VisitanosComponent } from './components/visitanos/visitanos.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
-  {path: 'autos', component: AutosComponent}
+  {path: 'autos', component: AutosComponent},
+  {path: 'calendario', component: CalendarioComponent}
 ];
 
 @NgModule({
