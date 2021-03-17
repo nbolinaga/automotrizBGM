@@ -1,7 +1,7 @@
 <div class="calendario">
   <div class="wrapper-calendar">
     <div class="header-calendar">
-      <div>
+      <div class="botones">
         <button (click)="changeMonth(-1)" class="btn-prev">Antes</button>
       </div>
       <h1>{{dateSelect | date:'MMMM, YYYY'}}</h1>
@@ -18,9 +18,8 @@
       </li>
     </ol>
   </div>
-
-  <hr>
+<!--
   <div>
     Fecha: {{dateValue | date}}
-  </div>
+  </div> -->
 </div>
