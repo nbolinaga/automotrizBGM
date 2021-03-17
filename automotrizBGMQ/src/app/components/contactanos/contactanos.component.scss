@@ -1,11 +1,10 @@
 @import "../../../variables.scss";
 
 .contact{
-    background-color: #2B333C;
+    background-color: $base;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    border-bottom: 0.5vh solid #000 ;
 
     .contenedor{
       width: 65%;
@@ -13,7 +12,7 @@
 
       h2{
         color: $blanco;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-family:$fonts;
         font-weight: bold;
         font-size: 2vw;
         text-align: center;
@@ -21,7 +20,7 @@
 
       .form{
         background-color: $blanco;
-        color: #000;
+        color: $base;
         border: 0.18vw solid $blanco;
         border-radius: 5px;
         margin: 2vw;
@@ -40,6 +39,12 @@
           padding: 1vw;
           margin: 1vw;
 
+          label {
+            padding-left: 1vw;
+            font-family: $fonts;
+            font-weight: bold;
+          }
+
           input, button{
             padding: 1vh;
             height: 3vw;
@@ -48,6 +53,11 @@
             border: 0.18vw $detalles solid;
             border-radius: 5px;
             font-size: 1vw;
+            font-family: $fonts;
+          }
+
+          button {
+            font-weight: bold;
           }
 
           textarea{
@@ -59,6 +69,7 @@
             border-radius: 5px;
             font-size: 1vw;
             resize: none;
+            font-family: $fonts;
           }
         }
       }
@@ -77,15 +88,15 @@
       }
 
       h2{
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-family:$fonts;
         font-weight: bold;
         font-size: 2vw;
         text-align: center;
         margin-top: -2vw;
         background-color: $blanco;
-        color: #000;
+        color: $base;
         padding: 0.5vw;
-        border: 2px #000 solid;
+        border: 2px $base solid;
         border-radius: 5px;
         width: 55%;
 
@@ -101,7 +112,7 @@
 
       h3{
         font-size: 1.5vw;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-family:$fonts;
         font-weight: bold;
         text-align: center;
         margin: 2vw;
@@ -109,7 +120,7 @@
 
       p{
         font-size: 1.3vw;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-family: $fonts;
         font-weight: bold;
         text-align: center;
         margin: 2vw;
