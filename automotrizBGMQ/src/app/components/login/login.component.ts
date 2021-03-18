@@ -7,7 +7,7 @@ import {
   transition
 } from '@angular/animations';
 import { AuthService } from 'src/app/services/auth.service';
-import {FormBuilder, FormGroup } from '@angular/forms';
+import {EmailValidator, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
@@ -101,11 +101,34 @@ export class LoginComponent implements OnInit {
         password: this.registroForm.get('password').value,
         password2: this.registroForm.get('password2').value,
       };
-      if(formValues.password === formValues.password2){
-        const user = await this.authService.signUpWithEmail(formValues.displayName, formValues.email, formValues.password);
-        if(user){
-          this.router.navigate(['/perfil']);
+      if(formValues.displayName !== ''){
+        if(formValues.tipoID !== ''){
+          if(Number(formValues.id)){
+            if(Number(formValues.tel)){
+              if(formValues.password === formValues.password2){
+                const user = await this.authService.signUpWithEmail(formValues.displayName, formValues.email, formValues.password);
+                if(user){
+                  this.router.navigate(['/perfil']);
+                }
+              }
+              else{
+                alert('La contraseña de confirmacion no coincide con la original.')
+              }
+            }
+            else{
+              alert('El telefono ingresado no es valido.');
+            }
+          }
+          else{
+            alert('La identificación ingresada no es valida.');
+          }
         }
+        else{
+          alert('Seleccione un tipo de identificación');
+        }       
+      }
+      else{
+        alert('No olvide ingresar su nombre.');
       }
     }
     catch(e){
