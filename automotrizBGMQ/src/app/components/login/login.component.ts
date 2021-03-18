@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {
   trigger,
   state,
@@ -7,7 +7,8 @@ import {
   transition
 } from '@angular/animations';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -40,14 +41,19 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   registrar = false;
-  form: FormGroup;
+  registroForm: FormGroup;
+  loginForm: FormGroup;
 
 
-  constructor(private authService: AuthService) {
-    this.buildForm();
+  constructor(
+    private authService: AuthService,
+    private fb : FormBuilder,
+    private router: Router){
   }
 
   ngOnInit(): void {
+    this.crearForm1()
+    this.crearForm2()
   }
 
   ingresarScreen(){
@@ -57,25 +63,65 @@ export class LoginComponent implements OnInit {
     this.registrar = true;
   }
   Acceder(){
-    this.authService.login();
+    this.authService.loginWithGoogle();
+    if(this.authService.isAuthenticated){
+      this.router.navigate(['/perfil']);
+    }
   }
 
   // Funciones para el formulario
-  buildForm(): void {
-    this.form = new FormGroup({
-      vehiculo: new FormControl('', [Validators.required]),
-      motivo: new FormControl('', [Validators.required]),
-      descripcion: new FormControl('', [Validators.required])
-    });
+
+  crearForm1(): void {
+    this.registroForm = this.fb.group({
+      displayName: '',
+      email: '',
+      password: ''
+    })
   }
 
-  enviar(event: Event): void {
-    event.preventDefault();
-    const value = this.form.value;
-    if (this.form.valid) {
-      console.log(value);
-    } else {
-      console.log('Formulario invalido...');
+  crearForm2(): void {
+    this.loginForm = this.fb.group({
+      email: '',
+      password: ''
+    })
+  }
+
+  async enviarRegistro(){
+    try{
+      const formValues = {
+        displayName: this.registroForm.get('displayName').value,
+        email: this.registroForm.get('email').value,
+        password: this.registroForm.get('password').value
+      };
+      console.log(formValues);
+      if(formValues){
+        const user = await this.authService.signUpWithEmail(formValues.displayName, formValues.email, formValues.password);
+        if(user){
+          this.router.navigate(['/perfil']);
+        }
+      }
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+
+  async enviarIngreso(){
+    try{
+      const formValues = {
+        email: this.loginForm.get('email').value,
+        password: this.loginForm.get('password').value
+      };
+      console.log(formValues);
+      if(formValues){
+        const user = await this.authService.loginWithEmail(formValues.email, formValues.password);
+        if(user){
+          this.router.navigate(['/perfil']);
+        }
+      }
+    }
+    catch(e){
+      console.log(e);
     }
   }
 }

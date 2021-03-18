@@ -10,7 +10,46 @@ export class AuthService {
 
   constructor(private Auth: AngularFireAuth) { }
 
-  async login(): Promise<firebase.User|null>{
+  async signUpWithEmail(
+    displayName: string,
+    email: string,
+    password: string
+  ):  Promise<firebase.User|null>{
+    try{
+      const res = await this.Auth.createUserWithEmailAndPassword(email,password);
+      const {user}=res;
+      localStorage.setItem('user', user.uid);
+      await user.updateProfile({
+        displayName,
+        photoURL: '../../assets/user.png',
+      });
+      return user
+    }
+    catch(err){
+      console.log(err);
+      localStorage.removeItem('user');
+      return null
+    }
+  }
+
+  async loginWithEmail(
+    email: string,
+    password: string
+  ): Promise<firebase.User|null>{
+    try{
+      const res = await this.Auth.signInWithEmailAndPassword(email,password);
+      const {user}=res;
+      localStorage.setItem('user', user.uid);
+      return user
+    }
+    catch(err){
+      console.log(err);
+      localStorage.removeItem('user');
+      return null
+    }
+  }
+
+  async loginWithGoogle(): Promise<firebase.User|null>{
     try{
       const provider = new firebase.auth.GoogleAuthProvider();
       const response = await this.Auth.signInWithPopup(provider);
@@ -36,8 +75,13 @@ export class AuthService {
         await this.Auth.signOut();
         localStorage.removeItem('user');
       }
-      catch(err){
-        console.log(err);
+      catch(e){
+        console.log(e);
+        localStorage.removeItem('user');
       }
+  }
+
+  isAuthenticated(): boolean{
+    return localStorage.getItem('user') ? true : false;
   }
 }

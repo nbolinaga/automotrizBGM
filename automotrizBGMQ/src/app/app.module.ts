@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AuthGuardGuard} from './guards/auth-guard.guard';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -35,11 +36,11 @@ const routes: Routes = [
   {path: 'visitanos', component: VisitanosComponent},
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'citas', component: CitasComponent},
-  {path: 'perfil', component: PerfilComponent},
-  {path: 'autos', component: AutosComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'calendario', component: CalendarioComponent}
+  {path: 'citas', component: CitasComponent, canActivate:[AuthGuardGuard]},
+  {path: 'perfil', component: PerfilComponent, canActivate:[AuthGuardGuard]},
+  {path: 'autos', component: AutosComponent, canActivate:[AuthGuardGuard]},
+  {path: 'admin', component: AdminComponent, canActivate:[AuthGuardGuard]},
+  {path: 'calendario', component: CalendarioComponent, canActivate:[AuthGuardGuard] }
 ];
 
 @NgModule({
