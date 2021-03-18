@@ -5,8 +5,10 @@
         <div class="content">
             <h3>Iniciar Sesión</h3>
             <form class="FormIngresar" [formGroup]="loginForm" (ngSubmit)="enviarIngreso()">
-                <input class="input" type="email" id="user" placeholder="Correo Electronico" required formControlName="email">            
-                <input class="input" type="password" id="password" placeholder="Clave"required formControlName="password">
+                <label for="displayName">Correo Electronico:</label>
+                <input class="input" type="email" id="user" placeholder="example@hotmail.com" required formControlName="email"> 
+                <label for="password">Clave:</label>           
+                <input class="input" type="password" id="password" placeholder="******"required formControlName="password">
                 <div class="opciones">
                     <p>
                         <input type="radio" id="recordar"> Recordar información
@@ -24,27 +26,27 @@
         <div class="content">
             <h3>Regístrate</h3>
             <form class="FormRegistro" [formGroup]="registroForm" (ngSubmit)="enviarRegistro()">
-                <label for="displayName">Ingrese su nombre completo:</label>
+                <label for="displayName">Nombre Completo:</label>
                 <input type="text" id="nombre" placeholder="Ramon Perez" required formControlName="displayName">   
-                <label for="identificacion">Ingrese su identificación:</label>
+                <label for="identificacion">Identificación:</label>
                 <div class="opciones">
-                    <select name="tipoID" required>
+                    <select name="tipoID" required formControlName="tipoID">
                         <option value="Venezolano">V</option>
                         <option value="Extrangero">E</option>
                         <option value="Juridico">J</option>
                         <option value="Pasaporte">P</option>
                         <option value="Gobierno">G</option>
                     </select>
-                    <input type="number" id="ID" placeholder="12345678" required>
+                    <input type="number" id="ID" placeholder="12345678" required formControlName="id">
                 </div>
-                <label for="tel">Ingrese su número de telefono:</label>
-                <input type="tel" id="telefono" placeholder="04129141135" required>
-                <label for="email">Ingrese su Correo Electronico:</label>
+                <label for="tel">Telefono:</label>
+                <input type="tel" id="telefono" placeholder="04129141135" required formControlName="tel">
+                <label for="email">Correo Electronico:</label>
                 <input type="email" id="correo" placeholder="example@hotmail.com" required formControlName="email">
-                <label for="password">Ingrese su contraseña:</label>
+                <label for="password">Clave:</label>
                 <div class="opciones">
                     <input type="password" id="contraseña" placeholder="Clave" required formControlName="password">
-                    <input type="password" id="confirmar" placeholder="Repetir Clave" required>
+                    <input type="password" id="confirmar" placeholder="Repetir Clave" required formControlName="password2">
                 </div>   
                 <div class="botones">
                     <button class="btn-pri" id="Regresar" type="reset" (click)='ingresarScreen()'>¿Ya tienes una cuenta?</button>

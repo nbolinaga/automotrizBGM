@@ -74,8 +74,12 @@ export class LoginComponent implements OnInit {
   crearForm1(): void {
     this.registroForm = this.fb.group({
       displayName: '',
+      tipoID: '',
+      id: '',
+      tel: '',
       email: '',
-      password: ''
+      password: '',
+      password2: ''
     })
   }
 
@@ -90,11 +94,15 @@ export class LoginComponent implements OnInit {
     try{
       const formValues = {
         displayName: this.registroForm.get('displayName').value,
+        tipoID: this.registroForm.get('tipoID').value,
+        id: this.registroForm.get('id').value,
+        tel: this.registroForm.get('tel').value,
         email: this.registroForm.get('email').value,
-        password: this.registroForm.get('password').value
+        password: this.registroForm.get('password').value,
+        password2: this.registroForm.get('password2').value,
       };
       console.log(formValues);
-      if(formValues){
+      if(formValues.password === formValues.password2){
         const user = await this.authService.signUpWithEmail(formValues.displayName, formValues.email, formValues.password);
         if(user){
           this.router.navigate(['/perfil']);
