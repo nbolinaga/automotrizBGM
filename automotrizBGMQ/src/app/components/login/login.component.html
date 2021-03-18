@@ -5,9 +5,9 @@
         <div class="content">
             <h3>Iniciar Sesión</h3>
             <form class="FormIngresar" [formGroup]="loginForm" (ngSubmit)="enviarIngreso()">
-                <label for="displayName">Correo Electronico:</label>
+                <label for="displayName">Correo Electronico</label>
                 <input class="input" type="email" id="user" placeholder="example@hotmail.com" required formControlName="email"> 
-                <label for="password">Clave:</label>           
+                <label for="password">Clave</label>           
                 <input class="input" type="password" id="password" placeholder="******"required formControlName="password">
                 <div class="opciones">
                     <p>
@@ -26,9 +26,9 @@
         <div class="content">
             <h3>Regístrate</h3>
             <form class="FormRegistro" [formGroup]="registroForm" (ngSubmit)="enviarRegistro()">
-                <label for="displayName">Nombre Completo:</label>
+                <label for="displayName">Nombre Completo</label>
                 <input type="text" id="nombre" placeholder="Ramon Perez" required formControlName="displayName">   
-                <label for="identificacion">Identificación:</label>
+                <label for="identificacion">Identificación</label>
                 <div class="opciones">
                     <select name="tipoID" required formControlName="tipoID">
                         <option value="Venezolano">V</option>
@@ -39,11 +39,11 @@
                     </select>
                     <input type="number" id="ID" placeholder="12345678" required formControlName="id">
                 </div>
-                <label for="tel">Telefono:</label>
+                <label for="tel">Telefono</label>
                 <input type="tel" id="telefono" placeholder="04129141135" required formControlName="tel">
-                <label for="email">Correo Electronico:</label>
+                <label for="email">Correo Electronico</label>
                 <input type="email" id="correo" placeholder="example@hotmail.com" required formControlName="email">
-                <label for="password">Clave:</label>
+                <label for="password">Clave</label>
                 <div class="opciones">
                     <input type="password" id="contraseña" placeholder="Clave" required formControlName="password">
                     <input type="password" id="confirmar" placeholder="Repetir Clave" required formControlName="password2">
