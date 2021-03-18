@@ -101,7 +101,6 @@ export class LoginComponent implements OnInit {
         password: this.registroForm.get('password').value,
         password2: this.registroForm.get('password2').value,
       };
-      console.log(formValues);
       if(formValues.password === formValues.password2){
         const user = await this.authService.signUpWithEmail(formValues.displayName, formValues.email, formValues.password);
         if(user){
@@ -120,7 +119,6 @@ export class LoginComponent implements OnInit {
         email: this.loginForm.get('email').value,
         password: this.loginForm.get('password').value
       };
-      console.log(formValues);
       if(formValues){
         const user = await this.authService.loginWithEmail(formValues.email, formValues.password);
         if(user){
