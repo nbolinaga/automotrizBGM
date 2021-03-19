@@ -7,7 +7,7 @@ import {
   transition
 } from '@angular/animations';
 import { AuthService } from 'src/app/services/auth.service';
-import {EmailValidator, FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 
 
@@ -73,20 +73,21 @@ export class LoginComponent implements OnInit {
 
   crearForm1(): void {
     this.registroForm = this.fb.group({
-      displayName: '',
-      tipoID: '',
-      id: '',
-      tel: '',
-      email: '',
-      password: '',
-      password2: ''
+      displayName: ['', [Validators.required]],
+      tipoID: ['', [Validators.required]],
+      id:  ['', [Validators.required]],
+      tel:  ['', [Validators.required]],
+      email:  ['', Validators.compose([Validators.required, Validators.email])],
+      password:  ['', Validators.compose([Validators.required, Validators.min(6)])],
+      password2:  ['', [Validators.required]]
     })
   }
 
   crearForm2(): void {
     this.loginForm = this.fb.group({
-      email: '',
-      password: ''
+      email:  ['', Validators.compose([Validators.required, Validators.email])],
+      password:  ['', Validators.compose([Validators.required, Validators.min(6)])],
+      recordar:['']
     })
   }
 
@@ -140,7 +141,8 @@ export class LoginComponent implements OnInit {
     try{
       const formValues = {
         email: this.loginForm.get('email').value,
-        password: this.loginForm.get('password').value
+        password: this.loginForm.get('password').value,
+        recordar: this.loginForm.get('recordar').value
       };
       if(formValues){
         const user = await this.authService.loginWithEmail(formValues.email, formValues.password);

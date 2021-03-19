@@ -4,14 +4,14 @@
     <div class="modal-content" *ngIf="!registrar" @leftAnimation id="ingresar">
         <div class="content">
             <h3>Iniciar Sesión</h3>
-            <form class="FormIngresar" [formGroup]="loginForm" (ngSubmit)="enviarIngreso()">
+            <form class="FormIngresar" [formGroup]="loginForm" novalidate (ngSubmit)="enviarIngreso()">
                 <label for="displayName">Correo Electronico</label>
-                <input class="input" type="email" id="user" placeholder="example@hotmail.com" required formControlName="email"> 
+                <input class="input" type="email" id="user" placeholder="example@hotmail.com" formControlName="email"> 
                 <label for="password">Clave</label>           
-                <input class="input" type="password" id="password" placeholder="******"required formControlName="password">
+                <input class="input" type="password" id="password" placeholder="******" formControlName="password">
                 <div class="opciones">
                     <p>
-                        <input type="radio" id="recordar"> Recordar información
+                        <input type="radio" id="recordar" formControlName="recordar"> Recordar información
                     </p>
                     <button class="btn-alt" id="Ingresar" type="submit">Ingresar</button>
                 </div>
@@ -25,28 +25,28 @@
     <div class="modal-content" *ngIf="registrar" @rightAnimation id="registrar">
         <div class="content">
             <h3>Regístrate</h3>
-            <form class="FormRegistro" [formGroup]="registroForm" (ngSubmit)="enviarRegistro()">
+            <form class="FormRegistro" [formGroup]="registroForm" novalidate (ngSubmit)="enviarRegistro()">
                 <label for="displayName">Nombre Completo</label>
-                <input type="text" id="nombre" placeholder="Ramon Perez" required formControlName="displayName">   
+                <input type="text" id="nombre" placeholder="Ramon Perez" formControlName="displayName">   
                 <label for="identificacion">Identificación</label>
                 <div class="opciones">
-                    <select name="tipoID" required formControlName="tipoID">
+                    <select name="tipoID" formControlName="tipoID">
                         <option value="Venezolano">V</option>
                         <option value="Extrangero">E</option>
                         <option value="Juridico">J</option>
                         <option value="Pasaporte">P</option>
                         <option value="Gobierno">G</option>
                     </select>
-                    <input type="number" id="ID" placeholder="12345678" required formControlName="id">
+                    <input type="number" id="ID" placeholder="12345678" formControlName="id">
                 </div>
                 <label for="tel">Telefono</label>
-                <input type="tel" id="telefono" placeholder="04129141135" required formControlName="tel">
+                <input type="tel" id="telefono" placeholder="04129141135" formControlName="tel">
                 <label for="email">Correo Electronico</label>
-                <input type="email" id="correo" placeholder="example@hotmail.com" required formControlName="email">
+                <input type="email" id="correo" placeholder="example@hotmail.com" formControlName="email">
                 <label for="password">Clave</label>
                 <div class="opciones">
-                    <input type="password" id="contraseña" placeholder="Clave" required formControlName="password">
-                    <input type="password" id="confirmar" placeholder="Repetir Clave" required formControlName="password2">
+                    <input type="password" id="contraseña" placeholder="Clave" formControlName="password">
+                    <input type="password" id="confirmar" placeholder="Repetir Clave" formControlName="password2">
                 </div>   
                 <div class="botones">
                     <button class="btn-pri" id="Regresar" type="reset" (click)='ingresarScreen()'>¿Ya tienes una cuenta?</button>
