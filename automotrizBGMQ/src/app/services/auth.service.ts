@@ -14,7 +14,7 @@ export class AuthService {
   async signUpWithEmail(
     displayName: string,
     email: string,
-    password: string
+    password: string,
   ):  Promise<firebase.User|null>{
     try{
       const res = await this.Auth.createUserWithEmailAndPassword(email,password);

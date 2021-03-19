@@ -1,13 +1,13 @@
 <section class="fondo">
     <div class="distribucion1">
         <div id="info">
-            <img src="../../assets/user.png" alt="Foto de perfil">
-            <h3>Ramon Perez</h3>
+            <img src="{{user.photoURL}}" alt="Foto de perfil">
+            <h3>{{user.displayName}}</h3>
             <h4>Cliente</h4>
             <div class="datos">
-                <p>V-29543678</p>
-                <p>04129156749</p>
-                <p>r.perez@gmail.com</p>
+                <p>{{user.id}}</p>
+                <p>{{user.phoneNumber}}</p>
+                <p>{{user.email}}</p>
             </div>
             <button class="btn-pri">Editar Perfil</button>
             <button class="btn-alt">Solicitar cambio de clave</button>

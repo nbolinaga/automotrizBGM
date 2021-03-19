@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit {
         displayName: this.registroForm.get('displayName').value,
         tipoID: this.registroForm.get('tipoID').value,
         id: this.registroForm.get('id').value,
-        tel: this.registroForm.get('tel').value,
+        phoneNumber: this.registroForm.get('tel').value,
         email: this.registroForm.get('email').value,
         password: this.registroForm.get('password').value,
         password2: this.registroForm.get('password2').value,
@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit {
       if(formValues.displayName !== ''){
         if(formValues.tipoID !== ''){
           if(Number(formValues.id)){
-            if(Number(formValues.tel)){
+            if(Number(formValues.phoneNumber)){
               if(this.registroForm.get('email').valid){
                 if(this.registroForm.get('password').valid){
                   if(formValues.password === formValues.password2){
