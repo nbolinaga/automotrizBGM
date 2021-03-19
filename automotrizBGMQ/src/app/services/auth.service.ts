@@ -28,11 +28,14 @@ export class AuthService {
     }
     catch(err){
       console.log(err);
-      if(err.code === 'auth/email-already-exists'){
+      if(err.code == 'auth/email-already-exists' || err.code == 'auth/email-already-in-use'){
         alert('El email ingresado pertenece a un usuario registrado.')
       }
+      else if(err.code === 'auth/network-request-failed'){
+        alert('verifique si posee conexión a internet e intente nuevamente.')
+      }
       else{
-        alert('Ha ocurrido un error, verifique si posee conexión a internet e intente nuevamente.')
+        alert('Ha ocurrido un error, intente nuevamente.')
       }
       localStorage.removeItem('user');
       return null
@@ -55,8 +58,14 @@ export class AuthService {
       if(err.code === 'auth/user-not-found'){
         alert('El usuario no existe.')
       }
+      else if(err.code === 'auth/wrong-password'){
+        alert('Contraseña incorrecta.')
+      }
+      else if(err.code === 'auth/network-request-failed'){
+        alert('verifique si posee conexión a internet e intente nuevamente.')
+      }
       else{
-        alert('Ha ocurrido un error, verifique si posee conexión a internet e intente nuevamente.')
+        alert('Ha ocurrido un error, intente nuevamente.')
       }
       localStorage.removeItem('user');
       return null
