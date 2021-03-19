@@ -21,7 +21,7 @@
         color: $base;
         font-size: 5vh;
         width: 70%;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-family: $fonts;
         font-weight: bold;
       }
 
@@ -34,14 +34,15 @@
         font-size: 2vw;
         width: 30%;
         margin-bottom: -2%;
-        border: black 0.21vw solid;
+        border: $base 0.21vw solid;
         margin-left: 10%;
         text-align: center;
         border-radius: 5px;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-family: $fonts;
         font-weight: bold;
         position: relative;
         z-index: 1;
+        color: $base;
 
       }
 
@@ -52,7 +53,7 @@
         text-align: justify;
         font-size: 1.5vw;
         background-color: $blanco;
-        color: black;
+        color: $base;
         border-radius: 5px;
 
       }

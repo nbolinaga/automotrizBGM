@@ -11,7 +11,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   background-color: $blanco;
-  
+
   #btnTelefono{
     display: none;
   }
@@ -51,17 +51,17 @@ nav {
 
   ul{
     list-style: none;
-    
+
     li{
       text-decoration: none;
       display: inline-flex;
       margin: 2vw;
       font-weight: bold;
       font-size: 1vw;
-      
+
       a{
         text-decoration: none;
-        color: $detalles; 
+        color: $detalles;
         cursor: pointer;
       }
     }
@@ -73,7 +73,7 @@ nav {
   nav {
     position: absolute;
     justify-content: center;
-    
+
 
     #btnTelefono{
       position: fixed;
@@ -99,7 +99,7 @@ nav {
       left: 0;
       bottom: 12vw;
       text-align: center;
-      
+
       li{
         display: block;
         margin: 10vw 4vw;
