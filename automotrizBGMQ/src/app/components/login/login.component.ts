@@ -73,20 +73,20 @@ export class LoginComponent implements OnInit {
 
   crearForm1(): void {
     this.registroForm = this.fb.group({
-      displayName: ['', [Validators.required]],
-      tipoID: ['', [Validators.required]],
-      id:  ['', [Validators.required]],
-      tel:  ['', [Validators.required]],
-      email:  ['', Validators.compose([Validators.required, Validators.email])],
-      password:  ['', Validators.compose([Validators.required, Validators.min(6)])],
-      password2:  ['', [Validators.required]]
+      displayName: ['', Validators.required],
+      tipoID: ['', Validators.required],
+      id:  ['', Validators.required],
+      tel:  ['', Validators.required],
+      email:  ['', [Validators.required, Validators.email]],
+      password:  ['', [Validators.required, Validators.minLength(6)]],
+      password2: ['', Validators.required],
     })
   }
 
   crearForm2(): void {
     this.loginForm = this.fb.group({
-      email:  ['', Validators.compose([Validators.required, Validators.email])],
-      password:  ['', Validators.compose([Validators.required, Validators.min(6)])],
+      email:  ['', [Validators.required, Validators.email]],
+      password:  ['', [Validators.required, Validators.minLength(6)]],
       recordar:['']
     })
   }
@@ -106,14 +106,24 @@ export class LoginComponent implements OnInit {
         if(formValues.tipoID !== ''){
           if(Number(formValues.id)){
             if(Number(formValues.tel)){
-              if(formValues.password === formValues.password2){
-                const user = await this.authService.signUpWithEmail(formValues.displayName, formValues.email, formValues.password);
-                if(user){
-                  this.router.navigate(['/perfil']);
+              if(this.registroForm.get('email').valid){
+                if(this.registroForm.get('password').valid){
+                  if(formValues.password === formValues.password2){
+                    const user = await this.authService.signUpWithEmail(formValues.displayName, formValues.email, formValues.password);
+                    if(user){
+                      this.router.navigate(['/perfil']);
+                    }
+                  }
+                  else{
+                    alert('La contraseña de confirmacion no coincide con la original.')
+                  }
+                }
+                else{
+                  alert('La contraseña debe tener al menos 6 caracteres.')
                 }
               }
               else{
-                alert('La contraseña de confirmacion no coincide con la original.')
+                alert('El email ingresado no es valido.')
               }
             }
             else{
@@ -121,7 +131,7 @@ export class LoginComponent implements OnInit {
             }
           }
           else{
-            alert('La identificación ingresada no es valida.');
+            alert('No olvide ingresar su identificación');
           }
         }
         else{
