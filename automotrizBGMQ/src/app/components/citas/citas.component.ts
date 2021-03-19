@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-citas',
@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./citas.component.scss']
 })
 export class CitasComponent implements OnInit {
+
+
+  constructor( public data: DataService ) { }
+
 
   // Variables de Muestra:
   citasDia: Array<any> = [
@@ -157,8 +161,6 @@ export class CitasComponent implements OnInit {
       estado: 'Confirmada'
     }
   ];
-
-  constructor() { }
 
   ngOnInit(): void {
   }

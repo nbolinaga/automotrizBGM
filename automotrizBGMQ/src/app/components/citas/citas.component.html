@@ -7,7 +7,7 @@
       <app-calendario></app-calendario>
     </div>
     <div class="citas-dia">
-      <h2 class="titulos">Citas del día (VARIABLE)</h2>
+      <h2 class="titulos">Citas del día: {{ data.fechaCitas | date }}</h2>
       <ul class="lista">
         <li *ngFor="let cita of citasDia" class="fila">
           <p>{{cita.nombre}} - {{cita.motivo}}</p>
@@ -34,6 +34,4 @@
       </ul>
     </div>
   </div>
-
-
 </section>
