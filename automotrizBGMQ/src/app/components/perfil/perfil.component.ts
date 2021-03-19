@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import firebase from 'firebase';
 
 
 @Component({
@@ -8,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
+  user: firebase.User = null;
 
   form: FormGroup;
 
@@ -17,8 +20,12 @@ export class PerfilComponent implements OnInit {
     this.activar = !this.activar;
   }
 
-  constructor() {
+  constructor(private Auth: AuthService) {
     this.buildForm();
+
+    this.Auth.getCurrentUser().subscribe((user) => {
+      this.user = user;
+    })
   }
 
   ngOnInit(): void {

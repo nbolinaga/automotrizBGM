@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AuthGuardGuard} from './guards/auth-guard.guard';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +26,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { VisitanosComponent } from './components/visitanos/visitanos.component';
 
-import {AuthService} from './services/auth.service';
+import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
@@ -68,6 +69,7 @@ const routes: Routes = [
     AngularFireStorageModule,
     AngularFireAuthModule,
     HttpClientModule,
+    AuthService,
     ReactiveFormsModule,
   ],
   exports: [RouterModule],
