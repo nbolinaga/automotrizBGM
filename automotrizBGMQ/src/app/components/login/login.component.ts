@@ -115,11 +115,11 @@ export class LoginComponent implements OnInit {
                     }
                   }
                   else{
-                    alert('La contraseña de confirmacion no coincide con la original.')
+                    alert('La clave de confirmación no coincide con la original.')
                   }
                 }
                 else{
-                  alert('La contraseña debe tener al menos 6 caracteres.')
+                  alert('La clave debe tener al menos 6 caracteres.')
                 }
               }
               else{
@@ -154,15 +154,24 @@ export class LoginComponent implements OnInit {
         password: this.loginForm.get('password').value,
         recordar: this.loginForm.get('recordar').value
       };
-      if(formValues){
-        const user = await this.authService.loginWithEmail(formValues.email, formValues.password);
-        if(user){
-          this.router.navigate(['/perfil']);
+
+      if(this.loginForm.get('email').valid){
+        if(this.loginForm.get('password').valid){
+          const user = await this.authService.loginWithEmail(formValues.email, formValues.password);
+          if(user){
+            this.router.navigate(['/perfil']);
+          }
         }
+        else{
+          alert('La clave ingresada no es valida.')
+        }
+      }
+      else{
+        alert('El email ingresado no es valido.')
       }
     }
     catch(e){
-      console.log(e);
+      console.log(e)
     }
   }
 }

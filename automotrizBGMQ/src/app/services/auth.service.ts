@@ -10,6 +10,7 @@ export class AuthService {
 
   constructor(private Auth: AngularFireAuth) { }
 
+  //Registrarse con correo y contraseña
   async signUpWithEmail(
     displayName: string,
     email: string,
@@ -27,11 +28,18 @@ export class AuthService {
     }
     catch(err){
       console.log(err);
+      if(err.code === 'auth/email-already-exists'){
+        alert('El email ingresado pertenece a un usuario registrado.')
+      }
+      else{
+        alert('Ha ocurrido un error, verifique si posee conexión a internet e intente nuevamente.')
+      }
       localStorage.removeItem('user');
       return null
     }
   }
 
+  //Ingresar con correo y contraseña
   async loginWithEmail(
     email: string,
     password: string
@@ -44,11 +52,18 @@ export class AuthService {
     }
     catch(err){
       console.log(err);
+      if(err.code === 'auth/user-not-found'){
+        alert('El usuario no existe.')
+      }
+      else{
+        alert('Ha ocurrido un error, verifique si posee conexión a internet e intente nuevamente.')
+      }
       localStorage.removeItem('user');
       return null
     }
   }
 
+  //Ingresar con Google
   async loginWithGoogle(): Promise<firebase.User|null>{
     try{
       const provider = new firebase.auth.GoogleAuthProvider();
@@ -66,10 +81,12 @@ export class AuthService {
     return null
   }
 
+  //Obtener usuario
   getCurrentUser(): Observable<firebase.User|null>{
     return this.Auth.user;
   }
 
+  //Cerrar sesión
   async logout(): Promise<void>{
       try{
         await this.Auth.signOut();
@@ -81,6 +98,7 @@ export class AuthService {
       }
   }
 
+  //Usuario autenticado
   isAuthenticated(): boolean{
     return localStorage.getItem('user') ? true : false;
   }
