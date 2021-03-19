@@ -69,11 +69,10 @@ const routes: Routes = [
     AngularFireStorageModule,
     AngularFireAuthModule,
     HttpClientModule,
-    AuthService,
     ReactiveFormsModule,
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 
