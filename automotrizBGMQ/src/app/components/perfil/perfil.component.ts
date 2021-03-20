@@ -25,7 +25,7 @@ export class PerfilComponent implements OnInit {
 
     this.Auth.getCurrentUser().subscribe((user) => {
       this.user = user;
-    })
+    });
   }
 
   ngOnInit(): void {
