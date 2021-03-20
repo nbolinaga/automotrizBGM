@@ -32,7 +32,7 @@ export class AuthService {
         alert('El email ingresado pertenece a un usuario registrado.')
       }
       else if(err.code === 'auth/network-request-failed'){
-        alert('verifique si posee conexión a internet e intente nuevamente.')
+        alert('Verifique si posee conexión a internet e intente nuevamente.')
       }
       else{
         alert('Ha ocurrido un error, intente nuevamente.')
@@ -63,7 +63,7 @@ export class AuthService {
         alert('Contraseña incorrecta.')
       }
       else if(err.code === 'auth/network-request-failed'){
-        alert('verifique si posee conexión a internet e intente nuevamente.')
+        alert('Verifique si posee conexión a internet e intente nuevamente.')
       }
       else{
         alert('Ha ocurrido un error, intente nuevamente.')
