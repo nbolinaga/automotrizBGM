@@ -12,7 +12,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 
-import { InicioComponent } from './components/inicio/inicio.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
@@ -22,15 +21,14 @@ import { AutosComponent } from './components/autos/autos.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
-import { VisitanosComponent } from './components/visitanos/visitanos.component';
 import { GerenteComponent } from './components/gerente/gerente.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 import {AuthService} from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
-  {path: 'inicio', component: InicioComponent},
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
   {path: 'citas', component: CitasComponent, canActivate:[AuthGuardGuard]},
@@ -44,7 +42,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    InicioComponent,
     FooterComponent,
     LoginComponent,
     AutosComponent,
