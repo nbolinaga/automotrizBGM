@@ -26,6 +26,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 
 import {AuthService} from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReportesComponent } from './components/reportes/reportes.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -35,7 +36,9 @@ const routes: Routes = [
   {path: 'perfil', component: PerfilComponent, canActivate:[AuthGuardGuard]},
   {path: 'autos', component: AutosComponent, canActivate:[AuthGuardGuard]},
   {path: 'admin', component: AdminComponent, canActivate:[AuthGuardGuard]},
-  {path: 'calendario', component: CalendarioComponent, canActivate:[AuthGuardGuard] }
+  {path: 'gerente',component: GerenteComponent, canActivate:[AuthGuardGuard]},
+  {path: 'reportes', component: ReportesComponent, canActivate:[AuthGuardGuard]}
+  /*{path: 'calendario', component: CalendarioComponent, canActivate:[AuthGuardGuard] }*/
 ];
 
 @NgModule({
@@ -51,6 +54,7 @@ const routes: Routes = [
     LandingPageComponent,
     ContactanosComponent,
     AdminComponent,
+    ReportesComponent,
 
   ],
   imports: [

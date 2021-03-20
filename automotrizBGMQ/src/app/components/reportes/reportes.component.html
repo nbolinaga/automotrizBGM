@@ -1,0 +1,26 @@
+<div class="contenedor">
+  <div class="opciones">
+    <label for="reportes">Reportes:</label>
+    <select id="reportes" name="reportes" (change)="cambio($event)">
+      <option value="default">Seleccionar...</option>
+      <option value="vehiculos">Vehiculos</option>
+      <option value="clientes">Clientes</option>
+      <option value="mecanicos">Mecanicos</option>
+      <option value="general">General</option>
+    </select>
+  </div>
+  <div class="mostrar-reportes">
+    <div class="vehiculos" *ngIf="vehiculos">
+      <h1>Reporte de vehiculos</h1>
+    </div>
+    <div class="clientes" *ngIf="clientes">
+      <h1>Reporte de clientes</h1>
+    </div>
+    <div class="mecanicos" *ngIf="mecanicos">
+      <h1>Reporte de mecanicos</h1>
+    </div>
+    <div class="general" *ngIf="general">
+      <h1>Reporte general</h1>
+    </div>
+  </div>
+</div>
