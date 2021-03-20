@@ -1,13 +1,13 @@
 <section class="fondo">
     <div class="distribucion1">
         <div id="info">
-            <img src="../../assets/user.png" alt="Foto de perfil">
-            <h3>Ramon Perez</h3>
+            <img *src="user.photoURL" alt="Foto de perfil">
+            <h3>{{user.displayName}}</h3>
             <h4>Cliente</h4>
             <div class="datos">
-                <p>V-29543678</p>
-                <p>04129156749</p>
-                <p>r.perez@gmail.com</p>
+                <p>{{user.uid}}</p>
+                <p>{{user.phoneNumber}}</p>
+                <p>{{user.email}}</p>
             </div>
             <button class="btn-pri">Editar Perfil</button>
             <button class="btn-alt">Solicitar cambio de clave</button>
@@ -18,17 +18,17 @@
             <h1>Mis Vehículos</h1>
                 <div class="imagenes">
                     <a href="#">
-                        <img src="../../assets/vehiculo1.png" alt="Vehículo 1">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo1.png?alt=media" alt="Vehículo 1">
                         <p>Vehículo 1</p>
                         <p>Placa 1</p>
                     </a>
                     <a href="#">
-                        <img src="../../assets/vehiculo2.png" alt="Vehículo 2">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo2.png?alt=media" alt="Vehículo 2">
                         <p>Vehículo 2</p>
                         <p>Placa 2</p>
                     </a>
                     <a class="ultimo" href="#">
-                        <img src="../../assets/vehiculo3.png" alt="Vehículo 3">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo3.png?alt=media" alt="Vehículo 3">
                         <p>Vehículo 3</p>
                         <p>Placa 3</p>
                     </a>
