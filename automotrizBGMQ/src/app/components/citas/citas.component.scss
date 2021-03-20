@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   background: rgb(206, 206, 206);
-  color: black;
+  color: $base;
   width: 100%;
 
   .titulos {
@@ -17,11 +17,11 @@
     margin-left: 2%;
     text-align: center;
     font-size: 1.2vw;
-    color: black;
+    color: $base;
     background-color: $blanco;
     padding: 5px;
-    border: 0.21vw solid #000;
-    border-radius: 5%;
+    border: 0.21vw solid $base;
+    border-radius: 5px;
     width: 20vw;
   }
 
@@ -33,7 +33,7 @@
     height: 96.5%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.1vw;
-    color: #000;
+    color: $base;
     text-align: center;
     overflow-y: scroll;
 
@@ -64,7 +64,7 @@
 
     .calendario {
       background-color: $blanco;
-      border: 0.18vw solid black;
+      border: 0.18vw solid $base;
       border-radius: 5px;
       width: 60%;
       height: 70vh;
@@ -74,7 +74,7 @@
     .citas-dia {
       background-color: $blanco;
       border-radius: 5px;
-      border: 0.18vw solid black;
+      border: 0.18vw solid $base;
       width: 30%;
       height: 70vh;
       margin: 2% 0% 2% 0;
@@ -95,7 +95,7 @@
     .solicitudes-citas {
       background-color: $blanco;
       border-radius: 5px;
-      border: 0.18vw solid black;
+      border: 0.18vw solid $base;
       width: 45%;
       height: 70vh;
       margin: 2% 0% 2% 0;
@@ -104,7 +104,7 @@
     .estatus-citas {
       background-color: $blanco;
       border-radius: 5px;
-      border: 0.18vw solid black;
+      border: 0.18vw solid $base;
       width: 45%;
       height: 70vh;
       margin: 2% 0% 2% 0;
