@@ -24,6 +24,7 @@ export class AuthService {
         displayName,
         photoURL: '../../assets/user.png',
       });
+      location.href = '/perfil'
       return user
     }
     catch(err){
@@ -52,6 +53,7 @@ export class AuthService {
       const {user}=res;
       localStorage.setItem('user', user.uid);
       console.log(user);
+      location.href = '/perfil'
       return user
     }
     catch(err){
@@ -81,6 +83,7 @@ export class AuthService {
       console.log(JSON.stringify(response));
       if(response.user){
         localStorage.setItem('user', response.user.uid);
+        location.href = '/perfil'
         return response.user
       }
     }
