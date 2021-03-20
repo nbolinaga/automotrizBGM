@@ -51,6 +51,7 @@ export class AuthService {
       const res = await this.Auth.signInWithEmailAndPassword(email,password);
       const {user}=res;
       localStorage.setItem('user', user.uid);
+      console.log(user);
       return user
     }
     catch(err){
