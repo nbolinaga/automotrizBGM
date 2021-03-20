@@ -13,9 +13,7 @@ import {environment} from 'src/environments/environment';
 
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { VisitanosComponent } from './components/visitanos/visitanos.component';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
-import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
