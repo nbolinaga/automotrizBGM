@@ -5,178 +5,10 @@
   height: auto;
   display: block;
 }
-//
-// section.izq,
-// section.der {
-//   padding: 4vw 4vw;
-// }
-// section.der {
-//   width: 100%;
-
-//   p {
-//     color: $blanco;
-//     font-family: $fonts;
-//     width: 100%;
-//     font-size: 1.5vw;
-//     margin-top: 2.5vw;
-//     text-align: justify;
-//     font-weight: 400;
-//   }
-//   .botones {
-//     display: flex;
-//     justify-content: space-between;
-//     width: 100%;
-//     margin: 7vh 0vh;
-
-//     button {
-//       font-family: $fonts;
-//       font-size: 2vw;
-//       font-weight: bold;
-//       width: 40%;
-//       padding: 1.5vh 1vw;
-//       border: none;
-//       border-radius: 0;
-//       cursor: pointer;
-
-//       &#registrar {
-//         background-color: $detalles;
-//         color: white;
-//       }
-//       &#ingresar {
-//         color: $base;
-//       }
-//     }
-//   }
-//   #contenedor-imgs{
-//     display: flex;
-//     justify-content: space-between;
-
-//     .mecanico-img{
-//       width: 30%;
-//       height: auto;
-//     }
-//   }
-//   .resaltar{
-//     position: relative;
-//     font-family: $fonts;
-//     text-align: center;
-//     color: $blanco;
-//     font-size: 2vw;
-//     width: 100%;
-//     height: auto;
-//     margin-top: 2vw;
-//     outline: .5vh solid $detalles;
-//     padding: .5vw;
-//   }
-//   .center{
-//     width: 100%;
-//     text-align: center;
-//   }
-//   .marcas{
-//     display: block;
-//     width: 80%;
-//     height: auto;
-//     margin: 5vw auto;
-//   }
-// }
-// section.izq {
-//   padding: 4vw 0vw 4vw 6vw;
-
-//   .caja-azul {
-//     background: linear-gradient($detalles 0%, rgba(255, 255, 255, 0) 65%);
-//     width: 80%;
-//     height: 100%;
-//     padding: 3vw;
-//     position: relative;
-
-//     h1 {
-//       font-size: 2vw;
-//       font-family: $fonts;
-//       color: $base;
-//       position: sticky;
-//       top: 26vh;
-//     }
-//     h2{
-//       font-size: 2vw;
-//       font-family: $fonts;
-//       color: $blanco;
-//       position: absolute;
-//       bottom: 60vh;
-//     }
-//     img.car{
-//       width: 135%;
-//       position: sticky;
-//       top: 45vh;
-//       transform: scaleX(-1);
-//       margin: -3vw;
-//       z-index: 99;
-//     }
-//   }
-// }
-
-// //Telefono
-// @media only screen and (max-width: 768px) and (orientation: portrait) {
-//   .container {
-//     display: inline-block;
-//   }
-//   section.der {
-//     width: auto;
-//     padding: 0vw 10vw;
-//     margin-bottom: 10vh;
-
-//     p {
-//       font-size: 4vw;
-//       margin: 7vw 0;
-//     }
-//     .resaltar{
-//       font-size: 5vw;
-//     }
-//     .botones {
-//       margin: 3vh 0vh;
-
-//       button {
-//         font-size: 4vw;
-//       }
-//     }
-//     .marcas{
-//       display: block;
-//       width: 80%;
-//       height: auto;
-//       margin: 7vw auto;
-//     }
-
-//     #contenedor-imgs{
-//       display:  inline-block;
-
-//       .mecanico-img{
-//         display: block;
-//         width: 80%;
-//         margin: 4vw auto;
-//       }
-//     }
-//   }
-//   section.izq {
-//     margin-top: 2vh;
-//     height: 80vw;
-//     width: auto;
-//     padding: 4vw 4vw;
-
-//     .caja-azul {
-//       padding: 4vw;
-//       margin: 0 auto;
-
-//       h1 {
-//         font-size: 6vw;
-//         position: relative;
-//         top: 0;
-//       }
-//       h2{
-//         display: none;
-//       }
-//     }
-//   }
-// }
-
+#info, #visitanos, #contacto{
+  @extend .link-padding;
+  // al hacer click en un link ahora si se vera el titulo del link
+}
 //Seccione de Inicio
 #banner {
   background: linear-gradient(to bottom, $base 47%, $blanco 0%);
@@ -273,12 +105,12 @@
     }
   }
 
-
   #contenedor-imgs{
     background-color: $base;
     display: flex;
     justify-content: center;
     padding: 3%;
+    margin-top: -.6vh;
     width: 30vw;
     padding-bottom: 0%;
 
@@ -296,11 +128,13 @@
   }
 }
 //Seccion de visitanos
+#visitanos{
+  height: 100vh;
+}
 .titulo{
   display: flex;
   justify-content: center;
   margin: 4vh auto;
-  margin-top: 7vh;
   font-family: $fonts;
   color: $base;
 
@@ -354,9 +188,6 @@
       }
   }
 }
-//Seccion de contacto
-@import "../../../variables.scss";
-
 .contact{
     background-color: $base;
     width: 100%;

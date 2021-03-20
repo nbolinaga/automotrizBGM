@@ -1,11 +1,11 @@
 <section class="fondo">
     <div class="distribucion1">
         <div id="info">
-            <img src="{{user.photoURL}}" alt="Foto de perfil">
+            <img *src="user.photoURL" alt="Foto de perfil">
             <h3>{{user.displayName}}</h3>
             <h4>Cliente</h4>
             <div class="datos">
-                <p>{{user.id}}</p>
+                <p>{{user.uid}}</p>
                 <p>{{user.phoneNumber}}</p>
                 <p>{{user.email}}</p>
             </div>
