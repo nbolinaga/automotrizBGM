@@ -22,8 +22,6 @@ import { AutosComponent } from './components/autos/autos.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { VisitanosComponent } from './components/visitanos/visitanos.component';
 import { GerenteComponent } from './components/gerente/gerente.component';
 
@@ -33,8 +31,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'inicio', component: InicioComponent},
-  {path: 'quienesSomos', component: QuienesSomosComponent},
-  {path: 'visitanos', component: VisitanosComponent},
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
   {path: 'citas', component: CitasComponent, canActivate:[AuthGuardGuard]},
@@ -56,11 +52,9 @@ const routes: Routes = [
     PerfilComponent,
     AutosComponent,
     LandingPageComponent,
-    VisitanosComponent,
     ContactanosComponent,
-    QuienesSomosComponent,
     AdminComponent,
-    CalendarioComponent
+
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
