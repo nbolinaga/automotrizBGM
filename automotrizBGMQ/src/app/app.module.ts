@@ -31,8 +31,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'inicio', component: InicioComponent},
-  {path: 'quienesSomos', component: QuienesSomosComponent},
-  {path: 'visitanos', component: VisitanosComponent},
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
   {path: 'citas', component: CitasComponent},
@@ -53,9 +51,7 @@ const routes: Routes = [
     PerfilComponent,
     AutosComponent,
     LandingPageComponent,
-    VisitanosComponent,
     ContactanosComponent,
-    QuienesSomosComponent,
     AdminComponent
   ],
   imports: [

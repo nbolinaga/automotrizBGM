@@ -23,7 +23,7 @@ body {
 /* width */
 ::-webkit-scrollbar {
   width: 2vw;
-  background-image: url("https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/road.svg?alt=media&token=26295534-d4a6-41ab-83ab-95942dd6830f");
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/road.svg?alt=media");
   background-position: bottom;
 }
 
@@ -34,7 +34,7 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: url("https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/carTop.svg?alt=media&token=b7eac125-731c-408b-b014-995d6bde35c5") 0 0 no-repeat ;
+  background: url("https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/carTop.svg?alt=media") 0 0 no-repeat ;
   background-position: center;
   min-height: 40px;
 }
