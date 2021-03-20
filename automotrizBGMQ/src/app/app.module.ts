@@ -25,6 +25,7 @@ import { ContactanosComponent } from './components/contactanos/contactanos.compo
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { VisitanosComponent } from './components/visitanos/visitanos.component';
+import { GerenteComponent } from './components/gerente/gerente.component';
 
 import {AuthService} from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
