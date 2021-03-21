@@ -11,16 +11,52 @@
   </div>
   <div class="mostrar-reportes">
     <div class="vehiculos" *ngIf="vehiculos">
-      <h1>Reporte de vehiculos</h1>
+      <div class="seleccionar">
+        <label for="carros">Reporte de vehiculos:</label>
+        <select id="carros">
+          <option value="default">Seleccionar...</option>
+          <option *ngFor="" value=""></option>
+        </select>
+      </div>
+      <div class="contenido">
+
+      </div>
     </div>
     <div class="clientes" *ngIf="clientes">
-      <h1>Reporte de clientes</h1>
+      <div class="seleccionar">
+        <label for="personas">Reporte de clientes:</label>
+        <select id="personas">
+          <option value="default">Seleccionar...</option>
+          <option *ngFor="" value=""></option>
+        </select>
+      </div>
+      <div class="contenido">
+
+      </div>
     </div>
     <div class="mecanicos" *ngIf="mecanicos">
-      <h1>Reporte de mecanicos</h1>
+      <div class="seleccionar">
+        <label for="meca">Reporte de mecanicos:</label>
+        <select id="meca">
+          <option value="default">Seleccionar...</option>
+          <option *ngFor="" value=""></option>
+        </select>
+      </div>
+      <div class="contenido">
+
+      </div>
     </div>
     <div class="general" *ngIf="general">
-      <h1>Reporte general</h1>
+      <div class="seleccionar">
+        <label for="gen">Reporte general:</label>
+        <select id="gen">
+          <option value="default">Seleccionar...</option>
+          <option *ngFor="" value=""></option>
+        </select>
+      </div>
+      <div class="contenido">
+
+      </div>
     </div>
   </div>
 </div>

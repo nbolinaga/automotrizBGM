@@ -17,21 +17,33 @@
       margin-right: 2rem;
       font-size: 1.6rem;
     }
+  }
+
+  select {
+    outline: none;
+    border: none;
+    width: 20vw;
+    height: 6vh;
+    font-family: $fonts;
+    font-size: 1.3rem;
+    background-color: $blanco;
+  }
+
+  .seleccionar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    label {
+      color: $blanco;
+      font-size: 2rem;
+      margin: 3rem 3rem 2rem 4vw;
+    }
 
     select {
-      outline: none;
-      border: none;
-      width: 20vw;
-      height: 6vh;
-      font-family: $fonts;
-      font-size: 1.3rem;
-      background-color: $blanco;
+      margin-top: 1.1rem;
     }
+
   }
 
-  h1 {
-    color: $blanco;
-    font-size: 2rem;
-    margin: 3rem 0 2rem 4vw;
-  }
 }
