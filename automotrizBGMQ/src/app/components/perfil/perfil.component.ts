@@ -23,6 +23,7 @@ export class PerfilComponent implements OnInit {
   constructor(private Auth: AuthService) {
     this.buildForm();
 
+    // tslint:disable-next-line: deprecation
     this.Auth.getCurrentUser().subscribe((user) => {
       this.user = user;
     });
