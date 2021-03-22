@@ -11,7 +11,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
-
+import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
@@ -63,6 +63,7 @@ const routes: Routes = [
     AngularFireAuthModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   exports: [RouterModule],
   providers: [],

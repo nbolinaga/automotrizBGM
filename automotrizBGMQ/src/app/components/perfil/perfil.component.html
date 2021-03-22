@@ -1,15 +1,15 @@
 <section class="fondo">
     <div class="distribucion1">
         <div id="info">
-            <img *src="user.photoURL" alt="Foto de perfil">
-            <h3>{{user.displayName}}</h3>
-            <h4>Cliente</h4>
+            <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/user.png?alt=media" alt="Foto de perfil">
+            <h3>{{usuario.nombre}}</h3>
+            <h4>{{usuario.rol}}</h4>
             <div class="datos">
-                <p>{{user.uid}}</p>
-                <p>{{user.phoneNumber}}</p>
-                <p>{{user.email}}</p>
+                <p>Cedula</p><input [(ngModel)]="usuario.cedula" type="number" [disabled]="disabled"/>
+                <p>Telefono</p><input [(ngModel)]="usuario.telefono" type="string" [disabled]="disabled"/>
+                <p>Email</p><input [(ngModel)]="usuario.email" type="string" [disabled]="disabled"/>
             </div>
-            <button class="btn-pri">Editar Perfil</button>
+            <button class="btn-pri" (click)="editar()">Editar Perfil</button>
             <button class="btn-alt">Solicitar cambio de clave</button>
         </div>
     </div>
