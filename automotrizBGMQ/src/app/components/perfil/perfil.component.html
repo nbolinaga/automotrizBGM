@@ -31,13 +31,18 @@
                 <thead>
                     <tr>
                         <td>Vehículo</td>
-                        <td>N° de Orden</td>
-                        <td>Estado</td>
+                        <td>Fecha</td>
                         <td>Descripción</td>
+                        <td>Estado</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let cita of usuario.citas"></tr>
+                    <tr *ngFor="let cita of usuario.citas">
+                      <td>jeep</td>
+                      <td>{{cita.fecha}}</td>
+                      <td>{{cita.descripcion}}</td>
+                      <td>{{cita.confirmada}}</td>
+                    </tr>
                 </tbody>
             </table>
             <button class="btn-alt" (click)="activacion()">Pedir Cita</button>
