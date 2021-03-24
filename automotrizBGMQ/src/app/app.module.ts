@@ -11,7 +11,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
-
+import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
@@ -27,6 +27,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import {AuthService} from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -37,7 +38,8 @@ const routes: Routes = [
   {path: 'autos', component: AutosComponent, canActivate:[AuthGuardGuard]},
   {path: 'admin', component: AdminComponent, canActivate:[AuthGuardGuard]},
   {path: 'gerente', component: GerenteComponent, canActivate:[AuthGuardGuard]},
-  {path: 'ordenes', component: OrdenesComponent, canActivate:[AuthGuardGuard]}
+  {path: 'ordenes', component: OrdenesComponent, canActivate:[AuthGuardGuard]},
+  {path: 'reportes', component: ReportesComponent, canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({
@@ -55,6 +57,7 @@ const routes: Routes = [
     AdminComponent,
     GerenteComponent,
     OrdenesComponent
+    ReportesComponent,
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
@@ -66,6 +69,7 @@ const routes: Routes = [
     AngularFireAuthModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   exports: [RouterModule],
   providers: [],
