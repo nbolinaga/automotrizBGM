@@ -14,8 +14,13 @@ export class AuthService {
   async signUpWithEmail(
     displayName: string,
     email: string,
+<<<<<<< HEAD
     password: string
   ): Promise<firebase.User|null>{
+=======
+    password: string,
+  ):  Promise<firebase.User|null>{
+>>>>>>> main
     try{
       const res = await this.Auth.createUserWithEmailAndPassword(email, password);
       const {user} = res;
@@ -24,7 +29,12 @@ export class AuthService {
         displayName,
         photoURL: '../../assets/user.png',
       });
+<<<<<<< HEAD
       return user;
+=======
+      location.href = '/perfil'
+      return user
+>>>>>>> main
     }
     catch (err){
       console.log(err);
@@ -51,7 +61,13 @@ export class AuthService {
       const res = await this.Auth.signInWithEmailAndPassword(email, password);
       const {user} = res;
       localStorage.setItem('user', user.uid);
+<<<<<<< HEAD
       return user;
+=======
+      console.log(user);
+      location.href = '/perfil'
+      return user
+>>>>>>> main
     }
     catch (err){
       console.log(err);
@@ -80,7 +96,12 @@ export class AuthService {
       console.log(JSON.stringify(response));
       if (response.user){
         localStorage.setItem('user', response.user.uid);
+<<<<<<< HEAD
         return response.user;
+=======
+        location.href = '/perfil'
+        return response.user
+>>>>>>> main
       }
     }
     catch (err){

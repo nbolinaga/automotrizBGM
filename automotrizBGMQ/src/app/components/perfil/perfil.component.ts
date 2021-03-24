@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { Usuario } from '../../models/usuario';
 import firebase from 'firebase';
 
 
@@ -11,25 +13,44 @@ import firebase from 'firebase';
 })
 export class PerfilComponent implements OnInit {
   user: firebase.User = null;
-
+  usuario: Usuario;
   form: FormGroup;
-
+  disabled =  true;
   activar = false;
 
   activacion(): void {
     this.activar = !this.activar;
   }
 
-  constructor(private Auth: AuthService) {
+  constructor(private Auth: AuthService, private UsuarioService: UsuarioService) {
     this.buildForm();
-
-    // tslint:disable-next-line: deprecation
     this.Auth.getCurrentUser().subscribe((user) => {
       this.user = user;
+      this.UsuarioService.getUserById(user.uid).subscribe((response) => {
+        if (response.nombre == undefined){
+          const newUser: Usuario = {
+            nombre: user.displayName,
+            tipoID: null,
+            cedula: 0,
+            telefono: 'edite sus datos de perfil',
+            email: user.email,
+            clave: null,
+            confirmacion: null,
+            rol: 'Cliente'
+          };
+          this.UsuarioService.createNewUser(user.uid, newUser);
+        } else {
+          this.usuario = response;
+        }
+      });
     });
+
+
+
   }
 
   ngOnInit(): void {
+
   }
 
 
@@ -51,4 +72,8 @@ export class PerfilComponent implements OnInit {
     }
   }
 
+  editar(){
+    this.disabled = !this.disabled;
+    this.UsuarioService.updateUser(this.user.uid, this.usuario);
+  }
 }
