@@ -1,14 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import * as moment from 'moment';
 moment.locale('es');
-
-@Component({
-  selector: 'app-calendario',
-  templateUrl: './calendario.component.html',
-  styleUrls: ['./calendario.component.scss']
-})
-export class CalendarioComponent implements OnInit {
 
   week = [
     'Lunes',
@@ -36,23 +30,6 @@ export class CalendarioComponent implements OnInit {
     const endDate = startDate.clone().endOf('month');
     this.dateSelect = startDate;
 
-    const diffDays = endDate.diff(startDate, 'days', true);
-    const numberDays = Math.round(diffDays);
-
-    const arrayDays = Object.keys([...Array(numberDays)]).map((a: any) => {
-      // tslint:disable-next-line: radix
-      a = parseInt(a) + 1;
-      const dayObject = moment(`${year}-${month}-${a}`);
-      return {
-        name: dayObject.format('dddd'),
-        value: a,
-        indexWeek: dayObject.isoWeekday()
-      };
-    });
-
-    this.monthSelect = arrayDays;
-  }
-
 
   changeMonth(flag: number): void {
     if (flag < 0) {
@@ -72,5 +49,3 @@ export class CalendarioComponent implements OnInit {
     this.dateValue = objectDate;
     this.data.fechaCitas = this.dateValue;
   }
-
-}

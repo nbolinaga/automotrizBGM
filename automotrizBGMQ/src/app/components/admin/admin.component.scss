@@ -37,9 +37,6 @@
 }
 
 .lista {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   color: $detalles;
   width: 50vw;
   text-align: left;
@@ -48,14 +45,21 @@
   margin-bottom: 3vh;
   transition: 3s ease-in;
 
-  button {
-    border: none;
-    width: 7vw;
-    height: 4vh;
-    cursor: pointer;
-    color: $base;
-    font-family: $fonts;
-    font-weight: bold;
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    button {
+      border: none;
+      outline: none;
+      width: 7vw;
+      height: 4vh;
+      cursor: pointer;
+      color: $base;
+      font-family: $fonts;
+      font-weight: bold;
+
+    }
   }
 }
