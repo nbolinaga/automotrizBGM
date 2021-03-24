@@ -3,8 +3,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../models/usuario';
+import { VehiculosService } from '../../services/vehiculos.service';
+import { Vehiculo } from '../../models/vehiculo';
+import { CitasService } from '../../services/citas.service';
+import { Cita } from '../../models/cita';
 import firebase from 'firebase';
+import {formatDate} from '@angular/common';
+import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 
+formatDate(new Date(), 'dd/MM/yyyy', 'en');
 
 @Component({
   selector: 'app-perfil',
@@ -14,16 +21,25 @@ import firebase from 'firebase';
 export class PerfilComponent implements OnInit {
   user: firebase.User = null;
   usuario: Usuario;
-  form: FormGroup;
+  formVehiculo: FormGroup;
+  formCita: FormGroup;
   disabled: boolean =  true;
   activar = false;
+  activarAgregar = false;
+  vehiculos: Vehiculo[];
+  citas: Cita[];
+  currentVehiculo: Vehiculo;
+  currentCita: Cita;
 
-  activacion(): void {
-    this.activar = !this.activar;
+  constructor(private db: AngularFirestore, private Auth: AuthService, private UsuarioService: UsuarioService, private VehiculosService: VehiculosService) {
+
   }
 
-  constructor(private Auth: AuthService, private UsuarioService: UsuarioService) {
-    this.buildForm();
+  ngOnInit(): void {
+    this.getUser();
+  }
+
+  getUser(): void {
     this.Auth.getCurrentUser().subscribe((user) => {
       this.user = user;
       this.UsuarioService.getUserById(user.uid).subscribe((response) => {
@@ -36,7 +52,9 @@ export class PerfilComponent implements OnInit {
             email: user.email,
             clave: null,
             confirmacion: null,
-            rol: "Cliente"
+            rol: "Cliente",
+            vehiculos: [],
+            citas: []
           };
           this.UsuarioService.createNewUser(user.uid, newUser);
         } else {
@@ -44,36 +62,78 @@ export class PerfilComponent implements OnInit {
         }
       });
     })
-
-
-
+    this.UsuarioService.updateUser(this.user.uid, this.usuario);
+  }
+  activacion(numero): void {
+    if(numero == 1)
+    {
+      this.activar = !this.activar;
+      this.buildFormCita();
+    } else {
+      this.activarAgregar = !this.activarAgregar;
+      this.buildFormVehiculo();
+    }
   }
 
-  ngOnInit(): void {
-
-  }
-
-
-  buildForm(): void {
-    this.form = new FormGroup({
+  buildFormCita(): void {
+    this.formCita = new FormGroup({
       vehiculo: new FormControl('', [Validators.required]),
       motivo: new FormControl('', [Validators.required]),
       descripcion: new FormControl('', [Validators.required])
     });
   }
-
-  enviar(event: Event): void {
-    event.preventDefault();
-    const value = this.form.value;
-    if (this.form.valid) {
-      console.log(value);
-    } else {
-      console.log('Formulario invalido...');
-    }
+  buildFormVehiculo(): void {
+    this.formVehiculo = new FormGroup({
+      marca: new FormControl('', [Validators.required]),
+      modelo: new FormControl('', [Validators.required]),
+      año: new FormControl('', [Validators.required]),
+      placa: new FormControl('', [Validators.required]),
+      serial: new FormControl('', [Validators.required]),
+    });
   }
 
   editar(){
     this.disabled = !this.disabled;
     this.UsuarioService.updateUser(this.user.uid, this.usuario);
   }
+  cancel(){
+    location.reload();
+  }
+
+  agregarVehiculo(){
+    const newVehiculo: Vehiculo = {
+      marca: this.formVehiculo.get('marca').value,
+      modelo: this.formVehiculo.get('modelo').value,
+      ano: this.formVehiculo.get('año').value,
+      placa: this.formVehiculo.get('placa').value,
+      serial: this.formVehiculo.get('serial').value,
+      fechaIngreso: new Date(),
+      cliente: this.usuario,
+    };
+    this.VehiculosService.createNewVehiculo(newVehiculo);
+    const arrayVehiculos: Vehiculo[] = this.usuario.vehiculos;
+
+    arrayVehiculos.push(newVehiculo);
+    this.usuario = {
+      ... this.usuario = this.usuario,
+      vehiculos: arrayVehiculos
+    }
+
+    this.UsuarioService.updateUser(this.user.uid, this.usuario);
+    this.activacion(2);
+    alert('vehiculo agregado')
+  }
+
+  pedirCita(){
+    alert('cita pedida')
+  }
+
+  // getVehiculos(){
+  //   for (let index = 0; index < this.usuario.vehiculos.length; index++) {
+  //     this.VehiculosService.getVehiculoById(this.usuario.vehiculos[index]).subscribe((response) => {
+  //       this.currentVehiculo = response;
+  //     });
+  //     this.vehiculos.push(this.currentVehiculo);
+  //   }
+  // }
 }
