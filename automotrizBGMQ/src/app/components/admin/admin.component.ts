@@ -1,4 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from '../../models/usuario';
+import firebase from 'firebase';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AngularFireList } from '@angular/fire/database';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  DocumentReference
+} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-admin',
@@ -6,14 +19,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-
+  //Variables para abrir las listas de usuarios
   isOpenMecanicos: boolean = false;
   isOpenGerentes: boolean = false;
   isOpenClientes: boolean = false;
 
-  constructor() { }
+  //Declarar usuario y variables para traer datos de firebase
+  clientes: Usuario[] = [];
+  mecanicos: Usuario[] = [];
+  gerentes: Usuario[] = [];
+
+
+  constructor(private auth: AuthService, private userService: UsuarioService) { }
 
   ngOnInit(): void {
+    // this.clientes.length = 0;
+    // this.mecanicos.length = 0;
+    // this.gerentes.length = 0;
+    this.mostrarUsuarios();
   }
 
   openMecanicos(): boolean {
@@ -29,6 +52,20 @@ export class AdminComponent implements OnInit {
   openClientes(): boolean {
     this.isOpenClientes = !this.isOpenClientes
     return this.isOpenClientes
+  }
+
+  mostrarUsuarios(): void {
+    this.userService.getAllUsers().subscribe(users => {
+      users.forEach(user => {
+        if(user.rol === 'Cliente') {
+          this.clientes.push(user);
+        } else if(user.rol === 'Mecanico') {
+          this.mecanicos.push(user);
+        } else if(user.rol === 'Gerente') {
+          this.gerentes.push(user);
+        }
+      });
+    });
   }
 
 }

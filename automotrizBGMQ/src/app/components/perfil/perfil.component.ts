@@ -43,12 +43,12 @@ export class PerfilComponent implements OnInit {
     this.Auth.getCurrentUser().subscribe((user) => {
       this.user = user;
       this.UsuarioService.getUserById(user.uid).subscribe((response) => {
-        if(response.nombre == undefined){
+        if (response.nombre == undefined){
           const newUser: Usuario = {
             nombre: user.displayName,
             tipoID: null,
             cedula: 0,
-            telefono: "edite sus datos de perfil",
+            telefono: 'edite sus datos de perfil',
             email: user.email,
             clave: null,
             confirmacion: null,
@@ -62,6 +62,7 @@ export class PerfilComponent implements OnInit {
         }
       });
     })
+    });
     this.UsuarioService.updateUser(this.user.uid, this.usuario);
   }
   activacion(numero): void {
@@ -127,13 +128,4 @@ export class PerfilComponent implements OnInit {
   pedirCita(){
     alert('cita pedida')
   }
-
-  // getVehiculos(){
-  //   for (let index = 0; index < this.usuario.vehiculos.length; index++) {
-  //     this.VehiculosService.getVehiculoById(this.usuario.vehiculos[index]).subscribe((response) => {
-  //       this.currentVehiculo = response;
-  //     });
-  //     this.vehiculos.push(this.currentVehiculo);
-  //   }
-  // }
 }
