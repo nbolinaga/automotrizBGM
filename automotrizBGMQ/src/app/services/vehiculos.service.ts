@@ -7,15 +7,18 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Usuario } from '../models/usuario';
 import { Vehiculo } from '../models/vehiculo';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class VehiculosService {
   private vehiculoCollection: AngularFirestoreCollection<Vehiculo>;
+  private userCollection: AngularFirestoreCollection<Usuario>;
 
   constructor(private firestore: AngularFirestore) {
+    this.userCollection = this.firestore.collection<Usuario>('usuarios');
     this.vehiculoCollection = this.firestore.collection<Vehiculo>('vehiculos');
   }
 
@@ -44,8 +47,8 @@ export class UsuarioService {
       );
   }
 
-  createNewVehiculo(userId: string, newVehiculo: Vehiculo): Promise<void> {
-    return this.vehiculoCollection.doc<Vehiculo>(userId).set(newVehiculo);
+  createNewVehiculo(newVehiculo: Vehiculo): Promise<void> {
+    return this.vehiculoCollection.doc<Vehiculo>().set(newVehiculo);
   }
 
   updateVehiculo(userId: string, vehiculoData: Vehiculo): Promise<void> {

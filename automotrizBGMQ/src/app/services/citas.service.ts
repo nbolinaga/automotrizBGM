@@ -12,7 +12,7 @@ import { Cita } from '../models/cita';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class CitasService {
   private CitaCollection: AngularFirestoreCollection<Cita>;
 
   constructor(private firestore: AngularFirestore) {
