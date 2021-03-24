@@ -15,7 +15,7 @@ export class PerfilComponent implements OnInit {
   user: firebase.User = null;
   usuario: Usuario;
   form: FormGroup;
-  disabled: boolean =  true;
+  disabled =  true;
   activar = false;
 
   activacion(): void {
@@ -27,23 +27,23 @@ export class PerfilComponent implements OnInit {
     this.Auth.getCurrentUser().subscribe((user) => {
       this.user = user;
       this.UsuarioService.getUserById(user.uid).subscribe((response) => {
-        if(response.nombre == undefined){
+        if (response.nombre == undefined){
           const newUser: Usuario = {
             nombre: user.displayName,
             tipoID: null,
             cedula: 0,
-            telefono: "edite sus datos de perfil",
+            telefono: 'edite sus datos de perfil',
             email: user.email,
             clave: null,
             confirmacion: null,
-            rol: "Cliente"
+            rol: 'Cliente'
           };
           this.UsuarioService.createNewUser(user.uid, newUser);
         } else {
           this.usuario = response;
         }
       });
-    })
+    });
 
 
 

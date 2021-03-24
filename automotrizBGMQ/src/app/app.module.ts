@@ -24,7 +24,7 @@ import { ContactanosComponent } from './components/contactanos/contactanos.compo
 import { GerenteComponent } from './components/gerente/gerente.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
-import {AuthService} from './services/auth.service';
+import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
@@ -33,13 +33,13 @@ const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'citas', component: CitasComponent, canActivate:[AuthGuardGuard]},
-  {path: 'perfil', component: PerfilComponent, canActivate:[AuthGuardGuard]},
-  {path: 'autos', component: AutosComponent, canActivate:[AuthGuardGuard]},
-  {path: 'admin', component: AdminComponent, canActivate:[AuthGuardGuard]},
-  {path: 'gerente', component: GerenteComponent, canActivate:[AuthGuardGuard]},
-  {path: 'ordenes', component: OrdenesComponent, canActivate:[AuthGuardGuard]},
-  {path: 'reportes', component: ReportesComponent, canActivate:[AuthGuardGuard]}
+  {path: 'citas', component: CitasComponent, canActivate: [AuthGuardGuard]},
+  {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuardGuard]},
+  {path: 'autos', component: AutosComponent, canActivate: [AuthGuardGuard]},
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuardGuard]},
+  {path: 'gerente', component: GerenteComponent, canActivate: [AuthGuardGuard]},
+  {path: 'reportes', component: ReportesComponent, canActivate: [AuthGuardGuard]}
+  {path: 'calendario', component: CalendarioComponent, canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({
@@ -58,6 +58,8 @@ const routes: Routes = [
     GerenteComponent,
     OrdenesComponent
     ReportesComponent,
+    CalendarioComponent
+
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
@@ -72,7 +74,7 @@ const routes: Routes = [
     FormsModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 
