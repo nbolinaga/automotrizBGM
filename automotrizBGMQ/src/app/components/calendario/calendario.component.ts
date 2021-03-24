@@ -32,8 +32,7 @@ export class CalendarioComponent implements OnInit {
   }
 
   getDaysFromDate(month: number, year: number): void {
-    // Agregué Nuevamente el UTC para evitar problemas con zonas horarias:
-    const startDate = moment.utc(`${year}/${month}/01`);
+    const startDate = moment(`${year}/${month}/01`);
     const endDate = startDate.clone().endOf('month');
     this.dateSelect = startDate;
 
