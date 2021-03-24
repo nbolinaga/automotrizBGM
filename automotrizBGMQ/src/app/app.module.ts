@@ -19,7 +19,7 @@ import { CitasComponent } from './components/citas/citas.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AutosComponent } from './components/autos/autos.component';
 import { AdminComponent } from './components/admin/admin.component';
-// import { CalendarioComponent } from './components/calendario/calendario.component';
+import { CalendarioComponent } from './components/calendario/calendario.component';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
 import { GerenteComponent } from './components/gerente/gerente.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
@@ -38,7 +38,7 @@ const routes: Routes = [
   {path: 'autos', component: AutosComponent, canActivate: [AuthGuardGuard]},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuardGuard]},
   {path: 'gerente', component: GerenteComponent, canActivate: [AuthGuardGuard]},
-  {path: 'reportes', component: ReportesComponent, canActivate: [AuthGuardGuard]}
+  {path: 'reportes', component: ReportesComponent, canActivate: [AuthGuardGuard]},
   {path: 'calendario', component: CalendarioComponent, canActivate:[AuthGuardGuard]}
 ];
 
@@ -56,7 +56,7 @@ const routes: Routes = [
     ContactanosComponent,
     AdminComponent,
     GerenteComponent,
-    OrdenesComponent
+    OrdenesComponent,
     ReportesComponent,
     CalendarioComponent
 
