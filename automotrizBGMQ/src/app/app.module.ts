@@ -32,20 +32,13 @@ const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
-<<<<<<< HEAD
-  {path: 'citas', component: CitasComponent},
-  {path: 'perfil', component: PerfilComponent},
-  {path: 'autos', component: AutosComponent},
-  {path: 'admin', component: AdminComponent},
-=======
   {path: 'citas', component: CitasComponent, canActivate:[AuthGuardGuard]},
   {path: 'perfil', component: PerfilComponent, canActivate:[AuthGuardGuard]},
   {path: 'autos', component: AutosComponent, canActivate:[AuthGuardGuard]},
   {path: 'admin', component: AdminComponent, canActivate:[AuthGuardGuard]},
-  {path: 'gerente',component: GerenteComponent, canActivate:[AuthGuardGuard]},
+  {path: 'gerente', component: GerenteComponent, canActivate:[AuthGuardGuard]},
   {path: 'reportes', component: ReportesComponent, canActivate:[AuthGuardGuard]}
   /*{path: 'calendario', component: CalendarioComponent, canActivate:[AuthGuardGuard] }*/
->>>>>>> main
 ];
 
 @NgModule({
