@@ -32,12 +32,12 @@ const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'citas', component: CitasComponent, canActivate:[AuthGuardGuard]},
-  {path: 'perfil', component: PerfilComponent, canActivate:[AuthGuardGuard]},
-  {path: 'autos', component: AutosComponent, canActivate:[AuthGuardGuard]},
-  {path: 'admin', component: AdminComponent, canActivate:[AuthGuardGuard]},
-  {path: 'gerente', component: GerenteComponent, canActivate:[AuthGuardGuard]},
-  {path: 'reportes', component: ReportesComponent, canActivate:[AuthGuardGuard]}
+  {path: 'citas', component: CitasComponent, canActivate: [AuthGuardGuard]},
+  {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuardGuard]},
+  {path: 'autos', component: AutosComponent, canActivate: [AuthGuardGuard]},
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuardGuard]},
+  {path: 'gerente', component: GerenteComponent, canActivate: [AuthGuardGuard]},
+  {path: 'reportes', component: ReportesComponent, canActivate: [AuthGuardGuard]}
   /*{path: 'calendario', component: CalendarioComponent, canActivate:[AuthGuardGuard] }*/
 ];
 
@@ -55,7 +55,7 @@ const routes: Routes = [
     ContactanosComponent,
     AdminComponent,
     ReportesComponent,
-
+    CalendarioComponent
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
