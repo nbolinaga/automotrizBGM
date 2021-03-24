@@ -19,13 +19,14 @@ import { CitasComponent } from './components/citas/citas.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AutosComponent } from './components/autos/autos.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { CalendarioComponent } from './components/calendario/calendario.component';
+// import { CalendarioComponent } from './components/calendario/calendario.component';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
 import { GerenteComponent } from './components/gerente/gerente.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 import {AuthService} from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrdenesComponent } from './components/ordenes/ordenes.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 
 const routes: Routes = [
@@ -36,9 +37,9 @@ const routes: Routes = [
   {path: 'perfil', component: PerfilComponent, canActivate:[AuthGuardGuard]},
   {path: 'autos', component: AutosComponent, canActivate:[AuthGuardGuard]},
   {path: 'admin', component: AdminComponent, canActivate:[AuthGuardGuard]},
-  {path: 'gerente',component: GerenteComponent, canActivate:[AuthGuardGuard]},
+  {path: 'gerente', component: GerenteComponent, canActivate:[AuthGuardGuard]},
+  {path: 'ordenes', component: OrdenesComponent, canActivate:[AuthGuardGuard]},
   {path: 'reportes', component: ReportesComponent, canActivate:[AuthGuardGuard]}
-  /*{path: 'calendario', component: CalendarioComponent, canActivate:[AuthGuardGuard] }*/
 ];
 
 @NgModule({
@@ -54,8 +55,9 @@ const routes: Routes = [
     LandingPageComponent,
     ContactanosComponent,
     AdminComponent,
+    GerenteComponent,
+    OrdenesComponent
     ReportesComponent,
-
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],

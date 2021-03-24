@@ -1,0 +1,15 @@
+@import "../../../variables.scss";
+
+.todo {
+    background-color: $base;
+    padding: 25vh;
+    padding-bottom: 40vh;
+    min-height: auto;
+  }
+
+.form-group{
+    background-color: $detalles;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
