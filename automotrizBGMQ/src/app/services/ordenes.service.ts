@@ -13,7 +13,7 @@ import { Orden } from '../models/orden';
 @Injectable({
   providedIn: 'root'
 })
-export class Service {
+export class OrdenesService {
   private ordenCollection: AngularFirestoreCollection<Orden>;
   private userCollection: AngularFirestoreCollection<Usuario>;
 
