@@ -1,34 +1,34 @@
 <div class="todo">
     <h2>Ordenes</h2>
-    <form [formGroup]= "formOrden" (ngSubmit)="agregarOrden()" class="form-group">
-        <label>Marca</label>
-        <input formControlName= "marca" type="text">
-        <label>Modelo</label> 
-        <input formControlName= "modelo"  type="text">
-        <label>Año</label>
-        <input formControlName= "año" type="number"> 
-        <label>Serial</label>
-        <input formControlName="serial" type="text">
-        <label>Color</label>
-        <input formControlName= "color" type="text">
-        <label>Placa</label>
-        <input formControlName= "placa" type="text">
-        <label>Km de ingreso</label>
-        <input formControlName= "kmIngreso" type="number">
-        <label>Nivel gasolina</label>
-        <input formControlName= "nivelGas" type="text">
-        <label>Extras</label>
-        <input formControlName= "extras" type="text">
-        <label>Cauchos de repuesto</label>
-        <input formControlName= "cauchosRepuesto" type="checkbox">
+    <form [formGroup]="formOrden" (ngSubmit)="agregarOrden()" class="form-group">
+        <label for="marca">Marca</label>
+        <input type="text" formControlName="marca">
+        <label for="modelo">Modelo</label>
+        <input type="text" formControlName="modelo">
+        <label for="año">Año</label>
+        <input type="number" formControlName="año">
+        <label for="serial">Serial</label>
+        <input type="text" formControlName="serial">
+        <label for="color">Color</label>
+        <input type="text" formControlName="color">
+        <label for="placa">Placa</label>
+        <input type="text" formControlName="placa">
+        <label for="kmIngreso">Km de ingreso</label>
+        <input type="number" formControlName="kmIngreso">
+        <label for="nivelGas">Nivel gasolina</label>
+        <input type="text" formControlName="nivelGas">
+        <label for="extras">Extras</label>
+        <input type="text"  formControlName="extras">
+        <!-- <label>Cauchos de repuesto</label>
+        <input formControlName="cauchosRepuesto" type="checkbox">
         <label>Llaves</label>
-        <input formControlName= "llaves" type="checkbox">
+        <input formControlName="llaves" type="checkbox">
         <label>Gato</label>
-        <input formControlName= "gatp" type="checkbox">
+        <input formControlName="gato" type="checkbox">
         <label>Herramientas</label>
         <input formControlName="herramientas" type="checkbox">
         <label>Reproductor</label>
-        <input formControlName="reproductor" type="checkbox">
+        <input formControlName="reproductor" type="checkbox"> -->
         <label>Otros</label>
         <input formControlName="otros" type="text">
         <button type="submit" >Enviar Orden</button>

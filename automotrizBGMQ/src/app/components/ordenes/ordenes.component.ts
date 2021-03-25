@@ -24,6 +24,7 @@ export class OrdenesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.crearForm();
   }
 
   crearForm(): void {
@@ -37,11 +38,11 @@ export class OrdenesComponent implements OnInit {
       kmIngreso:  ['', Validators.required],
       nivelGas: ['', Validators.required],
       extras:  ['', Validators.required],
-      cauchos:  ['', Validators.required],
-      llaves:  ['', Validators.required],
-      gato:  ['', Validators.required],
-      herramientas:  ['', Validators.required],
-      reproductor:  ['', Validators.required],
+      // cauchosRepuesto:  ['', Validators.required],
+      // llaves:  ['', Validators.required],
+      // gato:  ['', Validators.required],
+      // herramientas:  ['', Validators.required],
+      // reproductor:  ['', Validators.required],
       otros:  ['', Validators.required],
     })
   }
@@ -58,7 +59,7 @@ export class OrdenesComponent implements OnInit {
       gasolina: this.formOrden.get('nivelGas').value,
       extras: this.formOrden.get('extras').value,
       fechaIngreso: new Date(),
-      cliente: this.usuario
+      activo: true
     }
     const newOrden: Orden = {
       vehiculo: newVehiculo,
