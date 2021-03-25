@@ -62,10 +62,10 @@ export class OrdenesComponent implements OnInit {
     }
     const newOrden: Orden = {
       vehiculo: newVehiculo,
-      codigoQR: this.formOrden.get('modelo').value,
-      repuestos: this.formOrden.get('año').value,
-      procedimiento: this.formOrden.get('placa').value,
-      diagnostico: this.formOrden.get('serial').value,
+      codigoQR: 'codigoQR',
+      repuestos: 'respuestos',
+      procedimiento: 'procedimiento',
+      diagnostico: 'diagnostico',
       finalizado: false
     };
     this.OrdenesService.createNewOrden(newOrden);
