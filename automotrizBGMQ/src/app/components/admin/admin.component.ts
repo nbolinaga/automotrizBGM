@@ -29,6 +29,12 @@ export class AdminComponent implements OnInit {
   mecanicos: Usuario[] = [];
   gerentes: Usuario[] = [];
 
+  //Booleano para el popup de editar
+  status: boolean = false;
+
+  //Si esta abierto el cambio de rol
+  cambio: boolean = false;
+
 
   constructor(private auth: AuthService, private userService: UsuarioService) { }
 
@@ -66,6 +72,15 @@ export class AdminComponent implements OnInit {
         }
       });
     });
+  }
+
+  cambiarRoles(): void {
+    this.cambio = !this.cambio;
+  }
+
+  cambiarStatus(): void {
+    this.cambio = false;
+    this.status = !this.status;
   }
 
 }

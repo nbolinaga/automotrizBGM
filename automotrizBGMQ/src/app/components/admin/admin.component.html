@@ -34,7 +34,7 @@
     <div class="lista" *ngFor="let cliente of clientes"> <!-- Hacer ngFor para cada uno de los usuarios -->
       <div>
         <h3>{{ cliente.nombre }}</h3>
-        <button>EDITAR</button>
+        <button (click)="cambiarStatus()">EDITAR</button>
       </div>
     </div>
   </div>
@@ -42,6 +42,24 @@
 
 
 <!-- Pop-up de editar -->
-<div class="popup">
-
+<div class="popup" [ngClass]="status ? 'popupOpen' : ''">
+  <div class="editarUsuario">
+    <div class="titulo">
+      <h3>Nombre</h3>
+      <a class="cerrar" (click)="cambiarStatus()">X</a>
+    </div>
+    <button class="btn-alt elimUser">Eliminar Usuario</button>
+    <div class="cambiar">
+      <button class="btn-sec cambiarRol" (click)="cambiarRoles()">Cambiar rol de usuario</button>
+      <div class="opciones" *ngIf="cambio">
+        <label for="roles">Roles</label>
+        <select id="roles">
+          <option value="cliente">Cliente</option>
+          <option value="gerente">Gerente</option>
+          <option value="mecanico">Mecanico</option>
+          <option value="administrador">Administrador</option>
+        </select>
+      </div>
+    </div>
+  </div>
 </div>
