@@ -147,5 +147,7 @@
 //Clase auxiliar para mostrar el popup
 .popupOpen {
   display: flex;
+  width: 100vw;
+  height: 100vh;
   transform: translate(-12%, -15%);
 }
