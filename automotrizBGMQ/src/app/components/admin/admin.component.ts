@@ -28,6 +28,16 @@ export class AdminComponent implements OnInit {
   clientes: Usuario[] = [];
   mecanicos: Usuario[] = [];
   gerentes: Usuario[] = [];
+  usuario: Usuario = {
+    nombre: 'nombre',
+    cedula: 1,
+    tipoID: 'tipoID',
+    id: 'id',
+    email: 'ejemplo@gmial.com',
+    telefono: 'telefono',
+    clave: 'clave',
+    confirmacion: 'confirmacion'
+  };
 
   //Booleano para el popup de editar
   status: boolean = false;
@@ -78,7 +88,13 @@ export class AdminComponent implements OnInit {
     this.cambio = !this.cambio;
   }
 
-  cambiarStatus(): void {
+  getUser(persona: Usuario): Usuario {
+    this.usuario = persona;
+    return this.usuario
+  }
+
+  cambiarStatus(persona: Usuario): void {
+    this.getUser(persona);
     this.cambio = false;
     this.status = !this.status;
   }
