@@ -1,4 +1,5 @@
 import { Usuario } from "./usuario";
+import { Vehiculo } from "./vehiculo";
 
 export interface Cita{
   id: string;
@@ -6,4 +7,5 @@ export interface Cita{
   fecha: Date;
   confirmada: boolean;
   descripcion: string;
+  vehiculo: Vehiculo;
 }
