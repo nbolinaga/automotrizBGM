@@ -1,0 +1,62 @@
+<div class="contenedor">
+  <div class="opciones">
+    <label for="reportes">Reportes:</label>
+    <select id="reportes" name="reportes" (change)="cambio($event)">
+      <option value="default">Seleccionar...</option>
+      <option value="vehiculos">Vehiculos</option>
+      <option value="clientes">Clientes</option>
+      <option value="mecanicos">Mecanicos</option>
+      <option value="general">General</option>
+    </select>
+  </div>
+  <div class="mostrar-reportes">
+    <div class="vehiculos" *ngIf="vehiculos">
+      <div class="seleccionar">
+        <label for="carros">Reporte de vehiculos:</label>
+        <select id="carros">
+          <option value="default">Seleccionar...</option>
+          <option *ngFor="" value=""></option>
+        </select>
+      </div>
+      <div class="contenido">
+
+      </div>
+    </div>
+    <div class="clientes" *ngIf="clientes">
+      <div class="seleccionar">
+        <label for="personas">Reporte de clientes:</label>
+        <select id="personas">
+          <option value="default">Seleccionar...</option>
+          <option *ngFor="" value=""></option>
+        </select>
+      </div>
+      <div class="contenido">
+
+      </div>
+    </div>
+    <div class="mecanicos" *ngIf="mecanicos">
+      <div class="seleccionar">
+        <label for="meca">Reporte de mecanicos:</label>
+        <select id="meca">
+          <option value="default">Seleccionar...</option>
+          <option *ngFor="" value=""></option>
+        </select>
+      </div>
+      <div class="contenido">
+
+      </div>
+    </div>
+    <div class="general" *ngIf="general">
+      <div class="seleccionar">
+        <label for="gen">Reporte general:</label>
+        <select id="gen">
+          <option value="default">Seleccionar...</option>
+          <option *ngFor="" value=""></option>
+        </select>
+      </div>
+      <div class="contenido">
+
+      </div>
+    </div>
+  </div>
+</div>

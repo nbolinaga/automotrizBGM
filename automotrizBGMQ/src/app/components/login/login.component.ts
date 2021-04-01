@@ -9,6 +9,8 @@ import {
 import { AuthService } from 'src/app/services/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { Usuario } from '../../models/usuario';
+import { UsuarioService } from '../../services/usuario.service';
 
 
 @Component({
@@ -48,7 +50,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private fb : FormBuilder,
-    private router: Router){
+    private router: Router,
+    private UsuarioService: UsuarioService){
   }
 
   ngOnInit(): void {
@@ -93,23 +96,24 @@ export class LoginComponent implements OnInit {
 
   async enviarRegistro(){
     try{
-      const formValues = {
-        displayName: this.registroForm.get('displayName').value,
+      const newUser: Usuario = {
+        nombre: this.registroForm.get('displayName').value,
         tipoID: this.registroForm.get('tipoID').value,
-        id: this.registroForm.get('id').value,
-        tel: this.registroForm.get('tel').value,
+        cedula: this.registroForm.get('id').value,
+        telefono: this.registroForm.get('tel').value,
         email: this.registroForm.get('email').value,
-        password: this.registroForm.get('password').value,
-        password2: this.registroForm.get('password2').value,
+        clave: this.registroForm.get('password').value,
+        confirmacion: this.registroForm.get('password2').value,
       };
-      if(formValues.displayName !== ''){
-        if(formValues.tipoID !== ''){
-          if(Number(formValues.id)){
-            if(Number(formValues.tel)){
+      if(newUser.nombre !== ''){
+        if(newUser.tipoID !== ''){
+          if(Number(newUser.cedula)){
+            if(Number(newUser.telefono)){
               if(this.registroForm.get('email').valid){
                 if(this.registroForm.get('password').valid){
-                  if(formValues.password === formValues.password2){
-                    const user = await this.authService.signUpWithEmail(formValues.displayName, formValues.email, formValues.password);
+                  if(newUser.clave === newUser.confirmacion){
+                    const user = await this.authService.signUpWithEmail(newUser.nombre , newUser.email, newUser.clave);
+                    await this.UsuarioService.createNewUser(user.uid, newUser);
                     if(user){
                       this.router.navigate(['/perfil']);
                     }
@@ -136,7 +140,7 @@ export class LoginComponent implements OnInit {
         }
         else{
           alert('Seleccione un tipo de identificación');
-        }       
+        }
       }
       else{
         alert('No olvide ingresar su nombre.');

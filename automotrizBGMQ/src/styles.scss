@@ -5,7 +5,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
+
 }
 
 h1,h2,h3,h4,h5,h6,p,a{
@@ -23,7 +23,7 @@ body {
 /* width */
 ::-webkit-scrollbar {
   width: 2vw;
-  background-image: url("./assets/road.svg");
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/road.svg?alt=media");
   background-position: bottom;
 }
 
@@ -34,7 +34,7 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: url("./assets/carTop.svg") 0 0 no-repeat ;
+  background: url("https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/carTop.svg?alt=media") 0 0 no-repeat ;
   background-position: center;
   min-height: 40px;
 }
@@ -64,5 +64,9 @@ body {
 }
 .btn-altbla{
     background-color: $blanco;
-    color: $base; 
+    color: $base;
 }
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
