@@ -16,7 +16,7 @@ export class CitasService {
   private CitaCollection: AngularFirestoreCollection<Cita>;
 
   constructor(private firestore: AngularFirestore) {
-    this.CitaCollection = this.firestore.collection<Cita>('Citas');
+    this.CitaCollection = this.firestore.collection<Cita>('citas');
   }
 
   getAllUserCitas(): Observable<Cita[]> {

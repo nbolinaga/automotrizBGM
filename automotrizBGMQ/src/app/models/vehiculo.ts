@@ -22,5 +22,4 @@ export interface Vehiculo{
     otros: string,
   ];
   foto?: string;
-  cliente: Usuario;
 }

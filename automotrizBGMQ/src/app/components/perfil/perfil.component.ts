@@ -31,12 +31,13 @@ export class PerfilComponent implements OnInit {
   currentVehiculo: Vehiculo;
   currentCita: Cita;
 
-  constructor(private db: AngularFirestore, private Auth: AuthService, private UsuarioService: UsuarioService, private VehiculosService: VehiculosService) {
+  constructor(private db: AngularFirestore, private Auth: AuthService, private UsuarioService: UsuarioService, private VehiculosService: VehiculosService, private CitasService: CitasService) {
 
   }
 
   ngOnInit(): void {
     this.getUser();
+    this.citas = this.usuario.citas;
   }
 
   getUser(): void {
@@ -65,11 +66,11 @@ export class PerfilComponent implements OnInit {
     this.UsuarioService.updateUser(this.user.uid, this.usuario);
   }
   activacion(numero): void {
-    if(numero == 1)
-    {
+    if(numero == 1){
       this.activar = !this.activar;
       this.buildFormCita();
-    } else {
+    } 
+    else{
       this.activarAgregar = !this.activarAgregar;
       this.buildFormVehiculo();
     }
@@ -108,24 +109,45 @@ export class PerfilComponent implements OnInit {
       placa: this.formVehiculo.get('placa').value,
       serial: this.formVehiculo.get('serial').value,
       fechaIngreso: new Date(),
-      cliente: this.usuario,
     };
+
     this.VehiculosService.createNewVehiculo(newVehiculo);
     const arrayVehiculos: Vehiculo[] = this.usuario.vehiculos;
-
-    arrayVehiculos.push(newVehiculo);
-    this.usuario = {
-      ... this.usuario = this.usuario,
-      vehiculos: arrayVehiculos
+    if(arrayVehiculos.length<3){
+      arrayVehiculos.push(newVehiculo);
+      this.UsuarioService.updateUser(this.user.uid, this.usuario = {
+        ... this.usuario = this.usuario,
+        vehiculos: arrayVehiculos,
+      });
+      alert('Vehiculo agregado.')
     }
-
-    this.UsuarioService.updateUser(this.user.uid, this.usuario);
-    this.activacion(2);
-    alert('vehiculo agregado')
+    else{
+      alert('No puede añadir más de 3 vehiculos.')
+    }
   }
 
   pedirCita(){
-    alert('cita pedida')
+    const newCita: Cita = {
+      cliente: this.usuario.nombre,
+      estado: "Esperando fecha",
+      confirmada: false,
+      vehiculo: this.formCita.get('vehiculo').value,
+      motivo: this.formCita.get('motivo').value,
+      descripcion: this.formCita.get('descripcion').value,
+    };
+    this.CitasService.createNewCita(this.user.uid,newCita);
+    const arrayCitas: Cita[] = this.usuario.citas;
+    if(arrayCitas.length<3){
+      arrayCitas.push(newCita);
+      this.UsuarioService.updateUser(this.user.uid, this.usuario = {
+        ... this.usuario = this.usuario,
+        citas: arrayCitas,
+      });
+      alert('La cita se ha solicitado exitosamente.')
+    }
+    else{
+      alert('Posee todos sus vehiculos en reparación, espere a su entrega para solicitar una nueva cita.')
+    }
   }
 
   // getVehiculos(){

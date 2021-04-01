@@ -42,10 +42,10 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let cita of citas">
-                      <td>jeep</td>
+                      <td>{{cita.vehiculo}</td>
                       <td>{{cita.fecha}}</td>
-                      <td>{{cita.descripcion}}</td>
-                      <td>{{cita.confirmada}}</td>
+                      <td>{{cita.motivo}}</td>
+                      <td>{{cita.estado}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -64,7 +64,10 @@
               <div class="contenedor-inputs">
                   <label for="Vehiculos">Seleciona un Vehiculo:<span>*</span></label>
                   <select id="Vehiculos" formControlName="vehiculo">
-                      <option *ngFor="let vehiculo of vehiculos">{{vehiculo.placa}}</option>
+                    <!-- <option *ngFor="let vehiculo of vehiculos">{{vehiculo.placa}}</option>--> 
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
                   </select>
                   <label for="Opciones">Seleciona Motivo General:<span>*</span></label>
                   <select id="Opciones" formControlName="motivo">
