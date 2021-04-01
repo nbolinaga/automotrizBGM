@@ -37,7 +37,6 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-    this.citas = this.usuario.citas;
   }
 
   getUser(): void {
@@ -65,6 +64,7 @@ export class PerfilComponent implements OnInit {
     })
     this.UsuarioService.updateUser(this.user.uid, this.usuario);
   }
+
   activacion(numero): void {
     if(numero == 1){
       this.activar = !this.activar;
@@ -83,6 +83,7 @@ export class PerfilComponent implements OnInit {
       descripcion: new FormControl('', [Validators.required])
     });
   }
+  
   buildFormVehiculo(): void {
     this.formVehiculo = new FormGroup({
       marca: new FormControl('', [Validators.required]),
@@ -113,18 +114,20 @@ export class PerfilComponent implements OnInit {
 
     this.VehiculosService.createNewVehiculo(newVehiculo);
     const arrayVehiculos: Vehiculo[] = this.usuario.vehiculos;
-    if(arrayVehiculos.length<3){
-      arrayVehiculos.push(newVehiculo);
-      this.UsuarioService.updateUser(this.user.uid, this.usuario = {
-        ... this.usuario = this.usuario,
-        vehiculos: arrayVehiculos,
-      });
-      alert('Vehiculo agregado.')
-    }
-    else{
-      alert('No puede añadir más de 3 vehiculos.')
-    }
+    arrayVehiculos.push(newVehiculo);
+    this.UsuarioService.updateUser(this.user.uid, this.usuario = {
+      ... this.usuario = this.usuario,
+      vehiculos: arrayVehiculos,
+    });
+    alert('Vehiculo agregado.')
   }
+
+  /* ACOMODAR SERVICIO
+
+  eliminarVehiculo(){
+    this.VehiculosService.deleteVehiculo(this.user.uid);
+  }
+  */
 
   pedirCita(){
     const newCita: Cita = {
