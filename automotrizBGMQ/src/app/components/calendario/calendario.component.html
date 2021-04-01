@@ -2,7 +2,7 @@
   <div class="botones">
     <button (click)="changeMonth(-1)" class="btn-alt">Anterior</button>
   </div>
-  <h1>{{ dateSelect | date: "MMMM, YYYY"}}</h1>
+  <h1>{{ dateSelect | date: "MMMM, yyyy"}}</h1>
   <div>
     <button (click)="changeMonth(1)" class="btn-alt">Siguiente</button>
   </div>
@@ -11,11 +11,10 @@
   <li *ngFor="let day of week" class="day-name">{{ day | slice: 0:3 }}</li>
 </ol>
 <div class="wrapper-calendar">
-
   <ol class="dias-mes">
     <li
       (click)="clickDay(day)"
-      [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
+      [style.gridColumnStart]="first ? day?.indexWeek+1 : 'auto'"
       *ngFor="let day of monthSelect; let first = first"
     >
       <span>{{ day?.value }}</span>

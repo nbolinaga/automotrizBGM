@@ -109,3 +109,32 @@
     }
   }
 }
+
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+
+  #botones {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+
+    .boton1, .boton2 {
+      margin: 2vh auto !important;
+      width: 80vw !important;
+    }
+
+    .boton2 {
+      margin-bottom: 8vh !important;
+    }
+  }
+
+  #info-auto {
+    span {
+      font-size: 3.2vh !important;
+    }
+
+    .fecha {
+      font-size: 2vh !important;
+    }
+  }
+}

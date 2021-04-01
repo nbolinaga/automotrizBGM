@@ -1,0 +1,49 @@
+@import "../../../variables.scss";
+
+.contenedor {
+  background-color: $base;
+  height: 100vh;
+  font-family: $fonts;
+
+  .opciones {
+    padding-top: 8rem;
+    color: $detalles;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    label {
+      margin-right: 2rem;
+      font-size: 1.6rem;
+    }
+  }
+
+  select {
+    outline: none;
+    border: none;
+    width: 20vw;
+    height: 6vh;
+    font-family: $fonts;
+    font-size: 1.3rem;
+    background-color: $blanco;
+  }
+
+  .seleccionar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    label {
+      color: $blanco;
+      font-size: 2rem;
+      margin: 3rem 3rem 2rem 4vw;
+    }
+
+    select {
+      margin-top: 1.1rem;
+    }
+
+  }
+
+}

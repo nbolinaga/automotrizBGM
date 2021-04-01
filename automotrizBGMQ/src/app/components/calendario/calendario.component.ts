@@ -21,8 +21,8 @@ export class CalendarioComponent implements OnInit {
   ];
 
   monthSelect: any[];
-  dateSelect: any;
-  dateValue: any;
+  dateSelect;
+  dateValue;
 
 
   constructor( private data: DataService) { }

@@ -11,7 +11,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
-
+import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
@@ -26,15 +26,20 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 
 import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrdenesComponent } from './components/ordenes/ordenes.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'citas', component: CitasComponent},
-  {path: 'perfil', component: PerfilComponent},
-  {path: 'autos', component: AutosComponent},
-  {path: 'admin', component: AdminComponent},
+  {path: 'citas', component: CitasComponent, canActivate: [AuthGuardGuard]},
+  {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuardGuard]},
+  {path: 'autos', component: AutosComponent, canActivate: [AuthGuardGuard]},
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuardGuard]},
+  {path: 'gerente', component: GerenteComponent, canActivate: [AuthGuardGuard]},
+  {path: 'reportes', component: ReportesComponent, canActivate: [AuthGuardGuard]},
+  {path: 'calendario', component: CalendarioComponent, canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({
@@ -50,6 +55,10 @@ const routes: Routes = [
     LandingPageComponent,
     ContactanosComponent,
     AdminComponent,
+    GerenteComponent,
+    OrdenesComponent,
+    ReportesComponent,
+    CalendarioComponent
 
   ],
   imports: [
@@ -62,6 +71,7 @@ const routes: Routes = [
     AngularFireAuthModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   exports: [RouterModule],
   providers: [AuthService],
