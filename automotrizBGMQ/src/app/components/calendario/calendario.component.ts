@@ -1,8 +1,16 @@
-
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import * as moment from 'moment';
 moment.locale('es');
+
+@Component({
+  selector: 'app-calendario',
+  templateUrl: './calendario.component.html',
+  styleUrls: ['./calendario.component.scss']
+})
+
+
+export class CalendarioComponent implements OnInit {
 
   week = [
     'Lunes',
@@ -30,7 +38,7 @@ moment.locale('es');
     const endDate = startDate.clone().endOf('month');
     this.dateSelect = startDate;
 
-
+  }
   changeMonth(flag: number): void {
     if (flag < 0) {
       const prevDate = this.dateSelect.clone().subtract(1, 'month');
@@ -41,7 +49,6 @@ moment.locale('es');
     }
   }
 
-
   clickDay(day): void {
     const monthYear = this.dateSelect.format('YYYY-MM');
     const parse = `${monthYear}-${day.value}`;
@@ -49,3 +56,4 @@ moment.locale('es');
     this.dateValue = objectDate;
     this.data.fechaCitas = this.dateValue;
   }
+}
