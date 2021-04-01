@@ -1,74 +1,55 @@
-<section class="fondo">
+<section id="main-container">
     <div class="distribucion1">
         <div id="info">
-            <img src="{{user.photoURL}}" alt="Foto de perfil">
-            <h3>{{user.displayName}}</h3>
-            <h4>Cliente</h4>
+            <h3 id="nombre">{{usuario.nombre}}</h3>
+            <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/user.png?alt=media" alt="Foto de perfil">
+            <h4>{{usuario.rol}}</h4>
             <div class="datos">
-                <p>{{user.id}}</p>
-                <p>{{user.phoneNumber}}</p>
-                <p>{{user.email}}</p>
+                <p>Cedula: <input [(ngModel)]="usuario.cedula" type="number" [disabled]="disabled"/></p>
+                <p>Telefono: <input [(ngModel)]="usuario.telefono" type="string" [disabled]="disabled"/></p>
+                <p>Email: <input [(ngModel)]="usuario.email" type="string" [disabled]="disabled"/></p>
             </div>
-            <button class="btn-pri">Editar Perfil</button>
-            <button class="btn-alt">Solicitar cambio de clave</button>
+            <button class="btn-alt" (click)="editar()" [ngClass]="{'guardar': !disabled}"><p *ngIf="disabled">Editar Perfil</p><p *ngIf="!disabled">Guardar Cambios</p></button>
+            <button class="btn-alt cancel" *ngIf="!disabled" (click)="cancel()">Cancelar Cambios</button>
         </div>
     </div>
     <div class="distribucion2">
         <div id="vehiculos">
-            <h1>Mis Vehículos</h1>
-                <div class="imagenes">
-                    <a href="#">
-                        <img src="../../assets/vehiculo1.png" alt="Vehículo 1">
-                        <p>Vehículo 1</p>
-                        <p>Placa 1</p>
-                    </a>
-                    <a href="#">
-                        <img src="../../assets/vehiculo2.png" alt="Vehículo 2">
-                        <p>Vehículo 2</p>
-                        <p>Placa 2</p>
-                    </a>
-                    <a class="ultimo" href="#">
-                        <img src="../../assets/vehiculo3.png" alt="Vehículo 3">
-                        <p>Vehículo 3</p>
-                        <p>Placa 3</p>
-                    </a>
+            <h3 id="title-vehiculos">Vehículos</h3>
+              <div id="vehiculos-container">
+                <div class="vehiculo-thumb" *ngFor="let vehiculo of usuario.vehiculos">
+                  <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo1.png?alt=media" alt="">
+                  <p>{{vehiculo.marca}}</p>
+                  <p>{{vehiculo.placa}}</p>
+                  <button class="btn-pri">Desactivar</button>
+                  <button class="btn-alt">Eliminar</button>
                 </div>
-            <button class="btn-alt">Modificar</button>
+                <div class="agregar-car" *ngFor="let vacio of [].constructor(3 - usuario.vehiculos.length)" (click)="activacion(0)">
+                  <i class="fas fa-plus"></i>
+                </div>
+              </div>
         </div>
         <div id="citas">
-            <h1>Citas</h1>
+            <h3 id="title-citas">Citas</h3>
             <table>
                 <thead>
                     <tr>
                         <td>Vehículo</td>
-                        <td>N° de Orden</td>
-                        <td>Estado</td>
+                        <td>Fecha</td>
                         <td>Descripción</td>
+                        <td>Estado</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Jeep</td>
-                        <td>2567890</td>
-                        <td>Por confirmar</td>
-                        <td>Daños en el motor</td>
-                    </tr>
-                    <tr>
-                        <td>Hyunday</td>
-                        <td>2567845</td>
-                        <td>En reparacion</td>
-                        <td>Pastillas de freno</td>
-                    </tr>
-                    <tr>
-                        <td>Mustang</td>
-                        <td>2567823</td>
-                        <td>Entregado</td>
-                        <td>Cambio de aceite</td>
+                    <tr *ngFor="let cita of citas">
+                      <td>jeep</td>
+                      <td>{{cita.fecha}}</td>
+                      <td>{{cita.descripcion}}</td>
+                      <td>{{cita.confirmada}}</td>
                     </tr>
                 </tbody>
             </table>
-            <button class="btn-pri">Ver Historial</button>
-            <button class="btn-alt" (click)="activacion()">Pedir Cita</button>
+            <button class="btn-alt" (click)="activacion(1)">Pedir Cita</button>
         </div>
     </div>
 </section>
@@ -77,15 +58,13 @@
 <section class="citas-cliente">
   <div class="overlay" *ngIf="activar">
       <div class="popup">
-          <a (click)="activacion()" class="btn-cerrar-popup">X</a>
+          <a (click)="activacion(1)" class="btn-cerrar-popup">X</a>
           <h3>Pedir Cita</h3>
-          <form [formGroup]="form" (ngSubmit)="enviar($event)">
+          <form [formGroup]="formCita" (ngSubmit)="pedirCita()">
               <div class="contenedor-inputs">
                   <label for="Vehiculos">Seleciona un Vehiculo:<span>*</span></label>
                   <select id="Vehiculos" formControlName="vehiculo">
-                      <option>Mi Vehículo 1</option>
-                      <option>Mi Vehículo 2</option>
-                      <option>Mi Vehículo 3</option>
+                      <option *ngFor="let vehiculo of vehiculos">{{vehiculo.placa}}</option>
                   </select>
                   <label for="Opciones">Seleciona Motivo General:<span>*</span></label>
                   <select id="Opciones" formControlName="motivo">
@@ -95,14 +74,35 @@
                     <option>Cambio de Aceite</option>
                     <option>Cambio de Neumaticos</option>
                     <option>Sin especificar</option>
-                </select>
+                  </select>
                   <label for="descripcion"> Describe tu problema:<span>*</span></label>
                   <textarea id="descripción" formControlName="descripcion"></textarea>
                   <p>Los campos con <span>*</span> son requeridos.</p>
               </div>
-              <button type="submit" class="btn-alt" *ngIf="form.valid">Enviar</button>
-              <button type="submit" class="btn-alt" id="btn-invalid" *ngIf="form.invalid" [disabled]="form.invalid">Enviar</button>
+              <button type="submit" class="btn-alt" id="btn-invalid" [disabled]="formCita.invalid">Enviar</button>
           </form>
       </div>
   </div>
 </section>
+
+<!-- Popup que se muestra al usuario para agregar su vehiculo -->
+<section class="agregar-vehiculo">
+  <div class="overlay" *ngIf="activarAgregar">
+      <div class="popup">
+          <a (click)="activacion(0)" class="btn-cerrar-popup">X</a>
+          <h3>Agregar Vehiculo</h3>
+          <form [formGroup]="formVehiculo" (ngSubmit)="agregarVehiculo()">
+              <div class="contenedor-inputs">
+                <label for="marca">Marca:</label><span>*</span><input type="text" formControlName="marca"><br>
+                <label for="modelo">Modelo:</label><span>*</span><input type="text" formControlName="modelo"><br>
+                <label for="año">Año:</label><span>*</span><input type="number" formControlName="año"><br>
+                <label for="placa">Placa:</label><span>*</span><input type="text" formControlName="placa"><br>
+                <label for="serial">Serial del motor:</label><span>*</span><input type="text" formControlName="serial">
+                <p>Los campos con <span>*</span> son requeridos.</p>
+              </div>
+              <button type="submit" class="btn-alt" id="btn-invalid" [disabled]="formVehiculo.invalid">Enviar</button>
+          </form>
+      </div>
+  </div>
+</section>
+

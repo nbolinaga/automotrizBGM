@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 import * as moment from 'moment';
+moment.locale('es');
 
 @Component({
   selector: 'app-calendario',
@@ -8,7 +10,7 @@ import * as moment from 'moment';
 })
 export class CalendarioComponent implements OnInit {
 
-  week: any = [
+  week = [
     'Lunes',
     'Martes',
     'Miercoles',
@@ -19,20 +21,18 @@ export class CalendarioComponent implements OnInit {
   ];
 
   monthSelect: any[];
-  dateSelect: any;
-  dateValue: any;
+  dateSelect;
+  dateValue;
 
 
-  constructor() { }
+  constructor( private data: DataService) { }
 
   ngOnInit(): void {
-    this.getDaysFromDate(3, 2021);
+    this.getDaysFromDate(2, 2021);
   }
 
-  // tslint:disable-next-line: typedef
-  getDaysFromDate(month, year) {
-
-    const startDate = moment.utc(`${year}/${month + 1}/01`);
+  getDaysFromDate(month: number, year: number): void {
+    const startDate = moment(`${year}/${month}/01`);
     const endDate = startDate.clone().endOf('month');
     this.dateSelect = startDate;
 
@@ -53,8 +53,8 @@ export class CalendarioComponent implements OnInit {
     this.monthSelect = arrayDays;
   }
 
-  // tslint:disable-next-line: typedef
-  changeMonth(flag) {
+
+  changeMonth(flag: number): void {
     if (flag < 0) {
       const prevDate = this.dateSelect.clone().subtract(1, 'month');
       this.getDaysFromDate(prevDate.format('MM'), prevDate.format('YYYY'));
@@ -64,14 +64,13 @@ export class CalendarioComponent implements OnInit {
     }
   }
 
-  // tslint:disable-next-line: typedef
-  clickDay(day) {
+
+  clickDay(day): void {
     const monthYear = this.dateSelect.format('YYYY-MM');
     const parse = `${monthYear}-${day.value}`;
     const objectDate = moment(parse);
     this.dateValue = objectDate;
-    console.log('Testeando los días del calendario: ');
-    console.log(this.dateValue);
+    this.data.fechaCitas = this.dateValue;
   }
 
 }

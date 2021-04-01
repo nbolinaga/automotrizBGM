@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
   navOpen: Boolean = true;
 
   constructor(private Auth: AuthService) {}
-  
+
   ngOnInit(): void {
 
     this.Auth.getCurrentUser().subscribe((user) => {
@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit {
       this.navOpen = true;
     }
   }
-    
+
   toggleNav() {
     this.navOpen = !this.navOpen;
   }
