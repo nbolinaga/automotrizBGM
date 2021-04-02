@@ -18,18 +18,18 @@
 
   <div class="seccion2">
     <div class="solicitudes-citas">
-      <h2 class="titulos">Solicitudes Pendientes</h2>
+      <h2 class="titulos">Citas Entrantes</h2>
       <ul class="lista">
-        <li *ngFor="let cita of citas[cita]" class="fila">
-          <p>{{cita.cliente}} - {{cita.motivo}} - <input type="date"> - <input type="time"> - <button type="submit" (click)="getCitas()">Asignar</button></p>
+        <li *ngFor="let cita of citasEntrantes" class="fila">
+          <p>{{cita.cliente}} - {{cita.motivo}} - {{cita.vehiculo}}</p>
         </li>
       </ul>
     </div>
     <div class="estatus-citas">
       <h2 class="titulos">Estado de las citas</h2>
       <ul class="lista">
-        <li *ngFor="let cita of citasEstatus" class="fila">
-          <p>{{cita.cliente}} - {{cita.motivo}} - {{cita.estado}}</p>
+        <li *ngFor="let cita of citasConfirmar" class="fila">
+          <p>{{cita.cliente}} - {{cita.motivo}} - {{cita.confirmada}}</p>
         </li>
       </ul>
     </div>

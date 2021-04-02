@@ -8,9 +8,15 @@ import { Cita } from '../../models/cita';
   templateUrl: './citas.component.html',
   styleUrls: ['./citas.component.scss']
 })
+
 export class CitasComponent implements OnInit {
 
-  constructor( public data: DataService,private citasService: CitasService) { }
+
+  constructor( public data: DataService, private citaService: CitasService ) { }
+
+  public citasEntrantes = [];
+  // public citasDia = [];
+  public citasConfirmar = [];
 
   // Variables de Muestra:
   citasDia: Array<any> = [
@@ -56,115 +62,12 @@ export class CitasComponent implements OnInit {
     }
   ];
 
-  citasSolicitudes: Array<any> = [
-    {
-      nombre: 'Pedro Perez',
-      motivo: 'Cambio de Aceite',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Maria Parra',
-      motivo: 'Servicio completo',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Carlos Chavez',
-      motivo: 'Cambio de Neumaticos',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Mario Benitez',
-      motivo: 'Revision',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Luis Alcala',
-      motivo: 'Cambio de pastillas de freno',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Marcos Mora',
-      motivo: 'Servicio completo',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Miguel Perensejo',
-      motivo: 'Reparación',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Alonso Hernandez',
-      motivo: 'Revision',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Camilo Turizo',
-      motivo: 'Cambio de aceite',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Matilda Hilda',
-      motivo: 'Servicio completo',
-      fecha: 'DD/MM/AA'
-    }
-  ];
-
-  citasEstatus: Array<any> = [
-    {
-      nombre: 'Pedro Perez',
-      motivo: 'Cambio de Aceite',
-      estado: 'Esperando Confirmación'
-    },
-    {
-      nombre: 'Maria Parra',
-      motivo: 'Servicio completo',
-      estado: 'Confirmada'
-    },
-    {
-      nombre: 'Carlos Chavez',
-      motivo: 'Cambio de Neumaticos',
-      estado: 'Rechazada'
-    },
-    {
-      nombre: 'Mario Benitez',
-      motivo: 'Revision',
-      estado: 'Esperando Confirmación'
-    },
-    {
-      nombre: 'Luis Alcala',
-      motivo: 'Cambio de pastillas de freno',
-      estado: 'Esperando Confirmación'
-    },
-    {
-      nombre: 'Marcos Mora',
-      motivo: 'Servicio completo',
-      estado: 'Rechazada'
-    },
-    {
-      nombre: 'Miguel Perensejo',
-      motivo: 'Reparación',
-      estado: 'Rechazada'
-    },
-    {
-      nombre: 'Alonso Hernandez',
-      motivo: 'Revision',
-      estado: 'Confirmada'
-    },
-    {
-      nombre: 'Camilo Turizo',
-      motivo: 'Cambio de aceite',
-      estado: 'Confirmada'
-    },
-    {
-      nombre: 'Matilda Hilda',
-      motivo: 'Servicio completo',
-      estado: 'Confirmada'
-    }
-  ];
 
   ngOnInit(): void {
+    this.citaService.getAllCitas().subscribe(citas => {
+      this.citasEntrantes = citas.filter(cita => cita.estado === 'Esperando fecha');
+      this.citasConfirmar = citas.filter(cita => cita.confirmada === true);
+    });
   }
-
-  
-  citas= this.citasService.coleccion$('citas').subscribe(listDoc => console.log(listDoc))
+  //citas= this.citasService.coleccion$('citas').subscribe(listDoc => console.log(listDoc))
 }
