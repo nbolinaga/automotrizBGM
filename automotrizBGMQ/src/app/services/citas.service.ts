@@ -3,7 +3,7 @@ import { AngularFireList } from '@angular/fire/database';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
-  DocumentReference
+  AngularFirestoreDocument
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -14,9 +14,15 @@ import { Cita } from '../models/cita';
 })
 export class CitasService {
   private CitaCollection: AngularFirestoreCollection<Cita>;
+  private citas: Observable<Cita[]>;
 
   constructor(private firestore: AngularFirestore) {
     this.CitaCollection = this.firestore.collection<Cita>('citas');
+    this.citas = this.CitaCollection.valueChanges();
+  }
+
+  getAllCitas() {
+    return this.citas;
   }
 
   getAllUserCitas(): Observable<Cita[]> {

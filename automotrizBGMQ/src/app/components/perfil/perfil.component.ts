@@ -70,7 +70,7 @@ export class PerfilComponent implements OnInit {
   }
 
   activacion(numero): void {
-    if(numero == 1){
+    if (numero == 1){
       this.activar = !this.activar;
       this.buildFormCita();
     }
@@ -134,10 +134,10 @@ export class PerfilComponent implements OnInit {
   }
   */
 
-  pedirCita(){
+  pedirCita(): void {
     const newCita: Cita = {
       cliente: this.usuario.nombre,
-      estado: "Esperando fecha",
+      estado: 'Esperando fecha',
       confirmada: false,
       vehiculo: this.formCita.get('vehiculo').value,
       motivo: this.formCita.get('motivo').value,
