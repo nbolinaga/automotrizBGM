@@ -83,7 +83,7 @@ export class PerfilComponent implements OnInit {
       descripcion: new FormControl('', [Validators.required])
     });
   }
-  
+
   buildFormVehiculo(): void {
     this.formVehiculo = new FormGroup({
       marca: new FormControl('', [Validators.required]),
@@ -104,6 +104,7 @@ export class PerfilComponent implements OnInit {
 
   agregarVehiculo(){
     const newVehiculo: Vehiculo = {
+      cliente: this.usuario.nombre,
       marca: this.formVehiculo.get('marca').value,
       modelo: this.formVehiculo.get('modelo').value,
       ano: this.formVehiculo.get('año').value,
@@ -138,7 +139,7 @@ export class PerfilComponent implements OnInit {
       motivo: this.formCita.get('motivo').value,
       descripcion: this.formCita.get('descripcion').value,
     };
-    this.CitasService.createNewCita(this.user.uid,newCita);
+    this.CitasService.createNewCita(newCita);
     const arrayCitas: Cita[] = this.usuario.citas;
     if(arrayCitas.length<3){
       arrayCitas.push(newCita);
