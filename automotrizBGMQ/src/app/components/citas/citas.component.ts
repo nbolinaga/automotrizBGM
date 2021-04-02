@@ -9,7 +9,6 @@ import { Cita } from '../../models/cita';
   styleUrls: ['./citas.component.scss']
 })
 export class CitasComponent implements OnInit {
-citas: Cita[];
 
   constructor( public data: DataService,private citasService: CitasService) { }
 
@@ -166,7 +165,6 @@ citas: Cita[];
   ngOnInit(): void {
   }
 
-
-
-
+  
+  citas= this.citasService.coleccion$('citas').subscribe(listDoc => console.log(listDoc))
 }

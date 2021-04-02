@@ -20,8 +20,8 @@
     <div class="solicitudes-citas">
       <h2 class="titulos">Solicitudes Pendientes</h2>
       <ul class="lista">
-        <li *ngFor="let cita of citasSolicitudes" class="fila">
-          <p>{{cita.cliente}} - {{cita.motivo}} - <input type="date"> - <input type="time"> - <button type="submit">Asignar</button></p>
+        <li *ngFor="let cita of citas[cita]" class="fila">
+          <p>{{cita.cliente}} - {{cita.motivo}} - <input type="date"> - <input type="time"> - <button type="submit" (click)="getCitas()">Asignar</button></p>
         </li>
       </ul>
     </div>

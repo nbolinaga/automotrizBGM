@@ -9,11 +9,15 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Cita } from '../models/cita';
 
+type CollectionPredicate <T> = string | AngularFirestoreCollection;
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class CitasService {
   private CitaCollection: AngularFirestoreCollection<Cita>;
+  
 
   constructor(private firestore: AngularFirestore) {
     this.CitaCollection = this.firestore.collection<Cita>('citas');
@@ -55,4 +59,17 @@ export class CitasService {
   deleteCita(userId: string): Promise<void> {
     return this.CitaCollection.doc<Cita>(userId).delete();
   }
+
+  private coleccion<T>(ref:CollectionPredicate<T>, queryFn?): AngularFirestoreCollection{
+    return typeof ref === "string"? this.firestore.collection(ref, queryFn): ref;
+  }
+
+  coleccion$<T>(ref: CollectionPredicate<T>, queryFn?): Observable<T[]>{
+    return this.coleccion(ref, queryFn).snapshotChanges().pipe(
+      map(docs=>{
+        return docs.map(d => d.payload.doc.data()) as T[]
+      })
+    )
+  }
+
 }

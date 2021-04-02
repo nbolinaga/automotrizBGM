@@ -8,6 +8,8 @@ moment.locale('es');
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.scss']
 })
+
+
 export class CalendarioComponent implements OnInit {
 
   week = [
@@ -36,24 +38,7 @@ export class CalendarioComponent implements OnInit {
     const endDate = startDate.clone().endOf('month');
     this.dateSelect = startDate;
 
-    const diffDays = endDate.diff(startDate, 'days', true);
-    const numberDays = Math.round(diffDays);
-
-    const arrayDays = Object.keys([...Array(numberDays)]).map((a: any) => {
-      // tslint:disable-next-line: radix
-      a = parseInt(a) + 1;
-      const dayObject = moment(`${year}-${month}-${a}`);
-      return {
-        name: dayObject.format('dddd'),
-        value: a,
-        indexWeek: dayObject.isoWeekday()
-      };
-    });
-
-    this.monthSelect = arrayDays;
   }
-
-
   changeMonth(flag: number): void {
     if (flag < 0) {
       const prevDate = this.dateSelect.clone().subtract(1, 'month');
@@ -64,7 +49,6 @@ export class CalendarioComponent implements OnInit {
     }
   }
 
-
   clickDay(day): void {
     const monthYear = this.dateSelect.format('YYYY-MM');
     const parse = `${monthYear}-${day.value}`;
@@ -72,5 +56,4 @@ export class CalendarioComponent implements OnInit {
     this.dateValue = objectDate;
     this.data.fechaCitas = this.dateValue;
   }
-
 }
