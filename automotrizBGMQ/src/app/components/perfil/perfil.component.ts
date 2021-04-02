@@ -34,8 +34,9 @@ export class PerfilComponent implements OnInit {
   constructor(
     private db: AngularFirestore,
     private Auth: AuthService,
-    private usuarioService: UsuarioService,
-    private vehiculosService: VehiculosService) {
+    private UsuarioService: UsuarioService,
+    private VehiculosService: VehiculosService,
+    private CitasService: CitasService) {
   }
 
   ngOnInit(): void {
@@ -45,7 +46,7 @@ export class PerfilComponent implements OnInit {
   getUser(): void {
     this.Auth.getCurrentUser().subscribe((user) => {
       this.user = user;
-      this.usuarioService.getUserById(user.uid).subscribe((response) => {
+      this.UsuarioService.getUserById(user.uid).subscribe((response) => {
         if (response.nombre === undefined){
           const newUser: Usuario = {
             nombre: user.displayName,
@@ -59,19 +60,21 @@ export class PerfilComponent implements OnInit {
             vehiculos: [],
             citas: []
           };
-          this.usuarioService.createNewUser(user.uid, newUser);
+          this.UsuarioService.createNewUser(user.uid, newUser);
         } else {
           this.usuario = response;
         }
       });
     });
-    this.usuarioService.updateUser(this.user.uid, this.usuario);
+    this.UsuarioService.updateUser(this.user.uid, this.usuario);
   }
-  activacion(numero: number): void {
-    if (numero === 1)
-    {
+
+  activacion(numero): void {
+    if(numero == 1){
       this.activar = !this.activar;
-    } else {
+      this.buildFormCita();
+    }
+    else{
       this.activarAgregar = !this.activarAgregar;
       this.buildFormVehiculo();
     }
@@ -84,6 +87,7 @@ export class PerfilComponent implements OnInit {
       descripcion: new FormControl('', [Validators.required])
     });
   }
+
   buildFormVehiculo(): void {
     this.formVehiculo = new FormGroup({
       marca: new FormControl('', [Validators.required]),
@@ -96,7 +100,7 @@ export class PerfilComponent implements OnInit {
 
   editar(): void {
     this.disabled = !this.disabled;
-    this.usuarioService.updateUser(this.user.uid, this.usuario);
+    this.UsuarioService.updateUser(this.user.uid, this.usuario);
   }
   cancel(): void {
     location.reload();
@@ -104,31 +108,54 @@ export class PerfilComponent implements OnInit {
 
   agregarVehiculo(): void {
     const newVehiculo: Vehiculo = {
+      cliente: this.usuario.nombre,
       marca: this.formVehiculo.get('marca').value,
       modelo: this.formVehiculo.get('modelo').value,
       ano: this.formVehiculo.get('año').value,
       placa: this.formVehiculo.get('placa').value,
       serial: this.formVehiculo.get('serial').value,
       fechaIngreso: new Date(),
-      cliente: this.usuario,
     };
-    this.vehiculosService.createNewVehiculo(newVehiculo);
+
+    this.VehiculosService.createNewVehiculo(newVehiculo);
     const arrayVehiculos: Vehiculo[] = this.usuario.vehiculos;
-
     arrayVehiculos.push(newVehiculo);
-    this.usuario = {
+    this.UsuarioService.updateUser(this.user.uid, this.usuario = {
       ... this.usuario = this.usuario,
-      vehiculos: arrayVehiculos
-    };
-
-    this.usuarioService.updateUser(this.user.uid, this.usuario);
-    this.activacion(2);
-    alert('vehiculo agregado');
+      vehiculos: arrayVehiculos,
+    });
+    alert('Vehiculo agregado.');
   }
 
-  pedirCita(): void {
-    this.buildFormCita();
-    alert('cita pedida');
+  /* ACOMODAR SERVICIO
+
+  eliminarVehiculo(){
+    this.VehiculosService.deleteVehiculo(this.user.uid);
+  }
+  */
+
+  pedirCita(){
+    const newCita: Cita = {
+      cliente: this.usuario.nombre,
+      estado: "Esperando fecha",
+      confirmada: false,
+      vehiculo: this.formCita.get('vehiculo').value,
+      motivo: this.formCita.get('motivo').value,
+      descripcion: this.formCita.get('descripcion').value,
+    };
+    this.CitasService.createNewCita(newCita);
+    const arrayCitas: Cita[] = this.usuario.citas;
+    if (arrayCitas.length < 3) {
+      arrayCitas.push(newCita);
+      this.UsuarioService.updateUser(this.user.uid, this.usuario = {
+        ... this.usuario = this.usuario,
+        citas: arrayCitas,
+      });
+      alert('La cita se ha solicitado exitosamente.');
+    }
+    else{
+      alert('Posee todos sus vehiculos en reparación, espere a su entrega para solicitar una nueva cita.');
+    }
   }
 
   // getVehiculos(){

@@ -16,7 +16,7 @@ export class CitasService {
   private CitaCollection: AngularFirestoreCollection<Cita>;
 
   constructor(private firestore: AngularFirestore) {
-    this.CitaCollection = this.firestore.collection<Cita>('Citas');
+    this.CitaCollection = this.firestore.collection<Cita>('citas');
   }
 
   getAllUserCitas(): Observable<Cita[]> {
@@ -44,8 +44,8 @@ export class CitasService {
       );
   }
 
-  createNewCita(userId: string, newCita: Cita): Promise<void> {
-    return this.CitaCollection.doc<Cita>(userId).set(newCita);
+  createNewCita(newCita: Cita): Promise<void> {
+    return this.CitaCollection.doc<Cita>().set(newCita);
   }
 
   updateCita(userId: string, CitaData: Cita): Promise<void> {
