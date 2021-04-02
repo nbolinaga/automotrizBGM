@@ -4,6 +4,12 @@
   background-color: $base;
   padding: 25vh;
   padding-bottom: 40vh;
+  display: flex;
+}
+
+.contenedor-drop {
+  width: 100vw;
+  height: 100vh;
 }
 
 .drop-down {
@@ -62,4 +68,86 @@
 
     }
   }
+}
+//Popup para editar usuarios
+.popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.4);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  transition: transform 0.2s ease all;
+}
+
+.editarUsuario {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 40vh;
+  width: 50vw;
+  background-color: $base;
+
+  .titulo {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    h3 {
+      color: $blanco;
+    }
+
+    .cerrar {
+      color: $blanco;
+      cursor: pointer;
+    }
+  }
+
+  button {
+    width: 20vw;
+    height: 2.4rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .cambiar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .opciones {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-left: 3rem;
+
+      label, select option {
+        color: $detalles;
+        font-family: $fonts;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      select {
+        outline: none;
+      }
+    }
+  }
+
+}
+//Clase auxiliar para mostrar el popup
+.popupOpen {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-12%, -15%);
 }
