@@ -4,7 +4,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from '../../models/usuario';
 import firebase from 'firebase';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFireList } from '@angular/fire/database';
 import {
@@ -38,6 +38,7 @@ export class AdminComponent implements OnInit {
     clave: 'clave',
     confirmacion: 'confirmacion'
   };
+  subsciption: Subscription;
 
   //Booleano para el popup de editar
   status: boolean = false;
@@ -93,9 +94,16 @@ export class AdminComponent implements OnInit {
     return this.usuario
   }
 
-  cambiarStatus(persona: Usuario): void {
-    this.getUser(persona);
+  cambiarStatus(userId: string): void {
+    this.subsciption = this.userService.getUserById(userId).subscribe(user => {
+      return this.usuario = user;
+    })
     this.cambio = false;
+    this.status = !this.status;
+  }
+
+  cerrarPopUp():void {
+    this.subsciption.unsubscribe();
     this.status = !this.status;
   }
 

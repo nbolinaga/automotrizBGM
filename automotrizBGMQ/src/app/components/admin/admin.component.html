@@ -9,7 +9,7 @@
       <div class="lista"  *ngFor="let mecanico of mecanicos">
         <div>
           <h3>{{ mecanico.nombre }}</h3>
-          <button (click)="cambiarStatus(mecanico)">EDITAR</button>
+          <button (click)="cambiarStatus(mecanico.id)">EDITAR</button>
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
       <div class="lista" *ngFor="let gerente of gerentes">
         <div>
           <h3>{{ gerente.nombre }}</h3>
-          <button (click)="cambiarStatus(gerente)">EDITAR</button>
+          <button (click)="cambiarStatus(gerente.id)">EDITAR</button>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
       <div class="lista" *ngFor="let cliente of clientes">
         <div>
           <h3>{{ cliente.nombre }}</h3>
-          <button (click)="cambiarStatus(cliente)">EDITAR</button>
+          <button (click)="cambiarStatus(cliente.id)">EDITAR</button>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@
     <div class="editarUsuario">
       <div class="titulo">
         <h3>{{ usuario.nombre }}</h3>
-        <a class="cerrar" (click)="cambiarStatus(usuario)">X</a>
+        <a class="cerrar" (click)="cerrarPopUp()">X</a>
       </div>
       <button class="btn-alt elimUser">Eliminar Usuario</button>
       <div class="cambiar">
