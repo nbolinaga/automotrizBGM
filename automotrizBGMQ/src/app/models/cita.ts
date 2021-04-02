@@ -1,5 +1,5 @@
-import { Usuario } from "./usuario";
-import { Vehiculo } from "./vehiculo";
+import { Usuario } from './usuario';
+import { Vehiculo } from './vehiculo';
 
 export interface Cita{
   id: string;
