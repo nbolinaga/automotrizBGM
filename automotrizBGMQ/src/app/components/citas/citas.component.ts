@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { CitasService } from '../../services/citas.service';
+import { Cita } from '../../models/cita';
 
 @Component({
   selector: 'app-citas',
@@ -7,10 +9,9 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./citas.component.scss']
 })
 export class CitasComponent implements OnInit {
+citas: Cita[];
 
-
-  constructor( public data: DataService ) { }
-
+  constructor( public data: DataService,private citasService: CitasService) { }
 
   // Variables de Muestra:
   citasDia: Array<any> = [
@@ -53,59 +54,6 @@ export class CitasComponent implements OnInit {
     {
       nombre: 'Matilda Hilda',
       motivo: 'Servicio completo'
-    }
-  ];
-
-  citasSolicitudes: Array<any> = [
-    {
-      nombre: 'Pedro Perez',
-      motivo: 'Cambio de Aceite',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Maria Parra',
-      motivo: 'Servicio completo',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Carlos Chavez',
-      motivo: 'Cambio de Neumaticos',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Mario Benitez',
-      motivo: 'Revision',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Luis Alcala',
-      motivo: 'Cambio de pastillas de freno',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Marcos Mora',
-      motivo: 'Servicio completo',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Miguel Perensejo',
-      motivo: 'Reparación',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Alonso Hernandez',
-      motivo: 'Revision',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Camilo Turizo',
-      motivo: 'Cambio de aceite',
-      fecha: 'DD/MM/AA'
-    },
-    {
-      nombre: 'Matilda Hilda',
-      motivo: 'Servicio completo',
-      fecha: 'DD/MM/AA'
     }
   ];
 

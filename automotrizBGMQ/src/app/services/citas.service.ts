@@ -28,7 +28,7 @@ export class CitasService {
         }));
       })
     );
-  }
+  } 
 
   getCitaById(userId: string): Observable<Cita> {
     return this.CitaCollection

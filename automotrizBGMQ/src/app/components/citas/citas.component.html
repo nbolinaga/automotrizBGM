@@ -13,7 +13,7 @@
           <p>{{cita.nombre}} - {{cita.motivo}}</p>
         </li>
       </ul>
-    </div>
+    </div> 
   </div>
 
   <div class="seccion2">
@@ -21,7 +21,7 @@
       <h2 class="titulos">Solicitudes Pendientes</h2>
       <ul class="lista">
         <li *ngFor="let cita of citasSolicitudes" class="fila">
-          <p>{{cita.nombre}} - {{cita.motivo}} - {{cita.fecha}}</p>
+          <p>{{cita.cliente}} - {{cita.motivo}} - <input type="date"> - <input type="time"> - <button type="submit">Asignar</button></p>
         </li>
       </ul>
     </div>
