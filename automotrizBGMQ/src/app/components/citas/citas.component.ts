@@ -1,7 +1,6 @@
 import { Cita } from './../../models/cita';
 import { CitasService } from './../../services/citas.service';
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-citas',
@@ -12,7 +11,7 @@ import { DataService } from 'src/app/services/data.service';
 export class CitasComponent implements OnInit {
 
 
-  constructor( public data: DataService, private citaService: CitasService ) { }
+  constructor( private citaService: CitasService ) { }
 
   public citasEntrantes = [];
   // public citasDia = [];
@@ -62,12 +61,15 @@ export class CitasComponent implements OnInit {
     }
   ];
 
-
   ngOnInit(): void {
     this.citaService.getAllCitas().subscribe(citas => {
       this.citasEntrantes = citas.filter(cita => cita.estado === 'Esperando fecha');
       this.citasConfirmar = citas.filter(cita => cita.confirmada === true);
     });
+  }
+
+  getCitasDia(fecha: string): void {
+
   }
 
 }

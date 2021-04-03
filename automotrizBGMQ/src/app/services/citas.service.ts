@@ -21,7 +21,7 @@ export class CitasService {
     this.citas = this.CitaCollection.valueChanges();
   }
 
-  getAllCitas() {
+  getAllCitas(): Observable<Cita[]> {
     return this.citas;
   }
 

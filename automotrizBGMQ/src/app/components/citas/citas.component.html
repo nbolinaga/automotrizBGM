@@ -2,12 +2,11 @@
 <section class="citas-gerente">
 
   <div class="seccion1">
-    <div class="calendario">
-      <h2 class="titulos">Calendario de Citas</h2>
-      <app-calendario></app-calendario>
-    </div>
     <div class="citas-dia">
-      <h2 class="titulos">Citas del día: {{ data.fechaCitas | date }}</h2>
+      <h2 class="titulos">Citas del día:
+        <input type="date" value="2021-04-10">
+      </h2>
+
       <ul class="lista">
         <li *ngFor="let cita of citasDia" class="fila">
           <p>{{cita.nombre}} - {{cita.motivo}}</p>

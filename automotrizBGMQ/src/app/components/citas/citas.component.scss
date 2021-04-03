@@ -13,7 +13,7 @@
   width: 100%;
 
   .titulos {
-    margin-top: -22px;
+    margin-top: -15px;
     margin-left: 2%;
     text-align: center;
     font-size: 1.2vw;
@@ -23,6 +23,14 @@
     border: 0.21vw solid $base;
     border-radius: 5px;
     width: 20vw;
+
+    input {
+      font-weight: bold;
+      border: 0.12vw solid $base;
+      color: $base;
+      text-align: left;
+      padding: 1vh;
+    }
   }
 
   // SECTION Estilo de Todas las listas
@@ -30,7 +38,7 @@
     display: inline-block;
     list-style: none;
     width: 100%;
-    height: 96.5%;
+    height: 90%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.1vw;
     color: $base;
@@ -60,16 +68,6 @@
     margin: 2% 0 2% 0;
     width: 99vw;
     height: 85vh;
-
-
-    .calendario {
-      background-color: $blanco;
-      border: 0.18vw solid $base;
-      border-radius: 5px;
-      width: 60%;
-      height: 70vh;
-      margin: 2% 0% 2% 0;
-    }
 
     .citas-dia {
       background-color: $blanco;
@@ -109,11 +107,5 @@
       height: 70vh;
       margin: 2% 0% 2% 0;
     }
-
   }
-
-
-
-
-
 }
