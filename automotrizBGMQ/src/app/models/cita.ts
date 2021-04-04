@@ -1,6 +1,7 @@
 export interface Cita{
+  id: string;
   cliente: string;
-  fecha?: Date;
+  fecha?: string;
   estado: string;
   confirmada: boolean;
   motivo: string;

@@ -30,14 +30,17 @@ export class PerfilComponent implements OnInit {
   citas: Cita[];
   currentVehiculo: Vehiculo;
   currentCita: Cita;
+  // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
+  citasPendientes: Cita[] = [];
+  vehiculosregistrados: Vehiculo[] = [];
+  // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
 
   constructor(
     private db: AngularFirestore,
     private Auth: AuthService,
     private UsuarioService: UsuarioService,
     private VehiculosService: VehiculosService,
-    private CitasService: CitasService) {
-  }
+    private CitasService: CitasService) {}
 
   ngOnInit(): void {
     this.getUser();
@@ -63,6 +66,15 @@ export class PerfilComponent implements OnInit {
           this.UsuarioService.createNewUser(user.uid, newUser);
         } else {
           this.usuario = response;
+          // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
+          this.CitasService.getAllCitas().subscribe(citas => {
+            this.citasPendientes = citas.filter(cita => cita.id === this.usuario.id);
+          });
+
+          this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {
+            this.vehiculosregistrados = vehiculos.filter(vehiculo => vehiculo.id === this.usuario.id);
+          });
+          // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
         }
       });
     });
@@ -70,7 +82,7 @@ export class PerfilComponent implements OnInit {
   }
 
   activacion(numero): void {
-    if (numero == 1){
+    if (numero === 1){
       this.activar = !this.activar;
       this.buildFormCita();
     }
@@ -108,6 +120,7 @@ export class PerfilComponent implements OnInit {
 
   agregarVehiculo(): void {
     const newVehiculo: Vehiculo = {
+      id: this.user.uid,
       cliente: this.usuario.nombre,
       marca: this.formVehiculo.get('marca').value,
       modelo: this.formVehiculo.get('modelo').value,
@@ -136,6 +149,7 @@ export class PerfilComponent implements OnInit {
 
   pedirCita(): void {
     const newCita: Cita = {
+      id: this.user.uid,
       cliente: this.usuario.nombre,
       estado: 'Esperando fecha',
       confirmada: false,
