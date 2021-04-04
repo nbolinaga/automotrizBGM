@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { CitasService } from '../../services/citas.service';
-import { Cita } from '../../models/cita';
 
 @Component({
   selector: 'app-citas',
