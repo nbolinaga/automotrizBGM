@@ -4,12 +4,12 @@
   <div class="seccion1">
     <div class="citas-dia">
       <h2 class="titulos">Citas del día:
-        <input type="date" value="2021-04-10">
+        <input type="date" [(ngModel)]="fechaCalendario">
+        <button (click)="getCitasEstado()">Buscar</button>
       </h2>
-
       <ul class="lista">
-        <li *ngFor="let cita of citasDia" class="fila">
-          <p>{{cita.nombre}} - {{cita.motivo}}</p>
+        <li *ngFor="let cita of citasByFecha" class="fila">
+          <p>{{cita.cliente}} - {{cita.motivo}} - {{cita.fecha}}</p>
         </li>
       </ul>
     </div>
@@ -21,6 +21,9 @@
       <ul class="lista">
         <li *ngFor="let cita of citasEntrantes" class="fila">
           <p>{{cita.cliente}} - {{cita.motivo}} - {{cita.vehiculo}}</p>
+          <form [formGroup]="formAsignarFecha" (ngSubmit)="asignarFecha()"></form>
+          <input type="date" formControlName="fecha">
+          <button type="submit" [disabled]="formAsignarFecha.invalid">Asignar fecha</button>
         </li>
       </ul>
     </div>
@@ -28,7 +31,7 @@
       <h2 class="titulos">Estado de las citas</h2>
       <ul class="lista">
         <li *ngFor="let cita of citasConfirmar" class="fila">
-          <p>{{cita.cliente}} - {{cita.motivo}} - {{cita.confirmada}}</p>
+          <p>{{cita.cliente}} - {{cita.motivo}} - {{cita.confirmada}} - {{cita.fecha}}</p>
         </li>
       </ul>
     </div>

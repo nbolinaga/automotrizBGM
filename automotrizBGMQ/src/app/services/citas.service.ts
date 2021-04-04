@@ -3,26 +3,30 @@ import { AngularFireList } from '@angular/fire/database';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
-  AngularFirestoreDocument
+  AngularFirestoreDocument,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Cita } from '../models/cita';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CitasService {
   private CitaCollection: AngularFirestoreCollection<Cita>;
-  private citas: Observable<Cita[]>;
+  private citaDoc: AngularFirestoreDocument<Cita>;
 
   constructor(private firestore: AngularFirestore) {
     this.CitaCollection = this.firestore.collection<Cita>('citas');
-    this.citas = this.CitaCollection.valueChanges();
   }
 
   getAllCitas(): Observable<Cita[]> {
-    return this.citas;
+    return this.firestore.collection<Cita>('citas').valueChanges();
+  }
+
+  getCitasByFecha(fecha: string): Observable<Cita[]> {
+    return this.firestore.collection<Cita>('citas', (ref) =>
+      ref.where('fecha', '==', fecha)).valueChanges();
   }
 
   getAllUserCitas(): Observable<Cita[]> {
@@ -37,14 +41,13 @@ export class CitasService {
   }
 
   getCitaById(userId: string): Observable<Cita> {
-    return this.CitaCollection
-      .doc<Cita>(userId)
+    return this.CitaCollection.doc<Cita>(userId)
       .snapshotChanges()
       .pipe(
-        map(user => {
+        map((user) => {
           return {
             id: user.payload.id,
-            ...user.payload.data()
+            ...user.payload.data(),
           };
         })
       );
@@ -54,8 +57,10 @@ export class CitasService {
     return this.CitaCollection.doc<Cita>().set(newCita);
   }
 
-  updateCita(userId: string, CitaData: Cita): Promise<void> {
-    return this.CitaCollection.doc<Cita>(userId).update(CitaData);
+  updateCita(cita: Cita): void {
+    const citaID = cita.id;
+    this.citaDoc = this.firestore.doc<Cita>(`citas/${citaID}`);
+    this.citaDoc.update(cita);
   }
 
   deleteCita(userId: string): Promise<void> {
