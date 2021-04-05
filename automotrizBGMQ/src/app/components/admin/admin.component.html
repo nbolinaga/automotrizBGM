@@ -50,16 +50,16 @@
         <h3>{{ usuario.nombre }}</h3>
         <a class="cerrar" (click)="cerrarPopUp()">X</a>
       </div>
-      <button class="btn-alt elimUser">Eliminar Usuario</button>
+      <button class="btn-alt elimUser" (click)="eliminarUser(usuario)">Eliminar Usuario</button>
       <div class="cambiar">
-        <button class="btn-sec cambiarRol" (click)="cambiarRoles()">Cambiar rol de usuario</button>
-        <div class="opciones" *ngIf="cambio">
+        <button class="btn-sec cambiarRol" (click)="cambiarRol(usuario)">Cambiar rol de usuario</button>
+        <div class="opciones">
           <label for="roles">Roles</label>
-          <select id="roles">
-            <option value="cliente">Cliente</option>
-            <option value="gerente">Gerente</option>
-            <option value="mecanico">Mecanico</option>
-            <option value="administrador">Administrador</option>
+          <select id="roles" (change)="cambioRol($event)">
+            <option value="Cliente">Cliente</option>
+            <option value="Gerente">Gerente</option>
+            <option value="Mecanico">Mecanico</option>
+            <option value="Admin">Administrador</option>
           </select>
         </div>
       </div>
