@@ -170,6 +170,20 @@
           background-color: $detalles;
         }
       }
+      .confirmarFecha{
+        margin: 0px;
+        padding: 0px;
+        select{
+          border-radius: 5px;
+          padding: .7vh;
+          width: 12vw;
+        }
+        button {
+          border-radius: 5px;
+          padding: 1.2vh;
+          width: 8vw;
+        }
+      }
     }
 
     button {
@@ -178,9 +192,6 @@
       padding: 2vh;
     }
   }
-
-
-
   h4 {
     color: $base;
   }

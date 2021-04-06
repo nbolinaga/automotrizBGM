@@ -66,7 +66,7 @@ export class PerfilComponent implements OnInit {
           this.usuario = response;
           // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
           this.CitasService.getAllCitas().subscribe(citas => {
-            this.citasPendientes = citas.filter(cita => cita.id === this.usuario.id);
+            this.citasPendientes = citas.filter(cita => cita.idUser === this.usuario.id);
           });
 
           this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {

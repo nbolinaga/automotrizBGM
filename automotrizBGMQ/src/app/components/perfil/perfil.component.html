@@ -39,15 +39,27 @@
                       <td>Estado</td>
                       <td>Fecha</td>
                       <td>Hora</td>
+                      <td>Confirmar</td>
                   </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let cita of usuario.citas">
+                  <tr *ngFor="let cita of citasPendientes">
                     <td>{{cita.vehiculo}}</td>
                     <td>{{cita.motivo}}</td>
                     <td>{{cita.estado}}</td>
                     <td>{{cita.fecha}}</td>
                     <td>{{cita.hora}}</td>
+                    <td *ngIf="esperandoConfirmar">
+                      <form class="confirmarFecha">
+                        <select name="Confirmacion" id="Confirmacion">
+                          <option value="Confirmar">Confirmar</option>
+                          <option value="Cambio">Cambiar Fecha</option>
+                          <option value="Cancelar">Cancelar Cita</option>
+                        </select>
+                        <button class="btn-pri" type="submit">¡Listo!</button>
+                      </form>
+                    </td>
+                    <td *ngIf="!esperandoConfirmar"></td>
                   </tr>
               </tbody>
           </table>
