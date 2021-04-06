@@ -7,9 +7,8 @@ import { VehiculosService } from '../../services/vehiculos.service';
 import { Vehiculo } from '../../models/vehiculo';
 import { CitasService } from '../../services/citas.service';
 import { Cita } from '../../models/cita';
-import firebase from 'firebase/app';
+import firebase from 'firebase';
 import {formatDate} from '@angular/common';
-
 
 formatDate(new Date(), 'dd/MM/yyyy', 'en');
 
@@ -19,19 +18,15 @@ formatDate(new Date(), 'dd/MM/yyyy', 'en');
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
-  user: firebase.User;
+  user: firebase.User = null;
   usuario: Usuario;
   formVehiculo: FormGroup;
   formCita: FormGroup;
   disabled = true;
   activar = false;
   activarAgregar = false;
-
-  vehiculosId =  new Array<string>();
-  citasId = new Array<string>();
-
-  vehiculos =  new Array<Vehiculo>();
-  citas = new Array<Cita>();
+  vehiculos: Vehiculo[];
+  citas: Cita[];
   currentVehiculo: Vehiculo;
   currentCita: Cita;
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
@@ -45,7 +40,8 @@ export class PerfilComponent implements OnInit {
     private VehiculosService: VehiculosService,
     private CitasService: CitasService) {}
 
-   async ngOnInit(){
+  ngOnInit(): void {
+    this.getUser();
   }
 
   getUser(): void {
@@ -70,11 +66,11 @@ export class PerfilComponent implements OnInit {
           this.usuario = response;
           // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
           this.CitasService.getAllCitas().subscribe(citas => {
-            this.citasPendientes = citas.filter(cita => cita.idUser === this.usuario.id);
+            this.citasPendientes = citas.filter(cita => cita.id === this.usuario.id);
           });
 
           this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {
-            this.vehiculosregistrados = vehiculos.filter(vehiculo => vehiculo.idUser === this.usuario.id);
+            this.vehiculosregistrados = vehiculos.filter(vehiculo => vehiculo.id === this.usuario.id);
           });
           // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
         }
@@ -114,7 +110,7 @@ export class PerfilComponent implements OnInit {
 
   editar(): void {
     this.disabled = !this.disabled;
-    this.UsuarioService.updateUser(this.usuario.id, this.usuario);
+    this.UsuarioService.updateUser(this.user.uid, this.usuario);
   }
   cancel(): void {
     location.reload();
@@ -122,7 +118,7 @@ export class PerfilComponent implements OnInit {
 
   agregarVehiculo(): void {
     const newVehiculo: Vehiculo = {
-      idUser: this.user.uid,
+      id: this.user.uid,
       cliente: this.usuario.nombre,
       marca: this.formVehiculo.get('marca').value,
       modelo: this.formVehiculo.get('modelo').value,
@@ -144,8 +140,7 @@ export class PerfilComponent implements OnInit {
 
   pedirCita(): void {
     const newCita: Cita = {
-      fecha: '',
-      idUser: this.user.uid,
+      id: this.user.uid,
       cliente: this.usuario.nombre,
       estado: 'Esperando fecha',
       confirmada: false,
@@ -172,10 +167,9 @@ export class PerfilComponent implements OnInit {
   // getVehiculos(){
   //   for (let index = 0; index < this.usuario.vehiculos.length; index++) {
   //     this.VehiculosService.getVehiculoById(this.usuario.vehiculos[index]).subscribe((response) => {
-  //       this.vehiculos.push(response);
-  //       this.vehiculosId.push(response.id);
-  //       console.log('response')
+  //       this.currentVehiculo = response;
   //     });
+  //     this.vehiculos.push(this.currentVehiculo);
   //   }
   // }
 }
