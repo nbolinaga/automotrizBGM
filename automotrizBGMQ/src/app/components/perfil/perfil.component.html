@@ -35,17 +35,19 @@
                 <thead>
                     <tr>
                         <td>Vehículo</td>
-                        <td>Fecha</td>
-                        <td>Descripción</td>
+                        <td>Motivo</td>
                         <td>Estado</td>
+                        <td>Fecha</td>
+                        <td>Hora</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let cita of citasPendientes">
                       <td>{{cita.vehiculo}}</td>
-                      <td>{{cita.fecha}}</td>
                       <td>{{cita.motivo}}</td>
                       <td>{{cita.estado}}</td>
+                      <td>{{cita.fecha}}</td>
+                      <td>{{cita.hora}}</td>
                     </tr>
                 </tbody>
             </table>
