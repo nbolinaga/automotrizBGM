@@ -1,35 +1,43 @@
 <!-- SECTION de citas para el perfil de Gerente -->
 <section class="citas-gerente">
-
   <div class="seccion1">
-    <div class="calendario">
-      <h2 class="titulos">Calendario de Citas</h2>
-      <app-calendario></app-calendario>
-    </div>
     <div class="citas-dia">
-      <h2 class="titulos">Citas del día: {{ data.fechaCitas | date }}</h2>
+      <h2 class="titulos">
+        Citas del día:
+        <input type="date" [(ngModel)]="fechaCalendario" />
+        <button (click)="getCitasEstado()">Buscar</button>
+      </h2>
       <ul class="lista">
-        <li *ngFor="let cita of citasDia" class="fila">
-          <p>{{cita.nombre}} - {{cita.motivo}}</p>
+        <li *ngFor="let cita of citasByFecha" class="fila">
+          <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.fecha }}</p>
         </li>
       </ul>
-    </div>
+    </div> 
   </div>
 
   <div class="seccion2">
     <div class="solicitudes-citas">
-      <h2 class="titulos">Solicitudes Pendientes</h2>
+      <h2 class="titulos">Citas Entrantes</h2>
       <ul class="lista">
-        <li *ngFor="let cita of citasSolicitudes" class="fila">
-          <p>{{cita.nombre}} - {{cita.motivo}} - {{cita.fecha}}</p>
+        <li *ngFor="let cita of citasEntrantes" class="fila">
+          <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.vehiculo }}</p>
+          <!-- SECTION Corregir error del input fecha -->
+          <input type="date" [(ngModel)]="newFecha"/>
+
+          <button type="submit" (click)="asignarFecha(cita)">
+            Asignar fecha
+          </button>
         </li>
       </ul>
     </div>
     <div class="estatus-citas">
       <h2 class="titulos">Estado de las citas</h2>
       <ul class="lista">
-        <li *ngFor="let cita of citasEstatus" class="fila">
-          <p>{{cita.nombre}} - {{cita.motivo}} - {{cita.estado}}</p>
+        <li *ngFor="let cita of citasConfirmar" class="fila">
+          <p>
+            {{ cita.cliente }} - {{ cita.motivo }} - {{ cita.confirmada }} -
+            {{ cita.fecha }}
+          </p>
         </li>
       </ul>
     </div>

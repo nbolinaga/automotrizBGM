@@ -8,6 +8,7 @@ import {
 } from '@angular/animations';
 import { AuthService } from 'src/app/services/auth.service';
 import firebase from 'firebase';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -31,7 +32,7 @@ export class NavbarComponent implements OnInit {
   Logeado: Boolean = false;
   navOpen: Boolean = true;
 
-  constructor(private Auth: AuthService) {}
+  constructor(private Auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
 
@@ -57,7 +58,9 @@ export class NavbarComponent implements OnInit {
     this.Logeado = !this.Logeado;
   }
   Salir(){
-    this.Auth.logout()
+    this.Auth.logout().then(() => {
+      this.router.navigate(['/']);
+    });
     this.Logeado = false;
   }
 }

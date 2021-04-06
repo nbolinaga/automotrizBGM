@@ -17,17 +17,24 @@
         <div id="vehiculos">
             <h3 id="title-vehiculos">Vehículos</h3>
               <div id="vehiculos-container">
-                <div class="vehiculo-thumb" *ngFor="let vehiculo of vehiculos">
+
+                <div class="vehiculo-thumb" *ngFor="let vehiculo of vehiculosregistrados">
                   <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo1.png?alt=media" alt="">
                   <p>{{vehiculo.marca}}</p>
                   <p>{{vehiculo.placa}}</p>
                   <button class="btn-pri" (click)='desactivarVehiculo(vehiculo.id)'>Desactivar</button>
                   <!-- <button class="btn-alt" (click)='eliminarVehiculo(vehiculo.id)'>Eliminar</button> -->
                 </div>
-                <div class="agregar-car" *ngFor="let vacio of [].constructor(3 - vehiculos.length)" (click)="activacion(0)">
+                <div class="agregar-car" *ngFor="let vacio of [].constructor(3 - vehiculosregistrados.length)" (click)="activacion(0)">
                   <i class="fas fa-plus"></i>
                 </div>
               </div>
+              <div class="agregar-car" *ngFor="let vacio of [].constructor(3 - vehiculos.length)" (click)="activacion(0)">
+                <i class="fas fa-plus"></i>
+              </div>
+            </div>
+            <!-- <button class="btn-alt " (click)="guardarCambios()">Guardar Cambios</button><br> -->
+            <button class="btn-alt cancel" (click)="cancel()">Cancelar Cambios</button>
         </div>
         <div id="citas">
             <h3 id="title-citas">Citas</h3>
@@ -41,17 +48,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let cita of citas">
-                      <td>jeep</td>
+                    <tr *ngFor="let cita of citasPendientes">
+                      <td>{{cita.vehiculo}}</td>
                       <td>{{cita.fecha}}</td>
-                      <td>{{cita.descripcion}}</td>
-                      <td>{{cita.confirmada}}</td>
+                      <td>{{cita.motivo}}</td>
+                      <td>{{cita.estado}}</td>
                     </tr>
                 </tbody>
             </table>
             <button class="btn-alt" (click)="activacion(1)">Pedir Cita</button>
         </div>
-    </div>
 </section>
 
 <!-- Popup que se muestra al usuario para pedir su cita -->
@@ -64,7 +70,7 @@
               <div class="contenedor-inputs">
                   <label for="Vehiculos">Seleciona un Vehiculo:<span>*</span></label>
                   <select id="Vehiculos" formControlName="vehiculo">
-                      <option *ngFor="let vehiculo of vehiculos">{{vehiculo.placa}}</option>
+                    <option *ngFor="let vehiculo of usuario.vehiculos">{{vehiculo.placa}}</option>
                   </select>
                   <label for="Opciones">Seleciona Motivo General:<span>*</span></label>
                   <select id="Opciones" formControlName="motivo">
@@ -79,7 +85,7 @@
                   <textarea id="descripción" formControlName="descripcion"></textarea>
                   <p>Los campos con <span>*</span> son requeridos.</p>
               </div>
-              <button type="submit" class="btn-alt" id="btn-invalid" [disabled]="formCita.invalid">Enviar</button>
+              <button type="submit" class="btn-alt" id="btn-invalid">Enviar</button>
           </form>
       </div>
   </div>

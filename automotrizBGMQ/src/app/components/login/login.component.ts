@@ -66,10 +66,9 @@ export class LoginComponent implements OnInit {
     this.registrar = true;
   }
   Acceder(){
-    this.authService.loginWithGoogle();
-    if(this.authService.isAuthenticated){
+    this.authService.loginWithGoogle().then(() => {
       this.router.navigate(['/perfil']);
-    }
+    });
   }
 
   // Funciones para el formulario
