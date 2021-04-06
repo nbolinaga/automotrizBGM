@@ -99,6 +99,7 @@ export class AdminComponent implements OnInit {
   cerrarPopUp(): void {
     this.subsciption.unsubscribe();
     this.status = !this.status;
+    location.reload();
   }
 
   eliminarUser(user: Usuario): void {

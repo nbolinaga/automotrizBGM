@@ -72,7 +72,8 @@ const routes: Routes = [
     AngularFireAuthModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule
   ],
   exports: [RouterModule],
   providers: [AuthService, AngularFirestore],
