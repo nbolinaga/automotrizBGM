@@ -28,6 +28,12 @@
                   <i class="fas fa-plus"></i>
                 </div>
               </div>
+              <div class="agregar-car" *ngFor="let vacio of [].constructor(3 - vehiculos.length)" (click)="activacion(0)">
+                <i class="fas fa-plus"></i>
+              </div>
+            </div>
+            <!-- <button class="btn-alt " (click)="guardarCambios()">Guardar Cambios</button><br> -->
+            <button class="btn-alt cancel" (click)="cancel()">Cancelar Cambios</button>
         </div>
         <div id="citas">
             <h3 id="title-citas">Citas</h3>
@@ -51,7 +57,6 @@
             </table>
             <button class="btn-alt" (click)="activacion(1)">Pedir Cita</button>
         </div>
-    </div>
 </section>
 
 <!-- Popup que se muestra al usuario para pedir su cita -->
@@ -79,7 +84,7 @@
                   <textarea id="descripción" formControlName="descripcion"></textarea>
                   <p>Los campos con <span>*</span> son requeridos.</p>
               </div>
-              <button type="submit" class="btn-alt" id="btn-invalid" [disabled]="formCita.invalid">Enviar</button>
+              <button type="submit" class="btn-alt" id="btn-invalid">Enviar</button>
           </form>
       </div>
   </div>

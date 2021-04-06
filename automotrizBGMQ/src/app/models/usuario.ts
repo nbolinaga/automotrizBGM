@@ -12,8 +12,8 @@ export interface Usuario{
   telefono: string;
   clave: string;
   confirmacion: string;
-  citas?: Cita[];
-  vehiculos?: Vehiculo[];
+  citas?: string[];
+  vehiculos?: string[];
   rol?: Rol;
   photoURL?: 'https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/user.png?alt=media';
 }

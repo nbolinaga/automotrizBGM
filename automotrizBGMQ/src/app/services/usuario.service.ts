@@ -49,7 +49,7 @@ export class UsuarioService {
   }
 
   updateUser(userId: string, userData: Usuario): Promise<void> {
-    return this.usuarioCollection.doc<Usuario>(userId).update(userData);
+    return this.usuarioCollection.doc(userId).update(userData);
   }
 
   deleteUser(userId: string): Promise<void> {

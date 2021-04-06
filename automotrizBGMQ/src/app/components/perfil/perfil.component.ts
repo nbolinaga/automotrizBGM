@@ -7,9 +7,10 @@ import { VehiculosService } from '../../services/vehiculos.service';
 import { Vehiculo } from '../../models/vehiculo';
 import { CitasService } from '../../services/citas.service';
 import { Cita } from '../../models/cita';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import {formatDate} from '@angular/common';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+
 
 formatDate(new Date(), 'dd/MM/yyyy', 'en');
 
@@ -19,15 +20,19 @@ formatDate(new Date(), 'dd/MM/yyyy', 'en');
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
-  user: firebase.User = null;
+  user: firebase.User;
   usuario: Usuario;
   formVehiculo: FormGroup;
   formCita: FormGroup;
   disabled = true;
   activar = false;
   activarAgregar = false;
-  vehiculos: Vehiculo[];
-  citas: Cita[];
+
+  vehiculosId =  new Array<string>();
+  citasId = new Array<string>();
+
+  vehiculos =  new Array<Vehiculo>();
+  citas = new Array<Cita>();
   currentVehiculo: Vehiculo;
   currentCita: Cita;
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
@@ -42,8 +47,7 @@ export class PerfilComponent implements OnInit {
     private VehiculosService: VehiculosService,
     private CitasService: CitasService) {}
 
-  ngOnInit(): void {
-    this.getUser();
+   async ngOnInit(){
   }
 
   getUser(): void {
@@ -112,7 +116,7 @@ export class PerfilComponent implements OnInit {
 
   editar(): void {
     this.disabled = !this.disabled;
-    this.UsuarioService.updateUser(this.user.uid, this.usuario);
+    this.UsuarioService.updateUser(this.usuario.id, this.usuario);
   }
   cancel(): void {
     location.reload();
@@ -173,12 +177,13 @@ export class PerfilComponent implements OnInit {
     }
   }
 
-  // getVehiculos(){
-  //   for (let index = 0; index < this.usuario.vehiculos.length; index++) {
-  //     this.VehiculosService.getVehiculoById(this.usuario.vehiculos[index]).subscribe((response) => {
-  //       this.currentVehiculo = response;
-  //     });
-  //     this.vehiculos.push(this.currentVehiculo);
-  //   }
-  // }
+  getVehiculos(){
+    for (let index = 0; index < this.usuario.vehiculos.length; index++) {
+      this.VehiculosService.getVehiculoById(this.usuario.vehiculos[index]).subscribe((response) => {
+        this.vehiculos.push(response);
+        this.vehiculosId.push(response.id);
+        console.log('response')
+      });
+    }
+  }
 }
