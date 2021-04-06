@@ -31,7 +31,7 @@ export class PerfilComponent implements OnInit {
   currentCita: Cita;
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
   citasPendientes: Cita[] = [];
-  vehiculosregistrados: Vehiculo[] = [];
+  vehiculosRegistrados: Vehiculo[] = [];
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
 
   constructor(
@@ -66,11 +66,11 @@ export class PerfilComponent implements OnInit {
           this.usuario = response;
           // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
           this.CitasService.getAllCitas().subscribe(citas => {
-            this.citasPendientes = citas.filter(cita => cita.id === this.usuario.id);
+            this.citasPendientes = citas.filter(cita => cita.idUser === this.usuario.id);
           });
 
           this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {
-            this.vehiculosregistrados = vehiculos.filter(vehiculo => vehiculo.idUser === this.usuario.id);
+            this.vehiculosRegistrados = vehiculos.filter(vehiculo => vehiculo.idUser === this.usuario.id);
           });
           // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
         }
@@ -140,6 +140,8 @@ export class PerfilComponent implements OnInit {
 
   pedirCita(): void {
     const newCita: Cita = {
+      fecha: '',
+      hora: '',
       id: this.user.uid,
       cliente: this.usuario.nombre,
       estado: 'Esperando fecha',
@@ -148,17 +150,21 @@ export class PerfilComponent implements OnInit {
       motivo: this.formCita.get('motivo').value,
       descripcion: this.formCita.get('descripcion').value,
     };
-    this.CitasService.createNewCita(newCita);
-    const arrayCitas: Cita[] = this.usuario.citas;
-    if (arrayCitas.length < 3) {
-      arrayCitas.push(newCita);
-      this.UsuarioService.updateUser(this.user.uid, this.usuario = {
-        ... this.usuario = this.usuario,
-        citas: arrayCitas,
-      });
-      alert('La cita se ha solicitado exitosamente.');
+    const arrayCitas: Cita[] = this.citasPendientes;
+    const arrayVehiculos: Vehiculo[] = this.vehiculosRegistrados;
+
+    if ( arrayCitas.length < 3) {
+      for (let i = 0; i < arrayVehiculos.length; i++) {
+        if (arrayVehiculos[i].placa !== newCita.vehiculo) {
+          this.CitasService.createNewCita(newCita);
+          alert('La cita se ha solicitado exitosamente.');
+        }
+        else {
+          alert('Ya se ha solicitado un cita para este vehículo.');
+        }
+      }
     }
-    else{
+    else {
       alert('Posee todos sus vehiculos en reparación, espere a su entrega para solicitar una nueva cita.');
     }
   }
