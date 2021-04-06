@@ -16,14 +16,17 @@
     <div class="distribucion2">
         <div id="vehiculos">
             <h3 id="title-vehiculos">Vehículos</h3>
-            <div id="vehiculos-container">
-              <div class="vehiculo-thumb" *ngFor="let vehiculo of vehiculos">
-                <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo1.png?alt=media" alt="">
-                <p>{{vehiculo.marca}}</p>
-                <p>{{vehiculo.placa}}</p>
-                <p>{{vehiculo.serial}}</p>
-                <button class="btn-pri">Desactivar</button>
-                <button class="btn-alt" (click)="eliminarVehiculo(vehiculo.serial)">Eliminar</button>
+              <div id="vehiculos-container">
+                <div class="vehiculo-thumb" *ngFor="let vehiculo of vehiculosregistrados">
+                  <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo1.png?alt=media" alt="">
+                  <p>{{vehiculo.marca}}</p>
+                  <p>{{vehiculo.placa}}</p>
+                  <button class="btn-pri">Desactivar</button>
+                  <button class="btn-alt">Eliminar</button>
+                </div>
+                <div class="agregar-car" *ngFor="let vacio of [].constructor(3 - vehiculosregistrados.length)" (click)="activacion(0)">
+                  <i class="fas fa-plus"></i>
+                </div>
               </div>
               <div class="agregar-car" *ngFor="let vacio of [].constructor(3 - vehiculos.length)" (click)="activacion(0)">
                 <i class="fas fa-plus"></i>
@@ -44,11 +47,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let cita of citas">
-                      <td>{{cita.id}}</td>
+                    <tr *ngFor="let cita of citasPendientes">
+                      <td>{{cita.vehiculo}}</td>
                       <td>{{cita.fecha}}</td>
-                      <td>{{cita.descripcion}}</td>
-                      <td>{{cita.confirmada}}</td>
+                      <td>{{cita.motivo}}</td>
+                      <td>{{cita.estado}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -67,7 +70,7 @@
               <div class="contenedor-inputs">
                   <label for="Vehiculos">Seleciona un Vehiculo:<span>*</span></label>
                   <select id="Vehiculos" formControlName="vehiculo">
-                      <option  *ngFor="let vehiculo of vehiculos" [ngValue]="vehiculo.serial">{{vehiculo.serial}}</option>
+                    <option *ngFor="let vehiculo of usuario.vehiculos">{{vehiculo.placa}}</option>
                   </select>
                   <label for="Opciones">Seleciona Motivo General:<span>*</span></label>
                   <select id="Opciones" formControlName="motivo">

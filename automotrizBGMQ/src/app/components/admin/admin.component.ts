@@ -4,7 +4,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from '../../models/usuario';
 import firebase from 'firebase';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFireList } from '@angular/fire/database';
 import {
@@ -28,6 +28,22 @@ export class AdminComponent implements OnInit {
   clientes: Usuario[] = [];
   mecanicos: Usuario[] = [];
   gerentes: Usuario[] = [];
+  usuario: Usuario = {
+    nombre: 'nombre',
+    cedula: 1,
+    tipoID: 'tipoID',
+    id: 'id',
+    email: 'ejemplo@gmial.com',
+    telefono: 'telefono',
+    clave: 'clave',
+    confirmacion: 'confirmacion'
+  };
+  subsciption: Subscription;
+
+  //Booleano para el popup de editar
+  status: boolean = false;
+
+  texto: string;
 
 
   constructor(private auth: AuthService, private userService: UsuarioService) { }
@@ -66,6 +82,48 @@ export class AdminComponent implements OnInit {
         }
       });
     });
+  }
+
+  getUser(persona: Usuario): Usuario {
+    this.usuario = persona;
+    return this.usuario
+  }
+
+  cambiarStatus(userId: string): void {
+    this.subsciption = this.userService.getUserById(userId).subscribe(user => {
+      return this.usuario = user;
+    })
+    this.status = !this.status;
+  }
+
+  cerrarPopUp(): void {
+    this.subsciption.unsubscribe();
+    this.status = !this.status;
+  }
+
+  eliminarUser(user: Usuario): void {
+    this.userService.deleteUser(user.id);
+  }
+
+  cambiarRol(user: Usuario): void {
+
+    if(this.texto === 'Cliente') {
+      user.rol = this.texto;
+    } else if(this.texto === 'Gerente') {
+      user.rol = this.texto;
+    } else if(this.texto === 'Mecanico') {
+      user.rol = this.texto;
+    } else if(this.texto === 'Admin') {
+      user.rol = this.texto;
+    }
+
+    console.log(this.texto);
+
+    this.userService.updateUser(user.id, user);
+  }
+
+  cambioRol(event: any): void {
+    this.texto = event.target.value
   }
 
 }

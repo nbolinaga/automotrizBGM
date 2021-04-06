@@ -22,6 +22,10 @@ export class VehiculosService {
     this.vehiculoCollection = this.firestore.collection<Vehiculo>('vehiculos');
   }
 
+  getAllVehiculos(): Observable<Vehiculo[]> {
+    return this.firestore.collection<Vehiculo>('vehiculos').valueChanges();
+  }
+
   getAllUserVehiculos(): Observable<Vehiculo[]> {
     return this.vehiculoCollection.snapshotChanges().pipe(
       map((changes) => {

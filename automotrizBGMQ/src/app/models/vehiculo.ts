@@ -1,8 +1,9 @@
-import { DocumentReference } from "@angular/fire/firestore";
-import { Usuario } from "./usuario";
+import { DocumentReference } from '@angular/fire/firestore';
+import { Usuario } from './usuario';
 
 export interface Vehiculo{
-  id?: string;
+  cliente: string;
+  idUser?: string;
   fechaIngreso: Date;
   marca: string;
   modelo: string;
@@ -22,5 +23,4 @@ export interface Vehiculo{
     otros: string,
   ];
   foto?: string;
-  // cliente: Usuario;
 }

@@ -24,7 +24,7 @@ export class PerfilComponent implements OnInit {
   usuario: Usuario;
   formVehiculo: FormGroup;
   formCita: FormGroup;
-  disabled: boolean =  true;
+  disabled = true;
   activar = false;
   activarAgregar = false;
 
@@ -35,47 +35,62 @@ export class PerfilComponent implements OnInit {
   citas = new Array<Cita>();
   currentVehiculo: Vehiculo;
   currentCita: Cita;
+  // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
+  citasPendientes: Cita[] = [];
+  vehiculosregistrados: Vehiculo[] = [];
+  // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
 
-  constructor(private auth: AuthService, private UsuarioService: UsuarioService, private VehiculosService: VehiculosService, private CitasService: CitasService) {
-    this.auth.getCurrentUser().subscribe((user) => {
-      this.user = user;
-      this.getUserData();
-    });
-  }
+  constructor(
+    private db: AngularFirestore,
+    private Auth: AuthService,
+    private UsuarioService: UsuarioService,
+    private VehiculosService: VehiculosService,
+    private CitasService: CitasService) {}
 
    async ngOnInit(){
   }
 
-  getUserData(): void {
-    console.log(this.user.uid)
-    this.UsuarioService.getUserById(this.user.uid).subscribe((response) => {
-      if(response.nombre == undefined){
-        this.usuario = {
-          nombre: this.user.displayName,
-          tipoID: null,
-          cedula: 0,
-          telefono: "edite sus datos de perfil",
-          email: this.user.email,
-          clave: null,
-          confirmacion: null,
-          rol: "Cliente",
-          vehiculos: [],
-          citas: []
-        };
-        this.UsuarioService.createNewUser(this.user.uid, this.usuario);
-      } else {
-        this.usuario = response;
-        this.getVehiculos();
-      }
-    })
+  getUser(): void {
+    this.Auth.getCurrentUser().subscribe((user) => {
+      this.user = user;
+      this.UsuarioService.getUserById(user.uid).subscribe((response) => {
+        if (response.nombre === undefined){
+          const newUser: Usuario = {
+            nombre: user.displayName,
+            tipoID: null,
+            cedula: 0,
+            telefono: 'edite sus datos de perfil',
+            email: user.email,
+            clave: null,
+            confirmacion: null,
+            rol: 'Cliente',
+            vehiculos: [],
+            citas: []
+          };
+          this.UsuarioService.createNewUser(user.uid, newUser);
+        } else {
+          this.usuario = response;
+          // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
+          this.CitasService.getAllCitas().subscribe(citas => {
+            this.citasPendientes = citas.filter(cita => cita.idUser === this.usuario.id);
+          });
+
+          this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {
+            this.vehiculosregistrados = vehiculos.filter(vehiculo => vehiculo.idUser === this.usuario.id);
+          });
+          // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
+        }
+      });
+    });
+    this.UsuarioService.updateUser(this.user.uid, this.usuario);
   }
 
   activacion(numero): void {
-    if(numero == 1)
-    {
+    if (numero === 1){
       this.activar = !this.activar;
       this.buildFormCita();
-    } else {
+    }
+    else{
       this.activarAgregar = !this.activarAgregar;
       this.buildFormVehiculo();
     }
@@ -88,6 +103,7 @@ export class PerfilComponent implements OnInit {
       descripcion: new FormControl('', [Validators.required])
     });
   }
+
   buildFormVehiculo(): void {
     this.formVehiculo = new FormGroup({
       marca: new FormControl('', [Validators.required]),
@@ -98,16 +114,18 @@ export class PerfilComponent implements OnInit {
     });
   }
 
-  editar(){
+  editar(): void {
     this.disabled = !this.disabled;
     this.UsuarioService.updateUser(this.usuario.id, this.usuario);
   }
-  cancel(){
+  cancel(): void {
     location.reload();
   }
 
-  agregarVehiculo(){
+  agregarVehiculo(): void {
     const newVehiculo: Vehiculo = {
+      idUser: this.user.uid,
+      cliente: this.usuario.nombre,
       marca: this.formVehiculo.get('marca').value,
       modelo: this.formVehiculo.get('modelo').value,
       ano: this.formVehiculo.get('año').value,
@@ -115,42 +133,48 @@ export class PerfilComponent implements OnInit {
       serial: this.formVehiculo.get('serial').value,
       fechaIngreso: new Date(),
     };
-    this.VehiculosService.createNewVehiculo(newVehiculo.serial, newVehiculo);
-    this.vehiculos.push(newVehiculo);
-    this.vehiculosId.push(newVehiculo.serial);
-    this.usuario.vehiculos = this.vehiculosId;
-    this.activacion(2);
-    alert('vehiculo agregado');
+
+    this.VehiculosService.createNewVehiculo(newVehiculo);
+    const arrayVehiculos: Vehiculo[] = this.usuario.vehiculos;
+    arrayVehiculos.push(newVehiculo);
+    this.UsuarioService.updateUser(this.user.uid, this.usuario = {
+      ... this.usuario = this.usuario,
+      vehiculos: arrayVehiculos,
+    });
+    alert('Vehiculo agregado.');
   }
 
-  eliminarVehiculo(serial){
-    this.VehiculosService.deleteVehiculo(serial);
+  /* ACOMODAR SERVICIO
 
-    var index = this.vehiculosId.indexOf(serial);
-    this.vehiculosId.splice(index, 1);
-
-    this.usuario.vehiculos = this.vehiculosId;
+  eliminarVehiculo(){
+    this.VehiculosService.deleteVehiculo(this.user.uid);
   }
+  */
 
-  guardarCambios(){
-    this.UsuarioService.updateUser(this.usuario.id, this.usuario);
-    location.reload();
-  }
-  pedirCita(){
+  pedirCita(): void {
     const newCita: Cita = {
-      serialVehiculo: this.formVehiculo.get('vehiculo').value,
-      motivo: this.formVehiculo.get('motivo').value,
-      descripcion: this.formVehiculo.get('descripcion').value,
-      cliente: this.usuario,
-      confirmada: false
+      fecha: '',
+      idUser: this.user.uid,
+      cliente: this.usuario.nombre,
+      estado: 'Esperando fecha',
+      confirmada: false,
+      vehiculo: this.formCita.get('vehiculo').value,
+      motivo: this.formCita.get('motivo').value,
+      descripcion: this.formCita.get('descripcion').value,
     };
-
-    this.CitasService.createNewCita(newCita.serialVehiculo, newCita);
-    this.citas.push(newCita);
-    this.citasId.push(newCita.serialVehiculo);
-    this.usuario.citas = this.citasId;
-    this.activacion(1);
-    alert('cita pedida')
+    this.CitasService.createNewCita(newCita);
+    const arrayCitas: Cita[] = this.usuario.citas;
+    if (arrayCitas.length < 3) {
+      arrayCitas.push(newCita);
+      this.UsuarioService.updateUser(this.user.uid, this.usuario = {
+        ... this.usuario = this.usuario,
+        citas: arrayCitas,
+      });
+      alert('La cita se ha solicitado exitosamente.');
+    }
+    else{
+      alert('Posee todos sus vehiculos en reparación, espere a su entrega para solicitar una nueva cita.');
+    }
   }
 
   getVehiculos(){

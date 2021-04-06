@@ -1,12 +1,11 @@
-import { Usuario } from "./usuario";
-import { Vehiculo } from "./vehiculo";
-
-export interface Cita{
+export interface Cita {
   id?: string;
-  cliente?: Usuario;
-  fecha?: Date;
-  confirmada: boolean;
-  descripcion: string;
-  serialVehiculo: string;
-  motivo: string;
+  idUser?: string;
+  cliente?: string;
+  fecha?: string;
+  estado?: string;
+  confirmada?: boolean;
+  motivo?: string;
+  descripcion?: string;
+  vehiculo?: string;
 }
