@@ -5,6 +5,7 @@
       <h2 class="titulos">
         Citas del día:
         <input type="date" [(ngModel)]="fechaCalendario" />
+
         <button (click)="getCitasEstado()">Buscar</button>
       </h2>
       <ul class="lista">
@@ -12,7 +13,7 @@
           <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.fecha }}</p>
         </li>
       </ul>
-    </div> 
+    </div>
   </div>
 
   <div class="seccion2">
@@ -23,7 +24,7 @@
           <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.vehiculo }}</p>
           <!-- SECTION Corregir error del input fecha -->
           <input type="date" [(ngModel)]="newFecha"/>
-
+          <input type="time" min="7:30" max="17:00" [(ngModel)]="newHora"/>
           <button type="submit" (click)="asignarFecha(cita)">
             Asignar fecha
           </button>

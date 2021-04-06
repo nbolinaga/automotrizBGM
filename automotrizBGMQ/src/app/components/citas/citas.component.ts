@@ -23,6 +23,7 @@ export class CitasComponent implements OnInit {
   public citasConfirmar = [];
   public citasByFecha = [];
   newFecha: string;
+  newHora: string;
 
   ngOnInit(): void {
     this.citasService.getAllCitas().subscribe(citas => {
@@ -42,7 +43,7 @@ export class CitasComponent implements OnInit {
 
   asignarFecha(cita: Cita): void {
     console.log(cita);
-    this.citasService.updateFechaCita(cita, this.newFecha);
+    this.citasService.updateFechaCita(cita, this.newFecha, this.newHora);
   }
 
 }
