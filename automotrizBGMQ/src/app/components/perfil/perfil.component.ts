@@ -57,9 +57,7 @@ export class PerfilComponent implements OnInit {
             email: user.email,
             clave: null,
             confirmacion: null,
-            rol: 'Cliente',
-            vehiculos: [],
-            citas: []
+            rol: 'Cliente'
           };
           this.UsuarioService.createNewUser(user.uid, newUser);
         } else {
@@ -127,14 +125,7 @@ export class PerfilComponent implements OnInit {
       serial: this.formVehiculo.get('serial').value,
       fechaIngreso: new Date(),
     };
-
     this.VehiculosService.createNewVehiculo(newVehiculo);
-    const arrayVehiculos: Vehiculo[] = this.usuario.vehiculos;
-    arrayVehiculos.push(newVehiculo);
-    this.UsuarioService.updateUser(this.user.uid, this.usuario = {
-      ... this.usuario = this.usuario,
-      vehiculos: arrayVehiculos,
-    });
     alert('Vehiculo agregado.');
   }
 
