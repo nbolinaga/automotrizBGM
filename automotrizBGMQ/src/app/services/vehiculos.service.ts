@@ -51,8 +51,8 @@ export class VehiculosService {
       );
   }
 
-  createNewVehiculo(serial: string, newVehiculo: Vehiculo): Promise<void> {
-    return this.vehiculoCollection.doc<Vehiculo>(serial).set(newVehiculo);
+  createNewVehiculo(newVehiculo: Vehiculo): Promise<void> {
+    return this.vehiculoCollection.doc<Vehiculo>().set(newVehiculo);
   }
   updateVehiculo(userId: string, vehiculoData: Vehiculo): Promise<void> {
     return this.vehiculoCollection.doc<Vehiculo>(userId).update(vehiculoData);
