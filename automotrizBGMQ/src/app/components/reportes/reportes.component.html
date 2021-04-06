@@ -15,7 +15,7 @@
         <label for="carros">Reporte de vehiculos:</label>
         <select id="carros">
           <option value="default">Seleccionar...</option>
-          <option *ngFor="" value=""></option>
+          <option *ngFor="let carro of listaVehiculos" value="{{ carro.placa }}">{{ carro.placa }}</option>
         </select>
       </div>
       <div class="contenido">
@@ -27,7 +27,7 @@
         <label for="personas">Reporte de clientes:</label>
         <select id="personas">
           <option value="default">Seleccionar...</option>
-          <option *ngFor="" value=""></option>
+          <option *ngFor="let cliente of listaClientes" value="{{ cliente.nombre }}">{{ cliente.nombre }}</option>
         </select>
       </div>
       <div class="contenido">
@@ -39,7 +39,7 @@
         <label for="meca">Reporte de mecanicos:</label>
         <select id="meca">
           <option value="default">Seleccionar...</option>
-          <option *ngFor="" value=""></option>
+          <option *ngFor="let mecanico of listaMecanicos" value="{{mecanico.nombre}}">{{mecanico.nombre}}</option>
         </select>
       </div>
       <div class="contenido">

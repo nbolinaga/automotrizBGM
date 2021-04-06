@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { VehiculosService } from 'src/app/services/vehiculos.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Vehiculo } from 'src/app/models/vehiculo';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-reportes',
@@ -13,7 +17,11 @@ export class ReportesComponent implements OnInit {
   general: boolean= false;
   texto: string = '';
 
-  constructor() { }
+  listaVehiculos: Vehiculo[];
+  listaClientes: Usuario[];
+  listaMecanicos: Usuario[];
+
+  constructor(private userService: UsuarioService, private carService: VehiculosService) { }
 
   ngOnInit(): void {
   }
@@ -35,5 +43,24 @@ export class ReportesComponent implements OnInit {
     } else if(this.texto === 'general'){
       this.general = true;
     }
+  }
+
+  todosLosClientes(): void {
+    this.userService.getAllUsers().subscribe(users => {
+      users.forEach(user => {
+        this.listaClientes.push(user);
+        if(user.rol === 'Mecanico') {
+          this.listaMecanicos.push(user)
+        }
+      });
+    });
+  }
+
+  todosLosCarros(): void {
+    this.carService.getAllVehiculos().subscribe(carros => {
+      carros.forEach(carro => {
+        this.listaVehiculos.push(carro);
+      });
+    });
   }
 }
