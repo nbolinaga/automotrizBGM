@@ -118,7 +118,7 @@ export class PerfilComponent implements OnInit {
 
   agregarVehiculo(): void {
     const newVehiculo: Vehiculo = {
-      id: this.user.uid,
+      idUser: this.user.uid,
       cliente: this.usuario.nombre,
       marca: this.formVehiculo.get('marca').value,
       modelo: this.formVehiculo.get('modelo').value,
