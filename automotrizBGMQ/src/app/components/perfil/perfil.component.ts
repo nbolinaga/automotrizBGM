@@ -70,7 +70,7 @@ export class PerfilComponent implements OnInit {
           });
 
           this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {
-            this.vehiculosregistrados = vehiculos.filter(vehiculo => vehiculo.id === this.usuario.id);
+            this.vehiculosregistrados = vehiculos.filter(vehiculo => vehiculo.idUser === this.usuario.id);
           });
           // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
         }
@@ -118,7 +118,7 @@ export class PerfilComponent implements OnInit {
 
   agregarVehiculo(): void {
     const newVehiculo: Vehiculo = {
-      id: this.user.uid,
+      idUser: this.user.uid,
       cliente: this.usuario.nombre,
       marca: this.formVehiculo.get('marca').value,
       modelo: this.formVehiculo.get('modelo').value,
@@ -162,7 +162,7 @@ export class PerfilComponent implements OnInit {
       alert('Posee todos sus vehiculos en reparación, espere a su entrega para solicitar una nueva cita.');
     }
   }
-  
+
 
   // getVehiculos(){
   //   for (let index = 0; index < this.usuario.vehiculos.length; index++) {

@@ -18,18 +18,30 @@ type CollectionPredicate <T> = string | AngularFirestoreCollection;
 export class CitasService {
   private CitaCollection: AngularFirestoreCollection<Cita>;
   private citaDoc: AngularFirestoreDocument<Cita>;
+  private citas: Observable<Cita[]>;
+
 
   constructor(private firestore: AngularFirestore) {
     this.CitaCollection = this.firestore.collection<Cita>('citas');
   }
 
   getAllCitas(): Observable<Cita[]> {
-    return this.firestore.collection<Cita>('citas').valueChanges();
+    this.CitaCollection = this.firestore.collection<Cita>('citas');
+    return (this.citas = this.CitaCollection.snapshotChanges().pipe(
+      map((cambios) => {
+        return cambios.map((action) => {
+          const datos = action.payload.doc.data() as Cita;
+          datos.id = action.payload.doc.id;
+          return datos;
+        });
+      })
+    ));
   }
 
   getCitasByFecha(fecha: string): Observable<Cita[]> {
-    return this.firestore.collection<Cita>('citas', (ref) =>
-      ref.where('fecha', '==', fecha)).valueChanges();
+    return this.firestore
+      .collection<Cita>('citas', (ref) => ref.where('fecha', '==', fecha))
+      .valueChanges();
   }
 
   getAllUserCitas(): Observable<Cita[]> {
@@ -41,7 +53,7 @@ export class CitasService {
         }));
       })
     );
-  } 
+  }
 
   getCitaById(userId: string): Observable<Cita> {
     return this.CitaCollection.doc<Cita>(userId)
@@ -60,10 +72,9 @@ export class CitasService {
     return this.CitaCollection.doc<Cita>().set(newCita);
   }
 
-  updateCita(cita: Cita): void {
-    const citaID = cita.id;
-    this.citaDoc = this.firestore.doc<Cita>(`citas/${citaID}`);
-    this.citaDoc.update(cita);
+  updateFechaCita(citaID: Cita, newFecha: string): Promise<void> {
+    const citaRef = this.firestore.collection('citas').doc(citaID.id);
+    return citaRef.update({fecha: newFecha, estado: 'Esperando confirmación'});
   }
 
   deleteCita(userId: string): Promise<void> {
