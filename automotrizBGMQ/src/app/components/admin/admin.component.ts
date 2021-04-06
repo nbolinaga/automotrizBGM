@@ -43,8 +43,7 @@ export class AdminComponent implements OnInit {
   //Booleano para el popup de editar
   status: boolean = false;
 
-  //Si esta abierto el cambio de rol
-  cambio: boolean = false;
+  texto: string;
 
 
   constructor(private auth: AuthService, private userService: UsuarioService) { }
@@ -85,10 +84,6 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  cambiarRoles(): void {
-    this.cambio = !this.cambio;
-  }
-
   getUser(persona: Usuario): Usuario {
     this.usuario = persona;
     return this.usuario
@@ -98,13 +93,37 @@ export class AdminComponent implements OnInit {
     this.subsciption = this.userService.getUserById(userId).subscribe(user => {
       return this.usuario = user;
     })
-    this.cambio = false;
     this.status = !this.status;
   }
 
-  cerrarPopUp():void {
+  cerrarPopUp(): void {
     this.subsciption.unsubscribe();
     this.status = !this.status;
+  }
+
+  eliminarUser(user: Usuario): void {
+    this.userService.deleteUser(user.id);
+  }
+
+  cambiarRol(user: Usuario): void {
+
+    if(this.texto === 'Cliente') {
+      user.rol = this.texto;
+    } else if(this.texto === 'Gerente') {
+      user.rol = this.texto;
+    } else if(this.texto === 'Mecanico') {
+      user.rol = this.texto;
+    } else if(this.texto === 'Admin') {
+      user.rol = this.texto;
+    }
+
+    console.log(this.texto);
+
+    this.userService.updateUser(user.id, user);
+  }
+
+  cambioRol(event: any): void {
+    this.texto = event.target.value
   }
 
 }

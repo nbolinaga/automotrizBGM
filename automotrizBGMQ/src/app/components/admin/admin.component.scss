@@ -151,3 +151,57 @@
   height: 100vh;
   transform: translate(-12%, -15%);
 }
+
+@media screen and (max-width: 1024px) {
+
+  .todo {
+    width: 100vw;
+    padding: 0;
+  }
+
+  .contenedor-drop {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .drop-down {
+      width: 80vw;
+      margin-inline: 0;
+    }
+
+    .lista {
+      width: inherit;
+
+      h3 {
+        margin-right: 2vw;
+      }
+
+      button {
+        width: 5rem;
+      }
+    }
+  }
+
+  .popup {
+
+    .editarUsuario {
+      width: 80vw;
+    }
+
+    h3 {
+      font-size: .8rem;
+    }
+
+    button {
+      font-size: .8rem;
+      width: 40vw;
+    }
+
+    .cambiar .opciones {
+      margin-left: 0;
+    }
+  }
+}
