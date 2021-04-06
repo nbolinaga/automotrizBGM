@@ -44,8 +44,8 @@ export class CitasService {
       );
   }
 
-  createNewCita(userId: string, newCita: Cita): Promise<void> {
-    return this.CitaCollection.doc<Cita>(userId).set(newCita);
+  createNewCita(citaId: string, newCita: Cita): Promise<void> {
+    return this.CitaCollection.doc<Cita>(citaId).set(newCita);
   }
 
   updateCita(userId: string, CitaData: Cita): Promise<void> {

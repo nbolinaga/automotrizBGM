@@ -95,7 +95,7 @@ export class AuthService {
   }
 
   // Obtener usuario
-  getCurrentUser(): Observable<firebase.User|null>{
+  getCurrentUser(): Observable<firebase.User>{
     return this.Auth.user;
   }
 
