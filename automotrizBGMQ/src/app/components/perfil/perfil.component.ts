@@ -167,15 +167,15 @@ export class PerfilComponent implements OnInit {
       alert('Posee todos sus vehiculos en reparación, espere a su entrega para solicitar una nueva cita.');
     }
   }
-  
 
-  getVehiculos(){
-    for (let index = 0; index < this.usuario.vehiculos.length; index++) {
-      this.VehiculosService.getVehiculoById(this.usuario.vehiculos[index]).subscribe((response) => {
-        this.vehiculos.push(response);
-        this.vehiculosId.push(response.id);
-        console.log('response')
-      });
-    }
-  }
+
+  // getVehiculos(){
+  //   for (let index = 0; index < this.usuario.vehiculos.length; index++) {
+  //     this.VehiculosService.getVehiculoById(this.usuario.vehiculos[index]).subscribe((response) => {
+  //       this.vehiculos.push(response);
+  //       this.vehiculosId.push(response.id);
+  //       console.log('response')
+  //     });
+  //   }
+  // }
 }
