@@ -9,7 +9,6 @@ import { CitasService } from '../../services/citas.service';
 import { Cita } from '../../models/cita';
 import firebase from 'firebase/app';
 import {formatDate} from '@angular/common';
-import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 
 
 formatDate(new Date(), 'dd/MM/yyyy', 'en');
@@ -41,7 +40,6 @@ export class PerfilComponent implements OnInit {
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
 
   constructor(
-    private db: AngularFirestore,
     private Auth: AuthService,
     private UsuarioService: UsuarioService,
     private VehiculosService: VehiculosService,
@@ -144,13 +142,6 @@ export class PerfilComponent implements OnInit {
     alert('Vehiculo agregado.');
   }
 
-  /* ACOMODAR SERVICIO
-
-  eliminarVehiculo(){
-    this.VehiculosService.deleteVehiculo(this.user.uid);
-  }
-  */
-
   pedirCita(): void {
     const newCita: Cita = {
       fecha: '',
@@ -176,6 +167,7 @@ export class PerfilComponent implements OnInit {
       alert('Posee todos sus vehiculos en reparación, espere a su entrega para solicitar una nueva cita.');
     }
   }
+  
 
   getVehiculos(){
     for (let index = 0; index < this.usuario.vehiculos.length; index++) {
