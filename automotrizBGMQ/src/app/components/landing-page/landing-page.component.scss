@@ -5,16 +5,24 @@
   height: auto;
   display: block;
 }
-#info, #visitanos, #contacto{
+#info,
+#visitanos,
+#contacto {
   @extend .link-padding;
   // al hacer click en un link ahora si se vera el titulo del link
 }
+
 //Seccione de Inicio
 #banner {
   background: linear-gradient(to bottom, $base 47%, $blanco 0%);
-  margin-top: 10vh;
+  margin-top: 5vh;
   padding: 8vw 6vw;
   display: inline-block;
+
+  @media #{$telefono} {
+    background: linear-gradient(to bottom, $base 54%, $blanco 0%);
+    padding: 0 6vw;
+  }
 
   #tagline {
     font-size: 4vw;
@@ -25,299 +33,410 @@
     float: right;
     padding-top: 1.5vh;
 
+    @media #{$telefono} {
+      width: 100%;
+      margin: 6vh 0 0 0;
+      height: 6vh;
+    }
+
     span {
       color: $detalles;
     }
   }
-  .marcas{
-    width: 30vw;
-    height: 26vh ;
+  .marcas {
+    width: 50vw;
+    height: auto;
     float: right;
-    margin: 1.5vw;
+    margin: 1.5vw 0 0 3vw;
+
+    @media #{$telefono} {
+      margin: 0 0 0 3vw;
+    }
   }
-  .car{
+  .car {
     transform: scaleX(-1);
     float: left;
-    margin: -17vw -4vw -10vw -6vw;
+    margin: -12vw -4vw -10vw -6vw;
     width: 50%;
     pointer-events: none;
+
+    @media #{$telefono} {
+      margin: 0 -4vw -10vw -6vw;
+    }
   }
 }
 
-
 //Seccion de quienes somos
-#info{
+#info {
   background-color: $detalles;
   display: flex;
   flex-wrap: wrap;
   width: 100vw;
+  text-align: center;
+  padding-top: -2vh;
+  overflow: hidden;
 
-  #contenedor-cont{
+  #contenedor-cont {
     width: 70vw;
+    margin-top: 2vh;
 
-    .titulo{
+    @media #{$telefono} {
+      width: 100vw;
+      margin-bottom: 4vh;
+    }
+
+    h2 {
       display: flex;
       justify-content: center;
-      margin-top: 2vh;
-    }
-
-    h2{
-      text-align: center;
-      margin: 4vh;
+      margin: 5vh auto;
       color: $base;
       font-size: 5vh;
-      width: 70%;
-      font-family: $fonts;
       font-weight: bold;
-    }
 
-    article{
-      padding: 4vw;
-    }
-
-    h3{
-      background-color: $blanco;
-      font-size: 2vw;
-      width: 30%;
-      margin-bottom: -2%;
-      border: $base 0.21vw solid;
-      margin-left: 10%;
-      text-align: center;
-      border-radius: 5px;
-      font-family: $fonts;
-      font-weight: bold;
-      position: relative;
-      z-index: 1;
-      color: $base;
-
-    }
-
-    p{
-      margin-left: 4vw;
-      margin-right: 4vw;
-      padding: 2vw;
-      text-align: justify;
-      font-size: 1.5vw;
-      background-color: $blanco;
-      color: $base;
-      border-radius: 5px;
-
-    }
-  }
-
-  #contenedor-imgs{
-    background-color: $base;
-    display: flex;
-    justify-content: center;
-    padding: 3%;
-    margin-top: -.6vh;
-    width: 30vw;
-    padding-bottom: 0%;
-
-    div{
-      display: flex;
-      flex-direction: column;
-
-      img{
-        width: 20vw;
-        height: 15vw;
-        margin-bottom: 4vh;
+      @media #{$telefono} {
+        font-size: 3vh;
       }
     }
 
+    article {
+      padding: 2vw;
+      @media #{$telefono} {
+        margin: 2vh auto;
+      }
+
+      h3 {
+        background-color: $base;
+        font-size: 2vw;
+        width: 35%;
+        margin: 0 0 -2vh 8vw;
+        text-align: center;
+        border-radius: 5px;
+        font-weight: bold;
+        position: relative;
+        z-index: 1;
+        color: $blanco;
+
+        @media #{$telefono} {
+          font-size: 2vh;
+          margin: -1vh auto;
+          width: 70%;
+        }
+      }
+
+      p {
+        margin: 0 4vw;
+        padding: 4vw;
+        text-align: justify;
+        font-size: 1.5vw;
+        background-color: $blanco;
+        color: $base;
+        border-radius: 5px;
+
+        @media #{$telefono} {
+          font-size: 1.5vh;
+          width: 90%;
+          padding: 4vh;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  #contenedor-imgs {
+    background-color: $base;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 30vw;
+    outline: 0.5vh solid $base;
+
+    @media #{$telefono} {
+      width: 100vw;
+      padding-bottom: 2vh;
+    }
+
+    img {
+      width: 20vw;
+      height: auto;
+      object-fit: cover;
+      object-position: top;
+      margin: 4vh auto;
+      border-radius: 5px;
+
+      @media #{$telefono} {
+        width: 80vw;
+        margin-bottom: 2vh;
+      }
+    }
   }
 }
 //Seccion de visitanos
-#visitanos{
-  height: 100vh;
-}
-.titulo{
-  display: flex;
-  justify-content: center;
-  margin: 4vh auto;
-  font-family: $fonts;
-  color: $base;
+#visitanos {
+  height: 100%;
+  padding-bottom: 6vh;
+
+  @media #{$telefono} {
+    font-size: 3vh;
+    padding-bottom: 12vh;;
+  }
 
   h2 {
     font-size: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6vh;
+    font-family: $fonts;
+    color: $base;
+
+    @media #{$telefono} {
+      font-size: 3vh;
+      margin: 3vh auto;
+    }
+  }
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $base;
+    color: $blanco;
+    border-radius: 5px;
+    margin: 2vw auto;
+    margin-bottom: 4vw;
+    padding: 2vw;
+    width: 70%;
+
+    @media #{$telefono} {
+      width: 90%;
+      display: block;
+    }
+
+    img {
+      width: 30vw;
+      height: 40vh;
+      margin: 1.2vw;
+      border-radius: 5px;
+      object-fit: cover;
+      object-position: top;
+
+      @media #{$telefono} {
+        display: block;
+        height: auto;
+        width: 90%;
+        margin: 2vh auto;
+      }
+    }
+
+    article {
+      margin-right: 4vw;
+
+      @media #{$telefono} {
+        width: 90%;
+        margin: 2vh auto;
+      }
+
+      p {
+        font-size: 2vw;
+        text-align: end;
+        margin: 0.5vw;
+
+        @media #{$telefono} {
+          text-align: center;
+          font-size: 2vh;
+        }
+      }
+    }
   }
 }
 
-.info{
+#contacto {
+  background-color: $base;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  padding: 4vw;
 
+  @media #{$telefono} {
+    display: block;
+  }
 
-  .contenedor{
-      display: flex;
-      justify-content: space-between;
-      background-color: $base;
+  .contenedor {
+    width: 65%;
+    margin-top: 2vh;
+    padding: -2vh;
+
+    @media #{$telefono} {
+      width: 100%;
+      padding: 0;
+    }
+
+    h2 {
       color: $blanco;
-      border: 2px solid $base;
+      font-weight: bold;
+      font-size: 2vw;
+      text-align: center;
+
+      @media #{$telefono} {
+        font-size: 3vh;
+      }
+
+    }
+
+    .form {
+      background-color: $blanco;
+      color: $base;
       border-radius: 5px;
       margin: 2vw;
       margin-bottom: 4vw;
-      padding: 1.2vw;
+      padding: 2vw;
+
+      @media #{$telefono} {
+        padding: 2vh;
+        text-align: center;
+      }
+
+      p {
+        margin: 1vw;
+
+        @media #{$telefono} {
+          margin: 2vh auto;
+        }
+      }
+
+      form {
+        background-color: $detalles;
+        display: flex;
+        flex-direction: column;
+        padding: 1vw;
+        margin: 1vw;
+        border-radius: 5px;
+
+        @media #{$telefono} {
+          padding: 2vh;
+        }
+
+        label {
+          padding-left: 1vw;
+          font-family: $fonts;
+          font-weight: bold;
+
+          @media #{$telefono} {
+            font-size: 2vh;
+          }
+        }
+
+        input,
+        button,
+        textarea {
+          padding: 1vh;
+          height: 3vw;
+          width: 100%;
+          margin-bottom: 1vh;
+          border: none;
+          border-radius: 5px;
+          font-size: 1vw;
+          font-family: $fonts;
+
+          @media #{$telefono} {
+            font-size: 1.5vh;
+            padding: 2vh;
+            margin-bottom: 2vh;
+            border: 3px $base solid;
+          }
+        }
+
+        button {
+          font-weight: bold;
+
+          @media #{$telefono} {
+            font-size: 1.5vh;
+            padding: 2vh;
+            margin-bottom: 2vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        textarea {
+          height: 6vw;
+          resize: none;
+
+          @media #{$telefono} {
+            height: 8vh;
+            resize: none;
+          }
+        }
+      }
+    }
+  }
+  .ademas {
+    background-color: $blanco;
+    width: 30%;
+    margin: 2vw;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+
+    @media #{$telefono} {
+      width: 95%;
+      margin: 6vh auto;
+    }
+
+    h2 {
+      font-weight: bold;
+      font-size: 2vw;
+      text-align: center;
+      margin: 0 auto;
+      margin-top: -3vw;
+      background-color: $detalles;
+      color: $blanco;
+      padding: 1vw;
+      border-radius: 5px;
+      width: 65%;
+
+      @media #{$telefono} {
+        font-size: 2vh;
+      }
+    }
+
+    .tel,
+    .fax,
+    .df {
+      background-color: $detalles;
+      color: $blanco;
+      margin: 1vw auto;
+      border-radius: 5px;
       width: 70%;
+      padding: 2vw 4vw;
 
-      .img{
-          width: 50%;
-          display: flex;
-          justify-content: center;
-
-          img{
-              width: 30vw;
-              height: 40vh;
-              margin: 1.2vw;
-          }
+      @media #{$telefono} {
+        margin: 2vh auto;
       }
+    }
 
-      article{
-          padding: 1.2vw;
-          padding-top: 5%;
-          padding-right: 5%;
-          margin: 1.2vw;
-          width: 50%;
+    h3 {
+      font-size: 1.5vw;
+      font-weight: bold;
+      text-align: center;
 
-          p{
-              font-size: 2vw;
-              text-align: end;
-              margin: 0.5vw;
-          }
+      @media #{$telefono} {
+        font-size: 2vh;
       }
+    }
+
+    p {
+      font-size: 1.3vw;
+      font-weight: bold;
+      text-align: center;
+      color: $base;
+
+      @media #{$telefono} {
+        font-size: 1.5vh;
+      }
+    }
   }
 }
-.contact{
-    background-color: $base;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-
-    .contenedor{
-      width: 65%;
-      margin-top: 2vh;
-
-      h2{
-        color: $blanco;
-        font-family:$fonts;
-        font-weight: bold;
-        font-size: 2vw;
-        text-align: center;
-      }
-
-      .form{
-        background-color: $blanco;
-        color: $base;
-        border: 0.18vw solid $blanco;
-        border-radius: 5px;
-        margin: 2vw;
-        margin-bottom: 4vw;
-        padding: 1.2vw;
-
-        p{
-          margin: 1vw;
-        }
-
-        form{
-          outline: 2px auto $detalles;
-          background-color: $detalles;
-          display: flex;
-          flex-direction: column;
-          padding: 1vw;
-          margin: 1vw;
-
-          label {
-            padding-left: 1vw;
-            font-family: $fonts;
-            font-weight: bold;
-          }
-
-          input, button{
-            padding: 1vh;
-            height: 3vw;
-            width: 100%;
-            margin-bottom: 1vh;
-            border: 0.18vw $detalles solid;
-            border-radius: 5px;
-            font-size: 1vw;
-            font-family: $fonts;
-          }
-
-          button {
-            font-weight: bold;
-          }
-
-          textarea{
-            padding: 1vh;
-            height: 6vw;
-            width: 100%;
-            margin-bottom: 1vh;
-            border: 0.18vw $detalles solid;
-            border-radius: 5px;
-            font-size: 1vw;
-            resize: none;
-            font-family: $fonts;
-          }
-        }
-      }
-    }
-    .ademas{
-      background-color: $blanco;
-      width: 30%;
-      margin: 2vw;
-      border: 2px $blanco solid;
-      border-radius: 5px;
-      display: flex;
-      justify-content: center;
-
-      .caja{
-        width: 75%;
-      }
-
-      h2{
-        font-family:$fonts;
-        font-weight: bold;
-        font-size: 2vw;
-        text-align: center;
-        margin-top: -2vw;
-        background-color: $blanco;
-        color: $base;
-        padding: 0.5vw;
-        border: 2px $base solid;
-        border-radius: 5px;
-        width: 55%;
-
-      }
-
-      .tel, .fax, .df{
-        background-color: $detalles;
-        color: $blanco;
-        margin: 1vw;
-        border: 2px $detalles solid;
-        border-radius: 5px;
-      }
-
-      h3{
-        font-size: 1.5vw;
-        font-family:$fonts;
-        font-weight: bold;
-        text-align: center;
-        margin: 2vw;
-      }
-
-      p{
-        font-size: 1.3vw;
-        font-family: $fonts;
-        font-weight: bold;
-        text-align: center;
-        margin: 2vw;
-      }
-    }
-
-    .titulo{
-      display: flex;
-      justify-content: center;
-      margin-top: 2vh;
-    }
-  }

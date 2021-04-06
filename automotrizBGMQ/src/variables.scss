@@ -5,6 +5,9 @@ $resaltado:  rgba(41, 117, 161, .9);
 
 $fonts: "Montserrat", Arial, Helvetica, sans-serif;
 
+$telefono: "(max-width: 768px)";
+$tablet: "(min-width: 769px && max-width: 992px)";
+$px: "(min-width: 992px)";
 
 .link-padding{
   padding-top: 60px;
