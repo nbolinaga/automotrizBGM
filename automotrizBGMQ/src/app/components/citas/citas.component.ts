@@ -1,5 +1,6 @@
 import { Cita } from './../../models/cita';
 import { CitasService } from './../../services/citas.service';
+import { UsuarioService } from '../../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -9,11 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./citas.component.scss']
 })
 
+
 export class CitasComponent implements OnInit {
 
 
 
-  constructor( private citasService: CitasService ) {}
+  constructor( private citasService: CitasService, private usuarioService: UsuarioService) {}
 
   fechaCalendario: string;
   public citas = [];
@@ -41,7 +43,6 @@ export class CitasComponent implements OnInit {
   asignarFecha(cita: Cita): void {
     console.log(cita);
     this.citasService.updateFechaCita(cita, this.newFecha);
-
   }
 
 }
