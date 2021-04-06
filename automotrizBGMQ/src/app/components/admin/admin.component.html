@@ -3,7 +3,7 @@
     <div class="mecanicos drop-down">
       <h2>MECANICOS</h2>
       <i class="fas fa-sort-down" *ngIf="!isOpenMecanicos" (click)="openMecanicos()"></i>
-      <i class="fas fa-sort-up" *ngIf="isOpenMecanicos" (click)="openMecanicos()"></i>
+      <i class="fas fa-sort-up open" *ngIf="isOpenMecanicos" (click)="openMecanicos()"></i>
     </div>
     <div *ngIf="isOpenMecanicos">
       <div class="lista"  *ngFor="let mecanico of mecanicos">
@@ -16,7 +16,7 @@
     <div class="gerentes drop-down">
       <h2>GERENTES</h2>
       <i class="fas fa-sort-down" *ngIf="!isOpenGerentes" (click)="openGerentes()"></i>
-      <i class="fas fa-sort-up" *ngIf="isOpenGerentes" (click)="openGerentes()"></i>
+      <i class="fas fa-sort-up open" *ngIf="isOpenGerentes" (click)="openGerentes()"></i>
     </div>
     <div *ngIf="isOpenGerentes">
       <div class="lista" *ngFor="let gerente of gerentes">
@@ -29,7 +29,7 @@
     <div class="clientes drop-down">
       <h2>CLIENTES</h2>
       <i class="fas fa-sort-down" *ngIf="!isOpenClientes" (click)="openClientes()"></i>
-      <i class="fas fa-sort-up" *ngIf="isOpenClientes" (click)="openClientes()"></i>
+      <i class="fas fa-sort-up open" *ngIf="isOpenClientes" (click)="openClientes()"></i>
     </div>
     <div *ngIf="isOpenClientes">
       <div class="lista" *ngFor="let cliente of clientes">
@@ -40,9 +40,9 @@
       </div>
     </div>
     <div class="admins drop-down">
-      <h2>ADMINISTRADORES</h2>
+      <h2>ADMINS</h2>
       <i class="fas fa-sort-down" *ngIf="!isOpenAdmins" (click)="openAdmins()"></i>
-      <i class="fas fa-sort-up" *ngIf="isOpenAdmins" (click)="openAdmins()"></i>
+      <i class="fas fa-sort-up open" *ngIf="isOpenAdmins" (click)="openAdmins()"></i>
     </div>
     <div *ngIf="isOpenAdmins">
       <div class="lista" *ngFor="let admin of admins">
@@ -63,11 +63,9 @@
         <h3>{{ usuario.nombre }}</h3>
         <a class="cerrar" (click)="cerrarPopUp()">X</a>
       </div>
-      <button class="btn-alt elimUser" (click)="eliminarUser(usuario)">Eliminar Usuario</button>
       <div class="cambiar">
-        <button class="btn-sec cambiarRol" (click)="cambiarRol(usuario)">Cambiar rol de usuario</button>
         <div class="opciones">
-          <label for="roles">Roles</label>
+          <label for="roles">Cambiar rol a:</label>
           <select id="roles" (change)="cambioRol($event)">
             <option value="Cliente">Cliente</option>
             <option value="Gerente">Gerente</option>
@@ -75,7 +73,9 @@
             <option value="Admin">Administrador</option>
           </select>
         </div>
+        <button class="btn-pri cambiarRol" (click)="cambiarRol(usuario)">Cambiar rol de usuario</button>
       </div>
+      <button class="btn-alt elimUser" (click)="eliminarUser(usuario)">Eliminar Usuario</button>
     </div>
   </div>
 </div>

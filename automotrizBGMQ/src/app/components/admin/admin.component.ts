@@ -29,7 +29,7 @@ export class AdminComponent implements OnInit {
   clientes: Usuario[] = [];
   mecanicos: Usuario[] = [];
   gerentes: Usuario[] = [];
-  admin: Usuario[] = [];
+  admins: Usuario[] = [];
 
   usuario: Usuario = {
     nombre: 'nombre',
@@ -88,7 +88,8 @@ export class AdminComponent implements OnInit {
         } else if(user.rol === 'Gerente') {
           this.gerentes.push(user);
         } else if(user.rol === 'Admin'){
-          this.admin.push(user);
+          this.admins.push(user);
+          console.log(user.nombre);
         }
       });
     });
