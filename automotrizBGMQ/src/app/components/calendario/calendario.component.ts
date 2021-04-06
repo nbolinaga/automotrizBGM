@@ -8,6 +8,7 @@ moment.locale('es');
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.scss']
 })
+
 export class CalendarioComponent implements OnInit {
 
   week = [
@@ -72,5 +73,4 @@ export class CalendarioComponent implements OnInit {
     this.dateValue = objectDate;
     this.data.fechaCitas = this.dateValue;
   }
-
 }
