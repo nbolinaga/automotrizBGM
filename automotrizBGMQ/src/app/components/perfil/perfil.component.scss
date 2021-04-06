@@ -7,12 +7,6 @@
   justify-content: center;
   left: 0;
 
-  .guardar{
-    background-color: rgba(green, .75);
-  }
-  .cancel{
-    background-color: rgba(red, .75);
-  }
   #nombre, #title-citas, #title-vehiculos {
     margin: -7vh auto 4vh auto;
     text-align: center;
@@ -83,6 +77,12 @@
       padding: 2vh;
       width: 80%;
     }
+    .guardar{
+      background-color: rgba(green,.75);
+    }
+    .cancel{
+      background-color: rgba(red,.75);
+    }
   }
 
   #vehiculos {
@@ -90,9 +90,6 @@
     margin-bottom: 7vh;
     text-align: center;
 
-    button{
-      margin: auto 5vw;
-    }
     #title-vehiculos{
       color: $base;
       background-color: $blanco;
