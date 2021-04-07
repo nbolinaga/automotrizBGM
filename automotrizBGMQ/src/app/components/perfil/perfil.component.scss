@@ -7,6 +7,11 @@
   justify-content: center;
   left: 0;
 
+  @media #{$telefono} {
+    display: block;
+    padding: 6vh 0;
+  }
+
   #nombre, #title-citas, #title-vehiculos {
     margin: -7vh auto 4vh auto;
     text-align: center;
@@ -19,10 +24,19 @@
   .distribucion1 {
     width: 30vw;
     margin-right: 2vw;
+
+    @media #{$telefono} {
+      width: 90vw;
+      margin: 15vh auto 10vh auto;
+    }
   }
 
   .distribucion2 {
     width: 60vw;
+    @media #{$telefono} {
+      width: 90vw;
+      margin: 10vh auto;
+    }
   }
 
   #info,
@@ -48,6 +62,10 @@
       text-align: left;
       color: $base;
 
+      @media #{$telefono} {
+        text-align: center;
+      }
+
       p {
         margin: 2vw;
         padding-bottom: 1vh;
@@ -61,6 +79,10 @@
         color: $detalles;
         text-align: left;
         padding: 1vh;
+
+        @media #{$telefono} {
+          text-align: center;
+        }
 
         &:disabled {
           border: none;
@@ -104,6 +126,9 @@
       display: flex;
       justify-content: space-around;
 
+      @media #{$telefono} {
+        display: block;
+      }
       .vehiculo-thumb {
         width: 30%;
         height: auto;
@@ -111,6 +136,10 @@
         text-align: center;
         color: $blanco;
         font-size: 1.2em;
+
+        @media #{$telefono} {
+          width: 100%;
+        }
 
         img {
           width: 100%;
@@ -145,6 +174,7 @@
     background-color: $blanco;
     justify-content: space-around;
     text-align: center;
+    overflow-x: hidden;
 
     #title-citas{
       background-color: $detalles;
@@ -182,6 +212,7 @@
       .confirmarFecha{
         margin: 0px;
         padding: 0px;
+
         select{
           border-radius: 5px;
           padding: .7vh;
@@ -211,22 +242,28 @@
   background: rgba(0, 0, 0, 0.3);
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100vw;
+  height: 150vh;
 
   .popup {
     background: $blanco;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     font-family: $fonts;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 600px;
     padding: 30px;
     text-align: center;
-    width: 600px;
     transition: 0.3s ease all;
+
+    @media #{$telefono} {
+      width: 70vw;
+
+    }
 
     .datos{
       p {

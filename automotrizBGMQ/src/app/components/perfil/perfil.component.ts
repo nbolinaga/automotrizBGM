@@ -123,7 +123,7 @@ export class PerfilComponent implements OnInit {
     this.UsuarioService.updateUser(this.user.uid, this.usuario);
   }
   cancel(): void {
-    location.reload();
+    location.href = '/perfil';
   }
 
   agregarVehiculo(): void {
