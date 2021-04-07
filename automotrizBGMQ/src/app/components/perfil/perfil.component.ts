@@ -20,6 +20,7 @@ formatDate(new Date(), 'dd/MM/yyyy', 'en');
 export class PerfilComponent implements OnInit {
   user: firebase.User = null;
   usuario: Usuario;
+  formConfirmacion: FormGroup;
   formVehiculo: FormGroup;
   formCita: FormGroup;
   disabled = true;
@@ -31,12 +32,14 @@ export class PerfilComponent implements OnInit {
   citasPendientes: Cita[] = [];
   vehiculosRegistrados: Vehiculo[] = [];
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
-
+  esperandoConfirmar: Boolean = false;
   constructor(
     private Auth: AuthService,
     private UsuarioService: UsuarioService,
     private VehiculosService: VehiculosService,
-    private CitasService: CitasService) {}
+    private CitasService: CitasService) {
+      this.buildFormConfirmacion();
+    }
 
   ngOnInit(): void {
     this.getUser();
@@ -55,9 +58,7 @@ export class PerfilComponent implements OnInit {
             email: user.email,
             clave: null,
             confirmacion: null,
-            rol: 'Cliente',
-            vehiculos: [],
-            citas: []
+            rol: 'Cliente'
           };
           this.UsuarioService.createNewUser(user.uid, newUser);
         } else {
@@ -105,6 +106,11 @@ export class PerfilComponent implements OnInit {
       serial: new FormControl('', [Validators.required]),
     });
   }
+  buildFormConfirmacion(): void{
+    this.formConfirmacion = new FormGroup({
+      confirmacion: new FormControl('', [Validators.required])
+    });
+  }
 
   editar(): void {
     this.disabled = !this.disabled;
@@ -125,14 +131,7 @@ export class PerfilComponent implements OnInit {
       serial: this.formVehiculo.get('serial').value,
       fechaIngreso: new Date(),
     };
-
     this.VehiculosService.createNewVehiculo(newVehiculo);
-    const arrayVehiculos: Vehiculo[] = this.usuario.vehiculos;
-    arrayVehiculos.push(newVehiculo);
-    this.UsuarioService.updateUser(this.user.uid, this.usuario = {
-      ... this.usuario = this.usuario,
-      vehiculos: arrayVehiculos,
-    });
     alert('Vehiculo agregado.');
   }
 
@@ -165,6 +164,19 @@ export class PerfilComponent implements OnInit {
     }
   }
 
+  confirmacion(cita: Cita): void {
+    console.log(cita);
+    const confirmacion= this.formConfirmacion.get('confirmacion').value
+    if(confirmacion=='Confirmar'){
+      this.CitasService.updateConfirmada(cita);
+    }
+    else if(confirmacion=='Cambio'){
+      this.CitasService.updateCambioFecha(cita);
+    }
+    else if(confirmacion=='Cancelar'){
+      this.CitasService.deleteCita(cita);
+    }
+  }
 
   // getVehiculos(){
   //   for (let index = 0; index < this.usuario.vehiculos.length; index++) {

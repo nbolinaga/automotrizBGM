@@ -1,6 +1,7 @@
 <!-- SECTION de citas para el perfil de Gerente -->
 <section class="citas-gerente">
   <div class="seccion1">
+
     <div class="citas-dia">
       <h2 class="titulos">
         Citas del día:
@@ -14,34 +15,55 @@
         </li>
       </ul>
     </div>
-  </div>
 
-  <div class="seccion2">
     <div class="solicitudes-citas">
       <h2 class="titulos">Citas Entrantes</h2>
       <ul class="lista">
         <li *ngFor="let cita of citasEntrantes" class="fila">
           <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.vehiculo }}</p>
-          <!-- SECTION Corregir error del input fecha -->
           <form [formGroup]="formFecha" (ngSubmit)="asignarFecha(cita)">
             <input type="date" formControlName="fecha"/>
             <input type="time" formControlName="hora"/>
-            <button type="submit" [disabled]="formFecha.invalid">
+            <button type="submit">
               Asignar fecha
             </button>
           </form>
         </li>
       </ul>
     </div>
-    <div class="estatus-citas">
-      <h2 class="titulos">Cambio de fecha</h2>
+
+  </div>
+
+  <div class="seccion2">
+
+    <div class="solicitudes-citas">
+      <h2 class="titulos">Solicitudes de Cambio de Fecha</h2>
       <ul class="lista">
-        <li class="fila" *ngFor="let cita of citasCambiar">
-          <p>
-            {{ cita.cliente }} - {{ cita.motivo }} - {{ cita.fecha }}
-          </p>
+        <li *ngFor="let cita of citasCambiar" class="fila">
+          <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.vehiculo }} - {{cita.fecha}} - {{cita.hora}}</p>
+          <!-- SECTION Corregir error del input fecha -->
+          <form [formGroup]="formFecha" (ngSubmit)="asignarFecha(cita)">
+            <input type="date" formControlName="fecha"/>
+            <input type="time" formControlName="hora"/>
+            <button type="submit">
+              Asignar fecha
+            </button>
+          </form>
         </li>
       </ul>
     </div>
+
+    <div class="solicitudes-citas">
+      <h2 class="titulos">Citas por cerrar</h2>
+      <ul class="lista">
+
+        <li *ngFor="let cita of citasCambiar" class="fila">
+
+          <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.vehiculo }} - {{cita.fecha}} - {{cita.hora}}</p>
+
+        </li>
+      </ul>
+    </div>
+
   </div>
 </section>

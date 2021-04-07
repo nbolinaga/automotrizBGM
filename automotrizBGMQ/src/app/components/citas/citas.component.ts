@@ -32,7 +32,7 @@ export class CitasComponent implements OnInit {
   ngOnInit(): void {
     this.citasService.getAllCitas().subscribe(citas => {
       this.citasEntrantes = citas.filter(cita => cita.estado === 'Esperando fecha');
-      this.citasCambiar = citas.filter(cita => cita.confirmada === true);
+      this.citasCambiar = citas.filter(cita => cita.estado === 'Esperando cambio de fecha');
       this.citas = citas;
     });
   }
@@ -51,7 +51,6 @@ export class CitasComponent implements OnInit {
     });
   }
 
-
   asignarFecha(cita: Cita): void {
     if (this.formFecha.get('fecha').value === '' || this.formFecha.get('hora').value === '') {
       alert('Primero debe elegir la fecha y la hora.');
@@ -61,5 +60,4 @@ export class CitasComponent implements OnInit {
       // this.citasService.updateFechaCita(cita, this.newFecha, this.newHora);
     }
   }
-
 }
