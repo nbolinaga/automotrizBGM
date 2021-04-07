@@ -12,17 +12,23 @@ import { Subscription } from 'rxjs';
 })
 export class ReportesComponent implements OnInit {
 
+  //Variables para los ngIf
   vehiculos: boolean = false;
   clientes: boolean = false;
   mecanicos: boolean = false;
   general: boolean= false;
   texto: string = '';
 
+  //Listas para las opciones de reportes
   listaVehiculos: Vehiculo[] = [];
   listaClientes: Usuario[] = [];
   listaMecanicos: Usuario[] = [];
+  //Lista de reparaciones del vehiculo
+  listaReparaciones: Date[] = [];
 
+  //Variables auxiliares
   subscription: Subscription;
+
   vehiculo: Vehiculo = {
     cliente: 'nombre',
     fechaIngreso: null,
@@ -30,11 +36,12 @@ export class ReportesComponent implements OnInit {
     modelo: 'modelo',
     ano: 1,
     serial: 'serial',
-    placa: 'placa'
+    placa: 'placa',
+    activo: null
   }
   usuario: Usuario = {
     nombre: '',
-    cedula: 1,
+    cedula: -1,
     tipoID: '',
     id: '',
     email: '',
@@ -71,18 +78,20 @@ export class ReportesComponent implements OnInit {
     }
   }
 
+  //Llena la lista de usuarios
   todosLosClientes(): void {
     this.userService.getAllUsers().subscribe(users => {
       users.forEach(user => {
-        if(user.rol === 'Mecanico') {
+        if(user.rol === 'Mecanico') { //Si el rol es mecanico lo mete en la lista de mecanicos
           this.listaMecanicos.push(user);
-        } else if(user.rol === 'Cliente') {
+        } else if(user.rol === 'Cliente') { //Si el rol es cliente lo mete en la lista de clientes
           this.listaClientes.push(user);
         }
       });
     });
   }
 
+  //Llena la lista de vehiculos con todos los que hay en el sistema
   todosLosCarros(): void {
     this.carService.getAllVehiculos().subscribe(carros => {
       carros.forEach(carro => {
@@ -91,6 +100,7 @@ export class ReportesComponent implements OnInit {
     });
   }
 
+  //Se subscribe al cliente que se esoge
   mostrarDatos(event: any): void {
     const id: string = event.target.value;
 
@@ -98,21 +108,25 @@ export class ReportesComponent implements OnInit {
       this.subscription = this.userService.getUserById(id).subscribe(user => {
         return this.usuario = user;
       });
-      console.log(this.usuario.nombre)
     }
   }
 
+  //Se subscribe al vehiculo que se esoge
   mostrarVehiculo(event: any): void {
+    this.listaReparaciones.length = 0
+
     const id: string = event.target.value;
 
     if(id !== 'default') {
       this.subscription = this.carService.getVehiculoById(id).subscribe(carro => {
+        this.listaReparaciones.push(carro.fechaIngreso)
+        console.log(carro.fechaIngreso)
         return this.vehiculo = carro;
       });
-      console.log(this.vehiculo.marca)
     }
   }
 
+  //Se subscribe al mecanico que se esoge
   mostrarMecanico(event: any): void {
     const id: string = event.target.value;
 
@@ -120,7 +134,6 @@ export class ReportesComponent implements OnInit {
       this.subscription = this.userService.getUserById(id).subscribe(user => {
         return this.usuario = user;
       });
-      console.log(this.usuario.nombre)
     }
   }
 }
