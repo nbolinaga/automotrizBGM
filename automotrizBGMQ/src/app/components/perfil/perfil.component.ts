@@ -126,6 +126,7 @@ export class PerfilComponent implements OnInit {
       placa: this.formVehiculo.get('placa').value,
       serial: this.formVehiculo.get('serial').value,
       fechaIngreso: new Date(),
+      activo:true
     };
 
     this.VehiculosService.createNewVehiculo(newVehiculo);
