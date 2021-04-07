@@ -37,7 +37,7 @@ const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'citas', component: CitasComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
+  {path: 'citas', component: CitasComponent, canActivate: [AuthGuardGuard]},
   {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuardGuard]},
   {path: 'autos', component: AutosComponent, canActivate: [AuthGuardGuard]},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuardGuard, AdminGuard]},

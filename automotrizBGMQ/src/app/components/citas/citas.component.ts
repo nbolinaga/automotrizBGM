@@ -45,7 +45,7 @@ export class CitasComponent implements OnInit {
   getCitasEstado(): void {
     this.citasService.getCitasByFecha(this.fechaCalendario)
     .subscribe(citas => {
-      this.citasByFecha = citas.filter(cita => cita.confirmada === true);
+      this.citasByFecha = citas.filter(cita => cita.confirmada === true || cita.estado === 'Esperando cambio de fecha' || cita.estado === 'Esperando confirmación');
     });
   }
 
