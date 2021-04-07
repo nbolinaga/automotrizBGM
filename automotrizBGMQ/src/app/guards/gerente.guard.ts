@@ -19,7 +19,7 @@ export class GerenteGuard implements CanActivate {
       tap( isGerente => {
         if (!isGerente) {
           alert('Debe tener permisos de Gerente para acceder a esta página.');
-          this.router.navigate(['/']);
+          this.router.navigate(['/perfil']);
         }
       })
     );

@@ -36,13 +36,13 @@ const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'citas', component: CitasComponent, canActivate: [GerenteGuard]},
-  {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuardGuard, GerenteGuard, MecanicoGuard, AdminGuard]},
+  {path: 'citas', component: CitasComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
+  {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
   {path: 'autos', component: AutosComponent, canActivate: [AuthGuardGuard, GerenteGuard, MecanicoGuard, AdminGuard]},
-  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
-  {path: 'gerente', component: GerenteComponent, canActivate: [GerenteGuard]},
-  {path: 'reportes', component: ReportesComponent, canActivate: [GerenteGuard]},
-  {path: 'ordenes', component: OrdenesComponent, canActivate: [MecanicoGuard]}
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuardGuard, AdminGuard]},
+  {path: 'gerente', component: GerenteComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
+  {path: 'reportes', component: ReportesComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
+  {path: 'ordenes', component: OrdenesComponent, canActivate: [AuthGuardGuard, MecanicoGuard]}
 ];
 
 @NgModule({

@@ -15,7 +15,6 @@ import { Component, OnInit } from '@angular/core';
 export class CitasComponent implements OnInit {
 
 
-
   constructor( private citasService: CitasService, private usuarioService: UsuarioService) {
     this.buildFormFecha();
   }

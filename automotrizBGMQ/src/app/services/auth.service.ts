@@ -133,4 +133,5 @@ export class AuthService extends ValidarRol{
   isAuthenticated(): boolean{
     return localStorage.getItem('user') ? true : false;
   }
+
 }

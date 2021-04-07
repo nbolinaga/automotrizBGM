@@ -12,15 +12,11 @@ export class AuthGuardGuard implements CanActivate {
   constructor( private Auth: AuthService, private router: Router ){}
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-      return this.Auth.user$.pipe(
-        take(1),
-        map( user => user && this.Auth.isUsuario(user)),
-        tap( isUsuario => {
-          if (!isUsuario) {
-            alert('Debe iniciar sesión para poder acceder a esta página.');
-            this.router.navigate(['/']);
-          }
-        })
-      );
+      if (this.Auth.isAuthenticated()) {
+        alert('Aún no ha iniciado sesión.');
+        this.router.navigate(['/']);
+        return true;
+      }
+      else { return false; }
   }
 }

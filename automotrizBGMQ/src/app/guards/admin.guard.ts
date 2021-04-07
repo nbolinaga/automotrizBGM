@@ -18,7 +18,7 @@ export class AdminGuard implements CanActivate {
       tap( isAdmin => {
         if (!isAdmin) {
           alert('Debe tener permisos de Administrador para acceder a esta página');
-          this.router.navigate(['/']);
+          this.router.navigate(['/perfil']);
         }
       })
     );

@@ -18,7 +18,7 @@ export class MecanicoGuard implements CanActivate {
       tap( isMercanico => {
         if (!isMercanico) {
           alert('Debe tener permisos de Mecánico para acceder a esta página');
-          this.router.navigate(['/']);
+          this.router.navigate(['/perfil']);
         }
       })
     );
