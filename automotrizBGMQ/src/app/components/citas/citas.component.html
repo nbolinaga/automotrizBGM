@@ -23,21 +23,22 @@
         <li *ngFor="let cita of citasEntrantes" class="fila">
           <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.vehiculo }}</p>
           <!-- SECTION Corregir error del input fecha -->
-          <input type="date" [(ngModel)]="newFecha"/>
-          <input type="time" min="7:30" max="17:00" [(ngModel)]="newHora"/>
-          <button type="submit" (click)="asignarFecha(cita)">
-            Asignar fecha
-          </button>
+          <form [formGroup]="formFecha" (ngSubmit)="asignarFecha(cita)">
+            <input type="date" formControlName="fecha"/>
+            <input type="time" formControlName="hora"/>
+            <button type="submit" [disabled]="formFecha.invalid">
+              Asignar fecha
+            </button>
+          </form>
         </li>
       </ul>
     </div>
     <div class="estatus-citas">
-      <h2 class="titulos">Estado de las citas</h2>
+      <h2 class="titulos">Cambio de fecha</h2>
       <ul class="lista">
-        <li *ngFor="let cita of citasConfirmar" class="fila">
+        <li class="fila" *ngFor="let cita of citasCambiar">
           <p>
-            {{ cita.cliente }} - {{ cita.motivo }} - {{ cita.confirmada }} -
-            {{ cita.fecha }}
+            {{ cita.cliente }} - {{ cita.motivo }} - {{ cita.fecha }}
           </p>
         </li>
       </ul>
