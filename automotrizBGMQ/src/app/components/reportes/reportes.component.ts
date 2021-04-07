@@ -28,7 +28,7 @@ export class ReportesComponent implements OnInit {
   //lista con todas las citas
   listaCitas: Cita[] = [];
   listaCitasVehiculo: Cita[] = [];
-  vehiculosCliente: Vehiculo[] = [];
+  vehiculosCliente: any[] = [];
 
   //Variables auxiliares
   subscription: Subscription;
@@ -142,11 +142,21 @@ export class ReportesComponent implements OnInit {
         return this.usuario = user;
       });
 
-      this.listaVehiculos.forEach(vehiculo => {
-        if(vehiculo.idUser === this.usuario.id) {
-          this.vehiculosCliente.push(vehiculo);
-        }
-      });
+      // this.listaVehiculos.forEach(vehiculo => {
+      //   if(vehiculo.idUser === this.usuario.id) {
+      //     this.vehiculosCliente.push(vehiculo);
+      //   }
+      // });
+
+      this.carService.getAllVehiculos().subscribe(vehiculos => {
+        vehiculos.forEach(vehiculo => {
+          if(vehiculo.idUser === this.usuario.id) {
+            this.vehiculosCliente.push(vehiculo);
+          }
+        })
+
+      })
+
     }
   }
 
@@ -165,11 +175,19 @@ export class ReportesComponent implements OnInit {
         return this.vehiculo = carro;
       });
       //Todas las citas del vehiculo que se esta viendo
-      this.listaCitas.forEach(cita => {
-        if(cita.vehiculo === this.vehiculo.placa) {
-          this.listaCitasVehiculo.push(cita);
-        }
-      });
+      // this.listaCitas.forEach(cita => {
+      //   if(cita.vehiculo === this.vehiculo.placa) {
+      //     this.listaCitasVehiculo.push(cita);
+      //   }
+      // });
+
+      this.citasService.getAllCitas().subscribe(citas => {
+        citas.forEach(cita => {
+          if(cita.vehiculo === this.vehiculo.placa) {
+            this.listaCitasVehiculo.push(cita);
+          }
+        })
+      })
     }
   }
 
