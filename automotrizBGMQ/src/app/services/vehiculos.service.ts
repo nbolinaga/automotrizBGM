@@ -16,6 +16,7 @@ import { Vehiculo } from '../models/vehiculo';
 export class VehiculosService {
   private vehiculoCollection: AngularFirestoreCollection<Vehiculo>;
   private userCollection: AngularFirestoreCollection<Usuario>;
+  private vehiculos: Observable<Vehiculo[]>;
 
   constructor(private firestore: AngularFirestore) {
     this.userCollection = this.firestore.collection<Usuario>('usuarios');
@@ -23,7 +24,16 @@ export class VehiculosService {
   }
 
   getAllVehiculos(): Observable<Vehiculo[]> {
-    return this.firestore.collection<Vehiculo>('vehiculos').valueChanges();
+    this.vehiculoCollection = this.firestore.collection<Vehiculo>('vehiculos');
+    return (this.vehiculos = this.vehiculoCollection.snapshotChanges().pipe(
+      map((cambios) => {
+        return cambios.map((action) => {
+          const datos = action.payload.doc.data() as Vehiculo;
+          datos.id = action.payload.doc.id;
+          return datos;
+        });
+      })
+    ));
   }
 
   getAllUserVehiculos(): Observable<Vehiculo[]> {

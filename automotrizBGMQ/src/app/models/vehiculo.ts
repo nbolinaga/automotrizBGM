@@ -3,6 +3,7 @@ import { Usuario } from './usuario';
 
 export interface Vehiculo{
   cliente: string;
+  id?: string;
   idUser?: string;
   fechaIngreso: Date;
   marca: string;
