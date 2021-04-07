@@ -26,7 +26,7 @@
           <h3 id="title-vehiculos">Vehículos</h3>
             <div id="vehiculos-container">
               <div class="vehiculo-thumb" *ngFor="let vehiculo of vehiculosRegistrados">
-                <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo1.png?alt=media" alt="" [class.desactivado]="vehiculo.activo == false">
+                <img [src]="vehiculo.foto" alt="" [class.desactivado]="vehiculo.activo == false">
                 <p>{{vehiculo.marca}}</p>
                 <p>{{vehiculo.placa}}</p>
                 <button class="btn-sec" (click)="pasarVehiculo(vehiculo)">Editar</button>
@@ -141,6 +141,7 @@
             <p>Ano: <input [(ngModel)]="currentVehiculo.ano" type="number" /></p>
             <p>Placa: <input [(ngModel)]="currentVehiculo.placa" type="string" /></p>
           </div>
+          <app-file-upload [vehiculo]='currentVehiculo'></app-file-upload>
           <button class="btn-alt guardar" (click)="guardarVehiculo()">Guardar Cambios</button>
           <button class="btn-alt cancel" (click)="cancel()">Cancelar Cambios</button>
       </div>

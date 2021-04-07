@@ -32,6 +32,9 @@ import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
+import { DropZoneDirective } from './directives/drop-zone.directive';
+import { UploaderComponent } from './components/file-upload/file-upload.component';
+import { UploadTaskComponent } from './components/upload-task/upload-task.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -63,7 +66,10 @@ const routes: Routes = [
     GerenteComponent,
     OrdenesComponent,
     ReportesComponent,
-    CalendarioComponent
+    CalendarioComponent,
+    DropZoneDirective,
+    UploaderComponent,
+    UploadTaskComponent
 
   ],
   imports: [

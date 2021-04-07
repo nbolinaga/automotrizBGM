@@ -140,6 +140,7 @@ export class PerfilComponent implements OnInit {
       placa: this.formVehiculo.get('placa').value,
       serial: this.formVehiculo.get('serial').value,
       fechaIngreso: new Date(),
+      foto: 'https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo1.png?alt=media',
       activo: true,
     };
     this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {
