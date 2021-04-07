@@ -72,13 +72,24 @@ export class CitasService {
     return this.CitaCollection.doc<Cita>().set(newCita);
   }
 
-  updateFechaCita(citaID: Cita, newFecha: string): Promise<void> {
+  updateFechaCita(citaID: Cita, newFecha: string, newHora: string): Promise<void> {
     const citaRef = this.firestore.collection('citas').doc(citaID.id);
-    return citaRef.update({fecha: newFecha, estado: 'Esperando confirmación'});
+    return citaRef.update({fecha: newFecha, hora: newHora, estado: 'Esperando confirmación'});
   }
 
-  deleteCita(userId: string): Promise<void> {
-    return this.CitaCollection.doc<Cita>(userId).delete();
+  updateCambioFecha(citaID:Cita):Promise<void>{
+    const citaRef = this.firestore.collection('citas').doc(citaID.id);
+    return citaRef.update({estado: 'Esperando cambio de fecha'});
+  }
+
+  updateConfirmada(citaID:Cita):Promise<void>{
+    const citaRef = this.firestore.collection('citas').doc(citaID.id);
+    return citaRef.update({estado: 'Confirmada, esperando ingreso', confirmada: true});
+  }
+
+  deleteCita(citaID: Cita): Promise<void> {
+    const citaRef = this.firestore.collection('citas').doc(citaID.id);
+    return citaRef.delete()
   }
 
   private coleccion<T>(ref:CollectionPredicate<T>, queryFn?): AngularFirestoreCollection{
