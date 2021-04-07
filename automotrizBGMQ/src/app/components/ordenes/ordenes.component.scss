@@ -8,8 +8,48 @@
   }
 
 .form-group{
-    background-color: $detalles;
+    // background-color: $detalles;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .popup {
+    background: $blanco;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    font-family: $fonts;
+    padding: 30px;
+    text-align: center;
+    width: 600px;
+    transition: 0.3s ease all;
+
+    .btn-cerrar-popup {
+      text-decoration: none;
+      font-weight: bold;
+      width: 1vw;
+      font-size: 1.2vw;
+      line-height: 16px;
+      display: block;
+      margin-left: 96.5%;
+      color: #aaa9a9;
+      transition: 0.3s ease all;
+    }
+
+    .btn-cerrar-popup:hover {
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+    }
+  }
 }

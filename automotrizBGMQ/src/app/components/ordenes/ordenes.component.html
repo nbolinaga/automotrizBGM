@@ -1,36 +1,44 @@
 <div class="todo">
-    <h2>Ordenes</h2>
-    <form [formGroup]="formOrden" (ngSubmit)="agregarOrden()" class="form-group">
-        <label for="marca">Marca</label>
-        <input type="text" formControlName="marca">
-        <label for="modelo">Modelo</label>
-        <input type="text" formControlName="modelo">
-        <label for="año">Año</label>
-        <input type="number" formControlName="año">
-        <label for="serial">Serial</label>
-        <input type="text" formControlName="serial">
-        <label for="color">Color</label>
-        <input type="text" formControlName="color">
-        <label for="placa">Placa</label>
-        <input type="text" formControlName="placa">
-        <label for="kmIngreso">Km de ingreso</label>
-        <input type="number" formControlName="kmIngreso">
-        <label for="nivelGas">Nivel gasolina</label>
-        <input type="text" formControlName="nivelGas">
-        <label for="extras">Extras</label>
-        <input type="text"  formControlName="extras">
-        <!-- <label>Cauchos de repuesto</label>
-        <input formControlName="cauchosRepuesto" type="checkbox">
-        <label>Llaves</label>
-        <input formControlName="llaves" type="checkbox">
-        <label>Gato</label>
-        <input formControlName="gato" type="checkbox">
-        <label>Herramientas</label>
-        <input formControlName="herramientas" type="checkbox">
-        <label>Reproductor</label>
-        <input formControlName="reproductor" type="checkbox"> -->
-        <label>Otros</label>
-        <input formControlName="otros" type="text">
-        <button type="submit" >Enviar Orden</button>
-    </form>
+    <button (click)="activacion(1)">Crear Orden</button>
+    <section class="citas-cliente">
+        <div class="overlay" *ngIf="activar">
+            <div class="popup">
+            <a (click)="activacion(1)" class="btn-cerrar-popup">X</a>
+            <h2>Ordenes</h2>
+            <form [formGroup]="formOrden" (ngSubmit)="agregarOrden()" class="form-group">
+                <label for="marca">Marca</label>
+                <input type="text" formControlName="marca">
+                <label for="modelo">Modelo</label>
+                <input type="text" formControlName="modelo">
+                <label for="año">Año</label>
+                <input type="number" formControlName="año">
+                <label for="serial">Serial</label>
+                <input type="text" formControlName="serial">
+                <label for="color">Color</label>
+                <input type="text" formControlName="color">
+                <label for="placa">Placa</label>
+                <input type="text" formControlName="placa">
+                <label for="kmIngreso">Km de ingreso</label>
+                <input type="number" formControlName="kmIngreso">
+                <label for="nivelGas">Nivel gasolina</label>
+                <input type="text" formControlName="nivelGas">
+                <label for="extras">Extras</label>
+                <input type="text"  formControlName="extras">
+                <!-- <label>Cauchos de repuesto</label>
+                <input formControlName="cauchosRepuesto" type="checkbox">
+                <label>Llaves</label>
+                <input formControlName="llaves" type="checkbox">
+                <label>Gato</label>
+                <input formControlName="gato" type="checkbox">
+                <label>Herramientas</label>
+                <input formControlName="herramientas" type="checkbox">
+                <label>Reproductor</label>
+                <input formControlName="reproductor" type="checkbox"> -->
+                <label>Otros</label>
+                <input formControlName="otros" type="text">
+                <button type="submit" >Enviar Orden</button>
+            </form>
+            </div>
+        </div>
+    </section>
 </div>
