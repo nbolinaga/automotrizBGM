@@ -55,6 +55,10 @@
   flex-wrap: wrap;
   color: $detalles;
 
+  h2, h4, p {
+    margin-top: 2rem;
+  }
+
   h2 {
     color: $blanco;
   }
@@ -62,4 +66,8 @@
 
 .cont-vehiculos {
   flex-direction: column;
+
+  h4 {
+    margin-top: 2rem;
+  }
 }

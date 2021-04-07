@@ -28,6 +28,7 @@ export class ReportesComponent implements OnInit {
   //lista con todas las citas
   listaCitas: Cita[] = [];
   listaCitasVehiculo: Cita[] = [];
+  vehiculosCliente: Vehiculo[] = [];
 
   //Variables auxiliares
   subscription: Subscription;
@@ -52,6 +53,16 @@ export class ReportesComponent implements OnInit {
     clave: '',
     confirmacion: ''
   };
+  mecanico: Usuario = {
+    nombre: '',
+    cedula: -1,
+    tipoID: '',
+    id: '',
+    email: '',
+    telefono: '',
+    clave: '',
+    confirmacion: ''
+  }
 
   subscrito = true;
 
@@ -120,9 +131,21 @@ export class ReportesComponent implements OnInit {
   mostrarDatos(event: any): void {
     const id: string = event.target.value;
 
+    this.vehiculosCliente.length = 0; //Se vacia la lista al llamar al metodo
+
+    // if(this.subscription) {
+    //   this.subscription.unsubscribe();
+    // }
+
     if(id !== 'default') {
       this.subscription = this.userService.getUserById(id).subscribe(user => {
         return this.usuario = user;
+      });
+
+      this.listaVehiculos.forEach(vehiculo => {
+        if(vehiculo.idUser === this.usuario.id) {
+          this.vehiculosCliente.push(vehiculo);
+        }
       });
     }
   }
@@ -131,17 +154,21 @@ export class ReportesComponent implements OnInit {
   mostrarVehiculo(event: any): void {
     this.listaCitasVehiculo.length = 0; //Vacia las citas cada vez que se visita un vehiculo
 
+    // if(this.subscription) {
+    //   this.subscription.unsubscribe();
+    // }
+
     const id: string = event.target.value;
 
     if(id !== 'default') {
       this.subscription = this.carService.getVehiculoById(id).subscribe(carro => {
-        //Probar con citas service
-        //Usar getAllCitas -> lista de citas -> filtrar citas.vehiculo === carro.placa
-        //Sacar las citas del carro
-
-
-
         return this.vehiculo = carro;
+      });
+      //Todas las citas del vehiculo que se esta viendo
+      this.listaCitas.forEach(cita => {
+        if(cita.vehiculo === this.vehiculo.placa) {
+          this.listaCitasVehiculo.push(cita);
+        }
       });
     }
   }
@@ -150,10 +177,19 @@ export class ReportesComponent implements OnInit {
   mostrarMecanico(event: any): void {
     const id: string = event.target.value;
 
+    // if(this.subscription) {
+    //   this.subscription.unsubscribe();
+    // }
+
     if(id !== 'default') {
       this.subscription = this.userService.getUserById(id).subscribe(user => {
-        return this.usuario = user;
+        return this.mecanico = user;
       });
     }
+  }
+
+  //Reportes generales
+  mostrarGeneral(): void {
+
   }
 }
