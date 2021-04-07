@@ -10,6 +10,7 @@ import { Usuario } from 'src/app/models/usuario';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService extends ValidarRol{
   public user$: Observable<Usuario>;
 
