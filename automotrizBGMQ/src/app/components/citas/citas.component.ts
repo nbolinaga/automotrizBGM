@@ -19,6 +19,7 @@ export class CitasComponent implements OnInit {
 
   fechaCalendario: string;
   public citas = [];
+  public citasCambio=[];
   public citasEntrantes = [];
   public citasConfirmar = [];
   public citasByFecha = [];
@@ -29,6 +30,7 @@ export class CitasComponent implements OnInit {
     this.citasService.getAllCitas().subscribe(citas => {
       this.citasEntrantes = citas.filter(cita => cita.estado === 'Esperando fecha');
       this.citasConfirmar = citas.filter(cita => cita.confirmada === true);
+      this.citasCambio = citas.filter(cita => cita.estado === 'Esperando cambio de fecha');
       this.citas = citas;
     });
   }
@@ -40,10 +42,8 @@ export class CitasComponent implements OnInit {
     });
   }
 
-
   asignarFecha(cita: Cita): void {
     console.log(cita);
     this.citasService.updateFechaCita(cita, this.newFecha, this.newHora);
   }
-
 }

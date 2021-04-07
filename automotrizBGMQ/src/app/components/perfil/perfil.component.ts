@@ -33,7 +33,7 @@ export class PerfilComponent implements OnInit {
   citasPendientes: Cita[] = [];
   vehiculosRegistrados: Vehiculo[] = [];
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
-
+  esperandoConfirmar: Boolean = false;
   constructor(
     private Auth: AuthService,
     private UsuarioService: UsuarioService,
@@ -159,7 +159,6 @@ export class PerfilComponent implements OnInit {
       alert('Posee todos sus vehiculos en reparación, espere a su entrega para solicitar una nueva cita.');
     }
   }
-
 
   // getVehiculos(){
   //   for (let index = 0; index < this.usuario.vehiculos.length; index++) {
