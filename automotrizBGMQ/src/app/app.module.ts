@@ -29,6 +29,7 @@ import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -74,7 +75,8 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    NgxQRCodeModule
   ],
   exports: [RouterModule],
   providers: [AuthService, AngularFirestore],
