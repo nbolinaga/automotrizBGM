@@ -58,6 +58,7 @@ export class CitasComponent implements OnInit {
     else {
       this.citasService.updateFechaCita(cita, fecha, hora);
       alert('Fecha asignada con éxito!');
+      this.formFecha.reset();
     }
   }
 }

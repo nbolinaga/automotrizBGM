@@ -187,15 +187,15 @@ export class PerfilComponent implements OnInit {
     }
   }
 
-  toggle(vehiculo: Vehiculo){
+  toggle(vehiculo: Vehiculo): void {
       vehiculo.activo = !vehiculo.activo;
       this.VehiculosService.updateVehiculo(vehiculo.id, vehiculo);
   }
-  pasarVehiculo(vehiculo: Vehiculo){
+  pasarVehiculo(vehiculo: Vehiculo): void {
       this.editarVehiculo = !this.editarVehiculo;
       this.currentVehiculo = vehiculo;
   }
-  guardarVehiculo(){
+  guardarVehiculo(): void {
     this.VehiculosService.updateVehiculo(this.currentVehiculo.id, this.currentVehiculo);
     this.activacion(2);
   }
