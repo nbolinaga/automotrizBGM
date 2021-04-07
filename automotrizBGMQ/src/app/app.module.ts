@@ -43,7 +43,8 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuardGuard, AdminGuard]},
   {path: 'gerente', component: GerenteComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
   {path: 'reportes', component: ReportesComponent, canActivate: [AuthGuardGuard]},
-  {path: 'calendario', component: CalendarioComponent, canActivate: [AuthGuardGuard]}
+  {path: 'calendario', component: CalendarioComponent, canActivate: [AuthGuardGuard]},
+  {path: 'ordenes', component: OrdenesComponent, canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({
@@ -75,7 +76,8 @@ const routes: Routes = [
     AngularFireAuthModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule
   ],
   exports: [RouterModule],
   providers: [AuthService, AngularFirestore],

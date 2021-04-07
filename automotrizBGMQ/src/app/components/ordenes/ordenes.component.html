@@ -1,34 +1,36 @@
 <div class="todo">
     <h2>Ordenes</h2>
-    <form class="form-group">
-        <label>Marca</label>
-        <input type="text">
-        <label>Modelo</label> 
-        <input  type="text">
-        <label>Año</label>
-        <input type="number"> 
-        <label>Color</label>
-        <input type="text">
-        <label>Placa</label>
-        <input type="text">
-        <label>Km de ingreso</label>
-        <input type="number">
-        <label>Nivel gasolina</label>
-        <input type="text">
-        <label>Extras</label>
-        <input type="text">
-        <label>Cauchos de repuesto</label>
-        <input type="checkbox">
+    <form [formGroup]="formOrden" (ngSubmit)="agregarOrden()" class="form-group">
+        <label for="marca">Marca</label>
+        <input type="text" formControlName="marca">
+        <label for="modelo">Modelo</label>
+        <input type="text" formControlName="modelo">
+        <label for="año">Año</label>
+        <input type="number" formControlName="año">
+        <label for="serial">Serial</label>
+        <input type="text" formControlName="serial">
+        <label for="color">Color</label>
+        <input type="text" formControlName="color">
+        <label for="placa">Placa</label>
+        <input type="text" formControlName="placa">
+        <label for="kmIngreso">Km de ingreso</label>
+        <input type="number" formControlName="kmIngreso">
+        <label for="nivelGas">Nivel gasolina</label>
+        <input type="text" formControlName="nivelGas">
+        <label for="extras">Extras</label>
+        <input type="text"  formControlName="extras">
+        <!-- <label>Cauchos de repuesto</label>
+        <input formControlName="cauchosRepuesto" type="checkbox">
         <label>Llaves</label>
-        <input type="checkbox">
+        <input formControlName="llaves" type="checkbox">
         <label>Gato</label>
-        <input type="checkbox">
+        <input formControlName="gato" type="checkbox">
         <label>Herramientas</label>
-        <input type="checkbox">
+        <input formControlName="herramientas" type="checkbox">
         <label>Reproductor</label>
-        <input type="checkbox">
+        <input formControlName="reproductor" type="checkbox"> -->
         <label>Otros</label>
-        <input type="text">
-        <button type="submit">Enviar Orden</button>
+        <input formControlName="otros" type="text">
+        <button type="submit" >Enviar Orden</button>
     </form>
 </div>
