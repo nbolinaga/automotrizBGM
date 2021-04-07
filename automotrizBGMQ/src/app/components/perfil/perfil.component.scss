@@ -177,6 +177,9 @@
     background-color: $blanco;
     justify-content: space-around;
     text-align: center;
+    @media #{$telefono} {
+      overflow-y: hidden;
+    }
 
     #title-citas{
       background-color: $detalles;
