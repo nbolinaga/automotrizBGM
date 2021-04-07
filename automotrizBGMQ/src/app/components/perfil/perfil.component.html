@@ -2,7 +2,7 @@
   <div class="distribucion1">
       <div id="info">
           <h3 id="nombre">{{usuario.nombre}}</h3>
-          <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/user.png?alt=media" alt="Foto de perfil">
+          <img [src]="usuario.photoURL" alt="Foto de perfil">
           <h4>{{usuario.rol}}</h4>
           <div class="roles">
 
@@ -17,6 +17,7 @@
             <a [routerLink]="['/gerente']" *ngIf="usuario.rol === 'Gerente'">Gestiones</a>
             <a [routerLink]="['/mecanico']" *ngIf="usuario.rol === 'Mecanico'">Gestionar Ordenes</a>
           </button>
+          <div *ngIf="!disabled"><app-file-upload [vehiculo]='null' [usuario]='usuario'></app-file-upload ></div>
           <button class="btn-alt" (click)="editar()" [ngClass]="{'guardar': !disabled}"><p *ngIf="disabled">Editar Perfil</p><p *ngIf="!disabled">Guardar Cambios</p></button>
           <button class="btn-alt cancel" *ngIf="!disabled" (click)="cancel()">Cancelar Cambios</button>
       </div>
@@ -141,7 +142,7 @@
             <p>Ano: <input [(ngModel)]="currentVehiculo.ano" type="number" /></p>
             <p>Placa: <input [(ngModel)]="currentVehiculo.placa" type="string" /></p>
           </div>
-          <app-file-upload [vehiculo]='currentVehiculo'></app-file-upload>
+          <app-file-upload [vehiculo]='currentVehiculo' [usuario]='null'></app-file-upload>
           <button class="btn-alt guardar" (click)="guardarVehiculo()">Guardar Cambios</button>
           <button class="btn-alt cancel" (click)="cancel()">Cancelar Cambios</button>
       </div>

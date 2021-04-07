@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 import { Vehiculo } from 'src/app/models/vehiculo';
 import { VehiculosService } from '../../services/vehiculos.service';
+import { Usuario } from 'src/app/models/usuario';
+import { UsuarioService } from '../../services/usuario.service';
+
 @Component({
   selector: 'upload-task',
   templateUrl: './upload-task.component.html',
@@ -13,6 +16,7 @@ import { VehiculosService } from '../../services/vehiculos.service';
 export class UploadTaskComponent implements OnInit {
 
   @Input() vehiculo: Vehiculo;
+  @Input() usuario: Usuario;
   @Input() file: File;
 
   task: AngularFireUploadTask;
@@ -21,7 +25,8 @@ export class UploadTaskComponent implements OnInit {
   snapshot: Observable<any>;
   downloadURL: string;
 
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private VehiculosService: VehiculosService,) { }
+  path: string;
+  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private VehiculosService: VehiculosService, private UsuarioService: UsuarioService) { }
 
   ngOnInit() {
     this.startUpload();
@@ -29,14 +34,19 @@ export class UploadTaskComponent implements OnInit {
 
   startUpload() {
 
+    if(this.usuario == null){
+      this.path = `fotosVehiculos/${Date.now()}_${this.file.name}`;
+    } else {
+      this.path = `fotosPerfil/${Date.now()}_${this.file.name}`;
+    }
     // The storage path
-    const path = `fotosVehiculos/${Date.now()}_${this.file.name}`;
+
 
     // Reference to storage bucket
-    const ref = this.storage.ref(path);
+    const ref = this.storage.ref(this.path);
 
     // The main task
-    this.task = this.storage.upload(path, this.file);
+    this.task = this.storage.upload(this.path, this.file);
 
     // Progress monitoring
     this.percentage = this.task.percentageChanges();
@@ -46,8 +56,14 @@ export class UploadTaskComponent implements OnInit {
       // The file's download URL
       finalize( async() =>  {
         this.downloadURL = await ref.getDownloadURL().toPromise();
-        this.vehiculo.foto = this.downloadURL;
-        this.VehiculosService.updateVehiculo(this.vehiculo.id, this.vehiculo);
+        if(this.usuario == null){
+          this.vehiculo.foto = this.downloadURL;
+          this.VehiculosService.updateVehiculo(this.vehiculo.id, this.vehiculo);
+        } else {
+          this.usuario.photoURL = this.downloadURL;
+          this.UsuarioService.updateUser(this.usuario.id, this.usuario);
+        }
+
       }),
     );
   }

@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 import { Vehiculo } from 'src/app/models/vehiculo';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-file-upload',
@@ -13,6 +14,7 @@ import { Vehiculo } from 'src/app/models/vehiculo';
 
 export class UploaderComponent {
 
+  @Input() usuario: Usuario;
   @Input() vehiculo: Vehiculo;
   isHovering: boolean;
 

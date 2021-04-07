@@ -7,10 +7,6 @@
 
   {{ snap.bytesTransferred }} of {{ snap.totalBytes }}
 
-  <div *ngIf="downloadURL as url">
-    <p>{{vehiculo.id}}</p>
-  </div>
-
   <button (click)="task.pause()" [disabled]="!isActive(snap)">Pausar</button>
   <button (click)="task.cancel()" [disabled]="!isActive(snap)">Cancelar</button>
   <button (click)="task.resume()" [disabled]="!(snap?.state === 'paused')">Resumir</button>

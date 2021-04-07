@@ -13,5 +13,5 @@ export interface Usuario{
   clave: string;
   confirmacion: string;
   rol?: Rol;
-  photoURL?: 'https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/user.png?alt=media';
+  photoURL?: string;
 }
