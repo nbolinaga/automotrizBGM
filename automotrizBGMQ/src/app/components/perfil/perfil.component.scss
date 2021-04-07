@@ -142,7 +142,10 @@
         }
 
         img {
-          width: 100%;
+          width: 35vh;
+          height: 20vh;
+          object-fit: cover;
+          object-position: top;
 
           &.desactivado{
             filter: grayscale(100%);
