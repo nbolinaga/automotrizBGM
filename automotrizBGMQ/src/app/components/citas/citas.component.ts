@@ -1,4 +1,4 @@
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Cita } from './../../models/cita';
 import { CitasService } from './../../services/citas.service';
 import { UsuarioService } from '../../services/usuario.service';
@@ -39,8 +39,8 @@ export class CitasComponent implements OnInit {
 
   buildFormFecha(): void {
     this.formFecha = new FormGroup({
-      fecha: new FormControl('', [Validators.nullValidator]),
-      hora: new FormControl('', [Validators.nullValidator]),
+      fecha: new FormControl(''),
+      hora: new FormControl(''),
     });
   }
 
