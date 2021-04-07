@@ -1,32 +1,27 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import {Usuario} from 'src/app/models/usuario'
-import { AuthService } from 'src/app/services/auth.service'
-import { UsuarioService } from '../services/usuario.service';
+import { tap, map, take } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GerenteGuard implements CanActivate {
 
-  usuario: Usuario;
-
-  constructor(private Router:Router, private auth: AuthService, private usuarioService: UsuarioService){}
+  constructor( private Auth: AuthService, private router: Router ){}
 
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot):
-    Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      this.auth.getCurrentUser().subscribe(user => {
-        this.usuarioService.getUserById(user.uid).subscribe(data => {
-          this.usuario=data;
-        });
-      });
-      if(this.usuario.rol==='Gerente'){
-        return true;
-      }
-      return this.Router.parseUrl('/perfil');
+  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
+    return this.Auth.user$.pipe(
+      take(1),
+      map( user => user && this.Auth.isGerente(user)),
+      tap( isGerente => {
+        if (!isGerente) {
+          alert('Debe tener permisos de Gerente para acceder a esta página.');
+          this.router.navigate(['/']);
+        }
+      })
+    );
   }
 }

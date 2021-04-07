@@ -1,14 +1,31 @@
+import { ValidarRol } from './validarRol';
 import { Injectable } from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import firebase from 'firebase';
-import {Observable} from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { Usuario } from 'src/app/models/usuario';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService extends ValidarRol{
+  public user$: Observable<Usuario>;
 
-  constructor(private Auth: AngularFireAuth) { }
+  constructor(
+    private Auth: AngularFireAuth,
+    private firestore: AngularFirestore) {
+    super();
+    this.user$ = this.Auth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.firestore.doc<Usuario>(`usuarios/${user.uid}`).valueChanges();
+        }
+        return of(null);
+      })
+    );
+  }
 
   // Registrarse con correo y contraseña
   async signUpWithEmail(
