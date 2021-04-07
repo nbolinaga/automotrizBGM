@@ -76,6 +76,11 @@
       margin: 1vh auto;
       padding: 2vh;
       width: 80%;
+
+      a{
+        text-decoration: none;
+        color: $blanco;
+      }
     }
     .guardar{
       background-color: rgba(green,.75);

@@ -5,11 +5,25 @@
   padding: 25vh;
   padding-bottom: 40vh;
   display: flex;
+
+  @media #{$telefono} {
+    width: 100vw;
+    padding: 0;
+  }
 }
 
 .contenedor-drop {
   width: 100vw;
   height: 100vh;
+
+  @media #{$telefono} {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .drop-down {
@@ -23,6 +37,12 @@
   padding: 2vh;
   margin-inline: auto;
   margin-bottom: 3vh;
+  border-radius: 5px;
+
+  @media #{$telefono} {
+    width: 80vw;
+    margin-inline: 0;
+  }
 
   h2 {
     display: flex;
@@ -32,13 +52,15 @@
   }
 
   i {
-    display: flex;
-    align-items: center;
     cursor: pointer;
     font-size: 2rem;
-    text-align: right;
     color: $base;
-    padding-right: 2vw;
+    padding-bottom: 2vh;
+
+    &.open{
+      padding-top: 2vh;
+      padding-bottom: 0;
+    }
   }
 }
 
@@ -51,6 +73,15 @@
   margin-bottom: 3vh;
   transition: 3s ease-in;
 
+  @media #{$telefono} {
+    width: inherit;
+  }
+
+  h3{
+    @media #{$telefono} {
+      margin-right: 2vw;
+    }
+  }
   div {
     display: flex;
     justify-content: space-between;
@@ -66,67 +97,113 @@
       font-family: $fonts;
       font-weight: bold;
 
+      @media #{$telefono} {
+        width: 5rem;
+      }
     }
   }
 }
 //Popup para editar usuarios
 .popup {
   display: none;
-  justify-content: center;
-  align-items: center;
   background-color: rgb(0, 0, 0, 0.4);
   width: 100vw;
   height: 100vh;
   position: fixed;
+  top: 0;
+  left: 0;
   transition: transform 0.2s ease all;
+
 }
 
 .editarUsuario {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  height: 40vh;
-  width: 50vw;
-  background-color: $base;
+  height: 80vh;
+  width: 30vw;
+  background-color: $blanco;
+  border-radius: 5px;
+  padding: 2vh 0 6vh 0;
+
+  @media #{$telefono} {
+    width: 90vw;
+    height: 70vh;
+  }
 
   .titulo {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 
     h3 {
-      color: $blanco;
+      color: $base;
+      @media #{$telefono} {
+        font-size: 1rem;
+      }
     }
 
     .cerrar {
-      color: $blanco;
+      position: relative;
+      right: -5vw;
+      color: $base;
+      font-weight: bold;
       cursor: pointer;
     }
   }
 
   button {
     width: 20vw;
-    height: 2.4rem;
+    padding: 1vh;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     outline: none;
     cursor: pointer;
+    margin: 0;
+
+    @media #{$telefono} {
+      font-size: .8rem;
+      width: 40vw;
+    }
   }
 
   .cambiar {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: 100%;
+    margin-bottom: 0;
 
+    p {
+      margin-top: 1vw;
+    }
+
+    select, input {
+      text-decoration: none;
+      border:none;
+      border-bottom: 1px solid $base;
+      color: $detalles;
+      padding: .5vh;
+      width: auto;
+
+      @media #{$telefono} {
+        font-size: .8rem;
+        width: 40%;
+      }
+    }
     .opciones {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-left: 3rem;
+      @media #{$telefono} {
+        margin-left: 0;
+        text-align: center;
+      }
 
       label, select option {
         color: $detalles;
@@ -136,72 +213,11 @@
       label {
         font-weight: bold;
       }
-
-      select {
-        outline: none;
-      }
     }
   }
 
 }
 //Clase auxiliar para mostrar el popup
 .popupOpen {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  transform: translate(-12%, -15%);
-}
-
-@media screen and (max-width: 1024px) {
-
-  .todo {
-    width: 100vw;
-    padding: 0;
-  }
-
-  .contenedor-drop {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    .drop-down {
-      width: 80vw;
-      margin-inline: 0;
-    }
-
-    .lista {
-      width: inherit;
-
-      h3 {
-        margin-right: 2vw;
-      }
-
-      button {
-        width: 5rem;
-      }
-    }
-  }
-
-  .popup {
-
-    .editarUsuario {
-      width: 80vw;
-    }
-
-    h3 {
-      font-size: .8rem;
-    }
-
-    button {
-      font-size: .8rem;
-      width: 40vw;
-    }
-
-    .cambiar .opciones {
-      margin-left: 0;
-    }
-  }
+  display: block;
 }
