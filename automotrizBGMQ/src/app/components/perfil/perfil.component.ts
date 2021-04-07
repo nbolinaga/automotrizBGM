@@ -133,7 +133,7 @@ export class PerfilComponent implements OnInit {
     const newCita: Cita = {
       fecha: '',
       hora: '',
-      id: this.user.uid,
+      idUser: this.user.uid,
       cliente: this.usuario.nombre,
       estado: 'Esperando fecha',
       confirmada: false,
@@ -142,17 +142,15 @@ export class PerfilComponent implements OnInit {
       descripcion: this.formCita.get('descripcion').value,
     };
     const arrayCitas: Cita[] = this.citasPendientes;
-    const arrayVehiculos: Vehiculo[] = this.vehiculosRegistrados;
 
-    if ( arrayCitas.length < 3) {
-      for (let i = 0; i < arrayVehiculos.length; i++) {
-        if (arrayVehiculos[i].placa !== newCita.vehiculo) {
-          this.CitasService.createNewCita(newCita);
-          alert('La cita se ha solicitado exitosamente.');
-        }
-        else {
-          alert('Ya se ha solicitado un cita para este vehículo.');
-        }
+    if ( arrayCitas.length < 3 ) {
+      const verificarPlaca = arrayCitas.filter(ver => ver.vehiculo === newCita.vehiculo);
+      if (verificarPlaca.length === 0) {
+        this.CitasService.createNewCita(newCita);
+        alert('La cita se ha solicitado exitosamente.');
+      }
+      else {
+        alert('Ya se ha solicitado un cita para este vehículo.');
       }
     }
     else {

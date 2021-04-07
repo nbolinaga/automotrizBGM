@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Cita } from './../../models/cita';
 import { CitasService } from './../../services/citas.service';
 import { UsuarioService } from '../../services/usuario.service';
@@ -23,6 +24,7 @@ export class CitasComponent implements OnInit {
   public citasEntrantes = [];
   public citasConfirmar = [];
   public citasByFecha = [];
+  formFecha: FormGroup;
   newFecha: string;
   newHora: string;
 
