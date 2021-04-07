@@ -15,6 +15,8 @@ formatDate(new Date(), 'dd/MM/yyyy', 'en');
 export class OrdenesComponent implements OnInit {
   formOrden: FormGroup;
   usuario: Usuario;
+  activar = false;
+  activarAgregar = false;
   constructor(
     private fb : FormBuilder,
     private OrdenesService: OrdenesService){
@@ -24,6 +26,16 @@ export class OrdenesComponent implements OnInit {
     this.crearForm();
   }
 
+  activacion(numero): void {
+    if (numero === 1){
+      this.activar = !this.activar;
+      this.crearForm();
+    }
+    else{
+      this.activarAgregar = !this.activarAgregar;
+      this.crearForm();
+    }
+  }
   crearForm(): void {
     this.formOrden = this.fb.group({
       marca: ['', Validators.required],
