@@ -4,6 +4,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Vehiculo } from 'src/app/models/vehiculo';
 import { Usuario } from 'src/app/models/usuario';
 import { Subscription } from 'rxjs';
+import { CitasService } from 'src/app/services/citas.service';
+import { Cita } from 'src/app/models/cita';
 
 @Component({
   selector: 'app-reportes',
@@ -23,8 +25,9 @@ export class ReportesComponent implements OnInit {
   listaVehiculos: Vehiculo[] = [];
   listaClientes: Usuario[] = [];
   listaMecanicos: Usuario[] = [];
-  //Lista de reparaciones del vehiculo
-  listaReparaciones: Date[] = [];
+  //lista con todas las citas
+  listaCitas: Cita[] = [];
+  listaCitasVehiculo: Cita[] = [];
 
   //Variables auxiliares
   subscription: Subscription;
@@ -52,11 +55,15 @@ export class ReportesComponent implements OnInit {
 
   subscrito = true;
 
-  constructor(private userService: UsuarioService, private carService: VehiculosService) { }
+  constructor(
+      private userService: UsuarioService,
+      private carService: VehiculosService,
+      private citasService: CitasService) { }
 
   ngOnInit(): void {
     this.todosLosCarros();
     this.todosLosClientes();
+    this.todasLasCitas();
   }
 
   cambio(event: any): void {
@@ -100,6 +107,15 @@ export class ReportesComponent implements OnInit {
     });
   }
 
+  //Llena la lista de citas
+  todasLasCitas(): void {
+    this.citasService.getAllCitas().subscribe(citas => {
+      citas.forEach(cita => {
+        this.listaCitas.push(cita);
+      });
+    });
+  }
+
   //Se subscribe al cliente que se esoge
   mostrarDatos(event: any): void {
     const id: string = event.target.value;
@@ -113,14 +129,18 @@ export class ReportesComponent implements OnInit {
 
   //Se subscribe al vehiculo que se esoge
   mostrarVehiculo(event: any): void {
-    this.listaReparaciones.length = 0
+    this.listaCitasVehiculo.length = 0; //Vacia las citas cada vez que se visita un vehiculo
 
     const id: string = event.target.value;
 
     if(id !== 'default') {
       this.subscription = this.carService.getVehiculoById(id).subscribe(carro => {
-        this.listaReparaciones.push(carro.fechaIngreso)
-        console.log(carro.fechaIngreso)
+        //Probar con citas service
+        //Usar getAllCitas -> lista de citas -> filtrar citas.vehiculo === carro.placa
+        //Sacar las citas del carro
+
+
+
         return this.vehiculo = carro;
       });
     }
