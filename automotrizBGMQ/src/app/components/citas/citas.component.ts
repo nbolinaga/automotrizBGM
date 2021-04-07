@@ -1,4 +1,4 @@
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Cita } from './../../models/cita';
 import { CitasService } from './../../services/citas.service';
 import { UsuarioService } from '../../services/usuario.service';
@@ -22,7 +22,6 @@ export class CitasComponent implements OnInit {
 
   fechaCalendario: string;
   public citas = [];
-  public citasCambio=[];
   public citasEntrantes = [];
   public citasCambiar = [];
   public citasByFecha = [];
@@ -33,15 +32,15 @@ export class CitasComponent implements OnInit {
   ngOnInit(): void {
     this.citasService.getAllCitas().subscribe(citas => {
       this.citasEntrantes = citas.filter(cita => cita.estado === 'Esperando fecha');
-      this.citasCambiar = citas.filter(cita => cita.confirmada === true);
+      this.citasCambiar = citas.filter(cita => cita.estado === 'Esperando cambio de fecha');
       this.citas = citas;
     });
   }
 
   buildFormFecha(): void {
     this.formFecha = new FormGroup({
-      fecha: new FormControl('', [Validators.nullValidator]),
-      hora: new FormControl('', [Validators.nullValidator]),
+      fecha: new FormControl(''),
+      hora: new FormControl(''),
     });
   }
 
