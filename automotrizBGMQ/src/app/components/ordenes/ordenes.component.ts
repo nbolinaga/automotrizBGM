@@ -6,6 +6,8 @@ import { Vehiculo } from 'src/app/models/vehiculo';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import {formatDate} from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
+import firebase from 'firebase';
 formatDate(new Date(), 'dd/MM/yyyy', 'en');
 @Component({
   selector: 'app-ordenes',
@@ -14,12 +16,15 @@ formatDate(new Date(), 'dd/MM/yyyy', 'en');
 })
 export class OrdenesComponent implements OnInit {
   formOrden: FormGroup;
+  user: firebase.User = null;
   usuario: Usuario;
   activar = false;
   activarAgregar = false;
   constructor(
     private fb : FormBuilder,
-    private OrdenesService: OrdenesService){
+    private OrdenesService: OrdenesService,
+    private Auth: AuthService,
+    private UsuarioService: UsuarioService){
   }
 
   ngOnInit(): void {
@@ -56,6 +61,13 @@ export class OrdenesComponent implements OnInit {
     })
   }
   agregarOrden(){
+    this.Auth.getCurrentUser().subscribe((user) => {
+      this.user = user;
+      this.UsuarioService.getUserById(user.uid).subscribe((response) =>{
+        this.usuario = response;
+        console.log(this.usuario.nombre)
+      })
+    })
     const newVehiculo: Vehiculo ={
       marca: this.formOrden.get('marca').value,
       modelo: this.formOrden.get('modelo').value,
