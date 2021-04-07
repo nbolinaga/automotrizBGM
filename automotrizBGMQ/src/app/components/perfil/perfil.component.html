@@ -86,7 +86,9 @@
             <div class="contenedor-inputs">
                 <label for="Vehiculos">Seleciona un Vehiculo:<span>*</span></label>
                 <select id="Vehiculos" formControlName="vehiculo">
-                  <option *ngFor="let vehiculo of vehiculosRegistrados">{{vehiculo.placa}}</option>
+                  <option *ngFor="let vehiculo of vehiculosRegistrados">
+                    <p *ngIf='vehiculo.activo'>{{vehiculo.placa}}</p>
+                  </option>
                 </select>
                 <label for="Opciones">Seleciona Motivo General:<span>*</span></label>
                 <select id="Opciones" formControlName="motivo">
