@@ -2,7 +2,7 @@
   <div class="distribucion1">
       <div id="info">
           <h3 id="nombre">{{usuario.nombre}}</h3>
-          <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/user.png?alt=media" alt="Foto de perfil">
+          <img [src]="usuario.photoURL" alt="Foto de perfil">
           <h4>{{usuario.rol}}</h4>
           <div class="roles">
 
@@ -17,6 +17,7 @@
             <a [routerLink]="['/gerente']" *ngIf="usuario.rol === 'Gerente'">Gestiones</a>
             <a [routerLink]="['/mecanico']" *ngIf="usuario.rol === 'Mecanico'">Gestionar Ordenes</a>
           </button>
+          <div *ngIf="!disabled"><app-file-upload [vehiculo]='null' [usuario]='usuario'></app-file-upload ></div>
           <button class="btn-alt" (click)="editar()" [ngClass]="{'guardar': !disabled}"><p *ngIf="disabled">Editar Perfil</p><p *ngIf="!disabled">Guardar Cambios</p></button>
           <button class="btn-alt cancel" *ngIf="!disabled" (click)="cancel()">Cancelar Cambios</button>
       </div>
@@ -26,7 +27,7 @@
           <h3 id="title-vehiculos">Vehículos</h3>
             <div id="vehiculos-container">
               <div class="vehiculo-thumb" *ngFor="let vehiculo of vehiculosRegistrados">
-                <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo1.png?alt=media" alt="" [class.desactivado]="vehiculo.activo == false">
+                <img [src]="vehiculo.foto" alt="" [class.desactivado]="vehiculo.activo == false">
                 <p>{{vehiculo.marca}}</p>
                 <p>{{vehiculo.placa}}</p>
                 <button class="btn-sec" (click)="pasarVehiculo(vehiculo)">Editar</button>
@@ -51,13 +52,13 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let cita of citasConfirmar">
+                  <tr *ngFor="let cita of citasPendientes">
                     <td>{{cita.vehiculo}}</td>
                     <td>{{cita.motivo}}</td>
                     <td>{{cita.estado}}</td>
                     <td>{{cita.fecha}}</td>
                     <td>{{cita.hora}}</td>
-                    <td>
+                    <td *ngIf="porConfirmar(cita)">
                       <form [formGroup]="formConfirmacion" class="confirmarFecha" (ngSubmit)="confirmacion(cita)">
                         <select name="Confirmacion" id="Confirmacion" formControlName="confirmacion">
                           <option value="Confirmar">Confirmar</option>
@@ -67,7 +68,7 @@
                         <button class="btn-pri" type="submit" [disabled]="formConfirmacion.invalid">¡Listo!</button>
                       </form>
                     </td>
-                    <!--<td *ngIf="!esperandoConfirmar"></td>-->
+                    <td *ngIf="!porConfirmar(cita)"></td>
                   </tr>
               </tbody>
           </table>
@@ -141,6 +142,7 @@
             <p>Ano: <input [(ngModel)]="currentVehiculo.ano" type="number" /></p>
             <p>Placa: <input [(ngModel)]="currentVehiculo.placa" type="string" /></p>
           </div>
+          <app-file-upload [vehiculo]='currentVehiculo' [usuario]='null'></app-file-upload>
           <button class="btn-alt guardar" (click)="guardarVehiculo()">Guardar Cambios</button>
           <button class="btn-alt cancel" (click)="cancel()">Cancelar Cambios</button>
       </div>

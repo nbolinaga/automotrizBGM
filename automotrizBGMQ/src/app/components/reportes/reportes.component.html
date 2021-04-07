@@ -20,7 +20,7 @@
       </div>
       <div class="contenido cont-vehiculos">
         <h2>{{ vehiculo.marca === 'marca' ? '' : vehiculo.marca }}</h2>
-        <h4 *ngFor="let reparacion of listaReparaciones">{{ reparacion | date: 'dd/MM/yyyy'}}</h4>
+        <h4 *ngFor="let cita of listaCitasVehiculo">{{ cita.motivo }}</h4>
       </div>
     </div>
     <div class="clientes" *ngIf="clientes">
@@ -36,6 +36,7 @@
         <h4>{{ usuario.cedula === -1 ? '' : usuario.cedula }}</h4>
         <h4>{{ usuario.email }}</h4>
         <h4>{{ usuario.telefono !== 'edite sus datos de perfil' ? usuario.telefono : 'Tlf no registrado' }}</h4>
+        <p *ngFor="let vehiculo of vehiculosCliente">{{ vehiculo.marca }} Placa: {{ vehiculo.placa }}</p>
       </div>
     </div>
     <div class="mecanicos" *ngIf="mecanicos">
@@ -47,7 +48,7 @@
         </select>
       </div>
       <div class="contenido">
-        <h2>{{ usuario.nombre }}</h2>
+        <h2>{{ mecanico.nombre }}</h2>
       </div>
     </div>
     <div class="general" *ngIf="general">

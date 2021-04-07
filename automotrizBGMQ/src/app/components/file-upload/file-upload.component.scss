@@ -1,0 +1,27 @@
+@import "../../../variables.scss";
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 20vw;
+  font-weight: 200;
+  height: 10vh;
+  border: 2px dashed $detalles;
+  border-radius: 5px;
+  background: white;
+  margin: 10px 0;
+
+  &.hovering {
+      border: 2px solid $base;
+      color: #dadada !important;
+  }
+
+  .file-label {
+      font-size: 1.2em;
+  }
+}
+
+progress::-webkit-progress-value {
+  transition: width 0.1s ease;
+}

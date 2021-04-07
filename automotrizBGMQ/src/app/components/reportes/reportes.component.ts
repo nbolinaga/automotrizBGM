@@ -4,6 +4,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Vehiculo } from 'src/app/models/vehiculo';
 import { Usuario } from 'src/app/models/usuario';
 import { Subscription } from 'rxjs';
+import { CitasService } from 'src/app/services/citas.service';
+import { Cita } from 'src/app/models/cita';
 
 @Component({
   selector: 'app-reportes',
@@ -23,8 +25,10 @@ export class ReportesComponent implements OnInit {
   listaVehiculos: Vehiculo[] = [];
   listaClientes: Usuario[] = [];
   listaMecanicos: Usuario[] = [];
-  //Lista de reparaciones del vehiculo
-  listaReparaciones: Date[] = [];
+  //lista con todas las citas
+  listaCitas: Cita[] = [];
+  listaCitasVehiculo: Cita[] = [];
+  vehiculosCliente: any[] = [];
 
   //Variables auxiliares
   subscription: Subscription;
@@ -37,7 +41,7 @@ export class ReportesComponent implements OnInit {
     ano: 1,
     serial: 'serial',
     placa: 'placa',
-    activo: null
+    activo: true
   }
   usuario: Usuario = {
     nombre: '',
@@ -49,14 +53,28 @@ export class ReportesComponent implements OnInit {
     clave: '',
     confirmacion: ''
   };
+  mecanico: Usuario = {
+    nombre: '',
+    cedula: -1,
+    tipoID: '',
+    id: '',
+    email: '',
+    telefono: '',
+    clave: '',
+    confirmacion: ''
+  }
 
   subscrito = true;
 
-  constructor(private userService: UsuarioService, private carService: VehiculosService) { }
+  constructor(
+      private userService: UsuarioService,
+      private carService: VehiculosService,
+      private citasService: CitasService) { }
 
   ngOnInit(): void {
     this.todosLosCarros();
     this.todosLosClientes();
+    this.todasLasCitas();
   }
 
   cambio(event: any): void {
@@ -100,29 +118,76 @@ export class ReportesComponent implements OnInit {
     });
   }
 
+  //Llena la lista de citas
+  todasLasCitas(): void {
+    this.citasService.getAllCitas().subscribe(citas => {
+      citas.forEach(cita => {
+        this.listaCitas.push(cita);
+      });
+    });
+  }
+
   //Se subscribe al cliente que se esoge
   mostrarDatos(event: any): void {
     const id: string = event.target.value;
+
+    this.vehiculosCliente.length = 0; //Se vacia la lista al llamar al metodo
+
+    // if(this.subscription) {
+    //   this.subscription.unsubscribe();
+    // }
 
     if(id !== 'default') {
       this.subscription = this.userService.getUserById(id).subscribe(user => {
         return this.usuario = user;
       });
+
+      // this.listaVehiculos.forEach(vehiculo => {
+      //   if(vehiculo.idUser === this.usuario.id) {
+      //     this.vehiculosCliente.push(vehiculo);
+      //   }
+      // });
+
+      this.carService.getAllVehiculos().subscribe(vehiculos => {
+        vehiculos.forEach(vehiculo => {
+          if(vehiculo.idUser === this.usuario.id) {
+            this.vehiculosCliente.push(vehiculo);
+          }
+        })
+
+      })
+
     }
   }
 
   //Se subscribe al vehiculo que se esoge
   mostrarVehiculo(event: any): void {
-    this.listaReparaciones.length = 0
+    this.listaCitasVehiculo.length = 0; //Vacia las citas cada vez que se visita un vehiculo
+
+    // if(this.subscription) {
+    //   this.subscription.unsubscribe();
+    // }
 
     const id: string = event.target.value;
 
     if(id !== 'default') {
       this.subscription = this.carService.getVehiculoById(id).subscribe(carro => {
-        this.listaReparaciones.push(carro.fechaIngreso)
-        console.log(carro.fechaIngreso)
         return this.vehiculo = carro;
       });
+      //Todas las citas del vehiculo que se esta viendo
+      // this.listaCitas.forEach(cita => {
+      //   if(cita.vehiculo === this.vehiculo.placa) {
+      //     this.listaCitasVehiculo.push(cita);
+      //   }
+      // });
+
+      this.citasService.getAllCitas().subscribe(citas => {
+        citas.forEach(cita => {
+          if(cita.vehiculo === this.vehiculo.placa) {
+            this.listaCitasVehiculo.push(cita);
+          }
+        })
+      })
     }
   }
 
@@ -130,10 +195,19 @@ export class ReportesComponent implements OnInit {
   mostrarMecanico(event: any): void {
     const id: string = event.target.value;
 
+    // if(this.subscription) {
+    //   this.subscription.unsubscribe();
+    // }
+
     if(id !== 'default') {
       this.subscription = this.userService.getUserById(id).subscribe(user => {
-        return this.usuario = user;
+        return this.mecanico = user;
       });
     }
+  }
+
+  //Reportes generales
+  mostrarGeneral(): void {
+
   }
 }

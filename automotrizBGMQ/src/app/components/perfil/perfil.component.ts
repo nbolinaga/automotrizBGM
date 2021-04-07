@@ -35,6 +35,7 @@ export class PerfilComponent implements OnInit {
   esperandoConfirmar: Boolean = false;
   subscription: Subscription;
   editarVehiculo = false;
+  vehiculosActivos: Vehiculo[] = [];
 
   constructor(
     private Auth: AuthService,
@@ -122,7 +123,7 @@ export class PerfilComponent implements OnInit {
   }
 
   cancel(): void {
-    location.reload();
+    location.href = '/perfil';
   }
 
   agregarVehiculo(): void {
@@ -135,10 +136,23 @@ export class PerfilComponent implements OnInit {
       placa: this.formVehiculo.get('placa').value,
       serial: this.formVehiculo.get('serial').value,
       fechaIngreso: new Date(),
+      foto: 'https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo1.png?alt=media',
       activo: true,
     };
-    this.VehiculosService.createNewVehiculo(newVehiculo);
-    alert('Vehiculo agregado.');
+    this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {
+      this.vehiculosActivos = vehiculos.filter(vehiculo => vehiculo.activo === true);
+    });
+
+    var check = this.chequearSerial(newVehiculo);
+
+    if( check === true){
+      alert('Vehiculo ya esta registrado en la base de datos.');
+    } else {
+      this.VehiculosService.createNewVehiculo(newVehiculo);
+      alert('Vehiculo agregado.');
+    }
+
+    this.activacion(0);
   }
 
   pedirCita(): void {
@@ -183,6 +197,13 @@ export class PerfilComponent implements OnInit {
     }
   }
 
+  porConfirmar(cita: Cita): Boolean{
+    if(cita.estado==='Esperando confirmación'){
+      return true;
+    }
+    return false;
+  }
+
   toggle(vehiculo: Vehiculo): void {
       vehiculo.activo = !vehiculo.activo;
       this.VehiculosService.updateVehiculo(vehiculo.id, vehiculo);
@@ -194,5 +215,16 @@ export class PerfilComponent implements OnInit {
   guardarVehiculo(): void {
     this.VehiculosService.updateVehiculo(this.currentVehiculo.id, this.currentVehiculo);
     this.activacion(2);
+  }
+
+  chequearSerial(vehiculo: Vehiculo) {
+    var i;
+    for (i = 0; i < this.vehiculosActivos.length; i++) {
+        if (this.vehiculosActivos[i].serial === vehiculo.serial) {
+            console.log(this.vehiculosActivos[i].id)
+            return true;
+        }
+    }
+    return false;
   }
 }

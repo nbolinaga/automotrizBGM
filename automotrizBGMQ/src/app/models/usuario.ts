@@ -9,6 +9,6 @@ export interface Usuario{
   telefono: string;
   clave: string;
   confirmacion: string;
-  rol?: string;
-  photoURL?: 'https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/user.png?alt=media';
+  rol?: Rol;
+  photoURL?: string;
 }
