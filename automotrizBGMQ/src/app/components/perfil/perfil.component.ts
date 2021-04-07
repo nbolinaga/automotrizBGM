@@ -142,7 +142,7 @@ export class PerfilComponent implements OnInit {
     const newCita: Cita = {
       fecha: '',
       hora: '',
-      id: this.user.uid,
+      idUser: this.user.uid,
       cliente: this.usuario.nombre,
       estado: 'Esperando fecha',
       confirmada: false,
