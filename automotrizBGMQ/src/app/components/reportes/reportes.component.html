@@ -15,11 +15,12 @@
         <label for="carros">Reporte de vehiculos:</label>
         <select id="carros" (change)="mostrarVehiculo($event)">
           <option value="default">Seleccionar...</option>
-          <option *ngFor="let carro of listaVehiculos" value="{{ carro.idUser }}">{{ carro.placa }}</option>
+          <option *ngFor="let carro of listaVehiculos" value="{{ carro.id }}">{{ carro.placa }}</option>
         </select>
       </div>
-      <div class="contenido">
-        <h2>{{ vehiculo.marca }}</h2>
+      <div class="contenido cont-vehiculos">
+        <h2>{{ vehiculo.marca === 'marca' ? '' : vehiculo.marca }}</h2>
+        <h4 *ngFor="let cita of listaCitasVehiculo">{{ cita.motivo }}</h4>
       </div>
     </div>
     <div class="clientes" *ngIf="clientes">
@@ -32,9 +33,9 @@
       </div>
       <div class="contenido">
         <h2>{{ usuario.nombre }}</h2>
-        <h4>{{ usuario.cedula }}</h4>
+        <h4>{{ usuario.cedula === -1 ? '' : usuario.cedula }}</h4>
         <h4>{{ usuario.email }}</h4>
-        <h4>{{ usuario.telefono !== 'edite sus datos de perfil' ? usuario.telefono : '' }}</h4>
+        <h4>{{ usuario.telefono !== 'edite sus datos de perfil' ? usuario.telefono : 'Tlf no registrado' }}</h4>
       </div>
     </div>
     <div class="mecanicos" *ngIf="mecanicos">
