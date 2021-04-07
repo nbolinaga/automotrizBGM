@@ -120,6 +120,7 @@ export class AdminComponent implements OnInit {
   editar(usuario: Usuario): void {
     this.usuario = usuario;
     this.userService.updateUser(usuario.id, this.usuario);
+    this.cerrarPopUp();
   }
 
   cambiarRol(user: Usuario): void {
