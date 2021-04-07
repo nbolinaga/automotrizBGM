@@ -6,6 +6,9 @@ import { Vehiculo } from 'src/app/models/vehiculo';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import {formatDate} from '@angular/common';
+import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
+
+
 formatDate(new Date(), 'dd/MM/yyyy', 'en');
 @Component({
   selector: 'app-ordenes',
@@ -17,6 +20,9 @@ export class OrdenesComponent implements OnInit {
   usuario: Usuario;
   activar = false;
   activarAgregar = false;
+  elementType = NgxQrcodeElementTypes.URL;
+  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+  value = 'https://www.techiediaries.com/';
   constructor(
     private fb : FormBuilder,
     private OrdenesService: OrdenesService){
