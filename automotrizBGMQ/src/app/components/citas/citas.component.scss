@@ -77,6 +77,15 @@
       height: 70vh;
       margin: 2% 0% 2% 0;
     }
+
+    .solicitudes-citas {
+      background-color: $blanco;
+      border-radius: 5px;
+      border: 0.18vw solid $base;
+      width: 45%;
+      height: 70vh;
+      margin: 2% 0% 2% 0;
+    }
   }
 
   .seccion2 {
@@ -90,7 +99,7 @@
     width: 100%;
     height: 100%;
 
-    .solicitudes-citas {
+    .estatus-citas {
       background-color: $blanco;
       border-radius: 5px;
       border: 0.18vw solid $base;
@@ -99,7 +108,7 @@
       margin: 2% 0% 2% 0;
     }
 
-    .estatus-citas {
+    .solicitudes-citas {
       background-color: $blanco;
       border-radius: 5px;
       border: 0.18vw solid $base;
