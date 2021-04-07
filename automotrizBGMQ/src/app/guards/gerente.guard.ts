@@ -15,10 +15,9 @@ export class GerenteGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot):
     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-    if(this.usuario.rol=='Gerente'){
-      return true;
-    }
-    return this.Router.parseUrl('/perfil');
-  }  
+      if(this.usuario.rol=='Gerente'){
+        return true;
+      }
+      return this.Router.parseUrl('/perfil');  
+  }
 }
