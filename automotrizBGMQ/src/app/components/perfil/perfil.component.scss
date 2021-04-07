@@ -114,6 +114,10 @@
 
         img {
           width: 100%;
+
+          &.desactivado{
+            filter: grayscale(100%);
+          }
         }
       }
       .fa-plus{
@@ -132,7 +136,7 @@
 
     button {
       border-radius: 5px;
-      margin: 2vh auto 1vh auto;
+      margin: 2vh .5vw 1vh auto;
       padding: 2vh;
     }
   }
@@ -223,6 +227,31 @@
     text-align: center;
     width: 600px;
     transition: 0.3s ease all;
+
+    .datos{
+      p {
+        margin: 2vw;
+        padding-bottom: 1vh;
+      }
+
+      input {
+        text-decoration: none;
+        border:none;
+        border-bottom: 1px solid $base;
+        color: $detalles;
+        text-align: left;
+        padding: 1vh;
+      }
+    }
+    .guardar{
+      background-color: rgba(green,.75);
+      padding: 1vw;
+      margin-right: 1vw;
+    }
+    .cancel{
+      background-color: rgba(red,.75);
+      padding: 1vw;
+    }
 
     .btn-cerrar-popup {
       text-decoration: none;
