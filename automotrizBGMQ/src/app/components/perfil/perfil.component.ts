@@ -25,8 +25,6 @@ export class PerfilComponent implements OnInit {
   disabled = true;
   activar = false;
   activarAgregar = false;
-  vehiculos: Vehiculo[];
-  citas: Cita[];
   currentVehiculo: Vehiculo;
   currentCita: Cita;
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
