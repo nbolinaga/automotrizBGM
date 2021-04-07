@@ -20,7 +20,7 @@ formatDate(new Date(), 'dd/MM/yyyy', 'en');
 export class PerfilComponent implements OnInit {
   user: firebase.User = null;
   usuario: Usuario;
-  formCambioFecha: FormGroup;
+  formConfirmacion: FormGroup;
   formVehiculo: FormGroup;
   formCita: FormGroup;
   disabled = true;
@@ -39,7 +39,9 @@ export class PerfilComponent implements OnInit {
     private Auth: AuthService,
     private UsuarioService: UsuarioService,
     private VehiculosService: VehiculosService,
-    private CitasService: CitasService) {}
+    private CitasService: CitasService) {
+      this.buildFormConfirmacion();
+    }
 
   ngOnInit(): void {
     this.getUser();
@@ -106,11 +108,10 @@ export class PerfilComponent implements OnInit {
       serial: new FormControl('', [Validators.required]),
     });
   }
-
-  buildFormCambioFecha(): void{
-    this.formCambioFecha = new FormGroup({
+  buildFormConfirmacion(): void{
+    this.formConfirmacion = new FormGroup({
       confirmacion: new FormControl('', [Validators.required])
-    })
+    });
   }
 
   editar(): void {
@@ -165,9 +166,18 @@ export class PerfilComponent implements OnInit {
     }
   }
 
-  cambioFecha(cita: Cita): void {
+  confirmacion(cita: Cita): void {
     console.log(cita);
-    this.CitasService.updateCambioFecha(cita);
+    const confirmacion= this.formConfirmacion.get('confirmacion').value
+    if(confirmacion=='Confirmar'){
+      this.CitasService.updateConfirmada(cita);
+    }
+    else if(confirmacion=='Cambio'){
+      this.CitasService.updateCambioFecha(cita);
+    }
+    else if(confirmacion=='Cancelar'){
+      this.CitasService.deleteCita(cita);
+    }
   }
 
   // getVehiculos(){

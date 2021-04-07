@@ -50,13 +50,13 @@
                     <td>{{cita.fecha}}</td>
                     <td>{{cita.hora}}</td>
                     <td>
-                      <form [formGroup]="formCambioFecha" class="confirmarFecha">
+                      <form [formGroup]="formConfirmacion" class="confirmarFecha" (ngSubmit)="confirmacion(cita)">
                         <select name="Confirmacion" id="Confirmacion" formControlName="confirmacion">
                           <option value="Confirmar">Confirmar</option>
                           <option value="Cambio">Cambiar Fecha</option>
                           <option value="Cancelar">Cancelar Cita</option>
                         </select>
-                        <button class="btn-pri" type="submit">¡Listo!</button>
+                        <button class="btn-pri" type="submit" [disabled]="formConfirmacion.invalid">¡Listo!</button>
                       </form>
                     </td>
                     <!--<td *ngIf="!esperandoConfirmar"></td>-->
