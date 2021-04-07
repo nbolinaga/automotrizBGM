@@ -23,4 +23,5 @@ export interface Vehiculo{
     otros: string,
   ];
   foto?: string;
+  activo: boolean;
 }
