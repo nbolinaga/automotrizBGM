@@ -29,6 +29,7 @@ export class PerfilComponent implements OnInit {
   currentVehiculo: Vehiculo;
   currentCita: Cita;
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
+  citasConfirmar: Cita[] = [];
   citasPendientes: Cita[] = [];
   vehiculosRegistrados: Vehiculo[] = [];
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
@@ -66,6 +67,7 @@ export class PerfilComponent implements OnInit {
           // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
           this.CitasService.getAllCitas().subscribe(citas => {
             this.citasPendientes = citas.filter(cita => cita.idUser === this.usuario.id);
+            this.citasConfirmar = this.citasPendientes.filter(cita => cita.estado === 'Esperando confirmación');
           });
 
           this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {
@@ -116,6 +118,7 @@ export class PerfilComponent implements OnInit {
     this.disabled = !this.disabled;
     this.UsuarioService.updateUser(this.user.uid, this.usuario);
   }
+
   cancel(): void {
     location.reload();
   }
@@ -165,15 +168,14 @@ export class PerfilComponent implements OnInit {
   }
 
   confirmacion(cita: Cita): void {
-    console.log(cita);
-    const confirmacion= this.formConfirmacion.get('confirmacion').value
-    if(confirmacion=='Confirmar'){
+    const confirmacion = this.formConfirmacion.get('confirmacion').value;
+    if (confirmacion === 'Confirmar'){
       this.CitasService.updateConfirmada(cita);
     }
-    else if(confirmacion=='Cambio'){
+    else if ( confirmacion === 'Cambio'){
       this.CitasService.updateCambioFecha(cita);
     }
-    else if(confirmacion=='Cancelar'){
+    else if (confirmacion === 'Cancelar'){
       this.CitasService.deleteCita(cita);
     }
   }
