@@ -70,7 +70,7 @@ export class PerfilComponent implements OnInit {
           });
 
           this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {
-            this.vehiculosregistrados = vehiculos.filter(vehiculo => vehiculo.id === this.usuario.id);
+            this.vehiculosregistrados = vehiculos.filter(vehiculo => vehiculo.idUser === this.usuario.id);
           });
           // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
         }
