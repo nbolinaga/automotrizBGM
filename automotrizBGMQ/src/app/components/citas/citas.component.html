@@ -1,67 +1,73 @@
 <!-- SECTION de citas para el perfil de Gerente -->
 <section class="citas-gerente">
   <div class="seccion1">
-
-    <div class="citas-dia">
-      <h2 class="titulos">
-        Citas del día:
+    <div class="div1">
+      <div class="titulos">
+        <h2>Citas del día</h2>
         <input type="date" [(ngModel)]="fechaCalendario" />
-        <button (click)="getCitasEstado()">Buscar</button>
-      </h2>
-      <ul class="lista">
-        <li *ngFor="let cita of citasByFecha" class="fila">
-          <p>{{ cita.cliente }} - {{ cita.motivo }} - {{cita.estado}}- {{ cita.hora }}</p>
-        </li>
-      </ul>
+        <button class="btn-pri" (click)="getCitasEstado()">Buscar</button>
+      </div>
+      <div class="citas-dia">
+          <ul class="lista">
+              <li *ngFor="let cita of citasByFecha" class="fila">
+                <p>{{ cita.cliente }}</p>
+                <p>{{ cita.motivo }}</p>
+                <p>{{cita.estado}}</p>
+                <p>{{cita.hora}}</p>
+              </li>
+          </ul>
+      </div>
     </div>
-
-    <div class="solicitudes-citas">
+    <div class="div2">
       <h2 class="titulos">Citas Entrantes</h2>
+    <div class="solicitudes-citas">
       <ul class="lista">
         <li *ngFor="let cita of citasEntrantes" class="fila">
-          <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.vehiculo }}</p>
+          <p>{{ cita.cliente }}</p>
+          <p>{{ cita.motivo }}</p>
           <form [formGroup]="formFecha" (ngSubmit)="asignarFecha(cita)">
             <input type="date" formControlName="fecha"/>
             <input type="time" formControlName="hora"/>
-            <button type="submit">
-              Asignar fecha
-            </button>
+            <button class="btn-pri" type="submit">Asignar fecha</button>
           </form>
         </li>
       </ul>
     </div>
-
+    </div>
   </div>
-
+</section>
+<section class="citas-gerente2">
   <div class="seccion2">
-
-    <div class="solicitudes-citas">
-      <h2 class="titulos">Solicitudes de Cambio de Fecha</h2>
-      <ul class="lista">
-        <li *ngFor="let cita of citasCambiar" class="fila">
-          <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.vehiculo }} - {{cita.fecha}} - {{cita.hora}}</p>
-          <form [formGroup]="formFecha" (ngSubmit)="asignarFecha(cita)">
-            <input type="date" formControlName="fecha"/>
-            <input type="time" formControlName="hora"/>
-            <button type="submit">
-              Asignar fecha
-            </button>
-          </form>
-        </li>
-      </ul>
+    <div class="div1">
+      <h2 class="titulos">Cambio de Fecha</h2>
+      <div class="solicitudes-citas">
+        <ul class="lista">
+          <li *ngFor="let cita of citasCambiar" class="fila">
+            <p>{{ cita.cliente }}</p>
+            <p>{{ cita.motivo }}</p>
+            <p>{{cita.fecha}}</p>
+            <p>{{cita.hora}}</p>
+            <form [formGroup]="formFecha" (ngSubmit)="asignarFecha(cita)">
+              <input type="date" formControlName="fecha"/>
+              <input type="time" formControlName="hora"/>
+              <button class="btn-alt" type="submit">Asignar fecha</button>
+            </form>
+          </li>
+        </ul>
+      </div>
     </div>
-
-    <div class="solicitudes-citas">
+    <div class="div2">
       <h2 class="titulos">Citas por cerrar</h2>
-      <ul class="lista">
-
-        <li *ngFor="let cita of citasCambiar" class="fila">
-
-          <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.vehiculo }} - {{cita.fecha}} - {{cita.hora}}</p>
-
-        </li>
-      </ul>
+      <div class="solicitudes-citas">
+        <ul class="lista">
+          <li *ngFor="let cita of citasCambiar" class="fila">
+            <p>{{ cita.cliente }}</p>
+            <p>{{ cita.motivo }}</p>
+            <p>{{cita.fecha}}</p>
+            <p>{{cita.hora}}</p>
+          </li>
+        </ul>
+      </div>
     </div>
-
   </div>
 </section>
