@@ -187,6 +187,13 @@ export class PerfilComponent implements OnInit {
     }
   }
 
+  porConfirmar(cita: Cita): Boolean{
+    if(cita.estado==='Esperando confirmación'){
+      return true;
+    }
+    return false;
+  }
+
   toggle(vehiculo: Vehiculo): void {
       vehiculo.activo = !vehiculo.activo;
       this.VehiculosService.updateVehiculo(vehiculo.id, vehiculo);

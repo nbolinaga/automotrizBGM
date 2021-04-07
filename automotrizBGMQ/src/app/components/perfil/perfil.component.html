@@ -51,13 +51,13 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let cita of citasConfirmar">
+                  <tr *ngFor="let cita of citasPendientes">
                     <td>{{cita.vehiculo}}</td>
                     <td>{{cita.motivo}}</td>
                     <td>{{cita.estado}}</td>
                     <td>{{cita.fecha}}</td>
                     <td>{{cita.hora}}</td>
-                    <td>
+                    <td *ngIf="porConfirmar(cita)">
                       <form [formGroup]="formConfirmacion" class="confirmarFecha" (ngSubmit)="confirmacion(cita)">
                         <select name="Confirmacion" id="Confirmacion" formControlName="confirmacion">
                           <option value="Confirmar">Confirmar</option>
@@ -67,7 +67,7 @@
                         <button class="btn-pri" type="submit" [disabled]="formConfirmacion.invalid">¡Listo!</button>
                       </form>
                     </td>
-                    <!--<td *ngIf="!esperandoConfirmar"></td>-->
+                    <td *ngIf="!porConfirmar(cita)"></td>
                   </tr>
               </tbody>
           </table>
