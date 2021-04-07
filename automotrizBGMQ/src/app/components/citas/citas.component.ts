@@ -1,5 +1,7 @@
+import { FormGroup, FormControl } from '@angular/forms';
 import { Cita } from './../../models/cita';
 import { CitasService } from './../../services/citas.service';
+import { UsuarioService } from '../../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -9,39 +11,53 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./citas.component.scss']
 })
 
+
 export class CitasComponent implements OnInit {
 
 
 
-  constructor( private citasService: CitasService ) {}
+  constructor( private citasService: CitasService, private usuarioService: UsuarioService) {
+    this.buildFormFecha();
+  }
 
   fechaCalendario: string;
   public citas = [];
   public citasEntrantes = [];
-  public citasConfirmar = [];
+  public citasCambiar = [];
   public citasByFecha = [];
+  formFecha: FormGroup;
   newFecha: string;
+  newHora: string;
 
   ngOnInit(): void {
     this.citasService.getAllCitas().subscribe(citas => {
       this.citasEntrantes = citas.filter(cita => cita.estado === 'Esperando fecha');
-      this.citasConfirmar = citas.filter(cita => cita.confirmada === true);
+      this.citasCambiar = citas.filter(cita => cita.estado === 'Esperando cambio de fecha');
       this.citas = citas;
+    });
+  }
+
+  buildFormFecha(): void {
+    this.formFecha = new FormGroup({
+      fecha: new FormControl(''),
+      hora: new FormControl(''),
     });
   }
 
   getCitasEstado(): void {
     this.citasService.getCitasByFecha(this.fechaCalendario)
     .subscribe(citas => {
-      this.citasByFecha = citas;
+      this.citasByFecha = citas.filter(cita => cita.confirmada === true);
     });
   }
 
-
   asignarFecha(cita: Cita): void {
-    console.log(cita);
-    this.citasService.updateFechaCita(cita, this.newFecha);
-
+    if (this.formFecha.get('fecha').value === '' || this.formFecha.get('hora').value === '') {
+      alert('Primero debe elegir la fecha y la hora.');
+    }
+    else {
+      console.log('FECHA ASIGNADA CON EXITO');
+      // this.citasService.updateFechaCita(cita, this.newFecha, this.newHora);
+    }
   }
-
 }

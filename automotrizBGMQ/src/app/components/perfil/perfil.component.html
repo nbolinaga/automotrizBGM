@@ -25,14 +25,14 @@
       <div id="vehiculos">
           <h3 id="title-vehiculos">Vehículos</h3>
             <div id="vehiculos-container">
-              <div class="vehiculo-thumb" *ngFor="let vehiculo of vehiculosregistrados">
+              <div class="vehiculo-thumb" *ngFor="let vehiculo of vehiculosRegistrados">
                 <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo1.png?alt=media" alt="">
                 <p>{{vehiculo.marca}}</p>
                 <p>{{vehiculo.placa}}</p>
                 <button class="btn-pri">Desactivar</button>
                 <button class="btn-alt">Eliminar</button>
               </div>
-              <div class="agregar-car" *ngFor="let vacio of [].constructor(3 - vehiculosregistrados.length)" (click)="activacion(0)">
+              <div class="agregar-car" *ngFor="let vacio of [].constructor(3 - vehiculosRegistrados.length)" (click)="activacion(0)">
                 <i class="fas fa-plus"></i>
               </div>
             </div>
@@ -43,17 +43,31 @@
               <thead>
                   <tr>
                       <td>Vehículo</td>
-                      <td>Fecha</td>
-                      <td>Descripción</td>
+                      <td>Motivo</td>
                       <td>Estado</td>
+                      <td>Fecha</td>
+                      <td>Hora</td>
+                      <td>Confirmar</td>
                   </tr>
               </thead>
               <tbody>
                   <tr *ngFor="let cita of citasPendientes">
                     <td>{{cita.vehiculo}}</td>
-                    <td>{{cita.fecha}}</td>
                     <td>{{cita.motivo}}</td>
                     <td>{{cita.estado}}</td>
+                    <td>{{cita.fecha}}</td>
+                    <td>{{cita.hora}}</td>
+                    <td>
+                      <form [formGroup]="formConfirmacion" class="confirmarFecha" (ngSubmit)="confirmacion(cita)">
+                        <select name="Confirmacion" id="Confirmacion" formControlName="confirmacion">
+                          <option value="Confirmar">Confirmar</option>
+                          <option value="Cambio">Cambiar Fecha</option>
+                          <option value="Cancelar">Cancelar Cita</option>
+                        </select>
+                        <button class="btn-pri" type="submit" [disabled]="formConfirmacion.invalid">¡Listo!</button>
+                      </form>
+                    </td>
+                    <!--<td *ngIf="!esperandoConfirmar"></td>-->
                   </tr>
               </tbody>
           </table>
@@ -72,7 +86,7 @@
             <div class="contenedor-inputs">
                 <label for="Vehiculos">Seleciona un Vehiculo:<span>*</span></label>
                 <select id="Vehiculos" formControlName="vehiculo">
-                  <option *ngFor="let vehiculo of usuario.vehiculos">{{vehiculo.placa}}</option>
+                  <option *ngFor="let vehiculo of vehiculosRegistrados">{{vehiculo.placa}}</option>
                 </select>
                 <label for="Opciones">Seleciona Motivo General:<span>*</span></label>
                 <select id="Opciones" formControlName="motivo">

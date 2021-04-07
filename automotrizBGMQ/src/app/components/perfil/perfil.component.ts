@@ -20,25 +20,26 @@ formatDate(new Date(), 'dd/MM/yyyy', 'en');
 export class PerfilComponent implements OnInit {
   user: firebase.User = null;
   usuario: Usuario;
+  formConfirmacion: FormGroup;
   formVehiculo: FormGroup;
   formCita: FormGroup;
   disabled = true;
   activar = false;
   activarAgregar = false;
-  vehiculos: Vehiculo[];
-  citas: Cita[];
   currentVehiculo: Vehiculo;
   currentCita: Cita;
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
   citasPendientes: Cita[] = [];
-  vehiculosregistrados: Vehiculo[] = [];
+  vehiculosRegistrados: Vehiculo[] = [];
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
-
+  esperandoConfirmar: Boolean = false;
   constructor(
     private Auth: AuthService,
     private UsuarioService: UsuarioService,
     private VehiculosService: VehiculosService,
-    private CitasService: CitasService) {}
+    private CitasService: CitasService) {
+      this.buildFormConfirmacion();
+    }
 
   ngOnInit(): void {
     this.getUser();
@@ -57,20 +58,18 @@ export class PerfilComponent implements OnInit {
             email: user.email,
             clave: null,
             confirmacion: null,
-            rol: 'Cliente',
-            vehiculos: [],
-            citas: []
+            rol: 'Cliente'
           };
           this.UsuarioService.createNewUser(user.uid, newUser);
         } else {
           this.usuario = response;
           // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
           this.CitasService.getAllCitas().subscribe(citas => {
-            this.citasPendientes = citas.filter(cita => cita.id === this.usuario.id);
+            this.citasPendientes = citas.filter(cita => cita.idUser === this.usuario.id);
           });
 
           this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {
-            this.vehiculosregistrados = vehiculos.filter(vehiculo => vehiculo.idUser === this.usuario.id);
+            this.vehiculosRegistrados = vehiculos.filter(vehiculo => vehiculo.idUser === this.usuario.id);
           });
           // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
         }
@@ -107,6 +106,11 @@ export class PerfilComponent implements OnInit {
       serial: new FormControl('', [Validators.required]),
     });
   }
+  buildFormConfirmacion(): void{
+    this.formConfirmacion = new FormGroup({
+      confirmacion: new FormControl('', [Validators.required])
+    });
+  }
 
   editar(): void {
     this.disabled = !this.disabled;
@@ -128,20 +132,15 @@ export class PerfilComponent implements OnInit {
       fechaIngreso: new Date(),
       activo:true
     };
-
     this.VehiculosService.createNewVehiculo(newVehiculo);
-    const arrayVehiculos: Vehiculo[] = this.usuario.vehiculos;
-    arrayVehiculos.push(newVehiculo);
-    this.UsuarioService.updateUser(this.user.uid, this.usuario = {
-      ... this.usuario = this.usuario,
-      vehiculos: arrayVehiculos,
-    });
     alert('Vehiculo agregado.');
   }
 
   pedirCita(): void {
     const newCita: Cita = {
-      id: this.user.uid,
+      fecha: '',
+      hora: '',
+      idUser: this.user.uid,
       cliente: this.usuario.nombre,
       estado: 'Esperando fecha',
       confirmada: false,
@@ -149,21 +148,36 @@ export class PerfilComponent implements OnInit {
       motivo: this.formCita.get('motivo').value,
       descripcion: this.formCita.get('descripcion').value,
     };
-    this.CitasService.createNewCita(newCita);
-    const arrayCitas: Cita[] = this.usuario.citas;
-    if (arrayCitas.length < 3) {
-      arrayCitas.push(newCita);
-      this.UsuarioService.updateUser(this.user.uid, this.usuario = {
-        ... this.usuario = this.usuario,
-        citas: arrayCitas,
-      });
-      alert('La cita se ha solicitado exitosamente.');
+    const arrayCitas: Cita[] = this.citasPendientes;
+
+    if ( arrayCitas.length < 3 ) {
+      const verificarPlaca = arrayCitas.filter(ver => ver.vehiculo === newCita.vehiculo);
+      if (verificarPlaca.length === 0) {
+        this.CitasService.createNewCita(newCita);
+        alert('La cita se ha solicitado exitosamente.');
+      }
+      else {
+        alert('Ya se ha solicitado un cita para este vehículo.');
+      }
     }
-    else{
+    else {
       alert('Posee todos sus vehiculos en reparación, espere a su entrega para solicitar una nueva cita.');
     }
   }
 
+  confirmacion(cita: Cita): void {
+    console.log(cita);
+    const confirmacion= this.formConfirmacion.get('confirmacion').value
+    if(confirmacion=='Confirmar'){
+      this.CitasService.updateConfirmada(cita);
+    }
+    else if(confirmacion=='Cambio'){
+      this.CitasService.updateCambioFecha(cita);
+    }
+    else if(confirmacion=='Cancelar'){
+      this.CitasService.deleteCita(cita);
+    }
+  }
 
   // getVehiculos(){
   //   for (let index = 0; index < this.usuario.vehiculos.length; index++) {

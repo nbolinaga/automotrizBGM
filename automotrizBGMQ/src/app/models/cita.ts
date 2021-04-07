@@ -3,9 +3,10 @@ export interface Cita {
   idUser?: string;
   cliente?: string;
   fecha?: string;
-  estado?: string;
-  confirmada?: boolean;
-  motivo?: string;
-  descripcion?: string;
-  vehiculo?: string;
+  hora?: string;
+  estado: string;
+  confirmada: boolean;
+  motivo: string;
+  descripcion: string;
+  vehiculo: string;
 }
