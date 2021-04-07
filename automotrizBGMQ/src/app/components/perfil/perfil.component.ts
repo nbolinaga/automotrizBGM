@@ -20,6 +20,7 @@ formatDate(new Date(), 'dd/MM/yyyy', 'en');
 export class PerfilComponent implements OnInit {
   user: firebase.User = null;
   usuario: Usuario;
+  formCambioFecha: FormGroup;
   formVehiculo: FormGroup;
   formCita: FormGroup;
   disabled = true;
@@ -106,6 +107,12 @@ export class PerfilComponent implements OnInit {
     });
   }
 
+  buildFormCambioFecha(): void{
+    this.formCambioFecha = new FormGroup({
+      confirmacion: new FormControl('', [Validators.required])
+    })
+  }
+
   editar(): void {
     this.disabled = !this.disabled;
     this.UsuarioService.updateUser(this.user.uid, this.usuario);
@@ -156,6 +163,11 @@ export class PerfilComponent implements OnInit {
     else {
       alert('Posee todos sus vehiculos en reparación, espere a su entrega para solicitar una nueva cita.');
     }
+  }
+
+  cambioFecha(cita: Cita): void {
+    console.log(cita);
+    this.CitasService.updateCambioFecha(cita);
   }
 
   // getVehiculos(){

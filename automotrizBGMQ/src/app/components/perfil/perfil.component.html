@@ -50,8 +50,8 @@
                     <td>{{cita.fecha}}</td>
                     <td>{{cita.hora}}</td>
                     <td>
-                      <form class="confirmarFecha">
-                        <select name="Confirmacion" id="Confirmacion">
+                      <form [formGroup]="formCambioFecha" class="confirmarFecha">
+                        <select name="Confirmacion" id="Confirmacion" formControlName="confirmacion">
                           <option value="Confirmar">Confirmar</option>
                           <option value="Cambio">Cambiar Fecha</option>
                           <option value="Cancelar">Cancelar Cita</option>
