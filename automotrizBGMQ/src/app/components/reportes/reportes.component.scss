@@ -47,3 +47,19 @@
   }
 
 }
+
+.contenido {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  color: $detalles;
+
+  h2 {
+    color: $blanco;
+  }
+}
+
+.cont-vehiculos {
+  flex-direction: column;
+}
