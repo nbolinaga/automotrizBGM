@@ -41,7 +41,7 @@ export class ReportesComponent implements OnInit {
     ano: 1,
     serial: 'serial',
     placa: 'placa',
-    activo: null
+    activo: true
   }
   usuario: Usuario = {
     nombre: '',

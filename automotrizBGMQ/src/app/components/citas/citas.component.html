@@ -10,7 +10,7 @@
       </h2>
       <ul class="lista">
         <li *ngFor="let cita of citasByFecha" class="fila">
-          <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.fecha }}</p>
+          <p>{{ cita.cliente }} - {{ cita.motivo }} - {{cita.estado}}- {{ cita.hora }}</p>
         </li>
       </ul>
     </div>
@@ -40,7 +40,6 @@
       <ul class="lista">
         <li *ngFor="let cita of citasCambiar" class="fila">
           <p>{{ cita.cliente }} - {{ cita.motivo }} - {{ cita.vehiculo }} - {{cita.fecha}} - {{cita.hora}}</p>
-          <!-- SECTION Corregir error del input fecha -->
           <form [formGroup]="formFecha" (ngSubmit)="asignarFecha(cita)">
             <input type="date" formControlName="fecha"/>
             <input type="time" formControlName="hora"/>
