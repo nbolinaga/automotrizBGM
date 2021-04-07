@@ -243,7 +243,10 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 150vh;
+  height: 100vh;
+  @media #{$telefono} {
+    height: 150vh;
+  }
 
   .popup {
     background: $blanco;
@@ -253,7 +256,7 @@
     position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -45%);
     width: 600px;
     padding: 30px;
     text-align: center;
@@ -261,7 +264,7 @@
 
     @media #{$telefono} {
       width: 70vw;
-
+      transform: translate(-50%, -100%);
     }
 
     .datos{
