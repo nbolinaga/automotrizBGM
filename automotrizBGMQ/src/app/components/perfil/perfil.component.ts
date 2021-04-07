@@ -30,6 +30,7 @@ export class PerfilComponent implements OnInit {
   currentVehiculo: Vehiculo;
   currentCita: Cita;
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
+  citasConfirmar: Cita[] = [];
   citasPendientes: Cita[] = [];
   vehiculosRegistrados: Vehiculo[] = [];
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
@@ -70,6 +71,7 @@ export class PerfilComponent implements OnInit {
           // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
           this.CitasService.getAllCitas().subscribe(citas => {
             this.citasPendientes = citas.filter(cita => cita.idUser === this.usuario.id);
+            this.citasConfirmar = this.citasPendientes.filter(cita => cita.estado === 'Esperando confirmación');
           });
 
           this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {
@@ -122,6 +124,7 @@ export class PerfilComponent implements OnInit {
     this.disabled = !this.disabled;
     this.UsuarioService.updateUser(this.user.uid, this.usuario);
   }
+
   cancel(): void {
     location.href = '/perfil';
   }
@@ -136,7 +139,7 @@ export class PerfilComponent implements OnInit {
       placa: this.formVehiculo.get('placa').value,
       serial: this.formVehiculo.get('serial').value,
       fechaIngreso: new Date(),
-      activo: true
+      activo: true,
     };
     this.VehiculosService.createNewVehiculo(newVehiculo);
     alert('Vehiculo agregado.');
@@ -172,28 +175,34 @@ export class PerfilComponent implements OnInit {
   }
 
   confirmacion(cita: Cita): void {
-    console.log(cita);
-    const confirmacion= this.formConfirmacion.get('confirmacion').value
-    if(confirmacion=='Confirmar'){
+    const confirmacion = this.formConfirmacion.get('confirmacion').value;
+    if (confirmacion === 'Confirmar'){
       this.CitasService.updateConfirmada(cita);
     }
-    else if(confirmacion=='Cambio'){
+    else if ( confirmacion === 'Cambio'){
       this.CitasService.updateCambioFecha(cita);
     }
-    else if(confirmacion=='Cancelar'){
+    else if (confirmacion === 'Cancelar'){
       this.CitasService.deleteCita(cita);
     }
   }
 
-  toggle(vehiculo: Vehiculo){
+  porConfirmar(cita: Cita): Boolean{
+    if(cita.estado==='Esperando confirmación'){
+      return true;
+    }
+    return false;
+  }
+
+  toggle(vehiculo: Vehiculo): void {
       vehiculo.activo = !vehiculo.activo;
       this.VehiculosService.updateVehiculo(vehiculo.id, vehiculo);
   }
-  pasarVehiculo(vehiculo: Vehiculo){
+  pasarVehiculo(vehiculo: Vehiculo): void {
       this.editarVehiculo = !this.editarVehiculo;
       this.currentVehiculo = vehiculo;
   }
-  guardarVehiculo(){
+  guardarVehiculo(): void {
     this.VehiculosService.updateVehiculo(this.currentVehiculo.id, this.currentVehiculo);
     this.activacion(2);
   }

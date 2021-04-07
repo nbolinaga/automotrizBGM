@@ -26,8 +26,6 @@ export class CitasComponent implements OnInit {
   public citasCambiar = [];
   public citasByFecha = [];
   formFecha: FormGroup;
-  newFecha: string;
-  newHora: string;
 
   ngOnInit(): void {
     this.citasService.getAllCitas().subscribe(citas => {
@@ -47,17 +45,20 @@ export class CitasComponent implements OnInit {
   getCitasEstado(): void {
     this.citasService.getCitasByFecha(this.fechaCalendario)
     .subscribe(citas => {
-      this.citasByFecha = citas.filter(cita => cita.confirmada === true);
+      this.citasByFecha = citas.filter(cita => cita.confirmada === true || cita.estado === 'Esperando cambio de fecha' || cita.estado === 'Esperando confirmación');
     });
   }
 
   asignarFecha(cita: Cita): void {
+    const fecha = this.formFecha.get('fecha').value;
+    const hora = this.formFecha.get('hora').value;
     if (this.formFecha.get('fecha').value === '' || this.formFecha.get('hora').value === '') {
       alert('Primero debe elegir la fecha y la hora.');
     }
     else {
-      console.log('FECHA ASIGNADA CON EXITO');
-      // this.citasService.updateFechaCita(cita, this.newFecha, this.newHora);
+      this.citasService.updateFechaCita(cita, fecha, hora);
+      alert('Fecha asignada con éxito!');
+      this.formFecha.reset();
     }
   }
 }

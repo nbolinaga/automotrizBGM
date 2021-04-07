@@ -5,16 +5,16 @@
         </div>
         <div class="form">
             <p>Puedes escribirnos a nuestro correo a traves del siguiente formulario:</p>
-            <form action="">
+            <form [formGroup]="formContactanos" (ngSubmit)="enviar()">
               <label for="Nombre">Nombre</label>
-                <input type="text" name="Nombre" id="Nombre" placeholder="Nombre Completo">
+                <input type="text" name="Nombre" id="Nombre" placeholder="Nombre Completo" formControlName="nombre">
                 <label for="Correo">E-mail</label>
-                <input type="email" name="Correo" id="Correo" placeholder="E-mail">
+                <input type="email" name="Correo" id="Correo" placeholder="E-mail" formControlName="correo">
                 <label for="Asunto">Asunto</label>
-                <input type="text" name="Asunto" id="Asunto" placeholder="Asunto">
+                <input type="text" name="Asunto" id="Asunto" placeholder="Asunto" formControlName="asunto">
                 <label for="Descripcion">Mensaje</label>
-                <textarea name="Descripcion" id="Descripcion" placeholder="Escribe tu mensaje..."></textarea>
-                <button type="submit" class="btn-pri">Enviar</button>
+                <textarea name="Descripcion" id="Descripcion" placeholder="Escribe tu mensaje..." formControlName="mensaje"></textarea>
+                <button type="submit" class="btn-pri" (click)="enviar()">Enviar</button>
             </form>
         </div>
     </div>

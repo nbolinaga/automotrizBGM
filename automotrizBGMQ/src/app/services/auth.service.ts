@@ -15,7 +15,7 @@ export class AuthService {
     displayName: string,
     email: string,
     password: string,
-  ):  Promise<firebase.User|null>{
+  ): Promise<firebase.User|null>{
     try{
       const res = await this.Auth.createUserWithEmailAndPassword(email, password);
       const {user} = res;
@@ -24,8 +24,8 @@ export class AuthService {
         displayName,
         photoURL: '../../assets/user.png',
       });
-      location.href = '/perfil'
-      return user
+      location.href = '/perfil';
+      return user;
     }
     catch (err){
       console.log(err);
@@ -53,8 +53,8 @@ export class AuthService {
       const {user} = res;
       localStorage.setItem('user', user.uid);
       console.log(user);
-      location.href = '/perfil'
-      return user
+      location.href = '/perfil';
+      return user;
     }
     catch (err){
       console.log(err);
@@ -83,8 +83,8 @@ export class AuthService {
       console.log(JSON.stringify(response));
       if (response.user){
         localStorage.setItem('user', response.user.uid);
-        location.href = '/perfil'
-        return response.user
+        location.href = '/perfil';
+        return response.user;
       }
     }
     catch (err){

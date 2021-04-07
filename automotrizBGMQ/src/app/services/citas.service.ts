@@ -77,31 +77,31 @@ export class CitasService {
     return citaRef.update({fecha: newFecha, hora: newHora, estado: 'Esperando confirmación'});
   }
 
-  updateCambioFecha(citaID:Cita):Promise<void>{
+  updateCambioFecha(citaID: Cita): Promise<void>{
     const citaRef = this.firestore.collection('citas').doc(citaID.id);
     return citaRef.update({estado: 'Esperando cambio de fecha'});
   }
 
-  updateConfirmada(citaID:Cita):Promise<void>{
+  updateConfirmada(citaID: Cita): Promise<void>{
     const citaRef = this.firestore.collection('citas').doc(citaID.id);
     return citaRef.update({estado: 'Confirmada, esperando ingreso', confirmada: true});
   }
 
   deleteCita(citaID: Cita): Promise<void> {
     const citaRef = this.firestore.collection('citas').doc(citaID.id);
-    return citaRef.delete()
+    return citaRef.delete();
   }
 
-  private coleccion<T>(ref:CollectionPredicate<T>, queryFn?): AngularFirestoreCollection{
-    return typeof ref === "string"? this.firestore.collection(ref, queryFn): ref;
+  private coleccion<T>(ref: CollectionPredicate<T>, queryFn?): AngularFirestoreCollection{
+    return typeof ref === 'string' ? this.firestore.collection(ref, queryFn) : ref;
   }
 
   coleccion$<T>(ref: CollectionPredicate<T>, queryFn?): Observable<T[]>{
     return this.coleccion(ref, queryFn).snapshotChanges().pipe(
-      map(docs=>{
-        return docs.map(d => d.payload.doc.data()) as T[]
+      map(docs => {
+        return docs.map(d => d.payload.doc.data()) as T[];
       })
-    )
+    );
   }
 
 }
