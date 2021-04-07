@@ -55,7 +55,6 @@
     cursor: pointer;
     font-size: 2rem;
     color: $base;
-    padding-right: 2vw;
     padding-bottom: 2vh;
 
     &.open{
@@ -121,22 +120,24 @@
   position: relative;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -45%);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  height: 40vh;
-  width: 50vw;
+  height: 80vh;
+  width: 30vw;
   background-color: $blanco;
   border-radius: 5px;
+  padding: 2vh 0 6vh 0;
 
   @media #{$telefono} {
-    width: 80vw;
+    width: 90vw;
+    height: 70vh;
   }
 
   .titulo {
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -144,13 +145,13 @@
     h3 {
       color: $base;
       @media #{$telefono} {
-        font-size: .8rem;
+        font-size: 1rem;
       }
     }
 
     .cerrar {
       position: relative;
-      right: -15vw;
+      right: -5vw;
       color: $base;
       font-weight: bold;
       cursor: pointer;
@@ -159,11 +160,12 @@
 
   button {
     width: 20vw;
-    height: 2.4rem;
+    padding: 1vh;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     outline: none;
     cursor: pointer;
+    margin: 0;
 
     @media #{$telefono} {
       font-size: .8rem;
@@ -176,8 +178,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: 100%;
+    margin-bottom: 0;
 
+    p {
+      margin-top: 1vw;
+    }
+
+    select, input {
+      text-decoration: none;
+      border:none;
+      border-bottom: 1px solid $base;
+      color: $detalles;
+      padding: .5vh;
+      width: auto;
+
+      @media #{$telefono} {
+        font-size: .8rem;
+        width: 40%;
+      }
+    }
     .opciones {
       @media #{$telefono} {
         margin-left: 0;
@@ -191,20 +212,6 @@
 
       label {
         font-weight: bold;
-      }
-
-      select {
-        border: 3px solid $base;
-        border-radius: 5px;
-        margin-left: 1vw;
-        padding: 1vh;
-        margin-bottom: 1vh;
-        font-size: 1vw;
-        font-family: $fonts;
-        @media #{$telefono} {
-          font-size: .8rem;
-          width: 80%;
-        }
       }
     }
   }

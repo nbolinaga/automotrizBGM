@@ -117,6 +117,11 @@ export class AdminComponent implements OnInit {
     this.userService.deleteUser(user.id);
   }
 
+  editar(usuario: Usuario): void {
+    this.usuario = usuario;
+    this.userService.updateUser(usuario.id, this.usuario);
+  }
+
   cambiarRol(user: Usuario): void {
 
     if(this.texto === 'Cliente') {

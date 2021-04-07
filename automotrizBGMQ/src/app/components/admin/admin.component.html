@@ -64,18 +64,21 @@
         <a class="cerrar" (click)="cerrarPopUp()">X</a>
       </div>
       <div class="cambiar">
-        <div class="opciones">
-          <label for="roles">Cambiar rol a:</label>
-          <select id="roles" (change)="cambioRol($event)">
-            <option value="Cliente">Cliente</option>
-            <option value="Gerente">Gerente</option>
-            <option value="Mecanico">Mecanico</option>
-            <option value="Admin">Administrador</option>
-          </select>
-        </div>
-        <button class="btn-pri cambiarRol" (click)="cambiarRol(usuario)">Cambiar rol de usuario</button>
+        <p>Rol: <select id="roles" [(ngModel)]="usuario.rol">
+          <option value="Cliente">Cliente</option>
+          <option value="Gerente">Gerente</option>
+          <option value="Mecanico">Mecanico</option>
+          <option value="Admin">Administrador</option>
+        </select></p>
+        <p>Cedula: <input [(ngModel)]="usuario.cedula" type="number" /></p>
+        <p>Tipo Id: <input [(ngModel)]="usuario.tipoID" type="string" /></p>
+        <p>Telefono: <input [(ngModel)]="usuario.telefono" type="string" /></p>
+        <p>Email: <input [(ngModel)]="usuario.email" type="string" /></p>
+        <p>Clave: <input [(ngModel)]="usuario.clave" type="string" /></p>
+        <p>Confirmacion: <input [(ngModel)]="usuario.confirmacion" type="string" /></p>
       </div>
-      <button class="btn-alt elimUser" (click)="eliminarUser(usuario)">Eliminar Usuario</button>
+      <button class="btn-alt" (click)="editar(usuario)">Editar Datos</button>
+      <button class="btn-pri elimUser" (click)="eliminarUser(usuario)">Eliminar Usuario</button>
     </div>
   </div>
 </div>
