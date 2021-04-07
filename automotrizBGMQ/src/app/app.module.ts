@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AuthGuardGuard} from './guards/auth-guard.guard';
+import { GerenteGuard} from './guards/gerente.guard';
+import { AdminGuard} from './guards/admin.guard';
+import { MecanicoGuard} from './guards/mecanico.guard';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -34,11 +37,11 @@ const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'citas', component: CitasComponent, canActivate: [AuthGuardGuard]},
+  {path: 'citas', component: CitasComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
   {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuardGuard]},
   {path: 'autos', component: AutosComponent, canActivate: [AuthGuardGuard]},
-  {path: 'admin', component: AdminComponent, canActivate: [AuthGuardGuard]},
-  {path: 'gerente', component: GerenteComponent, canActivate: [AuthGuardGuard]},
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuardGuard, AdminGuard]},
+  {path: 'gerente', component: GerenteComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
   {path: 'reportes', component: ReportesComponent, canActivate: [AuthGuardGuard]},
   {path: 'calendario', component: CalendarioComponent, canActivate: [AuthGuardGuard]},
   {path: 'ordenes', component: OrdenesComponent, canActivate:[AuthGuardGuard]}
