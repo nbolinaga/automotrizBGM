@@ -4,11 +4,19 @@
           <h3 id="nombre">{{usuario.nombre}}</h3>
           <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/user.png?alt=media" alt="Foto de perfil">
           <h4>{{usuario.rol}}</h4>
+          <div class="roles">
+
+          </div>
           <div class="datos">
               <p>Cedula: <input [(ngModel)]="usuario.cedula" type="number" [disabled]="disabled"/></p>
               <p>Telefono: <input [(ngModel)]="usuario.telefono" type="string" [disabled]="disabled"/></p>
               <p>Email: <input [(ngModel)]="usuario.email" type="string" [disabled]="disabled"/></p>
           </div>
+          <button class="btn-pri" *ngIf="usuario.rol !== 'Cliente'">
+            <a [routerLink]="['/admin']" *ngIf="usuario.rol === 'Admin'">Administrar Usuarios</a>
+            <a [routerLink]="['/gerente']" *ngIf="usuario.rol === 'Gerente'">Gestiones</a>
+            <a [routerLink]="['/mecanico']" *ngIf="usuario.rol === 'Mecanico'">Gestionar Ordenes</a>
+          </button>
           <button class="btn-alt" (click)="editar()" [ngClass]="{'guardar': !disabled}"><p *ngIf="disabled">Editar Perfil</p><p *ngIf="!disabled">Guardar Cambios</p></button>
           <button class="btn-alt cancel" *ngIf="!disabled" (click)="cancel()">Cancelar Cambios</button>
       </div>

@@ -23,11 +23,14 @@ export class AdminComponent implements OnInit {
   isOpenMecanicos: boolean = false;
   isOpenGerentes: boolean = false;
   isOpenClientes: boolean = false;
+  isOpenAdmins: boolean = false;
 
   //Declarar usuario y variables para traer datos de firebase
   clientes: Usuario[] = [];
   mecanicos: Usuario[] = [];
   gerentes: Usuario[] = [];
+  admins: Usuario[] = [];
+
   usuario: Usuario = {
     nombre: 'nombre',
     cedula: 1,
@@ -70,6 +73,11 @@ export class AdminComponent implements OnInit {
     return this.isOpenClientes
   }
 
+  openAdmins(): boolean {
+    this.isOpenAdmins = !this.isOpenAdmins
+    return this.isOpenAdmins
+  }
+
   mostrarUsuarios(): void {
     this.userService.getAllUsers().subscribe(users => {
       users.forEach(user => {
@@ -79,6 +87,9 @@ export class AdminComponent implements OnInit {
           this.mecanicos.push(user);
         } else if(user.rol === 'Gerente') {
           this.gerentes.push(user);
+        } else if(user.rol === 'Admin'){
+          this.admins.push(user);
+          console.log(user.nombre);
         }
       });
     });
@@ -99,10 +110,17 @@ export class AdminComponent implements OnInit {
   cerrarPopUp(): void {
     this.subsciption.unsubscribe();
     this.status = !this.status;
+    location.reload();
   }
 
   eliminarUser(user: Usuario): void {
     this.userService.deleteUser(user.id);
+  }
+
+  editar(usuario: Usuario): void {
+    this.usuario = usuario;
+    this.userService.updateUser(usuario.id, this.usuario);
+    this.cerrarPopUp();
   }
 
   cambiarRol(user: Usuario): void {
