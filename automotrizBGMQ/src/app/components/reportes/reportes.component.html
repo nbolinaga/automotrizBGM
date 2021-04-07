@@ -13,37 +13,41 @@
     <div class="vehiculos" *ngIf="vehiculos">
       <div class="seleccionar">
         <label for="carros">Reporte de vehiculos:</label>
-        <select id="carros">
+        <select id="carros" (change)="mostrarVehiculo($event)">
           <option value="default">Seleccionar...</option>
-          <option *ngFor="" value=""></option>
+          <option *ngFor="let carro of listaVehiculos" value="{{ carro.id }}">{{ carro.placa }}</option>
         </select>
       </div>
-      <div class="contenido">
-
+      <div class="contenido cont-vehiculos">
+        <h2>{{ vehiculo.marca === 'marca' ? '' : vehiculo.marca }}</h2>
+        <h4 *ngFor="let reparacion of listaReparaciones">{{ reparacion | date: 'dd/MM/yyyy'}}</h4>
       </div>
     </div>
     <div class="clientes" *ngIf="clientes">
       <div class="seleccionar">
         <label for="personas">Reporte de clientes:</label>
-        <select id="personas">
+        <select id="personas" (change)="mostrarDatos($event)">
           <option value="default">Seleccionar...</option>
-          <option *ngFor="" value=""></option>
+          <option *ngFor="let cliente of listaClientes" value="{{cliente.id}}">{{ cliente.nombre }}</option>
         </select>
       </div>
       <div class="contenido">
-
+        <h2>{{ usuario.nombre }}</h2>
+        <h4>{{ usuario.cedula === -1 ? '' : usuario.cedula }}</h4>
+        <h4>{{ usuario.email }}</h4>
+        <h4>{{ usuario.telefono !== 'edite sus datos de perfil' ? usuario.telefono : 'Tlf no registrado' }}</h4>
       </div>
     </div>
     <div class="mecanicos" *ngIf="mecanicos">
-      <div class="seleccionar">
+      <div class="seleccionar" (change)="mostrarMecanico($event)">
         <label for="meca">Reporte de mecanicos:</label>
         <select id="meca">
           <option value="default">Seleccionar...</option>
-          <option *ngFor="" value=""></option>
+          <option *ngFor="let mecanico of listaMecanicos" value="{{mecanico.id}}">{{ mecanico.nombre }}</option>
         </select>
       </div>
       <div class="contenido">
-
+        <h2>{{ usuario.nombre }}</h2>
       </div>
     </div>
     <div class="general" *ngIf="general">

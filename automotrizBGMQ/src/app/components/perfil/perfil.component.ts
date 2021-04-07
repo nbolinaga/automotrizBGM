@@ -9,6 +9,7 @@ import { CitasService } from '../../services/citas.service';
 import { Cita } from '../../models/cita';
 import firebase from 'firebase';
 import {formatDate} from '@angular/common';
+import { Observable, Subscription } from 'rxjs';
 
 formatDate(new Date(), 'dd/MM/yyyy', 'en');
 
@@ -34,6 +35,9 @@ export class PerfilComponent implements OnInit {
   vehiculosRegistrados: Vehiculo[] = [];
   // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
   esperandoConfirmar: Boolean = false;
+  subscription: Subscription;
+  editarVehiculo = false;
+
   constructor(
     private Auth: AuthService,
     private UsuarioService: UsuarioService,
@@ -84,6 +88,8 @@ export class PerfilComponent implements OnInit {
     if (numero === 1){
       this.activar = !this.activar;
       this.buildFormCita();
+    }else if (numero === 2){
+      this.editarVehiculo = !this.editarVehiculo;
     }
     else{
       this.activarAgregar = !this.activarAgregar;
@@ -133,6 +139,7 @@ export class PerfilComponent implements OnInit {
       placa: this.formVehiculo.get('placa').value,
       serial: this.formVehiculo.get('serial').value,
       fechaIngreso: new Date(),
+      activo: true
     };
     this.VehiculosService.createNewVehiculo(newVehiculo);
     alert('Vehiculo agregado.');
@@ -180,12 +187,16 @@ export class PerfilComponent implements OnInit {
     }
   }
 
-  // getVehiculos(){
-  //   for (let index = 0; index < this.usuario.vehiculos.length; index++) {
-  //     this.VehiculosService.getVehiculoById(this.usuario.vehiculos[index]).subscribe((response) => {
-  //       this.currentVehiculo = response;
-  //     });
-  //     this.vehiculos.push(this.currentVehiculo);
-  //   }
-  // }
+  toggle(vehiculo: Vehiculo){
+      vehiculo.activo = !vehiculo.activo;
+      this.VehiculosService.updateVehiculo(vehiculo.id, vehiculo);
+  }
+  pasarVehiculo(vehiculo: Vehiculo){
+      this.editarVehiculo = !this.editarVehiculo;
+      this.currentVehiculo = vehiculo;
+  }
+  guardarVehiculo(){
+    this.VehiculosService.updateVehiculo(this.currentVehiculo.id, this.currentVehiculo);
+    this.activacion(2);
+  }
 }

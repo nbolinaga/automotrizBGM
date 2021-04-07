@@ -4,11 +4,19 @@
           <h3 id="nombre">{{usuario.nombre}}</h3>
           <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/user.png?alt=media" alt="Foto de perfil">
           <h4>{{usuario.rol}}</h4>
+          <div class="roles">
+
+          </div>
           <div class="datos">
               <p>Cedula: <input [(ngModel)]="usuario.cedula" type="number" [disabled]="disabled"/></p>
               <p>Telefono: <input [(ngModel)]="usuario.telefono" type="string" [disabled]="disabled"/></p>
               <p>Email: <input [(ngModel)]="usuario.email" type="string" [disabled]="disabled"/></p>
           </div>
+          <button class="btn-pri" *ngIf="usuario.rol !== 'Cliente'">
+            <a [routerLink]="['/admin']" *ngIf="usuario.rol === 'Admin'">Administrar Usuarios</a>
+            <a [routerLink]="['/gerente']" *ngIf="usuario.rol === 'Gerente'">Gestiones</a>
+            <a [routerLink]="['/mecanico']" *ngIf="usuario.rol === 'Mecanico'">Gestionar Ordenes</a>
+          </button>
           <button class="btn-alt" (click)="editar()" [ngClass]="{'guardar': !disabled}"><p *ngIf="disabled">Editar Perfil</p><p *ngIf="!disabled">Guardar Cambios</p></button>
           <button class="btn-alt cancel" *ngIf="!disabled" (click)="cancel()">Cancelar Cambios</button>
       </div>
@@ -18,11 +26,11 @@
           <h3 id="title-vehiculos">Vehículos</h3>
             <div id="vehiculos-container">
               <div class="vehiculo-thumb" *ngFor="let vehiculo of vehiculosRegistrados">
-                <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo1.png?alt=media" alt="">
+                <img src="https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/vehiculo1.png?alt=media" alt="" [class.desactivado]="vehiculo.activo == false">
                 <p>{{vehiculo.marca}}</p>
                 <p>{{vehiculo.placa}}</p>
-                <button class="btn-pri">Desactivar</button>
-                <button class="btn-alt">Eliminar</button>
+                <button class="btn-sec" (click)="pasarVehiculo(vehiculo)">Editar</button>
+                <button class="btn-alt" (click)="toggle(vehiculo)"><p *ngIf="vehiculo.activo">Desactivar</p><p *ngIf="!vehiculo.activo">Activar</p></button>
               </div>
               <div class="agregar-car" *ngFor="let vacio of [].constructor(3 - vehiculosRegistrados.length)" (click)="activacion(0)">
                 <i class="fas fa-plus"></i>
@@ -78,7 +86,9 @@
             <div class="contenedor-inputs">
                 <label for="Vehiculos">Seleciona un Vehiculo:<span>*</span></label>
                 <select id="Vehiculos" formControlName="vehiculo">
-                  <option *ngFor="let vehiculo of vehiculosRegistrados">{{vehiculo.placa}}</option>
+                  <option *ngFor="let vehiculo of vehiculosRegistrados">
+                    <p *ngIf='vehiculo.activo'>{{vehiculo.placa}}</p>
+                  </option>
                 </select>
                 <label for="Opciones">Seleciona Motivo General:<span>*</span></label>
                 <select id="Opciones" formControlName="motivo">
@@ -119,4 +129,21 @@
     </div>
 </div>
 </section>
+
+<!-- Popup que se muestra al usuario para agregar su vehiculo -->
+<section class="editar-vehiculo">
+  <div class="overlay" *ngIf="editarVehiculo">
+      <div class="popup">
+          <h3>Editar Vehiculo</h3>
+          <div class="datos">
+            <p>Marca: <input [(ngModel)]="currentVehiculo.marca" type="string" /></p>
+            <p>Modelo: <input [(ngModel)]="currentVehiculo.modelo" type="string" /></p>
+            <p>Ano: <input [(ngModel)]="currentVehiculo.ano" type="number" /></p>
+            <p>Placa: <input [(ngModel)]="currentVehiculo.placa" type="string" /></p>
+          </div>
+          <button class="btn-alt guardar" (click)="guardarVehiculo()">Guardar Cambios</button>
+          <button class="btn-alt cancel" (click)="cancel()">Cancelar Cambios</button>
+      </div>
+  </div>
+  </section>
 
