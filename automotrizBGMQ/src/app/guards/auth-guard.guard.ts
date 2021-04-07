@@ -19,5 +19,5 @@ export class AuthGuardGuard implements CanActivate {
     }
     return this.Router.parseUrl('/login');
   }
-  
+
 }
