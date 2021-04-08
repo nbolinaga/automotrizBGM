@@ -27,6 +27,7 @@
     font-family: $fonts;
     font-size: 1.3rem;
     background-color: $blanco;
+    border-radius: 5px;
   }
 
   .seleccionar {
@@ -42,6 +43,7 @@
 
     select {
       margin-top: 1.1rem;
+      border-radius: 5px;
     }
 
   }
