@@ -15,7 +15,6 @@ import { Component, OnInit } from '@angular/core';
 export class CitasComponent implements OnInit {
 
 
-
   constructor( private citasService: CitasService, private usuarioService: UsuarioService) {
     this.buildFormFecha();
   }
@@ -52,10 +51,16 @@ export class CitasComponent implements OnInit {
   asignarFecha(cita: Cita): void {
     const fecha = this.formFecha.get('fecha').value;
     const hora = this.formFecha.get('hora').value;
+    const verificarDisponibilidad = this.citas.filter(citaF => citaF.fecha === fecha && citaF.hora === hora);
+
     if (this.formFecha.get('fecha').value === '' || this.formFecha.get('hora').value === '') {
       alert('Primero debe elegir la fecha y la hora.');
+    } else if (verificarDisponibilidad.length > 0) {
+      alert('La fecha indicada ya fue asignada a otra cita.');
+      this.formFecha.reset();
     }
     else {
+
       this.citasService.updateFechaCita(cita, fecha, hora);
       alert('Fecha asignada con éxito!');
       this.formFecha.reset();
