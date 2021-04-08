@@ -4,6 +4,11 @@
   background-color: $base;
   height: 100vh;
   font-family: $fonts;
+  @media #{$telefono} {
+    display: block;
+    padding: 6vh 0;
+    overflow: hidden;
+  }
 
   .opciones {
     padding-top: 8rem;

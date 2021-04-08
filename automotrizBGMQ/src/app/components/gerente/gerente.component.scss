@@ -5,18 +5,50 @@
     padding: 25vh;
     padding-bottom: 40vh;
     min-height: auto;
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        h2{color: $blanco;
+        font-size: 30px;
+        align-items: center;
+        align-content: center;
+        margin: 2rem;
+        margin-right: 5rem;
+        @media #{$telefono}{
+            margin: 0;
+        }
+        }
+        @media #{$telefono}{
+            margin: 0;
+        }
+    }
   }
 
 .fila-btn{
     display: flex;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
+    margin-inline: auto;
     align-items: center;
+    @media #{$telefono}{
+        padding-top: 1vh;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        margin-inline: 0;
+    }
 }
 
 .btn-sec{
     padding: 0.5rem 1rem;
     font-size: 26px;
     font-weight: 900;
+    margin: 0 3rem;
+    min-width: 8rem;
+    @media #{$telefono}{
+        margin: 3.5vh 0;
+    }
 }
 
 .btn-pri{
