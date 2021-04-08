@@ -34,16 +34,16 @@ export class ReportesComponent implements OnInit {
   //Lista con las ordenes
   listaOrdenes: Orden[] = [];
   ordenesMecanico: Orden[] = [];
-  //Listas de marcas y modelos
-  listaMarcas: any[] = [];
-  contadoresMarcas: any[] = [];
-  setMarcas: Set<any>;
-  listaModelos: any[] = [];
-  contadoresModelo: any[] = [];
-  setModelo: Set<any>;
-  //Objetos auxiliares
-  contadorMarca: Object = {};
-  contadorModelo: Object = {};
+  // //Listas de marcas y modelos
+  // listaMarcas: any[] = [];
+  // contadoresMarcas: any[] = [];
+  // setMarcas: Set<any>;
+  // listaModelos: any[] = [];
+  // contadoresModelo: any[] = [];
+  // setModelo: Set<any>;
+  // //Objetos auxiliares
+  // contadorMarca: Object = {};
+  // contadorModelo: Object = {};
 
   //Variables auxiliares
   subscription: Subscription;
