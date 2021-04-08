@@ -36,7 +36,7 @@
         <h4>{{ usuario.cedula === -1 ? '' : usuario.cedula }}</h4>
         <h4>{{ usuario.email }}</h4>
         <h4>{{ usuario.telefono !== 'edite sus datos de perfil' ? usuario.telefono : 'Tlf no registrado' }}</h4>
-        <p *ngFor="let vehiculo of vehiculosCliente">{{ vehiculo.marca }} Placa: {{ vehiculo.placa }}</p>
+        <p *ngFor="let vehiculo of vehiculosCliente">{{ vehiculo.marca }} - Placa: {{ vehiculo.placa }}</p>
       </div>
     </div>
     <div class="mecanicos" *ngIf="mecanicos">
