@@ -26,7 +26,6 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
 import { GerenteComponent } from './components/gerente/gerente.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-
 import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
@@ -64,7 +63,6 @@ const routes: Routes = [
     GerenteComponent,
     OrdenesComponent,
     ReportesComponent,
-    CalendarioComponent,
     DropZoneDirective,
     UploaderComponent,
     UploadTaskComponent
