@@ -2,8 +2,13 @@
 
 .contenedor {
   background-color: $base;
-  height: 100vh;
+  height: auto;
   font-family: $fonts;
+  @media #{$telefono} {
+    display: block;
+    padding: 6vh 0;
+    overflow: hidden;
+  }
 
   .opciones {
     padding-top: 8rem;
@@ -12,6 +17,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @media #{$telefono} {
+      #reportes{
+        width: auto;
+      }
+    }
 
     label {
       margin-right: 2rem;
@@ -34,6 +44,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @media #{$telefono} {
+    #carros{
+      width: auto;
+    }
+    }
 
     label {
       color: $blanco;
@@ -74,6 +89,12 @@
   img {
     width: 25rem;
     height: 20rem;
+    @media #{$telefono}{
+      width:70vw;
+      height: max-content;
+      object-fit: cover;
+      object-position: top;
+    }
   }
 
   .user-info {
@@ -81,6 +102,9 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    @media #{$telefono}{
+      flex-direction: column;
+    }
   }
 
   p {
@@ -101,5 +125,23 @@
 
   h4 {
     margin-top: 2rem;
+  }
+}
+
+#personas{
+  @media #{$telefono}{
+    width: auto;
+  }
+}
+
+#meca{
+  @media #{$telefono}{
+    width: auto;
+  }
+}
+
+#gen{
+  @media #{$telefono}{
+    width: auto;
   }
 }

@@ -12,7 +12,9 @@
     padding: 6vh 0;
   }
 
-  #nombre, #title-citas, #title-vehiculos {
+  #nombre,
+  #title-citas,
+  #title-vehiculos {
     margin: -7vh auto 4vh auto;
     text-align: center;
     color: $blanco;
@@ -74,7 +76,7 @@
 
       input {
         text-decoration: none;
-        border:none;
+        border: none;
         border-bottom: 1px solid $base;
         color: $detalles;
         text-align: left;
@@ -99,16 +101,16 @@
       padding: 2vh;
       width: 80%;
 
-      a{
+      a {
         text-decoration: none;
         color: $blanco;
       }
     }
-    .guardar{
-      background-color: rgba(green,.75);
+    .guardar {
+      background-color: rgba(green, 0.75);
     }
-    .cancel{
-      background-color: rgba(red,.75);
+    .cancel {
+      background-color: rgba(red, 0.75);
     }
   }
 
@@ -117,7 +119,7 @@
     margin-bottom: 7vh;
     text-align: center;
 
-    #title-vehiculos{
+    #title-vehiculos {
       color: $base;
       background-color: $blanco;
     }
@@ -147,18 +149,18 @@
           object-fit: cover;
           object-position: top;
 
-          &.desactivado{
+          &.desactivado {
             filter: grayscale(100%);
           }
         }
       }
-      .fa-plus{
+      .fa-plus {
         color: $blanco;
         cursor: pointer;
         font-size: 4vh;
         padding: 10vh 4vh;
 
-        &:hover{
+        &:hover {
           color: $detalles;
           font-size: 6vh;
           padding: 9vh 3.15vh;
@@ -168,7 +170,7 @@
 
     button {
       border-radius: 5px;
-      margin: 2vh .5vw 1vh auto;
+      margin: 2vh 0.5vw 1vh auto;
       padding: 2vh;
     }
   }
@@ -181,7 +183,7 @@
       overflow-y: hidden;
     }
 
-    #title-citas{
+    #title-citas {
       background-color: $detalles;
     }
 
@@ -194,6 +196,9 @@
       background-color: #ddd;
       font-family: $fonts;
       outline: 2px $blanco auto;
+      @media #{$telefono} {
+        width: 200%;
+      }
 
       td,
       tr {
@@ -214,13 +219,13 @@
           background-color: $detalles;
         }
       }
-      .confirmarFecha{
+      .confirmarFecha {
         margin: 0px;
         padding: 0px;
 
-        select{
+        select {
           border-radius: 5px;
-          padding: .7vh;
+          padding: 0.7vh;
           width: 12vw;
         }
         button {
@@ -273,7 +278,7 @@
       transform: translate(-50%, -100%);
     }
 
-    .datos{
+    .datos {
       p {
         margin: 2vw;
         padding-bottom: 1vh;
@@ -281,20 +286,20 @@
 
       input {
         text-decoration: none;
-        border:none;
+        border: none;
         border-bottom: 1px solid $base;
         color: $detalles;
         text-align: left;
         padding: 1vh;
       }
     }
-    .guardar{
-      background-color: rgba(green,.75);
+    .guardar {
+      background-color: rgba(green, 0.75);
       padding: 1vw;
       margin-right: 1vw;
     }
-    .cancel{
-      background-color: rgba(red,.75);
+    .cancel {
+      background-color: rgba(red, 0.75);
       padding: 1vw;
     }
 
@@ -332,10 +337,11 @@
     }
 
     span {
-      color: rgba(red,.75);
+      color: rgba(red, 0.75);
     }
 
-    .contenedor-inputs select, .contenedor-inputs input {
+    .contenedor-inputs select,
+    .contenedor-inputs input {
       height: 3.5vh;
       width: 100%;
       margin-bottom: 10px;
@@ -377,7 +383,7 @@
         background: rgba(41, 117, 161, 0.9);
       }
 
-      &:disabled{
+      &:disabled {
         background: gray;
         padding: 0 20px;
         height: 40px;
@@ -387,7 +393,7 @@
         font-size: 15px;
         transition: 0.3s ease all;
         cursor: initial;
-        }
       }
     }
+  }
 }
