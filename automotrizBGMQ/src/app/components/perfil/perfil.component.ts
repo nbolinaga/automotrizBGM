@@ -218,6 +218,10 @@ export class PerfilComponent implements OnInit {
     this.activacion(2);
   }
 
+  obtenerImagen(cita: string): string{
+    return 'https://api.qrserver.com/v1/create-qr-code/?size=76x76&data=' + cita;
+  }
+
   chequearSerial(vehiculo: Vehiculo) {
     var i;
     for (i = 0; i < this.vehiculosActivos.length; i++) {
