@@ -34,6 +34,16 @@ export class ReportesComponent implements OnInit {
   //Lista con las ordenes
   listaOrdenes: Orden[] = [];
   ordenesMecanico: Orden[] = [];
+  // //Listas de marcas y modelos
+  // listaMarcas: any[] = [];
+  // contadoresMarcas: any[] = [];
+  // setMarcas: Set<any>;
+  // listaModelos: any[] = [];
+  // contadoresModelo: any[] = [];
+  // setModelo: Set<any>;
+  // //Objetos auxiliares
+  // contadorMarca: Object = {};
+  // contadorModelo: Object = {};
 
   //Variables auxiliares
   subscription: Subscription;
@@ -234,7 +244,26 @@ export class ReportesComponent implements OnInit {
   }
 
   //Reportes generales
-  mostrarGeneral(): void {
+  // mostrarGeneral(event: any): void {
+  //   const texto = event.target.value;
 
-  }
+
+
+  //   if(texto === 'marcas') {
+  //     this.carService.getAllVehiculos().forEach(vehiculos => {
+  //       vehiculos.forEach(vehiculo => {
+  //         this.contadorMarca[vehiculo.marca] = (this.contadorMarca[vehiculo.marca] || 0) + 1;
+  //         this.listaMarcas.push(vehiculo.marca);
+  //       })
+  //     })
+  //     this.setMarcas = new Set(this.listaMarcas);
+  //     console.log(this.setMarcas)
+  //   } else if(texto === 'modelos') {
+  //     this.carService.getAllVehiculos().forEach(vehiculos => {
+  //       vehiculos.forEach(vehiculo => {
+  //         this.contadorModelo[vehiculo.modelo] = (this.contadorModelo[vehiculo.modelo] || 0) + 1;
+  //       })
+  //     })
+  //   }
+  // }
 }
