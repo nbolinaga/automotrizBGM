@@ -18,7 +18,7 @@
           <option *ngFor="let carro of listaVehiculos" value="{{ carro.id }}">{{ carro.placa }}</option>
         </select>
       </div>
-      <div class="contenido cont-vehiculos">
+      <div class="contenido cont-vehiculos">  
         <h2>{{ vehiculo.marca === 'marca' ? '' : vehiculo.marca }}</h2>
         <h4 *ngFor="let cita of listaCitasVehiculo">{{ cita.motivo }}</h4>
         <img src="{{ vehiculo.foto}}" alt="{{ vehiculo.marca === 'marca' ? '' : vehiculo.marca}}">
