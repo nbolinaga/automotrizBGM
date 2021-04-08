@@ -10,6 +10,7 @@ import { Cita } from '../../models/cita';
 import firebase from 'firebase';
 import {formatDate} from '@angular/common';
 import { Observable, Subscription } from 'rxjs';
+import { MailService } from 'src/app/services/mail.service';
 
 formatDate(new Date(), 'dd/MM/yyyy', 'en');
 
@@ -41,7 +42,8 @@ export class PerfilComponent implements OnInit {
     private Auth: AuthService,
     private UsuarioService: UsuarioService,
     private VehiculosService: VehiculosService,
-    private CitasService: CitasService) {
+    private CitasService: CitasService,
+    private mailService: MailService) {
       this.buildFormConfirmacion();
     }
 
@@ -188,6 +190,7 @@ export class PerfilComponent implements OnInit {
     const confirmacion = this.formConfirmacion.get('confirmacion').value;
     if (confirmacion === 'Confirmar'){
       this.CitasService.updateConfirmada(cita);
+      this.mailService.enviarEmail(cita, this.usuario);
     }
     else if ( confirmacion === 'Cambio'){
       this.CitasService.updateCambioFecha(cita);

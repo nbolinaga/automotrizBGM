@@ -40,7 +40,7 @@ const routes: Routes = [
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
   {path: 'citas', component: CitasComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
-  {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
+  {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuardGuard]},
   {path: 'autos', component: AutosComponent, canActivate: [AuthGuardGuard, GerenteGuard, MecanicoGuard, AdminGuard]},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuardGuard, AdminGuard]},
   {path: 'gerente', component: GerenteComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
@@ -64,7 +64,6 @@ const routes: Routes = [
     GerenteComponent,
     OrdenesComponent,
     ReportesComponent,
-    CalendarioComponent,
     DropZoneDirective,
     UploaderComponent,
     UploadTaskComponent
