@@ -6,7 +6,7 @@
       <option value="vehiculos">Vehiculos</option>
       <option value="clientes">Clientes</option>
       <option value="mecanicos">Mecanicos</option>
-      <option value="general">General</option>
+      <!-- <option value="general">General</option> -->
     </select>
   </div>
   <div class="mostrar-reportes">
@@ -18,7 +18,7 @@
           <option *ngFor="let carro of listaVehiculos" value="{{ carro.id }}">{{ carro.placa }}</option>
         </select>
       </div>
-      <div class="contenido cont-vehiculos">  
+      <div class="contenido cont-vehiculos">
         <h2>{{ vehiculo.marca === 'marca' ? '' : vehiculo.marca }}</h2>
         <h4 *ngFor="let cita of listaCitasVehiculo">{{ cita.motivo }}</h4>
         <img src="{{ vehiculo.foto}}" alt="{{ vehiculo.marca === 'marca' ? '' : vehiculo.marca}}">
@@ -55,17 +55,20 @@
         <p *ngFor="let orden of ordenesMecanico">{{ orden.diagnostico }}</p>
       </div>
     </div>
-    <div class="general" *ngIf="general">
+    <!-- <div class="general" *ngIf="general">
       <div class="seleccionar">
         <label for="gen">Reporte general:</label>
-        <select id="gen">
+        <select id="gen" (change)="mostrarGeneral($event)">
           <option value="default">Seleccionar...</option>
-          <option *ngFor="" value=""></option>
+          <option value="marcas">Conteo de marcas</option>
+          <option value="modelos">Conteo de modelos</option>
         </select>
       </div>
       <div class="contenido">
-
+        <div>
+          <h3 *ngFor="let marca of setMarcas">{{ marca }}: {{ contadorMarca[marca] }}</h3>
+        </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
