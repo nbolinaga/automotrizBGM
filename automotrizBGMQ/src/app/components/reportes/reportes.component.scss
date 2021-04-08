@@ -2,7 +2,7 @@
 
 .contenedor {
   background-color: $base;
-  height: 100vh;
+  height: auto;
   font-family: $fonts;
   @media #{$telefono} {
     display: block;
@@ -87,6 +87,12 @@
   img {
     width: 25rem;
     height: 20rem;
+    @media #{$telefono}{
+      width:70vw;
+      height: max-content;
+      object-fit: cover;
+      object-position: top;
+    }
   }
 
   .user-info {
@@ -94,6 +100,9 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    @media #{$telefono}{
+      flex-direction: column;
+    }
   }
 
   p {
@@ -114,5 +123,23 @@
 
   h4 {
     margin-top: 2rem;
+  }
+}
+
+#personas{
+  @media #{$telefono}{
+    width: auto;
+  }
+}
+
+#meca{
+  @media #{$telefono}{
+    width: auto;
+  }
+}
+
+#gen{
+  @media #{$telefono}{
+    width: auto;
   }
 }
