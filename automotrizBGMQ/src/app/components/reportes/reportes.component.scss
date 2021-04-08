@@ -52,15 +52,45 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-direction: column;
   flex-wrap: wrap;
   color: $detalles;
+  height: auto;
 
-  h2, h4, p {
+  h2, h4, p, img {
     margin-top: 2rem;
   }
 
   h2 {
     color: $blanco;
+  }
+
+  h2, h4 {
+    margin-inline: 2rem;
+  }
+
+  img {
+    width: 25rem;
+    height: 20rem;
+  }
+
+  .user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      width: 12rem;
+      height: 10rem;
+      margin-inline: 2rem;
+    }
   }
 }
 
