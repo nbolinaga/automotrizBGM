@@ -5,7 +5,7 @@ import { GerenteGuard} from './guards/gerente.guard';
 import { AdminGuard} from './guards/admin.guard';
 import { MecanicoGuard} from './guards/mecanico.guard';
 import { Routes, RouterModule } from '@angular/router';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,11 +23,9 @@ import { CitasComponent } from './components/citas/citas.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AutosComponent } from './components/autos/autos.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { CalendarioComponent } from './components/calendario/calendario.component';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
 import { GerenteComponent } from './components/gerente/gerente.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-
 import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
@@ -40,14 +38,13 @@ const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'contactanos', component: ContactanosComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'citas', component: CitasComponent, canActivate: [AuthGuardGuard]},
+  {path: 'citas', component: CitasComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
   {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuardGuard]},
-  {path: 'autos', component: AutosComponent, canActivate: [AuthGuardGuard]},
+  {path: 'autos', component: AutosComponent, canActivate: [AuthGuardGuard, GerenteGuard, MecanicoGuard, AdminGuard]},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuardGuard, AdminGuard]},
   {path: 'gerente', component: GerenteComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
-  {path: 'reportes', component: ReportesComponent, canActivate: [AuthGuardGuard]},
-  {path: 'calendario', component: CalendarioComponent, canActivate: [AuthGuardGuard]},
-  {path: 'ordenes', component: OrdenesComponent, canActivate:[AuthGuardGuard]}
+  {path: 'reportes', component: ReportesComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
+  {path: 'ordenes', component: OrdenesComponent, canActivate: [AuthGuardGuard, MecanicoGuard]}
 ];
 
 @NgModule({
@@ -66,11 +63,9 @@ const routes: Routes = [
     GerenteComponent,
     OrdenesComponent,
     ReportesComponent,
-    CalendarioComponent,
     DropZoneDirective,
     UploaderComponent,
     UploadTaskComponent
-
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
@@ -83,10 +78,16 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NoopAnimationsModule
   ],
   exports: [RouterModule],
-  providers: [AuthService, AngularFirestore],
+  providers: [
+    AuthService,
+    AngularFirestore,
+    AuthGuardGuard,
+    GerenteGuard,
+    MecanicoGuard,
+    AdminGuard
+  ],
   bootstrap: [AppComponent]
 })
 

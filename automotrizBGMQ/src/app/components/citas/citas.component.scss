@@ -1,52 +1,45 @@
 @import "../../../variables.scss";
 
-.citas-gerente {
+.citas-gerente{
   font-family: $fonts;
   margin-top: 11vh;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
-  background: rgb(206, 206, 206);
+  background: $base;
   color: $base;
   width: 100%;
+  flex-wrap: wrap;
 
-  .titulos {
-    margin-top: -15px;
-    margin-left: 2%;
-    text-align: center;
-    font-size: 1.2vw;
-    color: $base;
-    background-color: $blanco;
-    padding: 5px;
-    border: 0.21vw solid $base;
-    border-radius: 5px;
-    width: 20vw;
-
-    input {
-      font-weight: bold;
-      border: 0.12vw solid $base;
-      color: $base;
-      text-align: left;
-      padding: 1vh;
-    }
-  }
-
-  // SECTION Estilo de Todas las listas
   .lista {
     display: inline-block;
     list-style: none;
     width: 100%;
-    height: 90%;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.1vw;
+    font-size: 90%;
     color: $base;
     text-align: center;
-    overflow-y: scroll;
+
+    p{
+      display: inline-block;
+      margin-left: 2%;
+      margin-right: 2%;
+      margin-top: 1%;
+      margin-bottom: 1%;
+    }
+    input, button{
+      border: 1px $base solid;
+      display: inline-block;
+      margin-left: 2%;
+      margin-right: 2%;
+      margin-top: 1%;
+      margin-bottom: 1%;
+      border-radius: 5px;
+      padding: 1px;
+      width: 150px;
+      height: 25px;
+    }
 
     .fila {
-      border: 0.15vw solid $detalles;
+      border: 1px solid $base;
       padding: 1%;
       margin: 1%;
       cursor: pointer;
@@ -54,67 +47,146 @@
 
     .fila:hover {
       background: $detalles;
-      font-weight: bold;
     }
   }
 
   .seccion1 {
+    margin-bottom: 5%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
     justify-content: space-around;
-    margin: 2% 0 2% 0;
+    flex-wrap: wrap;
     width: 99vw;
-    height: 85vh;
+
+    .div1, .div2{
+      margin: 5%;
+      margin-top: 5%;
+      max-width: 500px;
+      min-width: 250px;
+      height: 65vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
     .citas-dia {
       background-color: $blanco;
       border-radius: 5px;
       border: 0.18vw solid $base;
-      width: 30%;
-      height: 70vh;
-      margin: 2% 0% 2% 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
     }
 
     .solicitudes-citas {
       background-color: $blanco;
       border-radius: 5px;
       border: 0.18vw solid $base;
-      width: 45%;
-      height: 70vh;
-      margin: 2% 0% 2% 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+    }
+  }
+}
+
+.citas-gerente2{
+  font-family: $fonts;
+  display: flex;
+  background: $detalles;
+  color: $base;
+  width: 100%;
+  flex-wrap: wrap;
+
+  .lista {
+    display: inline-block;
+    list-style: none;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 90%;
+    color: $base;
+    text-align: center;
+
+    p{
+      display: inline-block;
+      margin-left: 2%;
+      margin-right: 2%;
+      margin-top: 1%;
+      margin-bottom: 1%;
+    }
+    input, button{
+      border: 1px $detalles solid;
+      display: inline-block;
+      margin-left: 2%;
+      margin-right: 2%;
+      margin-top: 1%;
+      margin-bottom: 1%;
+      border-radius: 5px;
+      padding: 1px;
+      width: 150px;
+      height: 25px;
+    }
+
+    .fila {
+      border: 1px solid $detalles;
+      padding: 1%;
+      margin: 1%;
+      cursor: pointer;
+    }
+
+    .fila:hover {
+      background: $base;
     }
   }
 
   .seccion2 {
+    margin-bottom: 5%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
     justify-content: space-around;
-    margin: 2% 0 0 0;
-    width: 100%;
-    height: 100%;
+    flex-wrap: wrap;
+    width: 99vw;
 
-    .estatus-citas {
-      background-color: $blanco;
-      border-radius: 5px;
-      border: 0.18vw solid $base;
-      width: 45%;
-      height: 70vh;
-      margin: 2% 0% 2% 0;
+    .div1, .div2{
+      margin: 5%;
+      margin-top: 5%;
+      max-width: 500px;
+      min-width: 250px;
+      height: 65vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .solicitudes-citas {
       background-color: $blanco;
       border-radius: 5px;
       border: 0.18vw solid $base;
-      width: 45%;
-      height: 70vh;
-      margin: 2% 0% 2% 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
     }
   }
 }
+
+.titulos {
+  text-align: center;
+  font-size: 110%;
+  color: $base;
+  background-color: $blanco;
+  padding: 6px;
+  border: 0.21vw solid $base;
+  border-radius: 5px;
+  width: 100%;
+
+  input, button{
+      border: 1px $base solid;
+      display: inline-block;
+      margin-left: 2%;
+      margin-right: 2%;
+      margin-top: 1%;
+      margin-bottom: 1%;
+      border-radius: 5px;
+      padding: 1px;
+      width: 150px;
+      height: 25px;
+  }
+}
+

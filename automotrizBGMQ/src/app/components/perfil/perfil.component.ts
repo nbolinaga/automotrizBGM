@@ -29,11 +29,9 @@ export class PerfilComponent implements OnInit {
   activarAgregar = false;
   currentVehiculo: Vehiculo;
   currentCita: Cita;
-  // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
   citasConfirmar: Cita[] = [];
   citasPendientes: Cita[] = [];
   vehiculosRegistrados: Vehiculo[] = [];
-  // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
   esperandoConfirmar: Boolean = false;
   subscription: Subscription;
   editarVehiculo = false;
@@ -70,7 +68,6 @@ export class PerfilComponent implements OnInit {
           this.UsuarioService.createNewUser(user.uid, newUser);
         } else {
           this.usuario = response;
-          // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
           this.CitasService.getAllCitas().subscribe(citas => {
             this.citasPendientes = citas.filter(cita => cita.idUser === this.usuario.id);
             this.citasConfirmar = this.citasPendientes.filter(cita => cita.estado === 'Esperando confirmación');
@@ -79,7 +76,6 @@ export class PerfilComponent implements OnInit {
           this.VehiculosService.getAllVehiculos().subscribe(vehiculos => {
             this.vehiculosRegistrados = vehiculos.filter(vehiculo => vehiculo.idUser === this.usuario.id);
           });
-          // Solución forzada para mostrar Vehiculos y Citas del Cliente por el ID
         }
       });
     });
