@@ -68,7 +68,7 @@
                         <button class="btn-pri" type="submit" [disabled]="formConfirmacion.invalid">¡Listo!</button>
                       </form>
                     </td>
-                    <td *ngIf="!porConfirmar(cita)"></td>
+                    <td *ngIf="!porConfirmar(cita)"><img *ngIf="cita.confirmada" [src]="obtenerImagen(cita.id)" alt="Codigo QR"></td>
                   </tr>
               </tbody>
           </table>
