@@ -22,8 +22,9 @@
     <div class="lista" *ngFor="let orden of ordenes">
       <img [src]="obtenerImagen(orden.id)" alt="">
       <div>
-        <p>{{orden.vehiculo.marca}} - {{orden.vehiculo.placa}}</p>
-        <button class="btn-sec" (click)="actualizarOrden(orden)">Actualizar Orden</button>
+        <h3>{{orden.vehiculo.marca}} - {{orden.vehiculo.placa}}</h3>
+        <p>{{orden.cita.cliente}}</p>
+        <button class="btn-alt" (click)="actualizarOrden(orden)">Actualizar Orden</button>
       </div>
     </div>
   </div>
@@ -50,8 +51,8 @@
         <p>Otros: <textarea [(ngModel)]="currentVehiculo.otros" type="string" ></textarea></p>
         <app-file-upload></app-file-upload>
       </div>
+    <a class="cerrar btn-cerrar-popup" (click)="togglePop()">X</a>
     </div>
-
     <a class="cerrar" (click)="togglePop()">X</a>
     <button class="btn-alt btn-crear" (click)="crear()">Crear Orden</button>
   </div>
@@ -60,56 +61,29 @@
 <div class="popup" [ngClass]="abiertoActualizacion ? 'popupOpen' : ''">
   <div class="actualizarOrden">
     <div class="datos">
-      <p>POP UP ACTUALIZACION</p>
+      <div class="left">
+        <p>Marca: <input  disabled='disabled' [(ngModel)]="currentVehiculo.marca" type="string" /></p>
+        <p>Modelo: <input disabled='disabled' [(ngModel)]="currentVehiculo.modelo" type="string" /></p>
+        <p>Ano: <input disabled='disabled' [(ngModel)]="currentVehiculo.ano" type="number" /></p>
+        <p>Placa: <input disabled='disabled' [(ngModel)]="currentVehiculo.placa" type="string" /></p>
+        <p>Kilometraje: <input disabled='disabled' [(ngModel)]="currentVehiculo.km" type="number" /></p>
+        <p>Nivel de Gasolina: <input disabled='disabled' [(ngModel)]="currentVehiculo.gasolina" type="string" /></p>
+        <p>Extras: <textarea disabled='disabled' [(ngModel)]="currentVehiculo.extras"></textarea></p>
+        <p>Caucho de Repuesto: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.caucho"></p>
+        <p>Llaves: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.llaves"></p>
+        <p>Gato: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.gato"></p>
+        <p>Herramientas: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.herramientas"></p>
+        <p>Reproductor: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.reproductor"></p>
+        <p>Otros: <textarea disabled='disabled' [(ngModel)]="currentVehiculo.otros" type="string" ></textarea></p>
+      </div>
+      <div class="right">
+        <p>Procedimiento aplicado: <br><textarea [(ngModel)]="currentOrden.procedimiento"></textarea></p>
+        <p>Repuestos Necesarios: <br><textarea [(ngModel)]="currentOrden.repuestos"></textarea></p>
+        <p>Diagnostico: <br><textarea [(ngModel)]="currentOrden.diagnostico"></textarea></p>
+        <p>Listo: <input type="checkbox" [(ngModel)]="currentOrden.listo"></p>
+        <button class="btn-pri" [disabled]="usuario.rol === 'Mecanico'" (click)="cerrarOrden()">Cerrar Orden</button>
+      </div>
+      <a class="cerrar btn-cerrar-popup" (click)="togglePopOrden()">X</a>
     </div>
-
-    <a class="cerrar" (click)="togglePop()">X</a>
-    <button class="btn-alt" (click)="crear()">Crear Orden</button>
   </div>
 </div>
-
-
-<!-- <div class="todo">
-  <button (click)="activacion(1)">Crear Orden</button>
-  <section class="citas-cliente">
-      <div class="overlay" *ngIf="activar">
-          <div class="popup">
-          <a (click)="activacion(1)" class="btn-cerrar-popup">X</a>
-          <h2>Ordenes</h2>
-          <form [formGroup]="formOrden" (ngSubmit)="agregarOrden()" class="form-group">
-              <label for="marca">Marca</label>
-              <input type="text" formControlName="marca">
-              <label for="modelo">Modelo</label>
-              <input type="text" formControlName="modelo">
-              <label for="año">Año</label>
-              <input type="number" formControlName="año">
-              <label for="serial">Serial</label>
-              <input type="text" formControlName="serial">
-              <label for="color">Color</label>
-              <input type="text" formControlName="color">
-              <label for="placa">Placa</label>
-              <input type="text" formControlName="placa">
-              <label for="kmIngreso">Km de ingreso</label>
-              <input type="number" formControlName="kmIngreso">
-              <label for="nivelGas">Nivel gasolina</label>
-              <input type="text" formControlName="nivelGas">
-              <label for="extras">Extras</label>
-              <input type="text"  formControlName="extras">
-              <label>Cauchos de repuesto</label>
-              <input formControlName="cauchosRepuesto" type="checkbox">
-              <label>Llaves</label>
-              <input formControlName="llaves" type="checkbox">
-              <label>Gato</label>
-              <input formControlName="gato" type="checkbox">
-              <label>Herramientas</label>
-              <input formControlName="herramientas" type="checkbox">
-              <label>Reproductor</label>
-              <input formControlName="reproductor" type="checkbox">
-              <label>Otros</label>
-              <input formControlName="otros" type="text">
-              <button type="submit" >Enviar Orden</button>
-          </form>
-          </div>
-      </div>
-  </section>
-</div> -->

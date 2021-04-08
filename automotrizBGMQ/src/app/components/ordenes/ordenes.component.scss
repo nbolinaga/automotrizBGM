@@ -1,6 +1,7 @@
 @import "../../../variables.scss";
 
 #citasPorCrear{
+  color: $base;
   background-color: $detalles;
   display: flex;
   // flex-direction: column;
@@ -33,6 +34,7 @@
 }
 
 #ordenesPorActualizar{
+  color: $blanco;
   background-color: $base;
   display: flex;
   justify-content: center;
@@ -61,7 +63,23 @@
     }
   }
 }
+.btn-cerrar-popup {
+  position: absolute;
+  text-decoration: none;
+  font-weight: bold;
+  width: 1vw;
+  font-size: 1.2vw;
+  line-height: 16px;
+  display: block;
+  margin-left: 90%;
+  color: #aaa9a9;
+  transition: 0.3s ease all;
+}
 
+.btn-cerrar-popup:hover {
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
 .popup {
   display: none;
   background-color: rgb(0, 0, 0, 0.4);
@@ -72,7 +90,7 @@
   left: 0;
   transition: transform 0.2s ease all;
 
-  .crearOrden{
+  .crearOrden,.actualizarOrden{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -86,6 +104,7 @@
       padding: 2vw;
       display: flex;
       justify-content: space-around;
+
       p {
         margin: 1vw;
         padding-bottom: 0vh;
@@ -112,6 +131,27 @@
     .btn-crear {
       margin-inline: 30vw;
       padding: 2vh;
+    }
+  }
+  .actualizarOrden{
+    height: 80vh;
+    transform: translate(-50%, -40%);
+    .left{
+      p,input{
+        font-size: 1.5vh;
+      }
+    }
+    .right{
+      textarea{
+        height: 10vh;
+        width: 20vw;
+      }
+    }
+
+    button{
+      &:disabled{
+        opacity: .5;
+      }
     }
   }
 }

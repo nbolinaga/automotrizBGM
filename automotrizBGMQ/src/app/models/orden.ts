@@ -12,4 +12,5 @@ export interface Orden{
   finalizado: boolean;
   foto?: string;
   idUser: string;
+  listo?: boolean;
 }
