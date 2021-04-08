@@ -9,4 +9,5 @@ export interface Cita {
   motivo: string;
   descripcion: string;
   vehiculo: string;
+  orden?: boolean;
 }
