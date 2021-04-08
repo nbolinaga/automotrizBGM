@@ -89,7 +89,6 @@ export class AdminComponent implements OnInit {
           this.gerentes.push(user);
         } else if(user.rol === 'Admin'){
           this.admins.push(user);
-          console.log(user.nombre);
         }
       });
     });
@@ -117,10 +116,10 @@ export class AdminComponent implements OnInit {
     this.userService.deleteUser(user.id);
   }
 
-  editar(usuario: Usuario): void {
+  async editar(usuario: Usuario) {
     this.usuario = usuario;
-    this.userService.updateUser(usuario.id, this.usuario);
-    this.cerrarPopUp();
+    await this.userService.updateUser(usuario.id, this.usuario);
+    await this.cerrarPopUp();
   }
 
   cambiarRol(user: Usuario): void {

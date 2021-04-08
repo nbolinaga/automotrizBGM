@@ -66,7 +66,6 @@ const routes: Routes = [
     DropZoneDirective,
     UploaderComponent,
     UploadTaskComponent
-
   ],
   imports: [
     [BrowserModule, BrowserAnimationsModule],
