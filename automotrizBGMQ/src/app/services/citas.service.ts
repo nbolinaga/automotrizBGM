@@ -72,6 +72,10 @@ export class CitasService {
     return this.CitaCollection.doc<Cita>().set(newCita);
   }
 
+  updateCita(citaId: string, cita: Cita): Promise<void> {
+    return this.CitaCollection.doc<Cita>(citaId).update(cita);
+  }
+
   updateFechaCita(citaID: Cita, newFecha: string, newHora: string): Promise<void> {
     const citaRef = this.firestore.collection('citas').doc(citaID.id);
     return citaRef.update({fecha: newFecha, hora: newHora, estado: 'Esperando confirmación'});
