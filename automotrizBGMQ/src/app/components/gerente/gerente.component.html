@@ -4,7 +4,7 @@
     <div class="fila-btn">
       
         <button class="btn-sec" (click)="openCitas()">CITAS</button>
-        <button class="btn-pri">ORDENES</button>
+        <button class="btn-pri" [routerLink] ="['/ordenes']">ORDENES</button>
         <button class="btn-sec" (click)="openReportes()">REPORTES</button>
     </div>
     <div *ngIf="reportes">
