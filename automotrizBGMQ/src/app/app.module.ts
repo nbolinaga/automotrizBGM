@@ -26,7 +26,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
 import { GerenteComponent } from './components/gerente/gerente.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-
+import {MailService} from'./services/mail.service'
 import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
@@ -84,6 +84,7 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [
     AuthService,
+    MailService,
     AngularFirestore,
     AuthGuardGuard,
     GerenteGuard,
