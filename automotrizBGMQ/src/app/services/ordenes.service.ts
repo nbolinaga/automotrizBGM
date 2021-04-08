@@ -16,12 +16,25 @@ import { Orden } from '../models/orden';
 export class OrdenesService {
   private ordenCollection: AngularFirestoreCollection<Orden>;
   private userCollection: AngularFirestoreCollection<Usuario>;
+  ordenes: Observable<Orden[]>;
 
   constructor(private firestore: AngularFirestore) {
     this.userCollection = this.firestore.collection<Usuario>('usuarios');
     this.ordenCollection = this.firestore.collection<Orden>('ordenes');
   }
 
+  getAllOrdenes(): Observable<Orden[]> {
+    this.ordenCollection = this.firestore.collection<Orden>('ordenes');
+    return (this.ordenes = this.ordenCollection.snapshotChanges().pipe(
+      map((cambios) => {
+        return cambios.map((action) => {
+          const datos = action.payload.doc.data() as Orden;
+          datos.id = action.payload.doc.id;
+          return datos;
+        });
+      })
+    ));
+  }
   getAllUserOrdenes(): Observable<Orden[]> {
     return this.ordenCollection.snapshotChanges().pipe(
       map((changes) => {
@@ -47,8 +60,8 @@ export class OrdenesService {
       );
   }
 
-  createNewOrden(newOrden: Orden): Promise<void> {
-    return this.ordenCollection.doc<Orden>().set(newOrden);
+  createNewOrden(id: string, newOrden: Orden): Promise<void> {
+    return this.ordenCollection.doc<Orden>(id).set(newOrden);
   }
 
   updateOrden(userId: string, OrdenData: Orden): Promise<void> {

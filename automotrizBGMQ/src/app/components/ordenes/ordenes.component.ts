@@ -39,6 +39,10 @@ export class OrdenesComponent implements OnInit {
   }
   subscription: Subscription;
   abierto = false;
+  buscarCitaID: string;
+  buscarOrdenID: string;
+  ordenes: Orden[];
+  abiertoActualizacion = false;
 
   constructor(
     private fb : FormBuilder,
@@ -53,6 +57,7 @@ export class OrdenesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCitasEstado();
+    this.getOrdenes();
   }
 
   getUser(): void {
@@ -68,6 +73,11 @@ export class OrdenesComponent implements OnInit {
     this.citasService.getAllCitas().subscribe(citas => {
       this.citasByFecha = citas.filter(cita => cita.confirmada === true);
     });
+  }
+  getOrdenes(): void {
+    this.OrdenesService.getAllOrdenes().subscribe(ordenes =>{
+      this.ordenes = ordenes.filter(ordenes => ordenes.finalizado === false);
+    })
   }
 
   async crearOrden(cita: Cita, placa: string) {
@@ -96,8 +106,49 @@ export class OrdenesComponent implements OnInit {
       idUser: this.usuario.id
     };
 
-    await this.OrdenesService.createNewOrden(newOrden);
+    await this.OrdenesService.createNewOrden(this.currentCita.id, newOrden);
+    this.currentCita.orden = true;
+    await this.citasService.updateCita(this.currentCita.id, this.currentCita);
     location.href = '/ordenes';
+  }
+  obtenerImagen(cita: string): string{
+    return 'https://api.qrserver.com/v1/create-qr-code/?size=76x76&data=' + cita;
+  }
+
+  buscarCita(citaId: string): void{
+    var encontrado = false;
+    this.citasByFecha.forEach(cita => {
+      if(cita.id === citaId){
+        encontrado = true;
+        return this.crearOrden(cita, cita.vehiculo);
+      }
+    });
+
+    if(encontrado == false){
+      alert("Cita no encontrada");
+    }
+  }
+
+  buscarOrden(ordenId: string){
+    var encontrado = false;
+    this.ordenes.forEach(orden => {
+      if(orden.id === ordenId){
+        encontrado = true;
+        return this.actualizarOrden(orden);
+      }
+    });
+
+    if(encontrado == false){
+      alert("Orden no encontrada");
+    }
+  }
+
+  actualizarOrden(orden: Orden){
+    this. togglePopOrden();
+  }
+
+  togglePopOrden(){
+    this.abiertoActualizacion = !this.abiertoActualizacion;
   }
   // activacion(numero): void {
   //   if (numero === 1){

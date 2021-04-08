@@ -1,16 +1,32 @@
-<section id="citasPorCrear" *ngIf="usuario.rol === 'Mecanico'">
+<section id="citasPorCrear">
   <div class="citas">
+    <h2>Vehiculos entrantes</h2>
+    <input type="text" [(ngModel)]='buscarCitaID'>
+    <button (click)='buscarCita(buscarCitaID)'  [disabled]="usuario.rol !== 'Mecanico'">Buscar Cita</button>
     <div class="lista" *ngFor="let cita of citasByFecha">
+      <img [src]="obtenerImagen(cita.id)" alt="">
       <div>
-        <h2>{{cita.fecha}}</h2>
-        <button (click)="crearOrden(cita, cita.vehiculo)">Crear Orden</button>
+        <h3>{{cita.fecha}}</h3>
+        <p>{{cita.cliente}}</p>
+        <button [disabled]="usuario.rol !== 'Mecanico' || cita.orden == true" class="btn-sec" (click)="crearOrden(cita, cita.vehiculo)">Crear Orden</button>
       </div>
     </div>
   </div>
 </section>
 
-<section id="ordenes" >
-  <p>Esto lo ven ambos</p>
+<section id="ordenesPorActualizar">
+  <div class="ordenes">
+    <h2>Vehiculos en taller</h2>
+    <input type="text" [(ngModel)]='buscarOrdenID'>
+    <button (click)='buscarOrden(buscarOrdenID)'>Buscar Orden</button>
+    <div class="lista" *ngFor="let orden of ordenes">
+      <img [src]="obtenerImagen(orden.id)" alt="">
+      <div>
+        <p>{{orden.vehiculo.marca}} - {{orden.vehiculo.placa}}</p>
+        <button class="btn-sec" (click)="actualizarOrden(orden)">Actualizar Orden</button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="popup" [ngClass]="abierto ? 'popupOpen' : ''">
@@ -41,6 +57,16 @@
   </div>
 </div>
 
+<div class="popup" [ngClass]="abiertoActualizacion ? 'popupOpen' : ''">
+  <div class="actualizarOrden">
+    <div class="datos">
+      <p>POP UP ACTUALIZACION</p>
+    </div>
+
+    <a class="cerrar" (click)="togglePop()">X</a>
+    <button class="btn-alt" (click)="crear()">Crear Orden</button>
+  </div>
+</div>
 
 
 <!-- <div class="todo">
