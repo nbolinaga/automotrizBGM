@@ -21,6 +21,7 @@
       <div class="contenido cont-vehiculos">
         <h2>{{ vehiculo.marca === 'marca' ? '' : vehiculo.marca }}</h2>
         <h4 *ngFor="let cita of listaCitasVehiculo">{{ cita.motivo }}</h4>
+        <img src="{{ vehiculo.foto}}" alt="{{ vehiculo.marca === 'marca' ? '' : vehiculo.marca}}">
       </div>
     </div>
     <div class="clientes" *ngIf="clientes">
@@ -31,12 +32,14 @@
           <option *ngFor="let cliente of listaClientes" value="{{cliente.id}}">{{ cliente.nombre }}</option>
         </select>
       </div>
-      <div class="contenido">
-        <h2>{{ usuario.nombre }}</h2>
-        <h4>{{ usuario.cedula === -1 ? '' : usuario.cedula }}</h4>
-        <h4>{{ usuario.email }}</h4>
-        <h4>{{ usuario.telefono !== 'edite sus datos de perfil' ? usuario.telefono : 'Tlf no registrado' }}</h4>
-        <p *ngFor="let vehiculo of vehiculosCliente">{{ vehiculo.marca }} - Placa: {{ vehiculo.placa }}</p>
+      <div class="contenido user-content">
+        <div class="user-info">
+          <h2>{{ usuario.nombre }}</h2>
+          <h4>{{ usuario.cedula === -1 ? '' : usuario.cedula }}</h4>
+          <h4>{{ usuario.email }}</h4>
+          <h4>{{ usuario.telefono !== 'edite sus datos de perfil' ? usuario.telefono : 'Tlf no registrado' }}</h4>
+        </div>
+        <p *ngFor="let vehiculo of vehiculosCliente"> <img src="{{ vehiculo.foto }}" alt="{{ vehiculo.marca }}"> {{ vehiculo.marca }} - Placa: {{ vehiculo.placa }}</p>
       </div>
     </div>
     <div class="mecanicos" *ngIf="mecanicos">
@@ -49,6 +52,7 @@
       </div>
       <div class="contenido">
         <h2>{{ mecanico.nombre }}</h2>
+        <p *ngFor="let orden of ordenesMecanico">{{ orden.diagnostico }}</p>
       </div>
     </div>
     <div class="general" *ngIf="general">

@@ -6,6 +6,8 @@ import { Usuario } from 'src/app/models/usuario';
 import { Subscription } from 'rxjs';
 import { CitasService } from 'src/app/services/citas.service';
 import { Cita } from 'src/app/models/cita';
+import { OrdenesService } from 'src/app/services/ordenes.service';
+import { Orden } from 'src/app/models/orden';
 
 @Component({
   selector: 'app-reportes',
@@ -29,6 +31,9 @@ export class ReportesComponent implements OnInit {
   listaCitas: Cita[] = [];
   listaCitasVehiculo: Cita[] = [];
   vehiculosCliente: any[] = [];
+  //Lista con las ordenes
+  listaOrdenes: Orden[] = [];
+  ordenesMecanico: Orden[] = [];
 
   //Variables auxiliares
   subscription: Subscription;
@@ -69,12 +74,14 @@ export class ReportesComponent implements OnInit {
   constructor(
       private userService: UsuarioService,
       private carService: VehiculosService,
-      private citasService: CitasService) { }
+      private citasService: CitasService,
+      private ordenService: OrdenesService) { }
 
   ngOnInit(): void {
     this.todosLosCarros();
     this.todosLosClientes();
     this.todasLasCitas();
+    this.todasLasOrdenes();
   }
 
   cambio(event: any): void {
@@ -124,6 +131,16 @@ export class ReportesComponent implements OnInit {
       citas.forEach(cita => {
         this.listaCitas.push(cita);
       });
+    });
+  }
+
+  todasLasOrdenes(): void {
+    this.ordenService.getAllUserOrdenes().subscribe(ordenes => {
+      ordenes.forEach(orden => {
+        if(orden.idUser === this.usuario.id) {
+          this.listaOrdenes.push(orden);
+        }
+      })
     });
   }
 
@@ -193,6 +210,8 @@ export class ReportesComponent implements OnInit {
 
   //Se subscribe al mecanico que se esoge
   mostrarMecanico(event: any): void {
+    this.ordenesMecanico.length = 0
+
     const id: string = event.target.value;
 
     // if(this.subscription) {
@@ -203,6 +222,14 @@ export class ReportesComponent implements OnInit {
       this.subscription = this.userService.getUserById(id).subscribe(user => {
         return this.mecanico = user;
       });
+
+      this.ordenService.getAllUserOrdenes().subscribe(ordenes => {
+        ordenes.forEach(orden => {
+          if(orden.idUser === this.usuario.id) {
+            this.ordenesMecanico.push(orden)
+          }
+        })
+      })
     }
   }
 
