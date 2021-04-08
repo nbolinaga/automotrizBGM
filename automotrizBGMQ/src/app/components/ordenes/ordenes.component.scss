@@ -63,7 +63,23 @@
     }
   }
 }
+.btn-cerrar-popup {
+  position: absolute;
+  text-decoration: none;
+  font-weight: bold;
+  width: 1vw;
+  font-size: 1.2vw;
+  line-height: 16px;
+  display: block;
+  margin-left: 90%;
+  color: #aaa9a9;
+  transition: 0.3s ease all;
+}
 
+.btn-cerrar-popup:hover {
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
 .popup {
   display: none;
   background-color: rgb(0, 0, 0, 0.4);
@@ -112,7 +128,18 @@
         font-size: 1.5vh;
       }
     }
+    .right{
+      textarea{
+        height: 10vh;
+        width: 20vw;
+      }
+    }
 
+    button{
+      &:disabled{
+        opacity: .5;
+      }
+    }
   }
 }
 

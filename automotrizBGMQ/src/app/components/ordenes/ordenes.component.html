@@ -51,9 +51,8 @@
         <p>Otros: <textarea [(ngModel)]="currentVehiculo.otros" type="string" ></textarea></p>
         <app-file-upload></app-file-upload>
       </div>
+    <a class="cerrar btn-cerrar-popup" (click)="togglePop()">X</a>
     </div>
-
-    <a class="cerrar" (click)="togglePop()">X</a>
     <button class="btn-alt" (click)="crear()">Crear Orden</button>
   </div>
 </div>
@@ -61,30 +60,29 @@
 <div class="popup" [ngClass]="abiertoActualizacion ? 'popupOpen' : ''">
   <div class="actualizarOrden">
     <div class="datos">
-        <div class="left">
-          <p>Marca: <input  disabled='disabled' [(ngModel)]="currentVehiculo.marca" type="string" /></p>
-          <p>Modelo: <input disabled='disabled' [(ngModel)]="currentVehiculo.modelo" type="string" /></p>
-          <p>Ano: <input disabled='disabled' [(ngModel)]="currentVehiculo.ano" type="number" /></p>
-          <p>Placa: <input disabled='disabled' [(ngModel)]="currentVehiculo.placa" type="string" /></p>
-          <p>Kilometraje: <input disabled='disabled' [(ngModel)]="currentVehiculo.km" type="number" /></p>
-          <p>Nivel de Gasolina: <input disabled='disabled' [(ngModel)]="currentVehiculo.gasolina" type="string" /></p>
-          <p>Extras: <textarea disabled='disabled' [(ngModel)]="currentVehiculo.extras"></textarea></p>
-          <p>Caucho de Repuesto: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.caucho"></p>
-          <p>Llaves: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.llaves"></p>
-          <p>Gato: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.gato"></p>
-          <p>Herramientas: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.herramientas"></p>
-          <p>Reproductor: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.reproductor"></p>
-          <p>Otros: <textarea disabled='disabled' [(ngModel)]="currentVehiculo.otros" type="string" ></textarea></p>
-        </div>
-        <div class="right">
-          <p>Procedimiento aplicado: <textarea [(ngModel)]="currentOrden.procedimiento"></textarea></p>
-          <p>Repuestos Necesarios: <textarea [(ngModel)]="currentOrden.repuestos"></textarea></p>
-          <p>Diagnostico: <textarea [(ngModel)]="currentOrden.diagnostico"></textarea></p>
-          <p>Listo: <input type="checkbox" [(ngModel)]="currentOrden.listo"></p>
-          <button class="btn-pri" [disabled]="usuario.rol === 'Mecanico'" (click)="cerrarOrden()">Cerrar Orden</button>
-        </div>
+      <div class="left">
+        <p>Marca: <input  disabled='disabled' [(ngModel)]="currentVehiculo.marca" type="string" /></p>
+        <p>Modelo: <input disabled='disabled' [(ngModel)]="currentVehiculo.modelo" type="string" /></p>
+        <p>Ano: <input disabled='disabled' [(ngModel)]="currentVehiculo.ano" type="number" /></p>
+        <p>Placa: <input disabled='disabled' [(ngModel)]="currentVehiculo.placa" type="string" /></p>
+        <p>Kilometraje: <input disabled='disabled' [(ngModel)]="currentVehiculo.km" type="number" /></p>
+        <p>Nivel de Gasolina: <input disabled='disabled' [(ngModel)]="currentVehiculo.gasolina" type="string" /></p>
+        <p>Extras: <textarea disabled='disabled' [(ngModel)]="currentVehiculo.extras"></textarea></p>
+        <p>Caucho de Repuesto: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.caucho"></p>
+        <p>Llaves: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.llaves"></p>
+        <p>Gato: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.gato"></p>
+        <p>Herramientas: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.herramientas"></p>
+        <p>Reproductor: <input disabled='disabled' type="checkbox" [(ngModel)]="currentVehiculo.reproductor"></p>
+        <p>Otros: <textarea disabled='disabled' [(ngModel)]="currentVehiculo.otros" type="string" ></textarea></p>
       </div>
-    <a class="cerrar" (click)="togglePopOrden()">X</a>
-    <button class="btn-alt" (click)="crear()">Crear Orden</button>
+      <div class="right">
+        <p>Procedimiento aplicado: <br><textarea [(ngModel)]="currentOrden.procedimiento"></textarea></p>
+        <p>Repuestos Necesarios: <br><textarea [(ngModel)]="currentOrden.repuestos"></textarea></p>
+        <p>Diagnostico: <br><textarea [(ngModel)]="currentOrden.diagnostico"></textarea></p>
+        <p>Listo: <input type="checkbox" [(ngModel)]="currentOrden.listo"></p>
+        <button class="btn-pri" [disabled]="usuario.rol === 'Mecanico'" (click)="cerrarOrden()">Cerrar Orden</button>
+      </div>
+      <a class="cerrar btn-cerrar-popup" (click)="togglePopOrden()">X</a>
+    </div>
   </div>
 </div>
