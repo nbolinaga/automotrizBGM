@@ -2,8 +2,13 @@
 
 .contenedor {
   background-color: $base;
-  height: 100vh;
+  height: auto;
   font-family: $fonts;
+  @media #{$telefono} {
+    display: block;
+    padding: 6vh 0;
+    overflow: hidden;
+  }
 
   .opciones {
     padding-top: 8rem;
@@ -12,6 +17,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @media #{$telefono} {
+      #reportes{
+        width: auto;
+      }
+    }
 
     label {
       margin-right: 2rem;
@@ -27,12 +37,18 @@
     font-family: $fonts;
     font-size: 1.3rem;
     background-color: $blanco;
+    border-radius: 5px;
   }
 
   .seleccionar {
     display: flex;
     justify-content: center;
     align-items: center;
+    @media #{$telefono} {
+    #carros{
+      width: auto;
+    }
+    }
 
     label {
       color: $blanco;
@@ -42,6 +58,7 @@
 
     select {
       margin-top: 1.1rem;
+      border-radius: 5px;
     }
 
   }
@@ -52,15 +69,54 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-direction: column;
   flex-wrap: wrap;
   color: $detalles;
+  height: auto;
 
-  h2, h4, p {
+  h2, h4, p, img {
     margin-top: 2rem;
   }
 
   h2 {
     color: $blanco;
+  }
+
+  h2, h4 {
+    margin-inline: 2rem;
+  }
+
+  img {
+    width: 25rem;
+    height: 20rem;
+    @media #{$telefono}{
+      width:70vw;
+      height: max-content;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+
+  .user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    @media #{$telefono}{
+      flex-direction: column;
+    }
+  }
+
+  p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      width: 12rem;
+      height: 10rem;
+      margin-inline: 2rem;
+    }
   }
 }
 
@@ -69,5 +125,23 @@
 
   h4 {
     margin-top: 2rem;
+  }
+}
+
+#personas{
+  @media #{$telefono}{
+    width: auto;
+  }
+}
+
+#meca{
+  @media #{$telefono}{
+    width: auto;
+  }
+}
+
+#gen{
+  @media #{$telefono}{
+    width: auto;
   }
 }

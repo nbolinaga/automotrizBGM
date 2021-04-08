@@ -15,7 +15,7 @@
           <button class="btn-pri" *ngIf="usuario.rol !== 'Cliente'">
             <a [routerLink]="['/admin']" *ngIf="usuario.rol === 'Admin'">Administrar Usuarios</a>
             <a [routerLink]="['/gerente']" *ngIf="usuario.rol === 'Gerente'">Gestiones</a>
-            <a [routerLink]="['/mecanico']" *ngIf="usuario.rol === 'Mecanico'">Gestionar Ordenes</a>
+            <a [routerLink]="['/ordenes']" *ngIf="usuario.rol === 'Mecanico'">Gestionar Ordenes</a>
           </button>
           <div *ngIf="!disabled"><app-file-upload [vehiculo]='null' [usuario]='usuario'></app-file-upload ></div>
           <button class="btn-alt" (click)="editar()" [ngClass]="{'guardar': !disabled}"><p *ngIf="disabled">Editar Perfil</p><p *ngIf="!disabled">Guardar Cambios</p></button>

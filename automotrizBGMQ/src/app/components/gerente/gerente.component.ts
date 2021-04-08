@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GerenteComponent implements OnInit {
 
+  reportes: boolean = false;
+  citas: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openReportes(): void {
+    this.reportes = !this.reportes;
+    this.citas = false;
+  }
+
+  openCitas(): void {
+    this.citas = !this.citas;
+    this.reportes = false;
   }
 
 }

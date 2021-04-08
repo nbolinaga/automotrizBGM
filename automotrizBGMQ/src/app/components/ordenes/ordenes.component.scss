@@ -119,6 +119,19 @@
         padding: 1vh;
       }
     }
+
+    .cerrar {
+      cursor: pointer;
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      left: auto;
+    }
+
+    .btn-crear {
+      margin-inline: 30vw;
+      padding: 2vh;
+    }
   }
   .actualizarOrden{
     height: 80vh;

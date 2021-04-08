@@ -6,6 +6,8 @@ import { Usuario } from 'src/app/models/usuario';
 import { Subscription } from 'rxjs';
 import { CitasService } from 'src/app/services/citas.service';
 import { Cita } from 'src/app/models/cita';
+import { OrdenesService } from 'src/app/services/ordenes.service';
+import { Orden } from 'src/app/models/orden';
 
 @Component({
   selector: 'app-reportes',
@@ -29,6 +31,19 @@ export class ReportesComponent implements OnInit {
   listaCitas: Cita[] = [];
   listaCitasVehiculo: Cita[] = [];
   vehiculosCliente: any[] = [];
+  //Lista con las ordenes
+  listaOrdenes: Orden[] = [];
+  ordenesMecanico: Orden[] = [];
+  // //Listas de marcas y modelos
+  // listaMarcas: any[] = [];
+  // contadoresMarcas: any[] = [];
+  // setMarcas: Set<any>;
+  // listaModelos: any[] = [];
+  // contadoresModelo: any[] = [];
+  // setModelo: Set<any>;
+  // //Objetos auxiliares
+  // contadorMarca: Object = {};
+  // contadorModelo: Object = {};
 
   //Variables auxiliares
   subscription: Subscription;
@@ -69,12 +84,14 @@ export class ReportesComponent implements OnInit {
   constructor(
       private userService: UsuarioService,
       private carService: VehiculosService,
-      private citasService: CitasService) { }
+      private citasService: CitasService,
+      private ordenService: OrdenesService) { }
 
   ngOnInit(): void {
     this.todosLosCarros();
     this.todosLosClientes();
     this.todasLasCitas();
+    this.todasLasOrdenes();
   }
 
   cambio(event: any): void {
@@ -124,6 +141,16 @@ export class ReportesComponent implements OnInit {
       citas.forEach(cita => {
         this.listaCitas.push(cita);
       });
+    });
+  }
+
+  todasLasOrdenes(): void {
+    this.ordenService.getAllUserOrdenes().subscribe(ordenes => {
+      ordenes.forEach(orden => {
+        if(orden.idUser === this.usuario.id) {
+          this.listaOrdenes.push(orden);
+        }
+      })
     });
   }
 
@@ -193,6 +220,8 @@ export class ReportesComponent implements OnInit {
 
   //Se subscribe al mecanico que se esoge
   mostrarMecanico(event: any): void {
+    this.ordenesMecanico.length = 0
+
     const id: string = event.target.value;
 
     // if(this.subscription) {
@@ -203,11 +232,38 @@ export class ReportesComponent implements OnInit {
       this.subscription = this.userService.getUserById(id).subscribe(user => {
         return this.mecanico = user;
       });
+
+      this.ordenService.getAllUserOrdenes().subscribe(ordenes => {
+        ordenes.forEach(orden => {
+          if(orden.idUser === this.usuario.id) {
+            this.ordenesMecanico.push(orden)
+          }
+        })
+      })
     }
   }
 
   //Reportes generales
-  mostrarGeneral(): void {
+  // mostrarGeneral(event: any): void {
+  //   const texto = event.target.value;
 
-  }
+
+
+  //   if(texto === 'marcas') {
+  //     this.carService.getAllVehiculos().forEach(vehiculos => {
+  //       vehiculos.forEach(vehiculo => {
+  //         this.contadorMarca[vehiculo.marca] = (this.contadorMarca[vehiculo.marca] || 0) + 1;
+  //         this.listaMarcas.push(vehiculo.marca);
+  //       })
+  //     })
+  //     this.setMarcas = new Set(this.listaMarcas);
+  //     console.log(this.setMarcas)
+  //   } else if(texto === 'modelos') {
+  //     this.carService.getAllVehiculos().forEach(vehiculos => {
+  //       vehiculos.forEach(vehiculo => {
+  //         this.contadorModelo[vehiculo.modelo] = (this.contadorModelo[vehiculo.modelo] || 0) + 1;
+  //       })
+  //     })
+  //   }
+  // }
 }

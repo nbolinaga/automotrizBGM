@@ -1,7 +1,17 @@
 <div class="todo">
+  <div class=container>
+  <h2>Gerencia</h2>
     <div class="fila-btn">
-        <button class="btn-sec">ESPERA</button>
-        <button class="btn-pri">ORDENES</button>
-        <a routerLink = 'ordenes'><button class="btn-sec">REPORTES</button></a>
+      
+        <button class="btn-sec" (click)="openCitas()">CITAS</button>
+        <button class="btn-pri" [routerLink] ="['/ordenes']">ORDENES</button>
+        <button class="btn-sec" (click)="openReportes()">REPORTES</button>
     </div>
+    <div *ngIf="reportes">
+      <app-reportes></app-reportes>
+    </div>
+    <div *ngIf="citas">
+      <app-citas></app-citas>
+    </div>
+  </div>
 </div>
