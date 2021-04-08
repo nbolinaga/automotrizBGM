@@ -42,9 +42,9 @@ const routes: Routes = [
   {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuardGuard]},
   {path: 'autos', component: AutosComponent, canActivate: [AuthGuardGuard, GerenteGuard, MecanicoGuard, AdminGuard]},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuardGuard, AdminGuard]},
-  {path: 'gerente', component: GerenteComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
-  {path: 'reportes', component: ReportesComponent, canActivate: [AuthGuardGuard, GerenteGuard]},
-  {path: 'ordenes', component: OrdenesComponent, canActivate: [AuthGuardGuard, MecanicoGuard]}
+  {path: 'gerente', component: GerenteComponent, canActivate: [AuthGuardGuard, GerenteGuard, AdminGuard]},
+  {path: 'reportes', component: ReportesComponent, canActivate: [AuthGuardGuard, GerenteGuard, AdminGuard]},
+  {path: 'ordenes', component: OrdenesComponent, canActivate: [AuthGuardGuard, MecanicoGuard, GerenteGuard]}
 ];
 
 @NgModule({
