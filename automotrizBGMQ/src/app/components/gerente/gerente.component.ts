@@ -17,10 +17,12 @@ export class GerenteComponent implements OnInit {
 
   openReportes(): void {
     this.reportes = !this.reportes;
+    this.citas = false;
   }
 
   openCitas(): void {
     this.citas = !this.citas;
+    this.reportes = false;
   }
 
 }
