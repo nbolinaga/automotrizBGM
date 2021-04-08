@@ -35,6 +35,7 @@ import { ReportesComponent } from './components/reportes/reportes.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { UploaderComponent } from './components/file-upload/file-upload.component';
 import { UploadTaskComponent } from './components/upload-task/upload-task.component';
+import { NgxKjuaModule } from 'ngx-kjua';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -83,7 +84,8 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    NgxKjuaModule
   ],
   exports: [RouterModule],
   providers: [AuthService, AngularFirestore],

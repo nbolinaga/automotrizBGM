@@ -1,5 +1,8 @@
 <div class="todo">
     <h2>Ordenes</h2>
+    <ngx-kjua
+    [text]="'hello'"
+  ></ngx-kjua>
     <form [formGroup]="formOrden" (ngSubmit)="agregarOrden()" class="form-group">
         <label for="marca">Marca</label>
         <input type="text" formControlName="marca">
