@@ -1,6 +1,7 @@
 @import "../../../variables.scss";
 
 #citasPorCrear{
+  color: $base;
   background-color: $detalles;
   display: flex;
   // flex-direction: column;
@@ -33,6 +34,7 @@
 }
 
 #ordenesPorActualizar{
+  color: $blanco;
   background-color: $base;
   display: flex;
   justify-content: center;
@@ -72,7 +74,7 @@
   left: 0;
   transition: transform 0.2s ease all;
 
-  .crearOrden{
+  .crearOrden,.actualizarOrden{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -86,6 +88,7 @@
       padding: 2vw;
       display: flex;
       justify-content: space-around;
+
       p {
         margin: 1vw;
         padding-bottom: 0vh;
@@ -100,6 +103,16 @@
         padding: 1vh;
       }
     }
+  }
+  .actualizarOrden{
+    height: 80vh;
+    transform: translate(-50%, -40%);
+    .left{
+      p,input{
+        font-size: 1.5vh;
+      }
+    }
+
   }
 }
 

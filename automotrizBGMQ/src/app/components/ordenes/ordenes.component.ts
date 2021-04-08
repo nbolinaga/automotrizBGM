@@ -43,6 +43,12 @@ export class OrdenesComponent implements OnInit {
   buscarOrdenID: string;
   ordenes: Orden[];
   abiertoActualizacion = false;
+  currentOrden: Orden = {
+    vehiculo: null,
+    cita: null,
+    finalizado: false,
+    idUser: null
+  }
 
   constructor(
     private fb : FormBuilder,
@@ -144,11 +150,19 @@ export class OrdenesComponent implements OnInit {
   }
 
   actualizarOrden(orden: Orden){
-    this. togglePopOrden();
+    this.togglePopOrden();
+    this.currentOrden = orden;
+    this.currentCita = orden.cita;
   }
 
-  togglePopOrden(){
+  async cerrarOrden(){
+    this.currentOrden.finalizado = true;
+    await this.OrdenesService.updateOrden(this.currentOrden.id, this.currentOrden);
+  }
+
+  async togglePopOrden(){
     this.abiertoActualizacion = !this.abiertoActualizacion;
+    await this.OrdenesService.updateOrden(this.currentOrden.id, this.currentOrden);
   }
   // activacion(numero): void {
   //   if (numero === 1){
