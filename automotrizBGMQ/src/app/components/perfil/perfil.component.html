@@ -87,6 +87,7 @@
             <div class="contenedor-inputs">
                 <label for="Vehiculos">Seleciona un Vehiculo:<span>*</span></label>
                 <select id="Vehiculos" formControlName="vehiculo">
+                  <option  [value]="" selected> </option>
                   <option *ngFor="let vehiculo of vehiculosRegistrados">
                     <p *ngIf='vehiculo.activo'>{{vehiculo.placa}}</p>
                   </option>

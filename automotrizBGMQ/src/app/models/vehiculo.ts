@@ -15,14 +15,12 @@ export interface Vehiculo{
   km?: number;
   gasolina?: number;
   extras?: string;
-  accesorios?: [
-    caucho: boolean,
-    llaves: boolean,
-    gato: boolean,
-    herramientas: boolean,
-    reproductor: boolean,
-    otros: string,
-  ];
+  caucho?: boolean,
+  llaves?: boolean,
+  gato?: boolean,
+  herramientas?: boolean,
+  reproductor?: boolean,
+  otros?: string,
   foto?: string;
   activo: boolean;
 }

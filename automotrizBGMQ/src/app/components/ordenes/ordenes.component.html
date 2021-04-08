@@ -1,44 +1,89 @@
-<div class="todo">
-    <button (click)="activacion(1)">Crear Orden</button>
-    <section class="citas-cliente">
-        <div class="overlay" *ngIf="activar">
-            <div class="popup">
-            <a (click)="activacion(1)" class="btn-cerrar-popup">X</a>
-            <h2>Ordenes</h2>
-            <form [formGroup]="formOrden" (ngSubmit)="agregarOrden()" class="form-group">
-                <label for="marca">Marca</label>
-                <input type="text" formControlName="marca">
-                <label for="modelo">Modelo</label>
-                <input type="text" formControlName="modelo">
-                <label for="año">Año</label>
-                <input type="number" formControlName="año">
-                <label for="serial">Serial</label>
-                <input type="text" formControlName="serial">
-                <label for="color">Color</label>
-                <input type="text" formControlName="color">
-                <label for="placa">Placa</label>
-                <input type="text" formControlName="placa">
-                <label for="kmIngreso">Km de ingreso</label>
-                <input type="number" formControlName="kmIngreso">
-                <label for="nivelGas">Nivel gasolina</label>
-                <input type="text" formControlName="nivelGas">
-                <label for="extras">Extras</label>
-                <input type="text"  formControlName="extras">
-                <!-- <label>Cauchos de repuesto</label>
-                <input formControlName="cauchosRepuesto" type="checkbox">
-                <label>Llaves</label>
-                <input formControlName="llaves" type="checkbox">
-                <label>Gato</label>
-                <input formControlName="gato" type="checkbox">
-                <label>Herramientas</label>
-                <input formControlName="herramientas" type="checkbox">
-                <label>Reproductor</label>
-                <input formControlName="reproductor" type="checkbox"> -->
-                <label>Otros</label>
-                <input formControlName="otros" type="text">
-                <button type="submit" >Enviar Orden</button>
-            </form>
-            </div>
-        </div>
-    </section>
+<section id="citasPorCrear" *ngIf="usuario.rol === 'Mecanico'">
+  <div class="citas">
+    <div class="lista" *ngFor="let cita of citasByFecha">
+      <div>
+        <h2>{{cita.fecha}}</h2>
+        <button (click)="crearOrden(cita, cita.vehiculo)">Crear Orden</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ordenes" >
+  <p>Esto lo ven ambos</p>
+</section>
+
+<div class="popup" [ngClass]="abierto ? 'popupOpen' : ''">
+  <div class="crearOrden">
+    <div class="datos">
+      <div class="left">
+        <p>Marca: <input [(ngModel)]="currentVehiculo.marca" type="string" /></p>
+        <p>Modelo: <input [(ngModel)]="currentVehiculo.modelo" type="string" /></p>
+        <p>Ano: <input [(ngModel)]="currentVehiculo.ano" type="number" /></p>
+        <p>Placa: <input [(ngModel)]="currentVehiculo.placa" type="string" /></p>
+        <p>Kilometraje: <input [(ngModel)]="currentVehiculo.km" type="number" /></p>
+        <p>Nivel de Gasolina: <input [(ngModel)]="currentVehiculo.gasolina" type="string" /></p>
+        <p>Extras: <textarea [(ngModel)]="currentVehiculo.extras"></textarea></p>
+      </div>
+      <div class="right">
+        <p>Caucho de Repuesto: <input type="checkbox" [(ngModel)]="currentVehiculo.caucho"></p>
+        <p>Llaves: <input type="checkbox" [(ngModel)]="currentVehiculo.llaves"></p>
+        <p>Gato: <input type="checkbox" [(ngModel)]="currentVehiculo.gato"></p>
+        <p>Herramientas: <input type="checkbox" [(ngModel)]="currentVehiculo.herramientas"></p>
+        <p>Reproductor: <input type="checkbox" [(ngModel)]="currentVehiculo.reproductor"></p>
+        <p>Otros: <textarea [(ngModel)]="currentVehiculo.otros" type="string" ></textarea></p>
+        <app-file-upload></app-file-upload>
+      </div>
+    </div>
+
+    <a class="cerrar" (click)="togglePop()">X</a>
+    <button class="btn-alt" (click)="crear()">Crear Orden</button>
+  </div>
 </div>
+
+
+
+<!-- <div class="todo">
+  <button (click)="activacion(1)">Crear Orden</button>
+  <section class="citas-cliente">
+      <div class="overlay" *ngIf="activar">
+          <div class="popup">
+          <a (click)="activacion(1)" class="btn-cerrar-popup">X</a>
+          <h2>Ordenes</h2>
+          <form [formGroup]="formOrden" (ngSubmit)="agregarOrden()" class="form-group">
+              <label for="marca">Marca</label>
+              <input type="text" formControlName="marca">
+              <label for="modelo">Modelo</label>
+              <input type="text" formControlName="modelo">
+              <label for="año">Año</label>
+              <input type="number" formControlName="año">
+              <label for="serial">Serial</label>
+              <input type="text" formControlName="serial">
+              <label for="color">Color</label>
+              <input type="text" formControlName="color">
+              <label for="placa">Placa</label>
+              <input type="text" formControlName="placa">
+              <label for="kmIngreso">Km de ingreso</label>
+              <input type="number" formControlName="kmIngreso">
+              <label for="nivelGas">Nivel gasolina</label>
+              <input type="text" formControlName="nivelGas">
+              <label for="extras">Extras</label>
+              <input type="text"  formControlName="extras">
+              <label>Cauchos de repuesto</label>
+              <input formControlName="cauchosRepuesto" type="checkbox">
+              <label>Llaves</label>
+              <input formControlName="llaves" type="checkbox">
+              <label>Gato</label>
+              <input formControlName="gato" type="checkbox">
+              <label>Herramientas</label>
+              <input formControlName="herramientas" type="checkbox">
+              <label>Reproductor</label>
+              <input formControlName="reproductor" type="checkbox">
+              <label>Otros</label>
+              <input formControlName="otros" type="text">
+              <button type="submit" >Enviar Orden</button>
+          </form>
+          </div>
+      </div>
+  </section>
+</div> -->
