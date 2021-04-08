@@ -1,5 +1,8 @@
 <div class="todo">
+  <div class=container>
+  <h2>Gerencia</h2>
     <div class="fila-btn">
+      
         <button class="btn-sec" (click)="openCitas()">CITAS</button>
         <button class="btn-pri">ORDENES</button>
         <button class="btn-sec" (click)="openReportes()">REPORTES</button>
@@ -10,5 +13,5 @@
     <div *ngIf="citas">
       <app-citas></app-citas>
     </div>
-
+  </div>
 </div>
