@@ -62,7 +62,8 @@ export class PerfilComponent implements OnInit {
             email: user.email,
             clave: null,
             confirmacion: null,
-            rol: 'Cliente'
+            rol: 'Cliente',
+            photoURL: 'https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/user.png?alt=media'
           };
           this.UsuarioService.createNewUser(user.uid, newUser);
         } else {
