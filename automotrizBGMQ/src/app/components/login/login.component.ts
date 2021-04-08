@@ -103,6 +103,8 @@ export class LoginComponent implements OnInit {
         email: this.registroForm.get('email').value,
         clave: this.registroForm.get('password').value,
         confirmacion: this.registroForm.get('password2').value,
+        rol: 'Cliente',
+        photoURL: 'https://firebasestorage.googleapis.com/v0/b/automotrizbgmq.appspot.com/o/user.png?alt=media'
       };
       if(newUser.nombre !== ''){
         if(newUser.tipoID !== ''){
