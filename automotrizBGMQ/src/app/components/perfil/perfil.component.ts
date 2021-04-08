@@ -201,6 +201,10 @@ export class PerfilComponent implements OnInit {
     }
   }
 
+  obtenerImagen(citaId: string): string{
+    return 'https://api.qrserver.com/v1/create-qr-code/?size=76x76&data='+citaId;
+  }
+
   porConfirmar(cita: Cita): Boolean{
     if(cita.estado==='Esperando confirmación'){
       return true;

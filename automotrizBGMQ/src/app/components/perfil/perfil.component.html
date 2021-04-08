@@ -68,7 +68,7 @@
                         <button class="btn-pri" type="submit" [disabled]="formConfirmacion.invalid">¡Listo!</button>
                       </form>
                     </td>
-                    <td *ngIf="!porConfirmar(cita)"></td>
+                    <td *ngIf="!porConfirmar(cita)"><img [src]="obtenerImagen(cita.id)" alt="Codigo QR"></td>
                   </tr>
               </tbody>
           </table>
@@ -87,6 +87,7 @@
             <div class="contenedor-inputs">
                 <label for="Vehiculos">Seleciona un Vehiculo:<span>*</span></label>
                 <select id="Vehiculos" formControlName="vehiculo">
+                  <option value="default"></option>
                   <option *ngFor="let vehiculo of vehiculosRegistrados">
                     <p *ngIf='vehiculo.activo'>{{vehiculo.placa}}</p>
                   </option>
