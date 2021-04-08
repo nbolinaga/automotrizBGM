@@ -1,6 +1,3 @@
-import { Cita } from './cita';
-import { Vehiculo } from './vehiculo';
-
 type Rol = 'Cliente' | 'Mecanico' | 'Gerente' | 'Admin';
 
 export interface Usuario{
